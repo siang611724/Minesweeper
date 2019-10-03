@@ -65,8 +65,21 @@ class Mine{
         }
     } 
     echo("<script>console.log(".json_encode($this->area).");</script>");
-
+    $this->MouseClickTd(1,1);
  
+   }
+   function MouseClickTd($i,$j){
+      
+    for($i=0;$i<$this->tr;$i++){
+        for($j=0;$j<$this->td;$j++){
+               
+            if($i<0 || $i>=$this->td || $j<0 ||$j>=$this->tr|| $this->area[$i][$j]==9 || ($this->area[$i]==$i && $this->area[$i][$j]==$j)){
+                return;
+            }else{
+               $this->area=' ';
+            }
+        }
+    }echo("<script>console.log(".json_encode($this->area).");</script>");
    }
 //    function drawTable(){
 
