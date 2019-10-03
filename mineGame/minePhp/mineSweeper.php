@@ -76,7 +76,7 @@ class Mine{
             if($i<0 || $i>=$this->td || $j<0 ||$j>=$this->tr|| $this->area[$i][$j]==9 || ($this->area[$i]==$i && $this->area[$i][$j]==$j)){
                 return;
             }else{
-               $this->area=' ';
+               $this->area[$i][$j]=' ';
             }
         }
     }echo("<script>console.log(".json_encode($this->area).");</script>");
@@ -101,3 +101,6 @@ class Mine{
 $Mine=new Mine(9,9,9);
 
 ?>
+<!-- 
+Notice: Uninitialized string offset: 0
+//將php.ini中error_reporting = E_ALL 改為error_reporting = E_ALL & ~E_NOTICE即可 -->
