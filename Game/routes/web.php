@@ -15,4 +15,4 @@ Route::get('/', function (){
     return view('index');
 });
 
-Route::resource('wang','GameController');
+Route::get('wang/{tr}/{td}/{mineNum}','GameController@map');

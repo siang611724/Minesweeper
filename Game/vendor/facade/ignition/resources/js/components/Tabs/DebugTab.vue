@@ -69,15 +69,13 @@ export default {
 
     components: { CheckboxField, DebugEvent },
 
-    props: ['query', 'dump', 'log', 'glow'],
-
     data() {
         return {
             visibleTypes: {
-                query: this.query !== undefined ? this.query : true,
-                dump: this.dump !== undefined ? this.dump : true,
-                log: this.log !== undefined ? this.log : true,
-                glow: this.glow !== undefined ? this.glow : true,
+                query: true,
+                dump: true,
+                log: true,
+                glow: true,
             },
         };
     },

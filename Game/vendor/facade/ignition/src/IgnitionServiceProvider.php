@@ -24,7 +24,6 @@ use Facade\Ignition\Middleware\AddQueries;
 use Facade\Ignition\LogRecorder\LogRecorder;
 use Facade\Ignition\Middleware\AddSolutions;
 use Facade\Ignition\Views\Engines\PhpEngine;
-use Facade\Ignition\Exceptions\InvalidConfig;
 use Facade\Ignition\DumpRecorder\DumpRecorder;
 use Facade\Ignition\Middleware\SetNotifierName;
 use Facade\Ignition\QueryRecorder\QueryRecorder;
@@ -40,7 +39,6 @@ use Illuminate\View\Engines\PhpEngine as LaravelPhpEngine;
 use Facade\Ignition\Http\Controllers\HealthCheckController;
 use Facade\Ignition\Http\Controllers\ShareReportController;
 use Facade\Ignition\Http\Controllers\ExecuteSolutionController;
-use Facade\Ignition\Http\Middleware\IgnitionConfigValueEnabled;
 use Facade\Ignition\SolutionProviders\SolutionProviderRepository;
 use Facade\Ignition\SolutionProviders\ViewNotFoundSolutionProvider;
 use Facade\Ignition\SolutionProviders\BadMethodCallSolutionProvider;
@@ -129,12 +127,8 @@ class IgnitionServiceProvider extends ServiceProvider
             'middleware' => [IgnitionEnabled::class],
         ], function () {
             Route::get('health-check', HealthCheckController::class);
-
-            Route::post('execute-solution', ExecuteSolutionController::class)
-                ->middleware(IgnitionConfigValueEnabled::class.':enableRunnableSolutions');
-
-            Route::post('share-report', ShareReportController::class)
-                ->middleware(IgnitionConfigValueEnabled::class.':enableShareButton');
+            Route::post('execute-solution', ExecuteSolutionController::class);
+            Route::post('share-report', ShareReportController::class);
 
             Route::get('scripts/{script}', ScriptController::class);
             Route::get('styles/{style}', StyleController::class);
@@ -219,16 +213,8 @@ class IgnitionServiceProvider extends ServiceProvider
     protected function registerLogHandler()
     {
         $this->app->singleton('flare.logger', function ($app) {
-            $handler = new FlareHandler($app->make('flare.client'));
-
-            $logLevelString = config('logging.channels.flare.level', 'error');
-
-            $logLevel = $this->getLogLevel($logLevelString);
-
-            $handler->setMinimumReportLogLevel($logLevel);
-
             $logger = new Logger('Flare');
-            $logger->pushHandler($handler);
+            $logger->pushHandler(new FlareHandler($app->make('flare.client')));
 
             return $logger;
         });
@@ -242,17 +228,6 @@ class IgnitionServiceProvider extends ServiceProvider
         }
 
         return $this;
-    }
-
-    protected function getLogLevel(string $logLevelString): int
-    {
-        $logLevel = Logger::getLevels()[strtoupper($logLevelString)] ?? null;
-
-        if (! $logLevel) {
-            throw InvalidConfig::invalidLogLevel($logLevelString);
-        }
-
-        return $logLevel;
     }
 
     protected function registerLogRecorder()

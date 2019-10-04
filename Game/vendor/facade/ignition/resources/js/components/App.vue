@@ -24,19 +24,14 @@ export default {
         solutions: { required: true },
         telescopeUrl: { required: true },
         shareEndpoint: { required: true },
-        defaultTab: { required: true },
-        defaultTabProps: { required: false },
     },
 
-    data() {
-        return {
-            customTabs: window.tabs,
-            tab: {
-                component: this.defaultTab,
-                props: this.defaultTabProps || {},
-            },
-        };
-    },
+    data: () => ({
+        customTabs: window.tabs,
+        tab: {
+            component: 'StackTab',
+        },
+    }),
 
     provide() {
         return {

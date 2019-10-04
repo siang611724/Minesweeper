@@ -9,38 +9,23 @@ class Stacktrace
     /** @var \Facade\FlareClient\Stacktrace\Frame[] */
     private $frames;
 
-    /** @var string */
-    private $applicationPath;
-
-    public static function createForThrowable(Throwable $throwable, ?string $applicationPath = null): self
+    public static function createForThrowable(Throwable $throwable): self
     {
-        return new static($throwable->getTrace(),  $applicationPath, $throwable->getFile(), $throwable->getLine());
+        return new static($throwable->getTrace(), $throwable->getFile(), $throwable->getLine());
     }
 
-    public static function create(?string $applicationPath = null): self
+    public function __construct(array $backtracke, string $topmostFile, string $topmostLine)
     {
-        $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS & ~DEBUG_BACKTRACE_PROVIDE_OBJECT);
-
-        return new static($backtrace, $applicationPath);
-    }
-
-    public function __construct(array $backtrace, ?string $applicationPath = null, string $topmostFile = null, string $topmostLine = null)
-    {
-        $this->applicationPath = $applicationPath;
-
         $currentFile = $topmostFile;
         $currentLine = $topmostLine;
 
-        foreach ($backtrace as $rawFrame) {
-            if (! $this->frameFromFlare($rawFrame) && ! $this->fileBlacklisted($currentFile)) {
-                $this->frames[] = new Frame(
-                    $currentFile,
-                    $currentLine,
-                    $rawFrame['function'] ?? null,
-                    $rawFrame['class'] ?? null,
-                    $this->frameFileFromApplication($currentFile)
-                );
-            }
+        foreach ($backtracke as $rawFrame) {
+            $this->frames[] = new Frame(
+                $currentFile,
+                $currentLine,
+                $rawFrame['function'] ?? null,
+                $rawFrame['class'] ?? null
+            );
 
             $currentFile = $rawFrame['file'] ?? 'unknown';
             $currentLine = $rawFrame['line'] ?? 0;
@@ -53,43 +38,6 @@ class Stacktrace
         );
     }
 
-    protected function frameFromFlare(array $rawFrame): bool
-    {
-        return (isset($rawFrame['class']) && strpos($rawFrame['class'], 'Facade\\FlareClient\\') === 0);
-    }
-
-    protected function frameFileFromApplication(string $frameFilename): bool
-    {
-        $relativeFile =  str_replace('\\', '/', $frameFilename);
-
-        if (! empty($this->applicationPath)) {
-            $relativeFile = array_reverse(explode($this->applicationPath ?? '', $frameFilename, 2))[0];
-        }
-
-        if (strpos($relativeFile, '/vendor') === 0) {
-            return false;
-        }
-
-        return true;
-    }
-
-    protected function fileBlacklisted(string $currentFile): bool
-    {
-        $currentFile =  str_replace('\\', '/', $currentFile);
-
-        $blacklist = [
-            '/ignition/src/helpers.php',
-        ];
-
-        foreach ($blacklist as $blacklistedFile) {
-            if (strstr($currentFile, $blacklistedFile) !== false) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public function firstFrame(): Frame
     {
         return $this->frames[0];
@@ -100,27 +48,5 @@ class Stacktrace
         return array_map(function (Frame $frame) {
             return $frame->toArray();
         }, $this->frames);
-    }
-
-    public function firstApplicationFrame(): ?Frame
-    {
-        foreach ($this->frames as $index => $frame) {
-            if ($frame->isApplicationFrame()) {
-                return $frame;
-            }
-        }
-
-        return null;
-    }
-
-    public function firstApplicationFrameIndex(): ?int
-    {
-        foreach ($this->frames as $index => $frame) {
-            if ($frame->isApplicationFrame()) {
-                return $index;
-            }
-        }
-
-        return null;
     }
 }

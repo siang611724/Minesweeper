@@ -120,17 +120,6 @@ class Flare
         $this->sendReportToApi($report);
     }
 
-    public function reportMessage(string $message, string $logLevel, callable $callback = null)
-    {
-        $report = $this->createReportFromMessage($message, $logLevel);
-
-        if (! is_null($callback)) {
-            call_user_func($callback, $report);
-        }
-
-        $this->sendReportToApi($report);
-    }
-
     public function sendTestReport(Throwable $throwable)
     {
         $this->api->sendTestReport($this->createReport($throwable));
@@ -172,27 +161,9 @@ class Flare
     {
         $report = Report::createForThrowable(
             $throwable,
-            $this->contextDetector->detectCurrentContext(),
-            $this->applicationPath
+            $this->contextDetector->detectCurrentContext()
         );
 
-        return $this->applyMiddlewareToReport($report);
-    }
-
-    public function createReportFromMessage(string $message, string $logLevel): Report
-    {
-        $report = Report::createForMessage(
-            $message,
-            $logLevel,
-            $this->contextDetector->detectCurrentContext(),
-            $this->applicationPath
-        );
-
-        return $this->applyMiddlewareToReport($report);
-    }
-
-    protected function applyMiddlewareToReport(Report $report): Report
-    {
         $this->applyAdditionalParameters($report);
 
         $report = (new Pipeline($this->container))

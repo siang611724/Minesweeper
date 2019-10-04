@@ -17,12 +17,12 @@ class AddSolutions
 
     public function handle(Report $report, $next)
     {
-        if ($throwable = $report->getThrowable()) {
-            $solutions = $this->solutionProviderRepository->getSolutionsForThrowable($throwable);
+        $throwable = $report->getThrowable();
 
-            foreach ($solutions as $solution) {
-                $report->addSolution($solution);
-            }
+        $solutions = $this->solutionProviderRepository->getSolutionsForThrowable($throwable);
+
+        foreach ($solutions as $solution) {
+            $report->addSolution($solution);
         }
 
         return $next($report);

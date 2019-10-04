@@ -32,8 +32,6 @@
             'solutions' => $solutions,
             'telescopeUrl' => $telescopeUrl,
             'shareEndpoint' => $shareEndpoint,
-            'defaultTab' => $defaultTab,
-            'defaultTabProps' => $defaultTabProps,
         ])
     ?>
 
@@ -54,5 +52,6 @@
 <script>
     Ignition.start();
 </script>
+
 </body>
 </html>

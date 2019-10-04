@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Mine;
 use App\Map;
 use Illuminate\Http\Request;
 
@@ -13,6 +13,7 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -89,5 +90,11 @@ class GameController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function map($tr,$td,$mineNum){
+        
+        $Mine=new Mine($tr,$td,$mineNum);
+        return $Mine->init();
+        
     }
 }
