@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/299337bdc7.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
@@ -34,15 +35,15 @@
         }
 
         .information_left {
-            float: left;
+            /* float: left; */
             box-shadow: 1px 0 0 0 #eee;
             height: 550px;
             width: 250px;
-            margin: 23px;
+            margin: 15px;
         }
 
         .gameArea_right {
-            float: left;
+            /* float: left; */
             height: 550px;
             width: 700px;
             margin-top: 20px;
@@ -104,6 +105,16 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <table class="d-xl-none d-lg-none">
+                            <td style="margin-right: 20px" class="d-xl-none d-lg-none">
+                                <tr>
+                                    <td>信箱: {{ Auth::user()->email }} </td>
+                                </tr>
+                                <tr>
+                                    <td>金幣: <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></td>
+                                </tr>
+                            </td>
+                        </table>
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -118,13 +129,16 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
+
                             </a>
+
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
