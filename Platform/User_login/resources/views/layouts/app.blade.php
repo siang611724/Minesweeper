@@ -44,14 +44,23 @@
 
         .gameArea_right {
             /* float: left; */
+            position: relative;
             height: 550px;
             width: 700px;
             margin-top: 20px;
         }
 
+        .right_collection {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0%);
+        }
+
         .content {
             background-color: #fff;
-            margin: auto;
+            position: relative;
+            left: 50%;
+            margin-left: -500px;
             height: 600px;
             width: 1000px;
             border: 1px solid #eee;
@@ -81,7 +90,6 @@
             width: 50%;
             z-index: 20;
         }
-
     </style>
 
 </head>
@@ -129,7 +137,6 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
-
                             </a>
 
 
