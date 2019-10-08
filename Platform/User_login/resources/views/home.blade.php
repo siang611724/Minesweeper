@@ -7,16 +7,24 @@
             @if(Auth::check())
             ok
             @endif
+
             <!-- hidden-xs hidden-sm  -->
             <div style="border: 1px solid; height: 100px; width:100px; margin: 30px auto"></div> <!-- 頭像 -->
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
             <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p>
             <p style="margin: 20px 20px auto">金幣: {{ Auth::user()->coins }}
                 <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></p>
+            
+            <p style="margin: 20px 20px auto">
+            <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
+                我的錢包
+            </button></p>
         </div>
         <!-- <div class="text_box"> 彈出對話框 -->
         <!-- <p>彈窗內容</p> -->
         <!-- </div>  -->
+
+        <!-- 加值彈窗 -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -69,12 +77,54 @@
                 </div>
             </div>
         </div>
+
+        <!-- 錢包彈窗 -->
+        <div class="modal fade bd-example-modal-lg" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalScrollableTitle">我的錢包</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table-sm table-striped" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">使用者</th>
+                                    <th scope="col">交易日期</th>
+                                    <th scope="col">類型</th>
+                                    <th scope="col">交易金額</th>
+                                    <th scope="col">餘額</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($tradingRecord as $tRecord)
+                                <tr>
+                                    <td>{{ $tRecord->user_name }}</td>
+                                    <td>{{ $tRecord->trading_date }}</td>
+                                    <td>{{ $tRecord->trading_type }}</td>
+                                    <td>{{ $tRecord->trading_coins }}</td>
+                                    <td>{{ $tRecord->balance_coins }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="gameArea_right col-lg-8 col-sm-12 col-12">
             <div class="right_collection">
                 <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3">
                 </div>
                 <div class="">
-                    <table class="table table-sm">
+                    <!-- <table class="table table-sm">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -94,7 +144,7 @@
                                 <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>

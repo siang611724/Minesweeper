@@ -94,7 +94,7 @@
     @if (Route::has('login'))
     <nav class="navbar navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">Minesweeper</a>
+            <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">Minesweeper Online</a>
             @auth
             <a href="{{ url('/home') }}">Home</a>
             @else
@@ -155,9 +155,58 @@
     </nav>
     @endif
 
-
+    @if (Route::has('login'))
     <div class="container register">
         <div class="row">
+            @auth
+            
+
+            <div class="col-xl-6 col-12"> <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
+
+                <p class="lead">遊戲說明</p>
+                <p></p>
+                <div class="form-group" style="margin-top: 50px; text-align: left;"><label style="text-align: left;">公告欄:</label>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th colspan="2" scope="col">Title</th>
+                                <th scope="col" style="text-align: right"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td colspan="2">Article 1</td>
+                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td colspan="2">Article 2</td>
+                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Article 3</td>
+                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- <table class="form-control" style="margin-top: 0px; margin-bottom: 0px; height: 123px;">
+                    <tr>
+                        <td>title</td>
+                        <td>text</td>
+                        <td><button>more</button></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                </table> -->
+                </div>
+            </div>
+            @else
             <div class="col-xl-6 col-12">  <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->
                 <h1 class="">{{ __('註冊') }}</h1>
                 <hr>
@@ -272,8 +321,10 @@
                 </table> -->
                 </div>
             </div>
+            @endauth
         </div>
     </div>
+    @endif
 </body>
 
 </html>

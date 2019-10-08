@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\TransactionRecord;
 use DB;
 
 class HomeController extends Controller
@@ -26,7 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $id = Auth::id();
+        // $tradingRecord = TransactionRecord::all();
+        $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('trading_date', 'desc')->get();
+        // dd($tradingRecord);
+        return view('home', compact('tradingRecord'));
     }
 
     public function coinPurchase (Request $request) {
@@ -48,8 +53,14 @@ class HomeController extends Controller
         return redirect("/home");
     }
 
-    public function test()
+    public function dailyLogin()
     {
-        return view('test');
+        $user = Auth::user();
+        // 取得最後一筆logs表資料，利用id取得登入紀錄並更新到users表`最後登入時間`
+        $lastLogin = DB::table('logs')->orderBy('id', 'desc')->first();
+        // dd($lastLogin);
+        $login_time = DB::table('logs')->where('id', $lastLogin->id)->value('login_time');
+        DB::table('users')->where('id', $user->id)->update(['last_login_time' => $login_time]);
+        return view('dailyLogin');
     }
 }

@@ -31,7 +31,6 @@
         body {
             background-color: #f9f9f9;
             font-family: 'Nunito', sans-serif;
-
         }
 
         .information_left {
@@ -98,8 +97,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #eee;">
             <div class="container">
-                <a class="navbar-brand" style="font-size: 2rem" href="{{ url('/') }}">
-                    {{ 'Minesweeper' }}
+                <a class="navbar-brand" style="font-family: Arial; font-size: 2rem" href="{{ url('/') }}">
+                    {{ 'Minesweeper Online' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -120,6 +119,13 @@
                                 </tr>
                                 <tr>
                                     <td>金幣: <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
+                                            我的錢包
+                                        </button>
+                                    </td>
                                 </tr>
                             </td>
                         </table>

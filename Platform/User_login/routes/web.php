@@ -31,4 +31,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@coinPurchase');
 
 //  測試用路由
-Route::get('/test', 'HomeController@test')->name('test');
+Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
