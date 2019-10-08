@@ -37,14 +37,14 @@ function play(event, obj) {
             success: function (clickedItem) {
                 var ceil = clickedItem[position.MapX][position.MapY];
                 var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                // for (var i = 0; i < clickedItem[1].length; i++) {
-                //     for (var j = 0; j < clickedItem.length; j++) {
-                        if (ceil.type == "number" && ceil.checked == true) {
+                for (var i = 0; i < clickedItem[1].length; i++) {
+                    for (var j = 0; j < clickedItem.length; j++) {
+                        if (ceil.type == "number") {
                             obj.innerHTML =ceil.value;
                             obj.className = changeClass[ceil.value];
                         }
-                //     }
-                // }
+                    }
+                }
                 console.log(clickedItem);
             }
 
