@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Announce;
 use App\Http\Resources\AnnounceResource;
 use App\Http\Resources\AnnounceResourceCollection;
+use DB;
 
 class AnnounceController extends Controller
 {
@@ -29,7 +30,15 @@ class AnnounceController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $ann = DB::table('announces')->insert([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+        if (!$ann){
+            return response()->json(['status' => 1]);
+        }else {
+            return response()->json(['status' => 0, 'post' => $ann]);
+        }
     }
 
     /**
@@ -53,7 +62,17 @@ class AnnounceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = DB::table('announces')
+                    ->where('id',$id)
+                    ->update([
+                        'title' => $request->title,
+                        'content' => $request->content,
+                    ]);
+        if (!$result) {
+            return response()->json(['status' => 1, 'message' => 'Post not found'],404);
+        }else {
+            return response()->json(['status' => 0]);
+        }
     }
 
     /**
@@ -65,7 +84,11 @@ class AnnounceController extends Controller
     public function destroy($id)
     {
         $ann = Announce::find($id);
-        $ann->delete();
-        return response()->json(null,204);
+        if ($ann != null){
+            $ann->delete();
+            return response()->json(null,204);
+        }else {
+            return response()->json(['message' => 'Wrong ID']);
+        }
     }
 }

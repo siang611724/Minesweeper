@@ -16,3 +16,4 @@ use App\Http\Resources\AnnounceResource;
 */
 
 Route::apiResource('/announce', 'api\AnnounceController');
+// Route::get('/announce', 'api\AnnounceController@store');
