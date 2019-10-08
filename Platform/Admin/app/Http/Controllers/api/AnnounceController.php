@@ -18,17 +18,7 @@ class AnnounceController extends Controller
     public function index()
     {
         $ann = Announce::all();
-        return response()->json($ann);    
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return new AnnounceResourceCollection($ann);
     }
 
     /**
@@ -39,7 +29,7 @@ class AnnounceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -50,18 +40,8 @@ class AnnounceController extends Controller
      */
     public function show($id)
     {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $ann = Announce::find($id);
+        return new AnnounceResource($ann);
     }
 
     /**
@@ -73,11 +53,7 @@ class AnnounceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ann = Announce::find($id);
-        $ann->title = $requset->title;
-        $ann->content = $requset->content;
-        $ann->save();
-        return response()->json($ann);
+        //
     }
 
     /**
@@ -88,9 +64,8 @@ class AnnounceController extends Controller
      */
     public function destroy($id)
     {
-        $ann = Announce::all();
-        $annDel = Announce::find($id);
-        $annDel->delete();
-        return response()->json($ann);
+        $ann = Announce::find($id);
+        $ann->delete();
+        return response()->json(null,204);
     }
 }

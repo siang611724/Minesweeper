@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Announce;
+use App\Http\Resources\AnnounceResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('/announce', 'api\AnnounceController');
