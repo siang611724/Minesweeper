@@ -69,7 +69,7 @@ Mine.prototype.init = function () {
     // this.addTime = document.querySelector(".times");
     // this.addTime.innerHTML = this.time;
     // console.log(this.squares);
-    // console.log(this.tds);
+    //console.log(this.tds);
 
 }
 var isClick = true;
@@ -84,7 +84,6 @@ Mine.prototype.drawTable = function () {
             domTd.pos = [i, j];
             this.tds[i][j] = domTd
             domTd.onmousedown = function () {
-                
                 if(isClick) {
                     isClick = false;
                     //事件
@@ -94,10 +93,7 @@ Mine.prototype.drawTable = function () {
                         isClick = true;
                     }, 250);//一秒内不能重复点击
                 }
-    
-
             }
-
             domTr.appendChild(domTd);
         }
         table.appendChild(domTr);
@@ -148,11 +144,8 @@ Mine.prototype.play = function (event, obj) {
     var This = this;
     
     if (event.which == 1) {
-
-        
-
-
         var clickedItem = this.squares[obj.pos[0]][obj.pos[1]];
+        console.log(clickedItem);
         var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
         if (clickedItem.type == "number") {
             obj.innerHTML = clickedItem.value;
@@ -161,7 +154,7 @@ Mine.prototype.play = function (event, obj) {
                 timer = setInterval(function () {
                    t+=0.2;
                    document.querySelector('.times').innerHTML = Math.floor(t);
-                   console.log(t);
+                //    console.log(t);
                }, 200);
                
              
