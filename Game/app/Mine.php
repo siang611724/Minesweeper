@@ -38,7 +38,8 @@ class Mine
         $j = rand(0, $this ->td - 1);
         if ($this ->area[$i][$j] == array("type" => "number", "x" => $j, "y" => $i, "checked" => false,
                 "value" => 0)) {
-            $this ->area[$i][$j] = array("type" => "mine", "x" => $j, "y" => $i, "checked" => false);
+            $this ->area[$i][$j] = array("type" => "mine", "x" => $j, "y" => $i, "checked" => false,
+            "value" => 9);
             $index++;
         }
     }
@@ -46,7 +47,8 @@ class Mine
     for ($i = 0; $i < $this ->tr; $i++) {
         for ($j = 0; $j < $this ->td; $j++) {
             if ($this ->area[$i][$j] == array("type" => "mine",
-                    "x" => $j, "y" => $i, "checked" => false)) {
+                    "x" => $j, "y" => $i, "checked" => false,
+                    "value" => 9)) {
                 continue;
             }
 
@@ -76,7 +78,7 @@ class Mine
         } 
     } 
     //    echo ($this->area[1][1]["type"]);
-    echo("<script>console.log(".json_encode($this->area).");</script>");
+  return $this->area;
     // $this->area[1][1]["checked"]=false;
     // echo print_r($this->area[1][1]);
 //     $this->MouseClickTd(1,2);

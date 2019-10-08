@@ -147,10 +147,6 @@ Mine.prototype.play = function (event, obj) {
     var This = this;
     
     if (event.which == 1) {
-
-        
-
-
         var clickedItem = this.squares[obj.pos[0]][obj.pos[1]];
         var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
         if (clickedItem.type == "number") {

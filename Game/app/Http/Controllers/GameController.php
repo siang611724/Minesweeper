@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mine;
 use App\Map;
+use DB;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -17,7 +18,8 @@ class GameController extends Controller
     public function index()
     {
         //
-        return 'ok';
+        $mapInfo = unserialize(DB::table('Map')->where('GameID',1)->value('info')) ;
+        return $mapInfo;
         
     }
 
@@ -39,12 +41,7 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $maps->MemberID = "";
-        $maps->MapX = "9";
-        $maps->MapY = "9";
-        $maps->save();
-        return $request;
+     
     }
 
     /**
@@ -94,6 +91,16 @@ class GameController extends Controller
     public function map($tr,$td,$mineNum){
         
         $Mine=new Mine($tr,$td,$mineNum);
+                   
+        DB::table('Map')->insert(
+            [
+                'GameID'=> 1,
+                'MemberID'=>"",
+                'Info'=> serialize($Mine->area)
+            ]
+        );
+            
+        
         return $Mine->init();
         
     }

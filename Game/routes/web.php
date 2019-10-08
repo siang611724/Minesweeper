@@ -16,3 +16,4 @@ Route::get('/', function (){
 });
 
 Route::get('wang/{tr}/{td}/{mineNum}','GameController@map');
+Route::get('getMap/{MapX}/{MapY}','Play@MouseClickTd');
