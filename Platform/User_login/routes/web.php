@@ -32,3 +32,5 @@ Route::post('/home', 'HomeController@coinPurchase');
 
 //  測試用路由
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
+
+Route::resource('user', 'UserController');
