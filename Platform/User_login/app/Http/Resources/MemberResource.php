@@ -15,9 +15,11 @@ class MemberResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
-            'email'=> $this->email,
-            'coins'=> $this->coins,
+            'email' => $this->email,
+            'coins' => $this->coins,
+            'last_login_time' => $this->last_login_time,
         ];
     }
 }
