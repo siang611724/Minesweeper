@@ -17,109 +17,12 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
     integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-  <script>
-    // $(document).ready(function () {
-    //   $.ajax({
-    //     url: 'https://ruienyuski.github.io/git_test/data222.json',
-    //     success: function (response) {
-    //       $('.info').html('抓到資料囉!');
-    //     },
-    //     error: function (xhr) {
-    //       alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
-    //     }
-    //   });
-    // })
-    // $(document).ready(function () {
-    //       $('.btn').on('click', function () {
-
-    //2.顯示json 在網頁上
-    //     $.ajax({
-    //       url: '',
-    //       type: 'get',
-    //       data: {
-    //         querytag: data
-    //       }, // 輸入的資料
-    //       error: function (xhr) {}, // 錯誤後執行的函數
-    //       success: function (response) {} // 成功後要執行的函數
-    //     });
-
-    //     $.ajax({
-    //       type: 'GET', // post/get
-    //       url: '', // url位置
-    //       dataType: 'json',
-    //       success: function (response) {
-    //         $.each(response, function (index, element) {
-    //           $('tbody').append(
-    //             $('<tr><th>', {
-    //               text: [index + 1]
-    //             }, '</th>'),
-    //             $('<td>', {
-    //               text: element.mail
-    //             }, '</td>'),
-
-    //             $('<td>', {
-    //               text: element.status
-    //             }, '</td>'),
-
-    //             $('<button type="button" class="btn btn-primary btn-sm" onclick="ReadMore(index)">', {
-    //               text: "More"
-    //             }, '</button></td>'),
-    //           );
-    //         });
-    //       },
-    //       error: function (xhr) {
-    //         alert("系統忙碌中");
-    //       }
-    //     });
-
-    //   });
-    // });
-    // function creatTable(data) {
-    //   //這個函式的引數可以是從後臺傳過來的也可以是從其他任何地方傳過來的
-    //   //這裡我假設這個data是一個長度為5的字串陣列 我要把他放在表格的一行裡面，分成五列
-    //   var tableData = "<tr>"
-    //   //動態增加5個td,並且把data陣列的五個值賦給每個td
-    //   for (var i = 0; i < data.length; i++) {
-    //     tableData += "<td>" + data[i] + "</td>"
-    //   }
-    //   tableData += "</tr>"
-    //   //現在tableData已經生成好了，把他賦值給上面的tbody
-    //   $("#tbody1").html(tableData)
-    // }
-    // $(document).ready(function () {
-    //   for () {}
-    // })
-
-    // function getData(index) {
-    //   var req = new XMLHttpRequest();
-    //   req.open("get", "");
-    //   req.onload = function () {
-    //     var
-    //   }
-    // }
-    // ===============================================================================
-    function ReadMore(index) {
-      var t = document.getElementById('table');
-      t.style.display = 'none';
-      var t1 = document.getElementById('Info');
-      t1.style.display = 'block';
-
-    }
-
-    function MemberList() {
-      var t = document.getElementById('table');
-      t.style.display = 'block';
-      var t1 = document.getElementById('Info');
-      t1.style.display = 'none';
-    }
-  </script>
+  
   <style>
     table {
       table-layout: fixed;
       font-size: 12px;
     }
-
-
 
     th {
       font-size: 14px;
@@ -151,8 +54,6 @@
     table {
       table-layout: fixed;
     }
-
-
 
     textarea {
       width: 100%;
@@ -335,7 +236,7 @@
 
                     <button class="btn btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                       aria-expanded="true" aria-controls="collapseOne">
-                      <span class="h5">{{#1}}</span> [修改]
+                      <span class="h5">{{Title1}}</span> [修改]
                     </button>
                     <button class="btn btn-sm btn-danger float-right"><i class="fas fa-trash-alt"></i></button>
                   </div>
@@ -357,7 +258,7 @@
 
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                       data-target="#collapseTwo" aria-expanded="false" aria-controls="collapse2">
-                      #2
+                      {{Title1}}
                     </button>
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="head2" data-parent="#accordionExample">
@@ -395,10 +296,102 @@
       </div>
     </div>
   </div>
+  <script>
+    // $(document).ready(function () {
+    //   $.ajax({
+    //     url: 'https://ruienyuski.github.io/git_test/data222.json',
+    //     success: function (response) {
+    //       $('.info').html('抓到資料囉!');
+    //     },
+    //     error: function (xhr) {
+    //       alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
+    //     }
+    //   });
+    // })
+    // $(document).ready(function () {
+    //       $('.btn').on('click', function () {
 
+    //2.顯示json 在網頁上
+       $.ajax({
+          url: '',});
+    //       type: 'get',
+    //       data: {
+    //         querytag: data
+    //       }, // 輸入的資料
+    //       error: function (xhr) {}, // 錯誤後執行的函數
+    //       success: function (response) {} // 成功後要執行的函數
+    //     });
 
+    //     $.ajax({
+    //       type: 'GET', // post/get
+    //       url: '', // url位置
+    //       dataType: 'json',
+    //       success: function (response) {
+    //         $.each(response, function (index, element) {
+    //           $('tbody').append(
+    //             $('<tr><th>', {
+    //               text: [index + 1]
+    //             }, '</th>'),
+    //             $('<td>', {
+    //               text: element.mail
+    //             }, '</td>'),
 
+    //             $('<td>', {
+    //               text: element.status
+    //             }, '</td>'),
 
+    //             $('<button type="button" class="btn btn-primary btn-sm" onclick="ReadMore(index)">', {
+    //               text: "More"
+    //             }, '</button></td>'),
+    //           );
+    //         });
+    //       },
+    //       error: function (xhr) {
+    //         alert("系統忙碌中");
+    //       }
+    //     });
+
+    //   });
+    // });
+    // function creatTable(data) {
+    //   //這個函式的引數可以是從後臺傳過來的也可以是從其他任何地方傳過來的
+    //   //這裡我假設這個data是一個長度為5的字串陣列 我要把他放在表格的一行裡面，分成五列
+    //   var tableData = "<tr>"
+    //   //動態增加5個td,並且把data陣列的五個值賦給每個td
+    //   for (var i = 0; i < data.length; i++) {
+    //     tableData += "<td>" + data[i] + "</td>"
+    //   }
+    //   tableData += "</tr>"
+    //   //現在tableData已經生成好了，把他賦值給上面的tbody
+    //   $("#tbody1").html(tableData)
+    // }
+    // $(document).ready(function () {
+    //   for () {}
+    // })
+
+    // function getData(index) {
+    //   var req = new XMLHttpRequest();
+    //   req.open("get", "");
+    //   req.onload = function () {
+    //     var
+    //   }
+    // }
+    // ===============================================================================
+    function ReadMore(index) {
+      var t = document.getElementById('table');
+      t.style.display = 'none';
+      var t1 = document.getElementById('Info');
+      t1.style.display = 'block';
+
+    }
+
+    function MemberList() {
+      var t = document.getElementById('table');
+      t.style.display = 'block';
+      var t1 = document.getElementById('Info');
+      t1.style.display = 'none';
+    }
+  </script>
 </body>
 
 </html>
