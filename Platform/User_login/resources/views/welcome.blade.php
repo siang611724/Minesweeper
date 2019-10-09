@@ -96,7 +96,11 @@
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">Minesweeper Online</a>
             @auth
+            @if(Auth::user()->name == 'admin')
+            <a href="{{ url('/admin') }}">Game</a>
+            @else
             <a href="{{ url('/home') }}">Game</a>
+            @endif
             @else
             <form method="POST" action="{{ route('login') }}" style="right: 0px; float: right">
                 @csrf

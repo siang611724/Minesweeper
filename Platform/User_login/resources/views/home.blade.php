@@ -14,11 +14,12 @@
             <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p>
             <p style="margin: 20px 20px auto">金幣: {{ Auth::user()->coins }}
                 <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></p>
-            
+            <!-- <img src="../../public/image/plus-circle.svg" alt=""> -->
             <p style="margin: 20px 20px auto">
             <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                 我的錢包
             </button></p>
+            <p><a href="/user/{{ Auth::id() }}/edit">修改密碼</a></p>
         </div>
         <!-- <div class="text_box"> 彈出對話框 -->
         <!-- <p>彈窗內容</p> -->
