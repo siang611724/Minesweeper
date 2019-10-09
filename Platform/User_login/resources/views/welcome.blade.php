@@ -96,7 +96,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">Minesweeper Online</a>
             @auth
-            <a href="{{ url('/home') }}">Home</a>
+            <a href="{{ url('/home') }}">Game</a>
             @else
             <form method="POST" action="{{ route('login') }}" style="right: 0px; float: right">
                 @csrf
@@ -159,8 +159,6 @@
     <div class="container register">
         <div class="row">
             @auth
-            
-
             <div class="col-xl-6 col-12"> <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
                 <p class="lead">遊戲說明</p>
