@@ -31,7 +31,7 @@ function play(event, obj) {
         };
         $.ajax({
             type: "get",
-            url: "/getMap/" + position.MapX + "/" + position.MapY,
+            url: "/getMap/" + position.MapY + "/" + position.MapX,
             success: function (clickedItem) {
                 // var ceil = clickedItem[position.MapY][position.MapX];
                 // var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
@@ -39,7 +39,6 @@ function play(event, obj) {
                 //     obj.innerHTML =ceil.value;
                 //     obj.className = changeClass[ceil.value];
                 // }
-
                 console.log(clickedItem);
             }
         })
