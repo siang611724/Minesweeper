@@ -4,10 +4,10 @@ var parent = document.querySelector(".gameBox");
 
 function drawTable(map) {
     var table = document.createElement("table");
-    for (var i = 0; i < map[1].length; i++) {
+    for (var i = 0; i < map.length; i++) {
         var domTr = document.createElement("tr");
         tds[i] = [];
-        for (var j = 0; j < map.length; j++) {
+        for (var j = 0; j < map[1].length; j++) {
             var domTd = document.createElement("td");
             domTd.pos = [i, j];
             tds[i][j] = domTd;
@@ -20,9 +20,7 @@ function drawTable(map) {
     }
     parent.innerHTML = "";
     parent.appendChild(table);
-
 }
-
 
 function play(event, obj) {
 
@@ -35,22 +33,16 @@ function play(event, obj) {
             type: "get",
             url: "/getMap/" + position.MapX + "/" + position.MapY,
             success: function (clickedItem) {
-                var ceil = clickedItem[position.MapX][position.MapY];
-                var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                // for (var i = 0; i < clickedItem[1].length; i++) {
-                //     for (var j = 0; j < clickedItem.length; j++) {
-                        if (ceil.type == "number" && ceil.checked == true) {
-                            obj.innerHTML =ceil.value;
-                            obj.className = changeClass[ceil.value];
-                        }
-                //     }
+                // var ceil = clickedItem[position.MapY][position.MapX];
+                // var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+                // if (ceil.type == "number" && ceil.checked ==true) {
+                //     obj.innerHTML =ceil.value;
+                //     obj.className = changeClass[ceil.value];
                 // }
+
                 console.log(clickedItem);
             }
-
         })
-        // var clickedItem = squares[[obj.pos[0]][obj.pos[1]]]
-
     }
 }
 
@@ -67,8 +59,9 @@ $("#easy").click(function () {
         type: 'get',
         url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
         success: function (map) {
-            console.log(map);
+
             drawTable(map);
+            console.log(map);
         }
     })
 });
@@ -94,8 +87,8 @@ $("#medium").click(function () {
 
 $("#hard").click(function () {
     var mapData = {
-        column: 30,
-        row: 16,
+        column: 16,
+        row: 30,
         bomb: 99
     };
     $.ajax({
@@ -105,6 +98,7 @@ $("#hard").click(function () {
         type: 'get',
         url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
         success: function (map) {
+            console.log(map);
             console.log(map.length);
             console.log(map[1].length);
             drawTable(map);
