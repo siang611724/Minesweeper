@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Resources\MemberResource;
 use App\Resources\MemberResourceCollection;
+use DB;
 
 class MemberController extends Controller
 {
@@ -18,7 +19,7 @@ class MemberController extends Controller
     public function index()
     {
         $user = User::all();
-        return MemberResourceCollection($user);
+        return response()->json($user);
     }
 
     /**
