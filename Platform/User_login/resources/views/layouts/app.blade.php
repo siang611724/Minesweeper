@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/299337bdc7.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
@@ -30,27 +31,35 @@
         body {
             background-color: #f9f9f9;
             font-family: 'Nunito', sans-serif;
-
         }
 
         .information_left {
-            float: left;
+            /* float: left; */
             box-shadow: 1px 0 0 0 #eee;
             height: 550px;
             width: 250px;
-            margin: 23px;
+            margin: 15px;
         }
 
         .gameArea_right {
-            float: left;
+            /* float: left; */
+            position: relative;
             height: 550px;
             width: 700px;
             margin-top: 20px;
         }
 
+        .right_collection {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0%);
+        }
+
         .content {
             background-color: #fff;
-            margin: auto;
+            position: relative;
+            left: 50%;
+            margin-left: -500px;
             height: 600px;
             width: 1000px;
             border: 1px solid #eee;
@@ -80,7 +89,6 @@
             width: 50%;
             z-index: 20;
         }
-
     </style>
 
 </head>
@@ -89,8 +97,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #eee;">
             <div class="container">
-                <a class="navbar-brand" style="font-size: 2rem" href="{{ url('/') }}">
-                    {{ 'Minesweeper' }}
+                <a class="navbar-brand" style="font-family: Arial; font-size: 2rem" href="{{ url('/') }}">
+                    {{ 'Minesweeper Online' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -104,6 +112,23 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <table class="d-xl-none d-lg-none">
+                            <td style="margin-right: 20px" class="d-xl-none d-lg-none">
+                                <tr>
+                                    <td>信箱: {{ Auth::user()->email }} </td>
+                                </tr>
+                                <tr>
+                                    <td>金幣: <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
+                                            我的錢包
+                                        </button>
+                                    </td>
+                                </tr>
+                            </td>
+                        </table>
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -120,11 +145,13 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
+
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf

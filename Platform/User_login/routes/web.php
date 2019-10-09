@@ -12,7 +12,7 @@
 */
 
 // Route::get('/', 'MembersController@index');
-Route::resource('Members', 'MembersController');
+// Route::resource('Members', 'MembersController');
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,10 +24,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::post('/home', 'HomeController@coinPurchase');
 
-Route::get('/test', 'HomeController@test')->name('test');
+//  測試用路由
+Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
