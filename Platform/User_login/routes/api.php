@@ -14,3 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::apiResource('/member', 'api\MemberController');
+Route::apiResource('/announce', 'api\AnnounceController');
+// Route::get('/member/{member}', 'api\MemberController@update');
