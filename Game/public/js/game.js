@@ -4,12 +4,12 @@ var parent = document.querySelector(".gameBox");
 
 function drawTable(map) {
     var table = document.createElement("table");
-    for (var i = 0; i < map[1].length; i++) {
+    for (var i = 0; i < map.length; i++) {
         var domTr = document.createElement("tr");
         tds[i] = [];
-        for (var j = 0; j < map.length; j++) {
+        for (var j = 0; j < map[1].length; j++) {
             var domTd = document.createElement("td");
-            domTd.pos = [i, j];
+            domTd.pos = [j, i];
             tds[i][j] = domTd;
             domTd.onmousedown = function () {
                 play(event, this);
@@ -33,7 +33,7 @@ function play(event, obj) {
         };
         $.ajax({
             type: "get",
-            url: "/getMap/" + position.MapY + "/" + position.MapX,
+            url: "/getMap/" + position.MapX + "/" + position.MapY,
             success: function (clickedItem) {
                 // var ceil = clickedItem[position.MapY][position.MapX];
                 // var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
@@ -90,8 +90,8 @@ $("#medium").click(function () {
 
 $("#hard").click(function () {
     var mapData = {
-        column: 30,
-        row: 16,
+        column: 16,
+        row: 30,
         bomb: 99
     };
     $.ajax({

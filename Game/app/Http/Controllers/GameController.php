@@ -18,8 +18,7 @@ class GameController extends Controller
     public function index()
     {
         //
-        $mapInfo = unserialize(DB::table('Map')->where('GameID',1)->value('info')) ;
-        return $mapInfo;
+       
         
     }
 
@@ -101,7 +100,7 @@ class GameController extends Controller
         );
             
         
-        return $Mine->init();
+        return $Mine->area;
         
     }
 }
