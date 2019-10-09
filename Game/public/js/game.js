@@ -22,6 +22,41 @@ function drawTable(map) {
     parent.appendChild(table);
 }
 
+function getZero(space, obj) {
+    for (var i = 0; i < space.length; i++) {
+        var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+        $.ajax({
+            async: true,
+            type: 'get',
+            url: "/getMap/" + space[i].x + "/" + space[i].y,
+            // success: function (zero) {
+            // //   for (var j=0; j<tds.length;j++){
+            // //       for (var k=0;k<tds[1].length;k++){
+            // //           if(zero.checked==true || zero.open==true){
+            // //               tds[j][i].innerHTML=zero.value;
+            // //           }
+            // //       }
+            // //   }
+
+                
+            // }
+        }).then( function (zero){
+              for (var j=0; j<tds.length;j++){
+                  for (var k=0;k<tds[1].length;k++){
+                      if( zero.open==true){
+                          tds[j][i].innerHTML=zero.value;
+                      }
+                  }
+              }
+            console.log(zero);
+        })
+
+
+
+    }
+
+}
+
 function play(event, obj) {
 
     if (event.which == 1) {
@@ -30,17 +65,31 @@ function play(event, obj) {
             MapY: obj.pos[1]
         };
         $.ajax({
+            async: true,
             type: "get",
             url: "/getMap/" + position.MapY + "/" + position.MapX,
-            success: function (clickedItem) {
-                // var ceil = clickedItem[position.MapY][position.MapX];
-                // var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                // if (ceil.type == "number" && ceil.checked ==true) {
-                //     obj.innerHTML =ceil.value;
-                //     obj.className = changeClass[ceil.value];
-                // }
-                console.log(clickedItem);
-            }
+            // success: function (getAround) {
+            //     // var ceil = clickedItem[position.MapY][position.MapX];
+            //     var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+            //     if (Object.keys(getAround)[0] == "type") {
+            //         obj.innerHTML = getAround.value;
+            //         obj.className = changeClass[getAround.value];
+            //     } else {
+            //         getZero(getAround, obj);
+
+            //     }
+            //     console.log(Object.keys(getAround)[0]);
+            // }
+        }).then(function (getAround){
+            var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+                if (Object.keys(getAround)[0] == "type") {
+                    obj.innerHTML = getAround.value;
+                    obj.className = changeClass[getAround.value];
+                } else {
+                    getZero(getAround, obj);
+
+                }
+                console.log(Object.keys(getAround)[0]);
         })
     }
 }
