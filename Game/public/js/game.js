@@ -33,24 +33,20 @@ function play(event, obj) {
         };
         $.ajax({
             type: "get",
-            url: "/getMap/" + position.MapX + "/" + position.MapY,
+            url: "/getMap/" + position.MapY + "/" + position.MapX,
             success: function (clickedItem) {
-                var ceil = clickedItem[position.MapX][position.MapY];
-                var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                for (var i = 0; i < clickedItem[1].length; i++) {
-                    for (var j = 0; j < clickedItem.length; j++) {
-                        if (ceil.type == "number") {
-                            obj.innerHTML =ceil.value;
-                            obj.className = changeClass[ceil.value];
-                        }
-                    }
-                }
+                // var ceil = clickedItem[position.MapY][position.MapX];
+                // var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+                // if (ceil.type == "number" && ceil.checked ==true) {
+                //     obj.innerHTML =ceil.value;
+                //     obj.className = changeClass[ceil.value];
+                // }
+                
                 console.log(clickedItem);
             }
 
         })
-        // var clickedItem = squares[[obj.pos[0]][obj.pos[1]]]
-
+  
     }
 }
 
