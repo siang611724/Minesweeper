@@ -22,40 +22,7 @@ function drawTable(map) {
     parent.appendChild(table);
 }
 
-function getZero(space, obj) {
-    for (var i = 0; i < space.length; i++) {
-        var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-        $.ajax({
-            async: true,
-            type: 'get',
-            url: "/getMap/" + space[i].x + "/" + space[i].y,
-            // success: function (zero) {
-            // //   for (var j=0; j<tds.length;j++){
-            // //       for (var k=0;k<tds[1].length;k++){
-            // //           if(zero.checked==true || zero.open==true){
-            // //               tds[j][i].innerHTML=zero.value;
-            // //           }
-            // //       }
-            // //   }
 
-                
-            // }
-        }).then( function (zero){
-              for (var j=0; j<tds.length;j++){
-                  for (var k=0;k<tds[1].length;k++){
-                      if( zero.open==true){
-                          tds[j][i].innerHTML=zero.value;
-                      }
-                  }
-              }
-            console.log(zero);
-        })
-
-
-
-    }
-
-}
 
 function play(event, obj) {
 
@@ -68,28 +35,18 @@ function play(event, obj) {
             async: true,
             type: "get",
             url: "/getMap/" + position.MapY + "/" + position.MapX,
-            // success: function (getAround) {
-            //     // var ceil = clickedItem[position.MapY][position.MapX];
-            //     var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-            //     if (Object.keys(getAround)[0] == "type") {
-            //         obj.innerHTML = getAround.value;
-            //         obj.className = changeClass[getAround.value];
-            //     } else {
-            //         getZero(getAround, obj);
-
-            //     }
-            //     console.log(Object.keys(getAround)[0]);
-            // }
-        }).then(function (getAround){
-            var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+            success: function (getAround) {
+                // var ceil = clickedItem[position.MapY][position.MapX];
+                var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
                 if (Object.keys(getAround)[0] == "type") {
                     obj.innerHTML = getAround.value;
                     obj.className = changeClass[getAround.value];
-                } else {
-                    getZero(getAround, obj);
+                } 
 
-                }
+                
+                console.log(getAround);
                 console.log(Object.keys(getAround)[0]);
+            }
         })
     }
 }
