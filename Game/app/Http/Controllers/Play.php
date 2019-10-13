@@ -24,18 +24,17 @@ class Play extends Controller
                         continue;
                     };
                     
-                        $map[$k][$m]["open"]=true;
+                        
                         array_push($around, $map[$k][$m]);
                         
-                            // $this->MouseClickTd($j-1,$i-1);
-                            // $this->MouseClickTd($j-1,$i);
-                            // $this->MouseClickTd($j-1,$i+1);
-                            // $this->MouseClickTd($j,$i-1);
-                            // $this->MouseClickTd($j,$i-1);
-                            // $this->MouseClickTd($j+1,$i-1);
-                            // $this->MouseClickTd($j+1,$i);
-                            // $this->MouseClickTd($j+1,$i+1);
-
+                        for($a=0;$a<count($around);$a++){
+                            $aroundX=$around[$a]["x"];
+                            $aroundY=$around[$a]["y"];
+                            if(empty($map[$aroundX][$aroundY]["open"])==true){
+                                $map[$aroundX][$aroundY]["open"]=true;
+                                $this->MouseClickTd($aroundX,$aroundY);
+                            }
+                        }
     
 
                             DB::table('Map')
@@ -43,7 +42,15 @@ class Play extends Controller
                                 ->update(['Info'=>serialize($map)]);
                 }
             }
-          
+            // $this->MouseClickTd($j-1,$i-1);
+            // $this->MouseClickTd($j-1,$i);
+            // $this->MouseClickTd($j-1,$i+1);
+            // $this->MouseClickTd($j,$i-1);
+            // $this->MouseClickTd($j,$i-1);   
+            // $this->MouseClickTd($j+1,$i-1);
+            // $this->MouseClickTd($j+1,$i);
+            // $this->MouseClickTd($j+1,$i+1);
+
             return $map;
         }
         // $map[$j][$i]["checked"]=true;
