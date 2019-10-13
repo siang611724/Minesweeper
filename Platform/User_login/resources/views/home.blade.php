@@ -9,7 +9,8 @@
             @endif
 
             <!-- hidden-xs hidden-sm  -->
-            <div style="border: 1px solid; height: 100px; width:100px; margin: 30px auto"></div> <!-- 頭像 -->
+            <div style="border: 1px solid; height: 100px; width:100px; margin: 30px auto 5px"></div> <!-- 頭像 -->
+            <a class="" href="/user/{{ Auth::id() }}/edit"><p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p></a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
             <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p>
             <p style="margin: 20px 20px auto">金幣: {{ Auth::user()->coins }}
@@ -19,7 +20,6 @@
             <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                 我的錢包
             </button></p>
-            <p><a href="/user/{{ Auth::id() }}/edit">修改密碼</a></p>
         </div>
         <!-- <div class="text_box"> 彈出對話框 -->
         <!-- <p>彈窗內容</p> -->

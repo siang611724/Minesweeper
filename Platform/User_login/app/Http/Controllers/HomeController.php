@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         $id = Auth::id();
         // $tradingRecord = TransactionRecord::all();
-        $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('trading_date', 'desc')->get();
+        $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('id', 'desc')->get();
         // dd($tradingRecord);
         return view('home', compact('tradingRecord'));
     }
