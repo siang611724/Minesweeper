@@ -45,6 +45,7 @@ function getZero(space, obj) {
                   for (var k=0;k<tds[1].length;k++){
                       if( zero.open==true){
                           tds[j][i].innerHTML=zero.value;
+                          tds[j][i].className=changeClass[zero.value];
                       }
                   }
               }
