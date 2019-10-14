@@ -23,23 +23,32 @@ class Play extends Controller
                         $m >= count($map[0]) || $map[$k][$m]["type"] == "mine") {
                         continue;
                     };
-                    
+                    // $map[$k][$m]["open"]=true;
                         
-                        array_push($around, $map[$k][$m]);
-                        
+                       
+                    array_push($around, $map[$k][$m]);
+
                         for($a=0;$a<count($around);$a++){
                             $aroundX=$around[$a]["x"];
                             $aroundY=$around[$a]["y"];
-                            if(empty($map[$aroundX][$aroundY]["open"])==true){
+                            if($aroundX < 0 || $aroundX >= count($map) || $aroundY < 0 ||
+                            $aroundY >= count($map[0]) || 
+                            $map[$aroundX][$aroundY]["type"] == "mine"||
+                            empty($map[$aroundX][$aroundY]["open"])==true){
                                 $map[$aroundX][$aroundY]["open"]=true;
+                                array_push($around, $map[$aroundX][$aroundY]);
+
+                                DB::table('Map')
+                                ->where('GameID',1)
+                                ->update(['Info'=>serialize($map)]);
                                 $this->MouseClickTd($aroundX,$aroundY);
                             }
                         }
-    
-
-                            DB::table('Map')
-                                ->where('GameID',1)
-                                ->update(['Info'=>serialize($map)]);
+                     
+                        // DB::table('Map')
+                        // ->where('GameID',1)
+                        // ->update(['Info'=>serialize($map)]);
+                            
                 }
             }
             // $this->MouseClickTd($j-1,$i-1);
