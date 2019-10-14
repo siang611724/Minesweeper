@@ -53,6 +53,10 @@ trait AuthenticatesUsers
         if ($this->attemptLogin($request)) {
 
             $user = Auth::user();
+            if ($user->name === 'Admin') {
+                return view('admin');
+            };
+
             // 取得使用者最後登入時間
             $last_login_time = DB::table('users')->where('id', $user->id)->value('last_login_time');
             $last_login_daysofyear = date('z', strtotime($last_login_time));    // 一年中第幾天
