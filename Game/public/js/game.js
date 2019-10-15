@@ -20,9 +20,7 @@ function drawTable(map) {
     }
     parent.innerHTML = "";
     parent.appendChild(table);
-
 }
-
 
 function play(event, obj) {
 
@@ -41,12 +39,9 @@ function play(event, obj) {
                 //     obj.innerHTML =ceil.value;
                 //     obj.className = changeClass[ceil.value];
                 // }
-                
                 console.log(clickedItem);
             }
-
         })
-  
     }
 }
 
@@ -63,8 +58,9 @@ $("#easy").click(function () {
         type: 'get',
         url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
         success: function (map) {
-            console.log(map);
+
             drawTable(map);
+            console.log(map);
         }
     })
 });
@@ -101,6 +97,7 @@ $("#hard").click(function () {
         type: 'get',
         url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
         success: function (map) {
+            console.log(map);
             console.log(map.length);
             console.log(map[1].length);
             drawTable(map);

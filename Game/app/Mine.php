@@ -73,8 +73,6 @@ class Mine
             if ($i + 1 < $this ->tr && $j + 1 < $this ->td &&
                 $this ->area[$i + 1][$j + 1]["type"] == "mine")
                 $this ->area[$i][$j]["value"]++; //右下
-
-                
         } 
     } 
     //    echo ($this->area[1][1]["type"]);
