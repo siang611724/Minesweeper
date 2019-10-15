@@ -35,7 +35,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="{{ route('home') }}">
+                    <form method="PUT" action="coin/{{ Auth::id() }}">
                         @csrf
                         <div class="modal-body" style="margin-left: 20px">
                             <div class="form-group">

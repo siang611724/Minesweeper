@@ -33,7 +33,23 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $register = DB::table('users')->insert([
+            'name' => $request->name,
+            'email' => $request->reg_email,
+            'password' => Hash::make($request->reg_password)
+        ]);
+        // $this->guard()->login($register);
+        if (!$register) {
+            return response()->json(['status' => 1, 'message' => 'Post not found'],404);
+        } else {
+            return redirect('/home');
+        }
+    }
+
+    protected function guard()
+    {
+        return Auth::guard();
     }
 
     /**
@@ -92,7 +108,7 @@ class MemberController extends Controller
         if ($member != null){
             $member->delete();
             return response()->json(null,204);
-        }else {
+        } else {
             return response()->json(['message' => 'Wrong ID']);
         }
     }

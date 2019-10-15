@@ -10,7 +10,9 @@
             @endif
 
             <!-- hidden-xs hidden-sm  -->
-            <div style="border: 1px solid; height: 100px; width:100px; margin: 30px auto 5px"></div> <!-- 頭像 -->
+            <div style="border: 1px solid; height: 100px; width:100px; margin: 30px auto 5px">
+                <img src="../../public/image/user_icon.jpg" alt="">
+            </div> <!-- 頭像 -->
             <a class="" href="/user/{{ Auth::id() }}/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
@@ -137,18 +139,18 @@
                         <div class="form-group">
                             <label class="" for="oldPass">原密碼</label>
                             <input style="width: 300px" id="oldPass" name="oldPass" type="password" placeholder="請輸入原密碼" class="form-control input-md">
-                        @if($errors->has('oldPass'))
+                            @if($errors->has('oldPass'))
                             <span style="color: red; font-size: 14px"> {{ $errors->messages()['oldPass'][0] }} </span>
-                        @endif
+                            @endif
                         </div>
 
                         <!-- Password input-->
                         <div class="form-group">
                             <label class="" for="newPass">新密碼</label>
                             <input id="newPass" name="newPass" type="password" placeholder="請輸入新密碼" class="form-control input-md">
-                        @if($errors->has('newPass'))
+                            @if($errors->has('newPass') && !$errors->has('oldPass'))
                             <span style="color: red; font-size: 14px"> {{ $errors->messages()['newPass'][0] }} </span>
-                        @endif
+                            @endif
                         </div>
 
                         <!-- Password input-->

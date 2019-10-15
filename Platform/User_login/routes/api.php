@@ -15,4 +15,6 @@ use Illuminate\Http\Request;
 
 Route::apiResource('/member', 'api\MemberController');
 Route::apiResource('/announce', 'api\AnnounceController');
+Route::get('/coin/{coin}', 'api\CoinController@update');
+// Route::post('/member', 'api\MemberController@store');
 // Route::get('/member/{member}', 'api\MemberController@update');

@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
+        $id = Auth::id(); 
         // $tradingRecord = TransactionRecord::all();
         $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('id', 'desc')->get();
         // dd($tradingRecord);

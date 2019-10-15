@@ -116,35 +116,45 @@
                         </tr>
                         <tr>
                             <td>
-                                <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" required autocomplete="email" autofocus> <!-- value="{{ old('email') }}" -->
+                                <input id="email" type="email" class="" name="email" required autocomplete="email" autofocus> <!-- value="{{ old('email') }}" -->
 
-                                @error('email')
+                                <!-- @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
+                                @enderror -->
                             </td>
                             <td>
-                                <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="" name="password" required autocomplete="current-password">
 
-                                @error('password')
+                                <!-- @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
+                                @enderror -->
                             </td>
                             <td>
                                 <button type="submit" class="btn-primary">{{ __('Login') }}</button>
                             </td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>
-                                @if (Route::has('password.request'))
+                                @if($errors->has('email'))
+                                <span style="color: red; font-size: 14px"> {{ $errors->messages()['email'][0] }} </span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($errors->has('password') && !$errors->has('emailAddress'))
+                                <span style="color: red; font-size: 14px"> {{ $errors->messages()['password'][0] }} </span>
+                                @endif
+                                <!-- @if (Route::has('password.request'))
                                 <a class="" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
-                                @endif
+                                @endif -->
+                            </td>
+                            <td>
+                                <span>&emsp;</span>
                             </td>
                         </tr>
                     </tbody>
@@ -163,7 +173,8 @@
     <div class="container register">
         <div class="row">
             @auth
-            <div class="col-xl-6 col-12"> <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
+            <div class="col-xl-6 col-12">
+                <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
                 <p class="lead">遊戲說明</p>
                 <p></p>
@@ -209,8 +220,9 @@
                 </div>
             </div>
             @else
-            <div class="col-xl-6 col-12">  <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->
-                <h1 class="">{{ __('註冊') }}</h1>
+            <div class="col-xl-6 col-12">
+                <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->
+                <h1 class="">{{ __('快速註冊') }}</h1>
                 <hr>
                 <br>
                 <div class="card-body">
@@ -223,11 +235,11 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
+                                <!-- @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
+                                @enderror -->
                             </div>
                         </div>
 
@@ -235,13 +247,13 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control" name="reg_email" value="" required autocomplete="email"> <!-- <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"> -->
 
-                                @error('email')
+                                <!-- @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
+                                @enderror -->
                             </div>
                         </div>
 
@@ -249,13 +261,13 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control" name="reg_password" required autocomplete="new-password"> <!-- <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"> -->
 
-                                @error('password')
+                                <!-- @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                                @enderror
+                                @enderror -->
                             </div>
                         </div>
 
@@ -278,7 +290,8 @@
                 </div>
             </div>
 
-            <div class="col-xl-6 col-12"> <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
+            <div class="col-xl-6 col-12">
+                <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
                 <p class="lead">遊戲說明</p>
                 <p></p>
