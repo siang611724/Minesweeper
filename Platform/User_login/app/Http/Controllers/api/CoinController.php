@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\DB\Member;
 use DB;
-use Hash;
-use App\TransactionRecord;
 
-class MemberController extends Controller
+class CoinController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function memberList()
+    public function index()
     {
-        $member = Member::all();
-        return response()->json($member);
+        //
     }
 
     /**
@@ -39,10 +36,9 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function designUser($id)
+    public function show($id)
     {
-        $member = Member::find($id);
-        return response()->json($member);
+        //
     }
 
     /**
@@ -52,18 +48,25 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updatePassword(Request $request, $id)
-    {   
-        // $user = DB::table('users')->where('id',$id)->first();
+    public function updateCoin(Request $request, $id)
+    {
+        $user = DB::table('users')->where('id',$id)->first();
         // dd($user->name);
         $result = DB::table('users')
                     ->where('id',$id)
                     ->update([
-                        'password' => Hash::make($request->password),
+                        'coins' => $request->coins,
                     ]);
         if (!$result) {
             return response()->json(['status' => 1, 'message' => 'Post not found'],404);
         }else {
+            DB::table('transaction_records')->insert([
+                [
+                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '官方補償',
+                    'trading_coins' => $request->input('coins') - $user->coins,
+                    'balance_coins' => $user->coins + ($request->input('coins') - $user->coins),
+                ]
+            ]);
             return response()->json(['status' => 0, 'message' => 'Success']);
         }
     }
@@ -74,14 +77,8 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delUser($id)
+    public function destroy($id)
     {
-        $member = Member::find($id);
-        if ($member != null){
-            $member->delete();
-            return response()->json(null,204);
-        }else {
-            return response()->json(['message' => 'Wrong ID']);
-        }
+        //
     }
 }

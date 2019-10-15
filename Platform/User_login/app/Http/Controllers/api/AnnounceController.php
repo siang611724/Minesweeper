@@ -5,8 +5,6 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DB\Announce;
-use App\Http\Resources\AnnounceResource;
-use App\Http\Resources\AnnounceResourceCollection;
 use DB;
 
 class AnnounceController extends Controller
@@ -16,10 +14,10 @@ class AnnounceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function annList()
     {
         $ann = Announce::all();
-        return new AnnounceResourceCollection($ann);
+        return response()->json($ann);
     }
 
     /**
@@ -28,7 +26,7 @@ class AnnounceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function newAnn(Request $request)
     {
         $ann = DB::table('announces')->insert([
             'title' => $request->title,
@@ -47,10 +45,10 @@ class AnnounceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function designAnn($id)
     {
         $ann = Announce::find($id);
-        return new AnnounceResource($ann);
+        return response()->json($ann);
     }
 
     /**
@@ -60,7 +58,7 @@ class AnnounceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateAnn(Request $request, $id)
     {
         $result = DB::table('announces')
                     ->where('id',$id)
@@ -81,7 +79,7 @@ class AnnounceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delAnn($id)
     {
         $ann = Announce::find($id);
         if ($ann != null){
