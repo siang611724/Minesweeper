@@ -1,4 +1,6 @@
 // var squares = [];
+//row 橫的
+//col 直的
 var tds = [];
 var parent = document.querySelector(".gameBox");
 
@@ -28,24 +30,32 @@ function play(event, obj) {
 
     if (event.which == 1) {
         var position = {
-            MapX: obj.pos[0],
-            MapY: obj.pos[1]
+            MapRows: obj.pos[0],
+            MapCols: obj.pos[1]
+           
         };
         $.ajax({
             async: true,
             type: "get",
-            url: "/getMap/" + position.MapY + "/" + position.MapX,
-            success: function (getAround) {
-                // var ceil = clickedItem[position.MapY][position.MapX];
+            url: "/getMap/" + position.MapRows + "/" + position.MapCols,
+            success: function (clickedItem) {
+                // var ceil = clickedItem[position.MapRows][position.MapCols];
                 var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                if (Object.keys(getAround)[0] == "type") {
-                    obj.innerHTML = getAround.value;
-                    obj.className = changeClass[getAround.value];
-                } 
+               for (var i=0;i<tds.length;i++){
+                   for (var j=0;j<tds[0].length;j++){
+                       if(clickedItem[i][j].checked==true){
+                           obj.innerHTML=clickedItem[i][j].value;
+                       }
+                       if(clickedItem[i][j].checked==true && clickedItem[i][j].type == 'mine'){
+                           alert ('gameOver');
+                       }
+                   }
+               }
 
+                console.log(tds.length);  //16
+                console.log(tds[0].length);  //30
+                console.log(clickedItem);
                 
-                console.log(getAround);
-                console.log(Object.keys(getAround)[0]);
             }
         })
     }
@@ -94,7 +104,7 @@ $("#hard").click(function () {
     var mapData = {
         column: 16,
         row: 30,
-        bomb: 99
+        bomb:1
     };
     $.ajax({
         headers: {
