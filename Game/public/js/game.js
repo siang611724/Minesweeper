@@ -22,6 +22,8 @@ function drawTable(map) {
     parent.appendChild(table);
 }
 
+
+
 function play(event, obj) {
 
     if (event.which == 1) {
@@ -30,16 +32,20 @@ function play(event, obj) {
             MapY: obj.pos[1]
         };
         $.ajax({
+            async: true,
             type: "get",
-            url: "/getMap/" + position.MapX + "/" + position.MapY,
-            success: function (clickedItem) {
+            url: "/getMap/" + position.MapY + "/" + position.MapX,
+            success: function (getAround) {
                 // var ceil = clickedItem[position.MapY][position.MapX];
-                // var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                // if (ceil.type == "number" && ceil.checked ==true) {
-                //     obj.innerHTML =ceil.value;
-                //     obj.className = changeClass[ceil.value];
-                // }
-                console.log(clickedItem);
+                var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+                if (Object.keys(getAround)[0] == "type") {
+                    obj.innerHTML = getAround.value;
+                    obj.className = changeClass[getAround.value];
+                } 
+
+                
+                console.log(getAround);
+                console.log(Object.keys(getAround)[0]);
             }
         })
     }
