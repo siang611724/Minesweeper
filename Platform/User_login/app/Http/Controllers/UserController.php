@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Hash;
 use Illuminate\Support\Facades\Auth;
+use Hash;
+use DB;
+use Validator;
+use Illuminate\Support\MessageBag;
 
 class UserController extends Controller
 {
@@ -58,7 +61,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user.edit');
+        $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('id', 'desc')->get(); 
+        return view('user.edit', compact('tradingRecord'));
     }
 
     /**
@@ -70,9 +74,35 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $id = Auth::id();
+        $data = $request->all();
+        $rules = [
+            'oldPass' => 'required | between:8, 20',
+            'newPass' => 'required | between:8, 20 | confirmed'
+        ];
+        $message = [
+            'required' => '密碼不能為空',
+            'between' => '密碼必須為8-20位之間',
+            'confirmed' => '新密碼與確認新密碼不匹配'
+        ];
+        $validator = Validator::make($data, $rules, $message);
+        $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('id', 'desc')->get(); 
         $oldPassword = $request->input('oldPass');
         $newPassword = $request->input('newPass');
+        $res = Auth::user()->password;
+        // $res = DB::table('users')->where('id', $id)->select('password')->first();
+        // dd($res->password);
+        $validator->after(function($validator) use ($oldPassword, $res) {
+            if(!\Hash::check($oldPassword, $res)){
+                $validator->errors()->add('oldPass', '原密碼錯誤');
+            } 
+        });
+        if($validator->fails()) {
+            // dd($validator->errors()->messages()['oldPass'][0]);
+            return back()->withErrors($validator);
+        }
+        
+        DB::table('users')->where('id', $id)->update(['password' => bcrypt($newPassword)]);
+        return redirect('home');
     }
 
     /**

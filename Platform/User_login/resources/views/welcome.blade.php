@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MinesweeperOnline</title>
+    <title>Laravel</title>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -94,13 +94,9 @@
     @if (Route::has('login'))
     <nav class="navbar navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">Minesweeper Online</a>
+            <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">Minesweeper</a>
             @auth
-            @if(Auth::user()->name == 'admin')
-            <a href="{{ url('/admin') }}">Game</a>
-            @else
-            <a href="{{ url('/home') }}">Game</a>
-            @endif
+            <a href="{{ url('/home') }}">Home</a>
             @else
             <form method="POST" action="{{ route('login') }}" style="right: 0px; float: right">
                 @csrf
@@ -159,56 +155,9 @@
     </nav>
     @endif
 
-    @if (Route::has('login'))
+
     <div class="container register">
         <div class="row">
-            @auth
-            <div class="col-xl-6 col-12"> <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
-
-                <p class="lead">遊戲說明</p>
-                <p></p>
-                <div class="form-group" style="margin-top: 50px; text-align: left;"><label style="text-align: left;">公告欄:</label>
-                    <table class="table table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th colspan="2" scope="col">Title</th>
-                                <th scope="col" style="text-align: right"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td colspan="2">Article 1</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td colspan="2">Article 2</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Article 3</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <!-- <table class="form-control" style="margin-top: 0px; margin-bottom: 0px; height: 123px;">
-                    <tr>
-                        <td>title</td>
-                        <td>text</td>
-                        <td><button>more</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
-                </table> -->
-                </div>
-            </div>
-            @else
             <div class="col-xl-6 col-12">  <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->
                 <h1 class="">{{ __('註冊') }}</h1>
                 <hr>
@@ -323,10 +272,8 @@
                 </table> -->
                 </div>
             </div>
-            @endauth
         </div>
     </div>
-    @endif
 </body>
 
 </html>

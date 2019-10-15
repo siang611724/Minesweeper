@@ -13,24 +13,15 @@
 
 // Route::get('/', 'MembersController@index');
 // Route::resource('Members', 'MembersController');
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 // auth指令自動新增以下
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 // Auth::routes();
-
 // Route::get('/home', 'HomeController@index')->name('home');
-
 Route::post('/home', 'HomeController@coinPurchase');
-
 //  測試用路由
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
-
 Route::resource('user', 'UserController');
