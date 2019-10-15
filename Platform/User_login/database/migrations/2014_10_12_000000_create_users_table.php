@@ -21,9 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('coins');
-            $table->dateTime('last_login_time');
-            $table->boolean('status');
         });
     }
 
