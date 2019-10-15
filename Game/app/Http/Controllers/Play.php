@@ -7,16 +7,17 @@ class Play extends Controller
 {
     //
 
-    public function MouseClickTd($i, $j)
+    public function MouseClickTd($clickX, $clickY)
     {
 
         $map = unserialize(DB::table('Map')->where('GameID', 1)->value('info'));
-        $x = $map[$j][$i]["x"];
-        $y = $map[$j][$i]["y"];
+        $x = $map[$clickY][$clickX]["x"];
+        $y = $map[$clickY][$clickX]["y"];
         $around = array();
-        $a=empty($map[$j][$i]["open"]);
+        $a=empty($map[$clickY][$clickX]["open"]);
     
-        if ($map[$j][$i]["value"] == 0 && empty($map[$j][$i]["open"])==true) {
+        function getAround(){
+            if ($map[$clickY][$clickX]["value"] == 0 && empty($map[$clickY][$clickX]["open"])==true) {
             for ($k = $y - 1; $k <= $y + 1; $k++) {
                 for ($m = $x - 1; $m <= $x + 1; $m++) {
                     if ($k < 0 || $k >= count($map) || $m < 0 ||
@@ -41,6 +42,7 @@ class Play extends Controller
                                 DB::table('Map')
                                 ->where('GameID',1)
                                 ->update(['Info'=>serialize($map)]);
+                                
                                 $this->MouseClickTd($aroundX,$aroundY);
                             }
                         }
@@ -51,19 +53,21 @@ class Play extends Controller
                             
                 }
             }
-            // $this->MouseClickTd($j-1,$i-1);
-            // $this->MouseClickTd($j-1,$i);
-            // $this->MouseClickTd($j-1,$i+1);
-            // $this->MouseClickTd($j,$i-1);
-            // $this->MouseClickTd($j,$i-1);   
-            // $this->MouseClickTd($j+1,$i-1);
-            // $this->MouseClickTd($j+1,$i);
-            // $this->MouseClickTd($j+1,$i+1);
+            // $this->MouseClickTd($clickY-1,$clickX-1);
+            // $this->MouseClickTd($clickY-1,$clickX);
+            // $this->MouseClickTd($clickY-1,$clickX+1);
+            // $this->MouseClickTd($clickY,$clickX-1);
+            // $this->MouseClickTd($clickY,$clickX-1);   
+            // $this->MouseClickTd($clickY+1,$clickX-1);
+            // $this->MouseClickTd($clickY+1,$clickX);
+            // $this->MouseClickTd($clickY+1,$clickX+1);
 
             return $map;
         }
-        // $map[$j][$i]["checked"]=true;
-        return $map[$j][$i];
+        // $map[$clickY][$clickX]["checked"]=true;
+        return $map[$clickY][$clickX];
         
     }
+        }
+        
 }
