@@ -64,9 +64,13 @@ function open(newMap) {
         for (var i = 0; i < tds.length; i++) {
             for (var j = 0; j < tds[0].length; j++) {
               if(k < tds.length*tds[0].length && newMap[++k].checked==true){
-                  
-                    tds[i][j].innerHTML=newMap[k].value;
-                    tds[i][j].className=changeClass[newMap[k].value]
+                tds[i][j].innerHTML=newMap[k].value;
+                tds[i][j].className=changeClass[newMap[k].value]
+                  if(newMap[k].value==0){
+                    tds[i][j].innerHTML=""
+                  }
+                    
+
                  
               }else{
                   continue;
