@@ -69,9 +69,6 @@ function open(newMap) {
                   if(newMap[k].value==0){
                     tds[i][j].innerHTML=""
                   }
-                    
-
-                 
               }else{
                   continue;
               }
