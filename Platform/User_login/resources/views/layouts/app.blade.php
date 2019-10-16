@@ -50,11 +50,19 @@
         }
 
         .content {
+            position: absolute;
             background-color: #fff;
-            margin: auto;
             height: 600px;
             width: 1000px;
+            left: 50%;
+            margin: 0 0 0 -500px;
             border: 1px solid #eee;
+        }
+
+        .right_collection {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
         }
 
         .mask {
@@ -90,7 +98,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #eee;">
             <div class="container">
-                <a class="navbar-brand" style="font-size: 2rem" href="{{ url('/') }}">
+                <a class="navbar-brand" style="font-size: 2rem" href="{{ url('/home') }}">
                     {{ 'Minesweeper' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

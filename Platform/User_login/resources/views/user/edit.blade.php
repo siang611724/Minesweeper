@@ -147,7 +147,7 @@
                         <!-- Password input-->
                         <div class="form-group">
                             <label class="" for="newPass">新密碼</label>
-                            <input id="newPass" name="newPass" type="password" placeholder="請輸入新密碼" class="form-control input-md">
+                            <input style="width: 300px" id="newPass" name="newPass" type="password" placeholder="請輸入新密碼" class="form-control input-md">
                             @if($errors->has('newPass') && !$errors->has('oldPass'))
                             <span style="color: red; font-size: 14px"> {{ $errors->messages()['newPass'][0] }} </span>
                             @endif
@@ -156,7 +156,7 @@
                         <!-- Password input-->
                         <div class="form-group">
                             <label class="" for="newPassConfirm">確認新密碼</label>
-                            <input id="newPassConfirm" name="newPass_confirmation" type="password" placeholder="確認新密碼" class="form-control input-md">
+                            <input style="width: 300px" id="newPassConfirm" name="newPass_confirmation" type="password" placeholder="確認新密碼" class="form-control input-md">
                         </div>
 
                         <!-- Button (Double) -->
