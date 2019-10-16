@@ -32,7 +32,7 @@ function play(event, obj) {
         var position = {
             MapRows: obj.pos[0],
             MapCols: obj.pos[1]
-           
+
         };
         $.ajax({
             async: true,
@@ -41,21 +41,44 @@ function play(event, obj) {
             success: function (clickedItem) {
                 // var ceil = clickedItem[position.MapRows][position.MapCols];
                 var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-               for (var i=0;i<tds.length;i++){
-                   for (var j=0;j<tds[0].length;j++){
-                       if(clickedItem[i][j].checked==true){
-                           obj.innerHTML=clickedItem[i][j].value;
-                       }
-                       if(clickedItem[i][j].checked==true && clickedItem[i][j].type == 'mine'){
-                           alert ('gameOver');
-                       }
-                   }
-               }
+                //    for (var i=0;i<tds.length;i++){
+                //        for (var j=0;j<tds[0].length;j++){
+                //            if(clickedItem[i][j].checked==true){
+                //                obj.innerHTML=clickedItem[i][j].value;
+                //            }
+                //            if(clickedItem[i][j].checked==true && clickedItem[i][j].type == 'mine'){
+                //                alert ('gameOver');
+                //            }
+                //        }
+                //    }
+                var newMap = new Array();
+                $.each(clickedItem, function (index, content) {
+                    $.each(content, function (index2, content2) {
+                        newMap.push(content2);                      
+                    });
 
-                console.log(tds.length);  //16
-                console.log(tds[0].length);  //30
+                });
+                console.log(newMap);
+                console.log(newMap.length);
+                // for (var i=0;i<newMap.length;i++){
+                //     if(newMap[i].checked==true){
+                //         obj.innerHTML=newMap[i].value;
+                //     }
+                // }
+
+                // if(content2.checked==true){
+                //     obj.innerHTML=content2.value;
+                //     console.log(content2.checked);
+                //     console.log(content2.value);
+                // }           
+
+                // console.log(clickedItem.length);
+                console.log(typeof (clickedItem));
+                // console.log(tds.length); //16
+                // console.log(tds[0].length); //30
                 console.log(clickedItem);
-                
+                console.log(tds);
+
             }
         })
     }
@@ -104,7 +127,7 @@ $("#hard").click(function () {
     var mapData = {
         column: 16,
         row: 30,
-        bomb:1
+        bomb: 1
     };
     $.ajax({
         headers: {
