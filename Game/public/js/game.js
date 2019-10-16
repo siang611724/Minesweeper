@@ -4,6 +4,8 @@
 var tds = [];
 var parent = document.querySelector(".gameBox");
 
+var initMap = new Array();
+
 function drawTable(map) {
     var table = document.createElement("table");
     for (var i = 0; i < map.length; i++) {
@@ -39,51 +41,44 @@ function play(event, obj) {
             type: "get",
             url: "/getMap/" + position.MapRows + "/" + position.MapCols,
             success: function (clickedItem) {
-                // var ceil = clickedItem[position.MapRows][position.MapCols];
+
                 var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                //    for (var i=0;i<tds.length;i++){
-                //        for (var j=0;j<tds[0].length;j++){
-                //            if(clickedItem[i][j].checked==true){
-                //                obj.innerHTML=clickedItem[i][j].value;
-                //            }
-                //            if(clickedItem[i][j].checked==true && clickedItem[i][j].type == 'mine'){
-                //                alert ('gameOver');
-                //            }
-                //        }
-                //    }
+        
                 var newMap = new Array();
                 $.each(clickedItem, function (index, content) {
                     $.each(content, function (index2, content2) {
-                        newMap.push(content2);                      
+                        newMap.push(content2);
                     });
 
                 });
-                console.log(newMap);
-                console.log(newMap.length);
-                // for (var i=0;i<newMap.length;i++){
-                //     if(newMap[i].checked==true){
-                //         obj.innerHTML=newMap[i].value;
-                //     }
-                // }
-
-                // if(content2.checked==true){
-                //     obj.innerHTML=content2.value;
-                //     console.log(content2.checked);
-                //     console.log(content2.value);
-                // }           
-
-                // console.log(clickedItem.length);
-                console.log(typeof (clickedItem));
-                // console.log(tds.length); //16
-                // console.log(tds[0].length); //30
-                console.log(clickedItem);
-                console.log(tds);
-
+                initMap=clickedItem;
+                open(newMap);
             }
         })
     }
 }
 
+function open(newMap) {
+    var k=-1;
+    var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+        for (var i = 0; i < tds.length; i++) {
+            for (var j = 0; j < tds[0].length; j++) {
+              if(k < tds.length*tds[0].length && newMap[++k].checked==true){
+                  
+                    tds[i][j].innerHTML=newMap[k].value;
+                    tds[i][j].className=changeClass[newMap[k].value]
+                 
+              }else{
+                  continue;
+              }
+            }
+        }
+        console.log(initMap);
+
+    console.log(newMap);
+    // console.log(newMap.length);
+
+}
 $("#easy").click(function () {
     var mapData = {
         column: 9,
@@ -97,7 +92,7 @@ $("#easy").click(function () {
         type: 'get',
         url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
         success: function (map) {
-
+          
             drawTable(map);
             console.log(map);
         }
