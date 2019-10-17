@@ -11,8 +11,10 @@ class Play extends Controller
     public function MouseClickTd($clickRows, $clickCols)
     {
         // echo '<pre>';
-        $map = unserialize(DB::table('Map')->where('GameID', 1)->value('info'));
-        $this->tempmap = unserialize(DB::table('Map')->where('GameID', 1)->value('info'));
+      
+
+        $map = unserialize(DB::table('Map')->where('MemberID', "jack")->insertGetId("GameID")->value('info'));
+        // $this->tempmap = unserialize(DB::table('Map')->where('MemberID', "jack")->max('GameID')->value('info'));
         // foreach ($map as $Data) {
         //     foreach ($Data as $Temp) {
         //         echo $Temp['value'] . '  ';
@@ -21,9 +23,9 @@ class Play extends Controller
         // }
 
         $map = $this->testMap($clickRows, $clickCols, $map);
-        DB::table('Map')->where('GameID',1)
-        ->update(['Info'=>serialize($map)]);
-            return $map;
+        DB::table('Map')->where('MemberID', "jack")->insertGetId("GameID")
+            ->update(['Info' => serialize($map)]);
+        return $map;
         // foreach ($map as $Data) {
         //     foreach ($Data as $Temp) {
         //         if ($Temp['checked']) {
@@ -44,13 +46,14 @@ class Play extends Controller
 
     public function testMap($Rows, $Cols, $map)
     {
-        if($map[$Rows][$Cols]["type"] == "mine"){
-            return "9";
+        if ($map[$Rows][$Cols]["type"] == "mine") {
+            $map[$Rows][$Cols]["checked"] = true;
+            return $map;
         }
         $x = $map[$Rows][$Cols]["cols"];
         $y = $map[$Rows][$Cols]["rows"];
         $around = array();
-      
+
         if ($map[$Rows][$Cols]["type"] == "number") {
             if ($map[$Rows][$Cols]["value"] == 0) {
                 $map[$Rows][$Cols]["checked"] = true;
