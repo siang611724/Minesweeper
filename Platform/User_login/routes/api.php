@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/announce', 'api\AnnounceController@annList');
-Route::get('/announce', 'api\AnnounceController@newAnn');
+Route::post('/announce', 'api\AnnounceController@newAnn');
 Route::get('/announce/{announce}', 'api\AnnounceController@designAnn');
 Route::put('/announce/{announce}', 'api\AnnounceController@updateAnn');
 Route::delete('/announce/{announce}', 'api\AnnounceController@delAnn');
