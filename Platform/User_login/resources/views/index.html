@@ -26,7 +26,6 @@
             overflow: hidden;
         }
 
-        /* ============================================= */
 
         /* ============================================================ */
         /* for scrollbar */
@@ -297,22 +296,48 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增公告MODAL -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="AddAnnModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">新增公告</h3>
+                    <h3 class="modal-title" id="AddAnnModal">新增公告</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" placeholder="請輸入新公告標題">
+                        <input type="text" id="AddAnnTitle" placeholder="請輸入新公告標題">
                         <br>
                         <br>
-                        <textarea placeholder="請輸入公告內容"></textarea>
+                        <textarea id="AddAnnContent" placeholder="請輸入公告內容"></textarea>
                     </div>
                 </div>
 
@@ -345,7 +370,7 @@
                             i +
                             '" class="collapse" aria-labelledby="heading' +
                             i +
-                            '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-danger float-right">取消</button><button type="button" class="btn btn-success  float-right mr-3" onclick="updateOK()">確認</button></div><textarea id="updateContent" placeholder="請輸入公告內容">' +
+                            '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-danger float-right">取消</button><button type="button" class="btn btn-success onclick="updateOK()" float-right mr-3" onclick="updateOK()">確認</button></div><textarea id="updateContent" placeholder="請輸入公告內容">' +
                             e.data[i].content + '</textarea></div></div></div>'
                         )
                     }
@@ -361,34 +386,49 @@
                         // console.log(data);
                         $('#members').append(
                             '<tr><th>' + e.data[i].id + '</th><td>' + e.data[i].name +
-                            '</td><td>' + e.data[i].status +
-                            '</td><td><button type = "button" class = "btn btn-primary btn-sm" onclick = "ReadMore(' +
+                            '</td><td><input type="checkbox" id="Checkbox' + i +
+                            '"checked data-toggle="toggle" data-on="Ready" data-off="Not Ready" data-onstyle="success" data-offstyle="danger"></td><td><button type = "button" class = "btn btn-primary btn-sm" onclick = "ReadMore(' +
                             i + ')">More</button></td></tr>'
                         )
+                    }
+                    $("head").append(
+                        '<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"><//script>'
+                    )
+                    console.log(e);
+                    if (e.data[i].status == 0) {
+                        var CheckboxId = "#Checkbox" + i;
+                        // console.log(i);
+                        $(CheckboxId).prop("checked", false); // $().prop("checked", true)
                     }
                 }
 
             })
         })
+        // 新增公告
+        function AddAnnOK() {
+            var title = $("#AddAnnTitle").val();
+            var content = $("#AddAnnContent").val();
+            // console.log(title);
+            // console.log(content);
+            $.ajax({
+                type: 'POST',
+                url: "http://127.0.0.1:8000/api/announce",
+                dataType: 'json',
+                data: {
+                    "title": title,
+                    "content": content,
+                },
+                success: function (e) {
+                    $("#AddAnnTitle").val("");
+                    $("#AddAnnContent").val("");
+                    alert("已發布公告");
+                }
+            });
 
-        //     function AddAnnOK() {
-        //         $.ajax({type: 'POST',
-        //             url: "http://127.0.0.1:8000/api/announce",
-        //             dataType: 'json',
-        //             data:{
-
-        // "name":name,
-        // "phone":phone
-        //     },
-        //             success: function (e) {
-        //                 )
-        //             }
-        //         })
-        //     }
+        }
 
 
-
-
+        // 詳細會員資料
         function ReadMore(i) {
             $.ajax({
                 type: 'GET',
@@ -400,29 +440,21 @@
 
                     $('#Info').append('<div class="row"><div class="col-7 h1">' +
                         e.data[i].name +
-                        '<btn class="btn-link"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
+                        '<btn class="btn-link" data-toggle="modal" data-target="#PWchange"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
                         e.data[i].email +
                         '</p></div><div class="col-3 h3"><p>' +
                         e.data[i].coins +
-                        '<button type="button" class="btn float-right btn-success">+</button></p></div><div class="col-2 h3"><input id="switch" type="checkbox" data-toggle="toggle" data-on="Normal" data-off="Ban" data-onstyle="success" data-offstyle="danger" data-width="100"><span class="slider round"></span> </div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">金幣紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
+                        '<button type="button" class="btn float-right btn-success">+</button></p></div><div class="col-2 h3"><input id="switch" type="checkbox" data-toggle="toggle" data-on="Normal" data-off="Ban" data-onstyle="success" data-offstyle="danger" data-width="100"><span class="slider round"></span></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">金幣紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
                     );
 
-                    var cdn = "";
-                    if (cdn == "") {
-
-                        cdn.replace("",
-                            '<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"><script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js">'
-                        );
-                        $('head').append(cdn);
-                    } else {
-                        cdn = ""
-                    return
-                    }
+                    // var cdn = "";
+                    // do {
+                    //     $(head).append(cdn);
+                    //     cdn =
+                    //         '<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"><script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js">'
+                    // } while (cdn = "");
                 }
             })
-
-
-
             //    ===============================
             var t = document.getElementById('table');
             t.style.display = 'none';
@@ -430,9 +462,29 @@
             t1.style.display = 'block';
         }
 
+        function updateOK() {
+            var title = $("#AddAnnTitle").val();
+            var content = $("#AddAnnContent").val();
+            // console.log(title);
+            // console.log(content);
+            $.ajax({
+                type: 'POST',
+                url: "http://127.0.0.1:8000/api/announce",
+                dataType: 'json',
+                data: {
+                    "title": title,
+                    "content": content,
+                },
+                success: function (e) {
+                    $("#AddAnnTitle").val("");
+                    $("#AddAnnContent").val("");
+                    alert("已發布公告");
+                }
+            })
 
+        }
 
-
+        function changePW() {}
 
 
 
