@@ -52,7 +52,7 @@ class CoinController extends Controller
      */
     public function storeCoin(Request $request, $id)
     {   
-        $user = DB::table('users')->where('id',$id)->first();
+        $user = Auth::user();
         // dd($user->name);
         $result = DB::table('users')
                     ->where('id',$id)

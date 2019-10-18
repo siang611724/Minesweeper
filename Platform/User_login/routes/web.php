@@ -22,12 +22,27 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@coinPurchase');
-<<<<<<< HEAD
 
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
-=======
-//  測試用路由
-Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
->>>>>>> a1cb7027d73d4fa55cc319630ff9286f206030ea
 Route::resource('user', 'UserController');
+
+// Route::get('/login', function () {
+//     return view('admin');
+// });
+
+//  管理員路由
+Route::get('admin/login', 'Admin\LoginController@showLoginForm')
+->name('admin.login');
+
+Route::post('admin/login', 'Admin\LoginController@login');
+
+Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin'], function() {
+	Route::get('logout', 'Admin\LoginController@logout')
+	->name('admin.logout');
+
+	Route::get('/', 'Admin\HomeController@index')->name('admin');
+
+	// other routes for admin ...
+
+});

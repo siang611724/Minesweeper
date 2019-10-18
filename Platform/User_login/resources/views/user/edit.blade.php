@@ -5,13 +5,10 @@
 <div class="container">
     <div class="content row">
         <div class="information_left d-md-none d-lg-block d-sm-none d-none">
-            @if(Auth::check())
-            ok
-            @endif
-
+    
             <!-- hidden-xs hidden-sm  -->
-            <div style="border: 1px solid; height: 100px; width:100px; margin: 30px auto 5px">
-                <img src="../../public/image/user_icon.jpg" alt="">
+            <div style="height: 100px; width:100px; margin: 30px auto 5px">
+                <img src="{{URL::asset('/image/user_icon.jpg')}}" alt="profile Pic" height="100" width="100">
             </div> <!-- 頭像 -->
             <a class="" href="/user/{{ Auth::id() }}/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>

@@ -34,6 +34,8 @@ trait RegistersUsers
 
         $this->guard()->login($user);
 
+        $registerUser = Auth::user();
+
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }

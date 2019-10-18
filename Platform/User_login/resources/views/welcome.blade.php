@@ -94,7 +94,7 @@
     @if (Route::has('login'))
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">
+            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 1.25rem">
                     <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
                     Minesweeper Online</a></b>
             @auth
@@ -155,7 +155,7 @@
                                 </a>
                                 @endif -->
                             </td>
-                            <td>&emsp;</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>

@@ -4,19 +4,15 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\TransactionRecord;
-use App\DB\Member;
 use DB;
 
-class CoinController extends Controller
+class StoreController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */                                                 
     public function index()
     {
         //
@@ -51,26 +47,26 @@ class CoinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateCoin(Request $request, $id)
+    public function storeCoin (Request $request, $id)
     {
-        $user = DB::table('users')->where('id',$id)->first();
-        // dd($user->name);
+        $user = DB::table('users')->where('id', $id)->first();
         $result = DB::table('users')
-                    ->where('id',$id)
+                    ->where('id', $id)
                     ->update([
-                        'coins' => $request->coins,
+                        'coins' => $user->coins + $request->radios,
                     ]);
         if (!$result) {
             return response()->json(['status' => 1, 'message' => 'Post not found'],404);
-        }else {
+        } else {
             DB::table('transaction_records')->insert([
                 [
-                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '官方補償',
-                    'trading_coins' => $request->input('coins') - $user->coins,
-                    'balance_coins' => $user->coins + ($request->input('coins') - $user->coins),
+                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '儲值',
+                    'trading_coins' => $request->radios,
+                    'balance_coins' => $user->coins + $request->radios
                 ]
             ]);
-            return response()->json(['status' => 0, 'message' => 'Success']);
+            return response()->json(['status' => 0, 'message' => 'Success', 'money' => $request->radios]);
+            // return redirect('/home');
         }
     }
 
