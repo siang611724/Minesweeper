@@ -4,9 +4,13 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\TransactionRecord;
+use App\DB\Member;
 use DB;
 
-class StoreController extends Controller
+class CoinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,25 +51,26 @@ class StoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function storeCoin(Request $request, $id)
+    public function updateCoin(Request $request, $id)
     {
-        $user = DB::table('users')->where('id', $id)->first();
+        $user = DB::table('users')->where('id',$id)->first();
+        // dd($user->name);
         $result = DB::table('users')
-                    ->where('id', $id)
+                    ->where('id',$id)
                     ->update([
-                        'coins' => $user->coins + $request->radios,
+                        'coins' => $request->coins,
                     ]);
         if (!$result) {
             return response()->json(['status' => 1, 'message' => 'Post not found'],404);
         }else {
             DB::table('transaction_records')->insert([
                 [
-                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '儲值',
-                    'trading_coins' => $request->radios,
-                    'balance_coins' => $user->coins + $request->radios
+                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '官方補償',
+                    'trading_coins' => $request->input('coins') - $user->coins,
+                    'balance_coins' => $user->coins + ($request->input('coins') - $user->coins),
                 ]
             ]);
-            return redirect('/home');
+            return response()->json(['status' => 0, 'message' => 'Success']);
         }
     }
 
