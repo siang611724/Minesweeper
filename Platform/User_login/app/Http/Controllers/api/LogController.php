@@ -4,12 +4,9 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\TransactionRecord;
-use DB;
+use App\DB\LoginTime;
 
-class CoinController extends Controller
+class LogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,9 +35,10 @@ class CoinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function userLoginTime($id)
     {
-        //
+        $log = LoginTime::find($id);
+        return response()->json($log);
     }
 
     /**
@@ -52,22 +50,7 @@ class CoinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $userID = Auth::id(); // 取得登入者id
-        $user = Auth::user();
-        $user->coins = $user->coins + $request->input('radios');
-        if (!$$user->coins) {
-            return response()->json(['status' => 1, 'message' => 'Post not found'],404);
-        }else {
-            
-            DB::table('transaction_records')->insert([
-                [
-                    'user_id' => $id, 'user_name' => $user->name, 'trading_type' => '儲值',
-                    'trading_coins' => $request->input('radios'), 
-                    'balance_coins' => $user->coins
-                ]
-            ]);
-            return response()->json(['status' => 0, 'message' => 'Success']);
-        }
+        //
     }
 
     /**

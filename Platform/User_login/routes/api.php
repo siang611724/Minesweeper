@@ -30,3 +30,5 @@ Route::put('/coin/{coin}', 'api\CoinController@updateCoin');
 Route::get('/trans/{trans}', 'api\TransactionController@userTransList');
 
 Route::put('/ban/{ban}', 'api\StatusController@Ban');
+
+Route::get('/logs/{logs}', 'api\LogController@userLoginTime');
