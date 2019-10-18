@@ -16,16 +16,17 @@
     margin-right:150px; 
 }
 
-table {
+.gameBox table {
     border-spacing: 1px;
     background: #515155;
     margin: 0 auto;
+    border-collapse: separate;
 }
 
-td {
+.gameBox td {
     padding: 0;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background: #ccc;
     border: 2px solid;
     border-color: #fff #a1a1a1 #a1a1a1 #fff;
@@ -35,12 +36,12 @@ td {
     font-weight: bold;
 }
 
-.mine {
+.gameBox .mine {
     background: #d9d9d9 url(/images/boom.png) no-repeat center;
     background-size: cover;
 }
 
-.flag {
+.gameBox .flag {
     background: #ccc url(/images/flag.png) no-repeat center;
     background-size: cover;
 }
@@ -113,4 +114,9 @@ td.eight {
     color: purple;
     border-color: #d9d9d9;
 
+}
+
+#start {
+    width: 72px;
+    position: relative; left: 47%; top: 10px;
 }
