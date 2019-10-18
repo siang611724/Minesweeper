@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::get('/announce', 'api\AnnounceController@annList');
 Route::post('/announce', 'api\AnnounceController@newAnn');
 Route::get('/announce/{announce}', 'api\AnnounceController@designAnn');
@@ -32,3 +33,6 @@ Route::get('/trans/{trans}', 'api\TransactionController@userTransList');
 Route::put('/ban/{ban}', 'api\StatusController@Ban');
 
 Route::get('/logs/{logs}', 'api\LogController@userLoginTime');
+
+Route::put('store/{store}', 'api\StoreController@storeCoin');
+

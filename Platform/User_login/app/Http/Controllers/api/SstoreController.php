@@ -4,13 +4,9 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\TransactionRecord;
-=======
->>>>>>> a1cb7027d73d4fa55cc319630ff9286f206030ea
-use App\DB\Member;
 use DB;
 
 class CoinController extends Controller
@@ -54,8 +50,8 @@ class CoinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateCoin(Request $request, $id)
-    {
+    public function storeCoin(Request $request, $id)
+    {   
         $user = DB::table('users')->where('id',$id)->first();
         // dd($user->name);
         $result = DB::table('users')
@@ -75,6 +71,22 @@ class CoinController extends Controller
             ]);
             return response()->json(['status' => 0, 'message' => 'Success']);
         }
+        // $userID = Auth::id(); // 取得登入者id
+        // $user = Auth::user();
+        // $user->coins = $user->coins + $request->input('radios');
+        // if (!$$user->coins) {
+        //     return response()->json(['status' => 1, 'message' => 'Post not found'],404);
+        // }else {
+            
+        //     DB::table('transaction_records')->insert([
+        //         [
+        //             'user_id' => $id, 'user_name' => $user->name, 'trading_type' => '儲值',
+        //             'trading_coins' => $request->input('radios'), 
+        //             'balance_coins' => $user->coins
+        //         ]
+        //     ]);
+        //     return response()->json(['status' => 0, 'message' => 'Success']);
+        // }
     }
 
     /**
