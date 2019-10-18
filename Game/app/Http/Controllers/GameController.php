@@ -26,8 +26,7 @@ class GameController extends Controller
         'result'=>'win'
        ]);
        return 'ok';
-        
-        
+                
     }
 
     /**
