@@ -6,14 +6,17 @@ use DB;
 class Play extends Controller
 {
     //
-    private $tempmap;
+    public $id;
 
     public function MouseClickTd($clickRows, $clickCols)
     {
         // echo '<pre>';
       
-
-        $map = unserialize(DB::table('Map')->where('MemberID', "jack")->insertGetId("GameID")->value('info'));
+        
+        $map = unserialize(DB::table('Map')->where('MemberID', "jack")
+        ->orderBy('GameID','desc')->take(1)->value('info'));
+        $this->id = DB::table('Map')->where('MemberID', "jack")
+        ->orderBy('GameID','desc')->take(1)->value('GameID');
         // $this->tempmap = unserialize(DB::table('Map')->where('MemberID', "jack")->max('GameID')->value('info'));
         // foreach ($map as $Data) {
         //     foreach ($Data as $Temp) {
@@ -23,8 +26,26 @@ class Play extends Controller
         // }
 
         $map = $this->testMap($clickRows, $clickCols, $map);
-        DB::table('Map')->where('MemberID', "jack")->insertGetId("GameID")
+        DB::table('Map')->where('MemberID', "jack")->orderBy('GameID','desc')->take(1)
             ->update(['Info' => serialize($map)]);
+
+        if ($map[$clickRows][$clickCols]["type"] == "mine"){
+            DB::table('history')->insert([
+                'GameID'=>$this->id,
+                'MemberID'=>'jack',
+                'MapX'=>$clickCols,
+                'MapY'=>$clickRows,
+                'result'=>'lose'
+            ]);
+        } else{
+            DB::table('history')->insert([
+            'GameID'=>$this->id,
+            'MemberID'=>'jack',
+            'MapX'=>$clickCols,
+            'MapY'=>$clickRows
+        ]);
+        }
+        
         return $map;
         // foreach ($map as $Data) {
         //     foreach ($Data as $Temp) {
@@ -39,7 +60,6 @@ class Play extends Controller
         // }
         // print_r($map);
         // exit;
-        // $map[$clickCols][$clickRows]["checked"]=true;
         // return $map[$clickCols][$clickRows];
 
     }

@@ -19,7 +19,7 @@ function drawTable(map) {
         tds[i] = [];
         for (var j = 0; j < map[1].length; j++) {
             var domTd = document.createElement("td");
-            domTd.pos = [j, i];
+            domTd.pos = [i, j];
             tds[i][j] = domTd;
            if(map[i][j]["type"]=="mine"){
                leftMine ++;
@@ -43,8 +43,8 @@ function gameover(tds) {
     tds.style.backgroundColor="red";
     
 }
-function win(){
-    console.log(mineNum);
+function win(clickedItem){
+    
     var totalClicked = 0;
     for (var i = 0; i < tds.length; i++) {
         for (var j = 0; j < tds[0].length; j++) {
@@ -52,8 +52,14 @@ function win(){
             tds[i][j].className != "flag" &&
             tds[i][j].className != "mine"){
                 totalClicked++;
-                console.log(totalClicked);
                 if(totalClicked==tds.length*tds[0].length-mineNum){
+                    $.ajax({
+                        type:'get',
+                        url:'/wang',
+                        success:function (e){
+                            console.log(e);
+                        }         
+                    })
                     alert("win");
                 }
             }
@@ -62,7 +68,6 @@ function win(){
 }
 
 function play(event, obj) {
-
     if (event.which == 1) {
         var position = {
             MapRows: obj.pos[0],
@@ -84,7 +89,7 @@ function play(event, obj) {
                 });
                 initMap = clickedItem;
                 // console.log(obj);
-                open(newMap,obj);
+                open(newMap,clickedItem);
             }
         }
         )
@@ -100,7 +105,7 @@ function play(event, obj) {
    
 }
 
-function open(newMap,obj) {
+function open(newMap,clickedItem) {
     var k = -1;
     var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
     for (var i = 0; i < tds.length; i++) {
@@ -120,10 +125,11 @@ function open(newMap,obj) {
                 continue;
             }
         }
-    } win();
+    } 
+    win(clickedItem);
     // console.log(initMap);
 
-    // console.log(newMap);
+    console.log(newMap);
     // console.log(newMap.length);
 
 }
