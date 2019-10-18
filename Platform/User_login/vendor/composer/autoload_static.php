@@ -447,8 +447,12 @@ class ComposerStaticInitafca15c006cea294753f95de7c50a1ea
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\api\\AnnounceController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/AnnounceController.php',
+<<<<<<< HEAD
         'App\\Http\\Controllers\\api\\CoinController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/SstoreController.php',
         'App\\Http\\Controllers\\api\\LogController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/LogController.php',
+=======
+        'App\\Http\\Controllers\\api\\CoinController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/CoinController.php',
+>>>>>>> 0d49c9a4a9550e114a39c3426de364a1ba9637f6
         'App\\Http\\Controllers\\api\\MemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/MemberController.php',
         'App\\Http\\Controllers\\api\\StatusController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/StatusController.php',
         'App\\Http\\Controllers\\api\\StoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/StoreController.php',
@@ -473,7 +477,11 @@ class ComposerStaticInitafca15c006cea294753f95de7c50a1ea
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+<<<<<<< HEAD
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+=======
+        'App\\User' => __DIR__ . '/../..' . '/app/DB/User.php',
+>>>>>>> 0d49c9a4a9550e114a39c3426de364a1ba9637f6
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
         'Barryvdh\\Cors\\HandleCors' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandleCors.php',

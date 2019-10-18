@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DB\LoginTime;
+use DB;
 
 class LogController extends Controller
 {
@@ -37,8 +38,8 @@ class LogController extends Controller
      */
     public function userLoginTime($id)
     {
-        $log = LoginTime::find($id);
-        return response()->json($log);
+        $login = DB::table('logs')->where('user_id', $id)->orderBy('login_time', 'desc')->get();
+        return response()->json($login);
     }
 
     /**

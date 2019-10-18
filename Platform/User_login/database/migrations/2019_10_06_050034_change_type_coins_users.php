@@ -14,7 +14,7 @@ class ChangeTypeCoinsUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('coins', 50)->default('0')->change();
+            $table->string('coins', 4)->default('0')->change();
         });
     }
 

@@ -5,8 +5,6 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\TransactionRecord;
 use App\DB\Member;
 use DB;
 

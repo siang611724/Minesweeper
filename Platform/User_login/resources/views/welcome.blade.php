@@ -287,7 +287,7 @@
 
                 <p class="lead">遊戲說明</p>
                 <p></p>
-                <div class="form-group" style="margin-top: 50px; text-align: left;"><label style="text-align: left;">公告欄:</label>
+                <div class="form-group" style="margin-top: 50px; text-align: left;"><label style="text-align: left;">最新消息</label>
                     <table class="table table-sm">
                         <thead>
                             <tr>

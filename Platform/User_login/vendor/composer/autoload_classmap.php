@@ -21,8 +21,12 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\api\\AnnounceController' => $baseDir . '/app/Http/Controllers/api/AnnounceController.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\api\\CoinController' => $baseDir . '/app/Http/Controllers/api/SstoreController.php',
     'App\\Http\\Controllers\\api\\LogController' => $baseDir . '/app/Http/Controllers/api/LogController.php',
+=======
+    'App\\Http\\Controllers\\api\\CoinController' => $baseDir . '/app/Http/Controllers/api/CoinController.php',
+>>>>>>> 0d49c9a4a9550e114a39c3426de364a1ba9637f6
     'App\\Http\\Controllers\\api\\MemberController' => $baseDir . '/app/Http/Controllers/api/MemberController.php',
     'App\\Http\\Controllers\\api\\StatusController' => $baseDir . '/app/Http/Controllers/api/StatusController.php',
     'App\\Http\\Controllers\\api\\StoreController' => $baseDir . '/app/Http/Controllers/api/StoreController.php',
@@ -47,7 +51,11 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+<<<<<<< HEAD
     'App\\User' => $baseDir . '/app/User.php',
+=======
+    'App\\User' => $baseDir . '/app/DB/User.php',
+>>>>>>> 0d49c9a4a9550e114a39c3426de364a1ba9637f6
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
     'Barryvdh\\Cors\\HandleCors' => $vendorDir . '/barryvdh/laravel-cors/src/HandleCors.php',
