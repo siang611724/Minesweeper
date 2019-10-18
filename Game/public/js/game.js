@@ -4,16 +4,19 @@
 var tds = [];
 var parent = document.querySelector(".gameBox");
 var mineNumLeft = document.querySelector(".mineNum");
-var mineNum=0;
+var mineNum = 0;
 var initMap = new Array();
 var leftMine =0;
+var isClick = true;
+var t =0;
+var timer;
 function drawTable(map) {
     parent.oncontextmenu = function () {
         return false;
     };
     var table = document.createElement("table");
-    leftMine =0;
-    mineNum=0;
+    leftMine = 0;
+    mineNum = 0;
     for (var i = 0; i < map.length; i++) {
         var domTr = document.createElement("tr");
         tds[i] = [];
@@ -21,12 +24,21 @@ function drawTable(map) {
             var domTd = document.createElement("td");
             domTd.pos = [i, j];
             tds[i][j] = domTd;
-           if(map[i][j]["type"]=="mine"){
-               leftMine ++;
-               mineNum++;
-           }
+            if (map[i][j]["type"] == "mine") {
+                leftMine++;
+                mineNum++;
+            }
             domTd.onmousedown = function () {
-                play(event, this);
+              
+                if(isClick) {
+                    isClick = false;
+                    //事件
+                    play(event, this);
+                    //定时器
+                    setTimeout(function() {
+                        isClick = true;
+                    }, 250);//一秒内不能重複
+                }
             }
             domTr.appendChild(domTd);
         }
@@ -34,31 +46,33 @@ function drawTable(map) {
     }
     parent.innerHTML = "";
     parent.appendChild(table);
-    mineNumLeft.innerHTML=leftMine;
-   
+    mineNumLeft.innerHTML = leftMine;
+
 }
 
 function gameover(tds) {
-    tds.className="mine";
-    tds.style.backgroundColor="red";
-    
+    tds.className = "mine";
+    tds.style.backgroundColor = "red";
+    $("#myModal").click();
+   
 }
-function win(clickedItem){
-    
+
+function win() {
+
     var totalClicked = 0;
     for (var i = 0; i < tds.length; i++) {
         for (var j = 0; j < tds[0].length; j++) {
             if (tds[i][j].className != "" &&
-            tds[i][j].className != "flag" &&
-            tds[i][j].className != "mine"){
+                tds[i][j].className != "flag" &&
+                tds[i][j].className != "mine") {
                 totalClicked++;
-                if(totalClicked==tds.length*tds[0].length-mineNum){
+                if (totalClicked == tds.length * tds[0].length - mineNum) {
                     $.ajax({
-                        type:'get',
-                        url:'/wang',
-                        success:function (e){
+                        type: 'get',
+                        url: '/wang',
+                        success: function (e) {
                             console.log(e);
-                        }         
+                        }
                     })
                     alert("win");
                 }
@@ -89,12 +103,22 @@ function play(event, obj) {
                 });
                 initMap = clickedItem;
                 // console.log(obj);
-                open(newMap,clickedItem);
+                open(newMap, clickedItem);
             }
         }
         )
+        if(t==0 ){
+            timer = setInterval(function () {
+               t+=0.2;
+               document.querySelector('.times').innerHTML = Math.floor(t);
+            //    console.log(t);
+           }, 200);
+       }
     }
-    if(event.which==3){
+    if (event.which == 3) {
+        if(obj.className && obj.className != 'flag'){
+            return;
+        }
         obj.className = obj.className == 'flag' ? '' : 'flag';
         if (obj.className == 'flag') {
             mineNumLeft.innerHTML = --leftMine;
@@ -102,30 +126,30 @@ function play(event, obj) {
             mineNumLeft.innerHTML = ++leftMine;
         }
     }
-   
+
 }
 
-function open(newMap,clickedItem) {
+function open(newMap, clickedItem) {
     var k = -1;
     var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
     for (var i = 0; i < tds.length; i++) {
         for (var j = 0; j < tds[0].length; j++) {
             if (k < tds.length * tds[0].length && newMap[++k].checked == true) {
-                
+
                 tds[i][j].innerHTML = newMap[k].value;
                 tds[i][j].className = changeClass[newMap[k].value]
                 if (newMap[k].value == 0) {
                     tds[i][j].innerHTML = ""
                 }
-                if(tds[i][j].innerHTML==9){
-              
+                if (tds[i][j].innerHTML == 9) {
+
                     gameover(tds[i][j]);
                 }
             } else {
                 continue;
             }
         }
-    } 
+    }
     win(clickedItem);
     // console.log(initMap);
 
@@ -134,61 +158,125 @@ function open(newMap,clickedItem) {
 
 }
 $("#easy").click(function () {
-    var mapData = {
-        column: 9,
-        row: 9,
-        bomb: 10
-    };
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'get',
-        url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
-        success: function (map) {
-
-            drawTable(map);
-            console.log(map);
+    clearInterval(timer);
+    t=0;
+    var table = document.createElement("table");
+    for (var i = 0; i < 9; i++) {
+        var domTr = document.createElement("tr");
+        for (var j = 0; j < 9; j++) {
+            var domTd = document.createElement("td");
+            domTr.appendChild(domTd);
         }
+        table.appendChild(domTr);
+    }
+    mineNumLeft.innerHTML = 10;
+    parent.innerHTML = "";
+    parent.appendChild(table);
+    var btn = document.createElement("button");
+    parent.appendChild(btn);
+    btn.innerHTML = "開始";
+    btn.setAttribute("id", "start");
+    $("#start").click(function () {
+        var mapData = {
+            column: 9,
+            row: 9,
+            bomb: 10
+        };
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'get',
+            url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
+            success: function (map) {
+
+                drawTable(map);
+                // console.log(map);
+            }
+        })
     })
+
 });
 
 $("#medium").click(function () {
-    var mapData = {
-        column: 16,
-        row: 16,
-        bomb: 40
-    };
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'get',
-        url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
-        success: function (map) {
-            console.log(map);
-            drawTable(map);
+    clearInterval(timer);
+    t=0;
+    var table = document.createElement("table");
+    for (var i = 0; i < 16; i++) {
+        var domTr = document.createElement("tr");
+        for (var j = 0; j < 16; j++) {
+            var domTd = document.createElement("td");
+            domTr.appendChild(domTd);
         }
+        table.appendChild(domTr);
+    }
+    mineNumLeft.innerHTML = 40;
+    parent.innerHTML = "";
+    parent.appendChild(table);
+    var btn = document.createElement("button");
+    parent.appendChild(btn);
+    btn.innerHTML = "開始";
+    btn.setAttribute("id", "start");
+    $("#start").click(function () {
+        var mapData = {
+            column: 16,
+            row: 16,
+            bomb: 40
+        };
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'get',
+            url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
+            success: function (map) {
+                // console.log(map);
+                drawTable(map);
+            }
+        })
     })
+
 });
 
 $("#hard").click(function () {
-    var mapData = {
-        column: 16,
-        row: 30,
-        bomb: 1
-    };
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'get',
-        url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
-        success: function (map) {
-            console.log(map);
-            // console.log(map.length);
-            // console.log(map[1].length);
-            drawTable(map);
+    clearInterval(timer);
+    t=0;
+    var table = document.createElement("table");
+    for (var i = 0; i < 16; i++) {
+        var domTr = document.createElement("tr");
+        for (var j = 0; j < 30; j++) {
+            var domTd = document.createElement("td");
+            domTr.appendChild(domTd);
         }
+        table.appendChild(domTr);
+    }
+    mineNumLeft.innerHTML = 99;
+    parent.innerHTML = "";
+    parent.appendChild(table);
+    var btn = document.createElement("button");
+    parent.appendChild(btn);
+    btn.innerHTML = "開始";
+    btn.setAttribute("id", "start");
+    $("#start").click(function () {
+
+        var mapData = {
+            column: 16,
+            row: 30,
+            bomb: 1
+        };
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'get',
+            url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
+            success: function (map) {
+                // console.log(map);
+                // console.log(map.length);
+                // console.log(map[1].length);
+                drawTable(map);
+            }
+        })
     })
+
 });

@@ -12,4 +12,8 @@ trim_trailing_whitespace = true
 trim_trailing_whitespace = false
 
 [*.yml]
+<<<<<<< HEAD:Platform/User_login/vendor/laravel/ui/.editorconfig
+=======
+indent_style = space
+>>>>>>> project/jimmy:Platform/User_login/vendor/dragonmantank/cron-expression/.editorconfig
 indent_size = 2
