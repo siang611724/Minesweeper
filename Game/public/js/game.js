@@ -45,6 +45,7 @@ function gameover(tds) {
 }
 function win(clickedItem){
     
+    
     var totalClicked = 0;
     for (var i = 0; i < tds.length; i++) {
         for (var j = 0; j < tds[0].length; j++) {
