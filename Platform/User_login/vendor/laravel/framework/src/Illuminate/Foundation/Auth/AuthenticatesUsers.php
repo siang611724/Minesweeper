@@ -54,7 +54,7 @@ trait AuthenticatesUsers
         if ($this->attemptLogin($request)) {
 
             $user = Auth::user();
-            if ($user->name === 'Administrator') {
+            if ($user->name === 'Admin') {
                 return view('admin');
             };
 
