@@ -4,12 +4,12 @@
 <div class="container">
     <div class="content row">
         <div class="information_left d-md-none d-lg-block d-sm-none d-none">
-            @if(Auth::check())
-            ok
-            @endif
 
             <!-- hidden-xs hidden-sm  -->
-            <div style="border: 1px solid; height: 100px; width:100px; margin: 30px auto 5px"></div> <!-- 頭像 -->
+
+            <div style="height: 100px; width:100px; margin: 30px auto 5px">
+                <img src="{{URL::asset('/image/user_icon.jpg')}}" alt="profile Pic" height="100" width="100">
+            </div> <!-- 頭像 -->
             <a class="" href="/user/{{ Auth::id() }}/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
@@ -125,37 +125,37 @@
 
         <div class="gameArea_right col-lg-8 col-sm-12 col-12">
             <div class="right_collection">
-                <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3">
-                </div>
-                <div class="">
-                    <!-- <table class="table table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th colspan="2" scope="col">Title</th>
-                                <th scope="col" style="text-align: right"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td colspan="2">Article 1</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td colspan="2">Article 2</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                </div>
+                <!-- <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3"> -->
+            </div>
+            <div class="">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th colspan="2" scope="col">Title</th>
+                            <th scope="col" style="text-align: right"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td colspan="2">Article 1</td>
+                            <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td colspan="2">Article 2</td>
+                            <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- <div class="row justify-content-center">
+<!-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>

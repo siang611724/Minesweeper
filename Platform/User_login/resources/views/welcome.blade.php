@@ -92,9 +92,11 @@
 <body>
 
     @if (Route::has('login'))
-    <nav class="navbar navbar-light">
+    <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">Minesweeper Online</a>
+            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">
+                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
+                    Minesweeper Online</a></b>
             @auth
             @if(Auth::user()->name == 'admin')
             <a href="{{ url('/admin') }}">Game</a>
@@ -108,10 +110,10 @@
                     <tbody>
                         <tr>
                             <td style="padding-top: 5px;">
-                                <label for="email" style="margin-bottom: 2px">{{ __('E-Mail Address') }}</label>
+                                <label for="email" style="margin-bottom: 2px; color: white;">{{ __('E-Mail Address') }}</label>
                             </td>
                             <td style="padding-top: 5px;">
-                                <label for="password" style="margin-bottom: 2px">{{ __('Password') }}</label>
+                                <label for="password" style="margin-bottom: 2px; color: white;">{{ __('Password') }}</label>
                             </td>
                         </tr>
                         <tr>
@@ -218,9 +220,9 @@
                 </div>
             </div>
             @else
-            <div class="col-xl-6 col-12">
+            <div class="col-lg-6 col-12">
                 <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->
-                <h1 class="">{{ __('註冊') }}</h1>
+                <h1 class="">{{ __('快速註冊') }}</h1>
                 <hr>
                 <br>
                 <div class="card-body">
@@ -247,7 +249,7 @@
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                
+
                             </div>
                         </div>
 
@@ -257,7 +259,7 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
 
-                               
+
                             </div>
                         </div>
 
@@ -280,7 +282,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-6 col-12">
+            <div class="col-lg-6 col-12">
                 <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
                 <p class="lead">遊戲說明</p>
