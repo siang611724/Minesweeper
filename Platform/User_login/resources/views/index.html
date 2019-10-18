@@ -329,9 +329,6 @@
                         placeholder="請輸入補償金額">
                 </div>
                 <div class="modal-footer AddCoinFooter">
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-
                 </div>
             </div>
         </div>
@@ -398,11 +395,14 @@
 
                     $('#Info').append('<div class="row"><div class="col-9 h1">' +
                         e[j].name +
-                        '<btn class="btn-link" data-toggle="modal" data-target="#PWchange"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
+                        '<btn class="btn-link" data-toggle="modal" data-target="#PWchange" onclick="ChangePWFooter(' +
+                        e[j].id + ')"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
                         e[j].email +
                         '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>' +
                         e[j].coins +
-                        '<button type="button" class="btn btn-success float-right"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
+                        '<button type="button" class="btn btn-success float-right" onclick="AddCoinFooter(' +
+                        e[j].id +
+                        ')"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
                     )
                 }
             })
@@ -454,15 +454,6 @@
             //     }
             // })
 
-            // 換密碼
-            $('.PWFooter').append('<button type="button" class="btn btn-danger" Onclick="changePW(' +
-                j + ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
-            )
-            $('.AddCoinFooter').append('<button type="button" class="btn btn-success" Onclick="AddCoinOK(' +
-                j + ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
-            )
-
-
             //    ===============================
             var t = document.getElementById('table');
             t.style.display = 'none';
@@ -470,9 +461,24 @@
             t1.style.display = 'block';
         }
 
+        function ChangePWFooter(id) {
+            $('.PWFooter').html('');
+            $('.PWFooter').append(
+                '<button type="button" class="btn btn-danger" Onclick="changePW(' + id +
+                ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+            )
+        }
+
+        function AddCoinFooter(id) {
+            $('.AddCoinFooter').html('');
+            $('.AddCoinFooter').append(
+                '<button type="button" class="btn btn-success" Onclick="AddCoinOK('+id+')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+            )
+        }
 
 
-        function changePW(j) {
+        function changePW(id) {
+            // console.log(j);
             var NewPW = $("#NewPW").val();
             $.ajax({
                 type: 'PUT',
@@ -490,19 +496,17 @@
             })
         }
 
-        function AddCoinOK() {
-            let id = j + 1
+        function AddCoinOK(id) {
             var AddCoin = $("#AddCoin").val();
             $.ajax({
                 type: 'PUT',
-                url: "http://127.0.0.1:8000/api/coin/" + j,
+                url: "http://127.0.0.1:8000/api/coin/" + id,
                 dataType: 'json',
                 data: {
-                    "Coin": AddCoin,
+                    "coins": AddCoin,
 
                 },
                 success: function () {
-
                     alert("已修改成功");
                     location.reload()
                 }
