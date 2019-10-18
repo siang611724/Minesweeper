@@ -4,9 +4,15 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD:Platform/User_login/app/Http/Controllers/api/storeController.php
 use DB;
 
 class StoreController extends Controller
+=======
+use App\DB\LoginTime;
+
+class LogController extends Controller
+>>>>>>> ae8533631d3e4b48d7f4d2ef0655049663229b91:Platform/User_login/app/Http/Controllers/api/LogController.php
 {
     /**
      * Display a listing of the resource.
@@ -35,9 +41,10 @@ class StoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function userLoginTime($id)
     {
-        //
+        $log = LoginTime::find($id);
+        return response()->json($log);
     }
 
     /**
@@ -49,6 +56,7 @@ class StoreController extends Controller
      */
     public function storeCoin(Request $request, $id)
     {
+<<<<<<< HEAD:Platform/User_login/app/Http/Controllers/api/storeController.php
         $user = DB::table('users')->where('id', $id)->first();
         $result = DB::table('users')
                     ->where('id', $id)
@@ -67,6 +75,9 @@ class StoreController extends Controller
             ]);
             return redirect('/home');
         }
+=======
+        //
+>>>>>>> ae8533631d3e4b48d7f4d2ef0655049663229b91:Platform/User_login/app/Http/Controllers/api/LogController.php
     }
 
     /**

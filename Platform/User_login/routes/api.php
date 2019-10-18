@@ -50,4 +50,9 @@ Route::put('/coin/{coin}', 'api\CoinController@updateCoin');
 Route::get('/trans/{trans}', 'api\TransactionController@userTransList');
 
 Route::put('/ban/{ban}', 'api\StatusController@Ban');
+<<<<<<< HEAD
 >>>>>>> a1cb7027d73d4fa55cc319630ff9286f206030ea
+=======
+
+Route::get('/logs/{logs}', 'api\LogController@userLoginTime');
+>>>>>>> ae8533631d3e4b48d7f4d2ef0655049663229b91
