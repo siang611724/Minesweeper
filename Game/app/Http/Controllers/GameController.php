@@ -18,8 +18,15 @@ class GameController extends Controller
     public function index()
     {
         //
-        // $mapInfo = unserialize(DB::table('Map')->where('GameID',1)->value('info')) ;
-        // return $mapInfo;
+        $id = DB::table('Map')->where('MemberID', "jack")
+        ->orderBy('GameID','desc')->take(1)->value('GameID');
+        
+       DB::table('history')->where('MemberID',$id)
+       ->orderBy('time','desc')->take(1)->update([
+        'result'=>'win'
+       ]);
+       return 'ok';
+        
         
     }
 
@@ -41,6 +48,7 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+        
      
     }
 
