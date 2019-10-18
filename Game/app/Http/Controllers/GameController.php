@@ -21,7 +21,7 @@ class GameController extends Controller
         $id = DB::table('Map')->where('MemberID', "jack")
         ->orderBy('GameID','desc')->take(1)->value('GameID');
         
-       DB::table('history')->where('MemberID',$id)
+       DB::table('history')->where('GameID',$id)
        ->orderBy('time','desc')->take(1)->update([
         'result'=>'win'
        ]);
