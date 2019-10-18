@@ -6,8 +6,10 @@ var parent = document.querySelector(".gameBox");
 var mineNumLeft = document.querySelector(".mineNum");
 var mineNum = 0;
 var initMap = new Array();
-var leftMine = 0;
-
+var leftMine =0;
+var isClick = true;
+var t =0;
+var timer;
 function drawTable(map) {
     parent.oncontextmenu = function () {
         return false;
@@ -27,7 +29,16 @@ function drawTable(map) {
                 mineNum++;
             }
             domTd.onmousedown = function () {
-                play(event, this);
+              
+                if(isClick) {
+                    isClick = false;
+                    //事件
+                    play(event, this);
+                    //定时器
+                    setTimeout(function() {
+                        isClick = true;
+                    }, 250);//一秒内不能重複
+                }
             }
             domTr.appendChild(domTd);
         }
@@ -94,7 +105,15 @@ function play(event, obj) {
                 // console.log(obj);
                 open(newMap, clickedItem);
             }
-        })
+        }
+        )
+        if(t==0 ){
+            timer = setInterval(function () {
+               t+=0.2;
+               document.querySelector('.times').innerHTML = Math.floor(t);
+            //    console.log(t);
+           }, 200);
+       }
     }
     if (event.which == 3) {
         if(obj.className && obj.className != 'flag'){
@@ -139,7 +158,8 @@ function open(newMap, clickedItem) {
 
 }
 $("#easy").click(function () {
-
+    clearInterval(timer);
+    t=0;
     var table = document.createElement("table");
     for (var i = 0; i < 9; i++) {
         var domTr = document.createElement("tr");
@@ -179,6 +199,8 @@ $("#easy").click(function () {
 });
 
 $("#medium").click(function () {
+    clearInterval(timer);
+    t=0;
     var table = document.createElement("table");
     for (var i = 0; i < 16; i++) {
         var domTr = document.createElement("tr");
@@ -217,6 +239,8 @@ $("#medium").click(function () {
 });
 
 $("#hard").click(function () {
+    clearInterval(timer);
+    t=0;
     var table = document.createElement("table");
     for (var i = 0; i < 16; i++) {
         var domTr = document.createElement("tr");
