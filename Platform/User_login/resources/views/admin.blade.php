@@ -284,286 +284,293 @@
 
 
     <script>
-        // 詳細會員資料
-        function ReadMore(j) {
-            // 會員資料
-            $.ajax({
-                type: 'GET',
-                url: "http://127.0.0.1:8000/api/member",
-                dataType: 'json',
-                success: function (e) {
+      // 詳細會員資料
+      function ReadMore(j) {
+          // 會員資料
+          $.ajax({
+              type: 'GET',
+              url: "http://127.0.0.1:8000/api/member",
+              dataType: 'json',
+              success: function (e) {
 
-                    $('#Info').html("");
+                  $('#Info').html("");
 
-                    $('#Info').append('<div class="row"><div class="col-9 h1">' +
-                        e[j].name +
-                        '<btn class="btn-link" data-toggle="modal" data-target="#PWchange"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
-                        e[j].email +
-                        '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>' +
-                        e[j].coins +
-                        '<button type="button" class="btn btn-success float-right"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
-                    )
-                }
-            })
+                  $('#Info').append('<div class="row"><div class="col-9 h1">' +
+                      e[j].name +
+                      '<btn class="btn-link" data-toggle="modal" data-target="#PWchange" onclick="ChangePWFooter(' +
+                      e[j].id + ')"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
+                      e[j].email +
+                      '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>' +
+                      e[j].coins +
+                      '<button type="button" class="btn btn-success float-right" onclick="AddCoinFooter(' +
+                      e[j].id +
+                      ')"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
+                  )
+              }
+          })
 
-            // 交易紀錄
-            $.ajax({
-                type: 'GET',
-                url: "http://127.0.0.1:8000/api/trans/" + j,
-                dataType: 'json',
-                success: function (e) {
-                    for (i = 0; i < e.length; i++) {
-                        $('#Order').append(
-                            '<tr><th>' +
-                            e[i].id +
-                            '</th><td>' +
-                            e[i].trading_date +
-                            '</td><td>' +
-                            e[i].trading_type +
-                            '</td><td>' +
-                            e[i].trading_coins +
-                            '</td><td>' +
-                            e[i].balance_coins +
-                            '</td></tr>')
+          // 交易紀錄
+          $.ajax({
+              type: 'GET',
+              url: "http://127.0.0.1:8000/api/trans/" + j,
+              dataType: 'json',
+              success: function (e) {
+                  for (i = 0; i < e.length; i++) {
+                      $('#Order').append(
+                          '<tr><th>' +
+                          e[i].id +
+                          '</th><td>' +
+                          e[i].trading_date +
+                          '</td><td>' +
+                          e[i].trading_type +
+                          '</td><td>' +
+                          e[i].trading_coins +
+                          '</td><td>' +
+                          e[i].balance_coins +
+                          '</td></tr>')
 
-                    }
-                }
-            })
-            // 遊戲歷程
-            // $.ajax({
-            //     type: 'GET',
-            //     url: "http://127.0.0.1:8000/api/coin/" + j,
-            //     dataType: 'json',
-            //     success: function (e) {
-            //         for (i = 0; i < e.length; i++) {
-            //             $('#Order').append(
-            //                 '<tr><th>' +
-            //                 e[i].id +
-            //                 '</th><td>' +
-            //                 e[i].trading_date +
-            //                 '</td><td>' +
-            //                 e[i].trading_type +
-            //                 '</td><td>' +
-            //                 e[i].trading_coins +
-            //                 '</td><td>' +
-            //                 e[i].balance_coins +
-            //                 '</td></tr>')
+                  }
+              }
+          })
+          // 遊戲歷程
+          // $.ajax({
+          //     type: 'GET',
+          //     url: "http://127.0.0.1:8000/api/coin/" + j,
+          //     dataType: 'json',
+          //     success: function (e) {
+          //         for (i = 0; i < e.length; i++) {
+          //             $('#Order').append(
+          //                 '<tr><th>' +
+          //                 e[i].id +
+          //                 '</th><td>' +
+          //                 e[i].trading_date +
+          //                 '</td><td>' +
+          //                 e[i].trading_type +
+          //                 '</td><td>' +
+          //                 e[i].trading_coins +
+          //                 '</td><td>' +
+          //                 e[i].balance_coins +
+          //                 '</td></tr>')
 
-            //         }
-            //     }
-            // })
+          //         }
+          //     }
+          // })
 
-            // 換密碼
-            $('.PWFooter').append('<button type="button" class="btn btn-danger" Onclick="changePW(' +
-                j + ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
-            )
-            $('.AddCoinFooter').append('<button type="button" class="btn btn-success" Onclick="AddCoinOK(' +
-                j + ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
-            )
+          //    ===============================
+          var t = document.getElementById('table');
+          t.style.display = 'none';
+          var t1 = document.getElementById('Info');
+          t1.style.display = 'block';
+      }
 
+      function ChangePWFooter(id) {
+          $('.PWFooter').html('');
+          $('.PWFooter').append(
+              '<button type="button" class="btn btn-danger" Onclick="changePW(' + id +
+              ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+          )
+      }
 
-            //    ===============================
-            var t = document.getElementById('table');
-            t.style.display = 'none';
-            var t1 = document.getElementById('Info');
-            t1.style.display = 'block';
-        }
-
-
-
-        function changePW(j) {
-            var NewPW = $("#NewPW").val();
-            $.ajax({
-                type: 'PUT',
-                url: "http://127.0.0.1:8000/api/member/" + id,
-                dataType: 'json',
-                data: {
-                    "password": NewPW,
-
-                },
-                success: function () {
-
-                    alert("已修改成功");
-                    location.reload()
-                }
-            })
-        }
-
-        function AddCoinOK() {
-            let id = j + 1
-            var AddCoin = $("#AddCoin").val();
-            $.ajax({
-                type: 'PUT',
-                url: "http://127.0.0.1:8000/api/coin/" + id,
-                dataType: 'json',
-                data: {
-                    "Coin": AddCoin,
-
-                },
-                success: function () {
-
-                    alert("已修改成功");
-                    location.reload()
-                }
-            })
-        }
-
-        // ====================功能已完成=========================
-        $(document).ready(function () {
-            //    公告列表生成
-            $.ajax({
-                type: 'GET',
-                url: "http://127.0.0.1:8000/api/announce",
-                dataType: 'json',
-                success: function (e) {
-                    // console.log(e);
-                    for (j = e.length - 1; j > 0; j--) {
-                        // console.log(e);
-                        $('.accordion').append(
-                            '<div class="card"><div class="card-header" id="heading' +
-                            j +
-                            '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
-                            j +
-                            '" aria-expanded="true" aria-controls="collapse' +
-                            j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
-                            e[j]
-                            .title +
-                            '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
-                            e[j].id +
-                            ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
-                            j +
-                            '" class="collapse" aria-labelledby="heading' +
-                            j +
-                            '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
-                            e[j].id +
-                            '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
-                            e[j].id +
-                            ')">確認</button></div><textarea id="updateContent' + e[j]
-                            .id +
-                            '" placeholder="請輸入公告內容">' +
-                            e[j].content + '</textarea></div></div></div>'
-                        )
-                    }
-                }
-            });
+      function AddCoinFooter(id) {
+          $('.AddCoinFooter').html('');
+          $('.AddCoinFooter').append(
+              '<button type="button" class="btn btn-success" Onclick="AddCoinOK('+id+')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+          )
+      }
 
 
-            //    會員列表生成
-            $.ajax({
-                type: 'GET',
-                url: "http://127.0.0.1:8000/api/member",
-                dataType: 'json',
-                success: function (e) {
-                    //    會員列表生成 按鈕功能尚未完成
-                    for (j = 0; j < e.length; j++) {
-                        $('#members').append(
-                            '<tr><th>' + e[j].id + '</th><td>' + e[j].name +
-                            '</td><td><input type="checkbox" id="Checkbox' + e[j]
-                            .id +
-                            '" checked  onchange="Status(' + e[j].id +
-                            ')" data-toggle="toggle" data-on="Normal" data-off="Ban" data-onstyle="success" data-offstyle="danger"></td><td><button type = "button" class = "btn btn-primary btn-sm" onclick = "ReadMore(' +
-                            j + ')">More</button></td></tr>'
-                        )
-                        var CheckboxId = "#Checkbox" + e[j].id;
-                        //抓取停權狀態
-                        if (e[j].status) {
-                            $(CheckboxId).prop("checked",
-                                false); // $().prop("checked", true)
-                        }
-                    }
-                    // 事後新增CDN
-                    $("head").append(
-                        '<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"><//script>'
-                    )
-                }
-            })
-        })
+      function changePW(id) {
+          // console.log(j);
+          var NewPW = $("#NewPW").val();
+          $.ajax({
+              type: 'PUT',
+              url: "http://127.0.0.1:8000/api/member/" + id,
+              dataType: 'json',
+              data: {
+                  "password": NewPW,
 
-        // 更新公告
-        function updateOK(i) {
-            let title = $("#updateTitle" + i).val();
-            let content = $("#updateContent" + i).val();
-            // console.log(title);
-            // console.log(content);
-            $.ajax({
-                type: 'PUT',
-                url: "http://127.0.0.1:8000/api/announce/" + i,
-                dataType: 'json',
-                data: {
-                    "title": title,
-                    "content": content,
-                },
-                success: function () {
+              },
+              success: function () {
 
-                    alert("已發布公告");
-                    location.reload()
-                }
-            })
+                  alert("已修改成功");
+                  location.reload()
+              }
+          })
+      }
 
-        }
-        // 切換至MEMBER
-        function MemberList() {
-            var t = document.getElementById('table');
-            t.style.display = 'block';
-            var t1 = document.getElementById('Info');
-            t1.style.display = 'none';
-        }
+      function AddCoinOK(id) {
+          var AddCoin = $("#AddCoin").val();
+          $.ajax({
+              type: 'PUT',
+              url: "http://127.0.0.1:8000/api/coin/" + id,
+              dataType: 'json',
+              data: {
+                  "coins": AddCoin,
 
-        // 新增公告
+              },
+              success: function () {
+                  alert("已修改成功");
+                  location.reload()
+              }
+          })
+      }
 
-        function AddAnnOK() {
-            let title = $("#AddAnnTitle").val();
-            let content = $("#AddAnnContent").val();
-            $.ajax({
-                type: 'POST',
-                url: "http://127.0.0.1:8000/api/announce",
-                dataType: 'json',
-                data: {
-                    "title": title,
-                    "content": content,
-                },
-                success: function (e) {
-                    $("#AddAnnTitle").val("");
-                    $("#AddAnnContent").val("");
-                    alert("已發布公告");
-                    location.reload();
-                }
-            });
+      // ====================功能已完成=========================
+      $(document).ready(function () {
+          //    公告列表生成
+          $.ajax({
+              type: 'GET',
+              url: "http://127.0.0.1:8000/api/announce",
+              dataType: 'json',
+              success: function (e) {
+                  // console.log(e);
+                  for (j = e.length - 1; j > 0; j--) {
+                      // console.log(e);
+                      $('.accordion').append(
+                          '<div class="card"><div class="card-header" id="heading' +
+                          j +
+                          '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
+                          j +
+                          '" aria-expanded="true" aria-controls="collapse' +
+                          j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
+                          e[j]
+                          .title +
+                          '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
+                          e[j].id +
+                          ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
+                          j +
+                          '" class="collapse" aria-labelledby="heading' +
+                          j +
+                          '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
+                          e[j].id +
+                          '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
+                          e[j].id +
+                          ')">確認</button></div><textarea id="updateContent' + e[j]
+                          .id +
+                          '" placeholder="請輸入公告內容">' +
+                          e[j].content + '</textarea></div></div></div>'
+                      )
+                  }
+              }
+          });
 
-        }
 
-        // 刪除公告
-        function deleteAnn(j) {
+          //    會員列表生成
+          $.ajax({
+              type: 'GET',
+              url: "http://127.0.0.1:8000/api/member",
+              dataType: 'json',
+              success: function (e) {
+                  //    會員列表生成 按鈕功能尚未完成
+                  for (j = 0; j < e.length; j++) {
+                      $('#members').append(
+                          '<tr><th>' + e[j].id + '</th><td>' + e[j].name +
+                          '</td><td><input type="checkbox" id="Checkbox' + e[j]
+                          .id +
+                          '" checked  onchange="Status(' + e[j].id +
+                          ')" data-toggle="toggle" data-on="Normal" data-off="Ban" data-onstyle="success" data-offstyle="danger"></td><td><button type = "button" class = "btn btn-primary btn-sm" onclick = "ReadMore(' +
+                          j + ')">More</button></td></tr>'
+                      )
+                      var CheckboxId = "#Checkbox" + e[j].id;
+                      //抓取停權狀態
+                      if (e[j].status) {
+                          $(CheckboxId).prop("checked",
+                              false); // $().prop("checked", true)
+                      }
+                  }
+                  // 事後新增CDN
+                  $("head").append(
+                      '<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"><//script>'
+                  )
+              }
+          })
+      })
 
-            $.ajax({
-                type: 'DELETE',
-                url: "http://127.0.0.1:8000/api/announce/" + j,
-                dataType: 'json',
-                data: {},
-                success: function () {
-                    // console.log(j);
-                    alert("已刪除公告");
-                    location.reload();
-                }
-            })
-        }
+      // 更新公告
+      function updateOK(i) {
+          let title = $("#updateTitle" + i).val();
+          let content = $("#updateContent" + i).val();
+          // console.log(title);
+          // console.log(content);
+          $.ajax({
+              type: 'PUT',
+              url: "http://127.0.0.1:8000/api/announce/" + i,
+              dataType: 'json',
+              data: {
+                  "title": title,
+                  "content": content,
+              },
+              success: function () {
 
-        function Status(i) {
-            // console.log($("#Checkbox"+i ))
-            // console.log()
-            if (true) {
-                $.ajax({
-                    type: 'PUT',
-                    url: "http://127.0.0.1:8000/api/ban/" + i,
-                    dataType: 'json',
-                    data: {
-                        status: !$('#Checkbox' + i).prop("checked")
-                    }
-                })
-            }
-        }
+                  alert("已發布公告");
+                  location.reload()
+              }
+          })
 
-    </script>
+      }
+      // 切換至MEMBER
+      function MemberList() {
+          var t = document.getElementById('table');
+          t.style.display = 'block';
+          var t1 = document.getElementById('Info');
+          t1.style.display = 'none';
+      }
+
+      // 新增公告
+
+      function AddAnnOK() {
+          let title = $("#AddAnnTitle").val();
+          let content = $("#AddAnnContent").val();
+          $.ajax({
+              type: 'POST',
+              url: "http://127.0.0.1:8000/api/announce",
+              dataType: 'json',
+              data: {
+                  "title": title,
+                  "content": content,
+              },
+              success: function (e) {
+                  $("#AddAnnTitle").val("");
+                  $("#AddAnnContent").val("");
+                  alert("已發布公告");
+                  location.reload();
+              }
+          });
+
+      }
+
+      // 刪除公告
+      function deleteAnn(j) {
+
+          $.ajax({
+              type: 'DELETE',
+              url: "http://127.0.0.1:8000/api/announce/" + j,
+              dataType: 'json',
+              data: {},
+              success: function () {
+                  // console.log(j);
+                  alert("已刪除公告");
+                  location.reload();
+              }
+          })
+      }
+
+      function Status(i) {
+          // console.log($("#Checkbox"+i ))
+          // console.log()
+          if (true) {
+              $.ajax({
+                  type: 'PUT',
+                  url: "http://127.0.0.1:8000/api/ban/" + i,
+                  dataType: 'json',
+                  data: {
+                      status: !$('#Checkbox' + i).prop("checked")
+                  }
+              })
+          }
+      }
+
+  </script>
 </body>
 
 </html>
