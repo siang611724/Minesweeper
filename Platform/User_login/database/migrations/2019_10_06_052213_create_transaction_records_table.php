@@ -17,6 +17,7 @@ class CreateTransactionRecordsTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('user_name');
             $table->timestamp('trading_date');
             $table->string('trading_type');
