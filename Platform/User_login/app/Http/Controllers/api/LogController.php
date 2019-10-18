@@ -4,15 +4,10 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD:Platform/User_login/app/Http/Controllers/api/storeController.php
+use App\DB\LoginTime;
 use DB;
 
-class StoreController extends Controller
-=======
-use App\DB\LoginTime;
-
 class LogController extends Controller
->>>>>>> ae8533631d3e4b48d7f4d2ef0655049663229b91:Platform/User_login/app/Http/Controllers/api/LogController.php
 {
     /**
      * Display a listing of the resource.
@@ -43,8 +38,8 @@ class LogController extends Controller
      */
     public function userLoginTime($id)
     {
-        $log = LoginTime::find($id);
-        return response()->json($log);
+        $login = DB::table('logs')->where('user_id', $id)->orderBy('login_time', 'desc')->get();
+        return response()->json($login);
     }
 
     /**
@@ -56,28 +51,7 @@ class LogController extends Controller
      */
     public function storeCoin(Request $request, $id)
     {
-<<<<<<< HEAD:Platform/User_login/app/Http/Controllers/api/storeController.php
-        $user = DB::table('users')->where('id', $id)->first();
-        $result = DB::table('users')
-                    ->where('id', $id)
-                    ->update([
-                        'coins' => $user->coins + $request->radios,
-                    ]);
-        if (!$result) {
-            return response()->json(['status' => 1, 'message' => 'Post not found'],404);
-        }else {
-            DB::table('transaction_records')->insert([
-                [
-                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '儲值',
-                    'trading_coins' => $request->radios,
-                    'balance_coins' => $user->coins + $request->radios
-                ]
-            ]);
-            return redirect('/home');
-        }
-=======
         //
->>>>>>> ae8533631d3e4b48d7f4d2ef0655049663229b91:Platform/User_login/app/Http/Controllers/api/LogController.php
     }
 
     /**
