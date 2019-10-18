@@ -7,6 +7,9 @@ var mineNumLeft = document.querySelector(".mineNum");
 var mineNum=0;
 var initMap = new Array();
 var leftMine =0;
+var isClick = true;
+var t =0;
+var timer;
 function drawTable(map) {
     parent.oncontextmenu = function () {
         return false;
@@ -21,12 +24,22 @@ function drawTable(map) {
             var domTd = document.createElement("td");
             domTd.pos = [i, j];
             tds[i][j] = domTd;
+            
            if(map[i][j]["type"]=="mine"){
                leftMine ++;
                mineNum++;
            }
             domTd.onmousedown = function () {
-                play(event, this);
+              
+                if(isClick) {
+                    isClick = false;
+                    //事件
+                    play(event, this);
+                    //定时器
+                    setTimeout(function() {
+                        isClick = true;
+                    }, 250);//一秒内不能重複
+                }
             }
             domTr.appendChild(domTd);
         }
@@ -93,6 +106,13 @@ function play(event, obj) {
             }
         }
         )
+        if(t==0 ){
+            timer = setInterval(function () {
+               t+=0.2;
+               document.querySelector('.times').innerHTML = Math.floor(t);
+            //    console.log(t);
+           }, 200);
+       }
     }
     if(event.which==3){
         obj.className = obj.className == 'flag' ? '' : 'flag';
@@ -133,7 +153,10 @@ function open(newMap,clickedItem) {
     // console.log(newMap.length);
 
 }
-$("#easy").click(function () {
+$("#easy").click(function () 
+{
+    clearInterval(timer);
+    t=0;
     var mapData = {
         column: 9,
         row: 9,
@@ -154,6 +177,9 @@ $("#easy").click(function () {
 });
 
 $("#medium").click(function () {
+    clearInterval(timer);
+    t=0;
+
     var mapData = {
         column: 16,
         row: 16,
@@ -173,6 +199,8 @@ $("#medium").click(function () {
 });
 
 $("#hard").click(function () {
+    clearInterval(timer);
+    t=0;
     var mapData = {
         column: 16,
         row: 30,
