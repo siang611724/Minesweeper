@@ -38,9 +38,6 @@ function drawTable(map) {
    
 }
 
-<<<<<<< HEAD
-
-=======
 function gameover(tds) {
     tds.className="mine";
     tds.style.backgroundColor="red";
@@ -69,7 +66,6 @@ function win(clickedItem){
         }
     }
 }
->>>>>>> project/jimmy
 
 function play(event, obj) {
     if (event.which == 1) {
@@ -83,50 +79,6 @@ function play(event, obj) {
             type: "get",
             url: "/getMap/" + position.MapRows + "/" + position.MapCols,
             success: function (clickedItem) {
-<<<<<<< HEAD
-                // var ceil = clickedItem[position.MapRows][position.MapCols];
-                var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                //    for (var i=0;i<tds.length;i++){
-                //        for (var j=0;j<tds[0].length;j++){
-                //            if(clickedItem[i][j].checked==true){
-                //                obj.innerHTML=clickedItem[i][j].value;
-                //            }
-                //            if(clickedItem[i][j].checked==true && clickedItem[i][j].type == 'mine'){
-                //                alert ('gameOver');
-                //            }
-                //        }
-                //    }
-                var newMap = new Array();
-                $.each(clickedItem, function (index, content) {
-                    $.each(content, function (index2, content2) {
-                        newMap.push(content2);                      
-                    });
-
-                });
-                console.log(newMap);
-                console.log(newMap.length);
-                // for (var i=0;i<newMap.length;i++){
-                //     if(newMap[i].checked==true){
-                //         obj.innerHTML=newMap[i].value;
-                //     }
-                // }
-
-                // if(content2.checked==true){
-                //     obj.innerHTML=content2.value;
-                //     console.log(content2.checked);
-                //     console.log(content2.value);
-                // }           
-
-                // console.log(clickedItem.length);
-                console.log(typeof (clickedItem));
-                // console.log(tds.length); //16
-                // console.log(tds[0].length); //30
-                console.log(clickedItem);
-                console.log(tds);
-
-            }
-        })
-=======
 
                 var newMap = new Array();
                 $.each(clickedItem, function (index, content) {
@@ -141,7 +93,6 @@ function play(event, obj) {
             }
         }
         )
->>>>>>> project/jimmy
     }
     if(event.which==3){
         obj.className = obj.className == 'flag' ? '' : 'flag';
