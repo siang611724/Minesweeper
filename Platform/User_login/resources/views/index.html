@@ -64,6 +64,8 @@
             color: white;
         }
 
+
+
         #Info {
             display: none;
         }
@@ -100,6 +102,10 @@
             font-size: 30px;
         }
 
+        .PWchangeHeader {
+            background-color: red;
+            color: white;
+        }
 
         textarea {
             width: 100%;
@@ -306,6 +312,30 @@
 
 
 
+    <!-- 新增金幣MODAL -->
+
+    <div class="modal fade" id="AddCoinModal" tabindex="-1" role="dialog" aria-labelledby="AddCoinModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AddCoinModalLabel">補償金幣</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="AddCoin"
+                        placeholder="請輸入補償金額">
+                </div>
+                <div class="modal-footer AddCoinFooter">
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- 新增公告MODAL -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="AddAnnModalLabel"
         aria-hidden="true">
@@ -316,16 +346,15 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+
+
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" id="AddAnnTitle" placeholder="請輸入新公告標題">
-                        <br>
-                        <br>
-                        <textarea id="AddAnnContent" placeholder="請輸入公告內容"></textarea>
-                    </div>
+                    <input type="text" id="AddAnnTitle" placeholder="請輸入新公告標題">
+                    <br>
+                    <br>
+                    <textarea id="AddAnnContent" placeholder="請輸入公告內容"></textarea>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary AddAnnOK" onclick="AddAnnOK()">發布</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
@@ -333,9 +362,32 @@
             </div>
         </div>
     </div>
+    <!-- 修改密碼Modal -->
+
+    <div class="modal fade" id="PWchange" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header PWchangeHeader">
+                    <h5 class="modal-title" id="PWchangeLabel">密碼修改</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="NewPW" placeholder="請輸入新密碼">
+                </div>
+                <div class="modal-footer PWFooter">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         // 詳細會員資料
         function ReadMore(j) {
+            // 會員資料
             $.ajax({
                 type: 'GET',
                 url: "http://127.0.0.1:8000/api/member",
@@ -350,48 +402,112 @@
                         e[j].email +
                         '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>' +
                         e[j].coins +
-                        '<button type="button" class="btn btn-success float-right" onclick="AddCoin()">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">金幣紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
-                    );
-
-                    // $.ajax({
-                    //     type: 'GET',
-                    //     url: "http://127.0.0.1:8000/api/trans/" + j,
-                    //         dataType: 'json',
-                    //         success: function (e) {
-                    //             // $('#Order').append('<tr><th>'+
-                    //             // e[j].id+
-                    //             // '</th><td>'+
-                    //             // e[j].id+'</td><td>'+
-                    //             // {{change}}</td>
-
-
-                    // })
-                    // 
-                    //                                                 <td>{{total}}
-                    //                                                 </td>
-                    //                                             </tr>
-
-
-
-                    //         ')
-                    //     }
-                    // })
-                    //    ===============================
-                    var t = document.getElementById('table');
-                    t.style.display = 'none';
-                    var t1 = document.getElementById('Info');
-                    t1.style.display = 'block';
+                        '<button type="button" class="btn btn-success float-right"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
+                    )
                 }
-
             })
+
+            // 交易紀錄
+            $.ajax({
+                type: 'GET',
+                url: "http://127.0.0.1:8000/api/trans/" + j,
+                dataType: 'json',
+                success: function (e) {
+                    for (i = 0; i < e.length; i++) {
+                        $('#Order').append(
+                            '<tr><th>' +
+                            e[i].id +
+                            '</th><td>' +
+                            e[i].trading_date +
+                            '</td><td>' +
+                            e[i].trading_type +
+                            '</td><td>' +
+                            e[i].trading_coins +
+                            '</td><td>' +
+                            e[i].balance_coins +
+                            '</td></tr>')
+
+                    }
+                }
+            })
+            // 遊戲歷程
+            // $.ajax({
+            //     type: 'GET',
+            //     url: "http://127.0.0.1:8000/api/coin/" + j,
+            //     dataType: 'json',
+            //     success: function (e) {
+            //         for (i = 0; i < e.length; i++) {
+            //             $('#Order').append(
+            //                 '<tr><th>' +
+            //                 e[i].id +
+            //                 '</th><td>' +
+            //                 e[i].trading_date +
+            //                 '</td><td>' +
+            //                 e[i].trading_type +
+            //                 '</td><td>' +
+            //                 e[i].trading_coins +
+            //                 '</td><td>' +
+            //                 e[i].balance_coins +
+            //                 '</td></tr>')
+
+            //         }
+            //     }
+            // })
+
+            // 換密碼
+            $('.PWFooter').append('<button type="button" class="btn btn-danger" Onclick="changePW(' +
+                j + ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+            )
+            $('.AddCoinFooter').append('<button type="button" class="btn btn-success" Onclick="AddCoinOK(' +
+                j + ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+            )
+
+
+            //    ===============================
+            var t = document.getElementById('table');
+            t.style.display = 'none';
+            var t1 = document.getElementById('Info');
+            t1.style.display = 'block';
         }
 
 
 
+        function changePW(j) {
+            var NewPW = $("#NewPW").val();
+            $.ajax({
+                type: 'PUT',
+                url: "http://127.0.0.1:8000/api/member/" + id,
+                dataType: 'json',
+                data: {
+                    "password": NewPW,
 
-        function changePW() {}
+                },
+                success: function () {
 
-        function AddCoins() {}
+                    alert("已修改成功");
+                    location.reload()
+                }
+            })
+        }
+
+        function AddCoinOK() {
+            let id = j + 1
+            var AddCoin = $("#AddCoin").val();
+            $.ajax({
+                type: 'PUT',
+                url: "http://127.0.0.1:8000/api/coin/" + j,
+                dataType: 'json',
+                data: {
+                    "Coin": AddCoin,
+
+                },
+                success: function () {
+
+                    alert("已修改成功");
+                    location.reload()
+                }
+            })
+        }
 
         // ====================功能已完成=========================
         $(document).ready(function () {
@@ -480,7 +596,7 @@
                 },
                 success: function () {
 
-                    // alert("已發布公告");
+                    alert("已發布公告");
                     location.reload()
                 }
             })
@@ -499,8 +615,6 @@
         function AddAnnOK() {
             let title = $("#AddAnnTitle").val();
             let content = $("#AddAnnContent").val();
-            // console.log(title);
-            // console.log(content);
             $.ajax({
                 type: 'POST',
                 url: "http://127.0.0.1:8000/api/announce",
