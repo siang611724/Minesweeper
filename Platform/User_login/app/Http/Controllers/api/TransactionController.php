@@ -39,8 +39,8 @@ class TransactionController extends Controller
      */
     public function userTransList($id)
     {
-        $user = DB::table('users')->where('id',$id)->first();
-        $tradingRecord = DB::table('transaction_records')->where('user_id', $user->id)->orderBy('trading_date', 'desc')->get();
+        // $user = DB::table('users')->where('id',$id)->first();
+        $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('trading_date', 'desc')->get();
         return response()->json($tradingRecord);
     }
 

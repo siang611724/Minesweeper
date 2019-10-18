@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLogsTable extends Migration
+class CreateTransactionRecordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('transaction_records', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->char('user_name', 20);
-            $table->timestamp('login_time');
+            $table->string('user_name');
+            $table->timestamp('trading_date');
+            $table->string('trading_type');
+            $table->string('trading_coins', 50);
+            $table->string('balance_coins', 50)->default('0');
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ class CreateLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('transaction_records');
     }
 }

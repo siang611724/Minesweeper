@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddLastLogin extends Migration
+class ChangeTypeCoinsUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddLastLogin extends Migration
      */
     public function up()
     {
-        Schema::table('logs', function (Blueprint $table) {
-            $table->dateTime('last_login_time');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('coins', 50)->default('0')->change();
         });
     }
 
@@ -25,7 +25,7 @@ class AddLastLogin extends Migration
      */
     public function down()
     {
-        Schema::table('logs', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }
