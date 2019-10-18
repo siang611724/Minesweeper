@@ -95,7 +95,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
             <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">
-                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
+                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="40">
                     Minesweeper Online</a></b>
             @auth
             @if(Auth::user()->name == 'admin')
@@ -287,7 +287,7 @@
 
                 <p class="lead">遊戲說明</p>
                 <p></p>
-                <div class="form-group" style="margin-top: 50px; text-align: left;"><label style="text-align: left;">公告欄:</label>
+                <div class="form-group" style="margin-top: 50px; text-align: left;"><label style="text-align: left;">最新消息</label>
                     <table class="table table-sm">
                         <thead>
                             <tr>

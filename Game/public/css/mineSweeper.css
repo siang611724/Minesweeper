@@ -16,33 +16,34 @@
     margin-right:150px!important; 
 }
 
-table {
-    border-spacing: 1px!important;
-    background: #515155!important;
-    margin: 0 auto!important;
+.gameBox table {
+    border-spacing: 1px;
+    background: #515155;
+    margin: 0 auto;
+    border-collapse: separate;
 }
-tr,
-td {
-    padding: 0!important;
-    width: 20px!important;
-    height: 20px!important;
-    background: #ccc!important;
-    border: 2px solid!important;
-    border-color: #fff #a1a1a1 #a1a1a1 #fff!important;
+
+.gameBox td {
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    background: #ccc;
+    border: 2px solid;
+    border-color: #fff #a1a1a1 #a1a1a1 #fff;
 
     text-align: center!important;
     line-height: 20px!important;
     font-weight: bold!important;
 }
 
-.mine {
-    background: #d9d9d9 url(/images/boom.png) no-repeat center!important;
-    background-size: cover!important;
+.gameBox .mine {
+    background: #d9d9d9 url(/images/boom.png) no-repeat center;
+    background-size: cover;
 }
 
-.flag {
-    background: #ccc url(/images/flag.png) no-repeat center!important;
-    background-size: cover!important;
+.gameBox .flag {
+    background: #ccc url(/images/flag.png) no-repeat center;
+    background-size: cover;
 }
 
 td.zero {
@@ -113,4 +114,9 @@ td.eight {
     color: purple!important;
     border-color: #d9d9d9!important;
 
+}
+
+#start {
+    width: 72px;
+    position: relative; left: 47%; top: 10px;
 }
