@@ -1,4 +1,6 @@
 // var squares = [];
+//row 橫的
+//col 直的
 var tds = [];
 var parent = document.querySelector(".gameBox");
 
@@ -22,74 +24,62 @@ function drawTable(map) {
     parent.appendChild(table);
 }
 
-function getZero(space, obj) {
-    for (var i = 0; i < space.length; i++) {
-        var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-        $.ajax({
-            async: true,
-            type: 'get',
-            url: "/getMap/" + space[i].x + "/" + space[i].y,
-            // success: function (zero) {
-            // //   for (var j=0; j<tds.length;j++){
-            // //       for (var k=0;k<tds[1].length;k++){
-            // //           if(zero.checked==true || zero.open==true){
-            // //               tds[j][i].innerHTML=zero.value;
-            // //           }
-            // //       }
-            // //   }
 
-                
-            // }
-        }).then( function (zero){
-              for (var j=0; j<tds.length;j++){
-                  for (var k=0;k<tds[1].length;k++){
-                      if( zero.open==true){
-                          tds[j][i].innerHTML=zero.value;
-                      }
-                  }
-              }
-            console.log(zero);
-        })
-
-
-
-    }
-
-}
 
 function play(event, obj) {
 
     if (event.which == 1) {
         var position = {
-            MapX: obj.pos[0],
-            MapY: obj.pos[1]
+            MapRows: obj.pos[0],
+            MapCols: obj.pos[1]
+
         };
         $.ajax({
             async: true,
             type: "get",
-            url: "/getMap/" + position.MapY + "/" + position.MapX,
-            // success: function (getAround) {
-            //     // var ceil = clickedItem[position.MapY][position.MapX];
-            //     var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-            //     if (Object.keys(getAround)[0] == "type") {
-            //         obj.innerHTML = getAround.value;
-            //         obj.className = changeClass[getAround.value];
-            //     } else {
-            //         getZero(getAround, obj);
+            url: "/getMap/" + position.MapRows + "/" + position.MapCols,
+            success: function (clickedItem) {
+                // var ceil = clickedItem[position.MapRows][position.MapCols];
+                var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+                //    for (var i=0;i<tds.length;i++){
+                //        for (var j=0;j<tds[0].length;j++){
+                //            if(clickedItem[i][j].checked==true){
+                //                obj.innerHTML=clickedItem[i][j].value;
+                //            }
+                //            if(clickedItem[i][j].checked==true && clickedItem[i][j].type == 'mine'){
+                //                alert ('gameOver');
+                //            }
+                //        }
+                //    }
+                var newMap = new Array();
+                $.each(clickedItem, function (index, content) {
+                    $.each(content, function (index2, content2) {
+                        newMap.push(content2);                      
+                    });
 
-            //     }
-            //     console.log(Object.keys(getAround)[0]);
-            // }
-        }).then(function (getAround){
-            var changeClass = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-                if (Object.keys(getAround)[0] == "type") {
-                    obj.innerHTML = getAround.value;
-                    obj.className = changeClass[getAround.value];
-                } else {
-                    getZero(getAround, obj);
+                });
+                console.log(newMap);
+                console.log(newMap.length);
+                // for (var i=0;i<newMap.length;i++){
+                //     if(newMap[i].checked==true){
+                //         obj.innerHTML=newMap[i].value;
+                //     }
+                // }
 
-                }
-                console.log(Object.keys(getAround)[0]);
+                // if(content2.checked==true){
+                //     obj.innerHTML=content2.value;
+                //     console.log(content2.checked);
+                //     console.log(content2.value);
+                // }           
+
+                // console.log(clickedItem.length);
+                console.log(typeof (clickedItem));
+                // console.log(tds.length); //16
+                // console.log(tds[0].length); //30
+                console.log(clickedItem);
+                console.log(tds);
+
+            }
         })
     }
 }
@@ -137,7 +127,7 @@ $("#hard").click(function () {
     var mapData = {
         column: 16,
         row: 30,
-        bomb: 99
+        bomb: 1
     };
     $.ajax({
         headers: {
