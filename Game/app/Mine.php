@@ -28,7 +28,7 @@ class Mine
     for ($i = 0; $i < $this ->tr; $i++) {
         for ($j = 0; $j < $this ->td; $j++) {
             $this ->area[$i][$j] = array("type" => "number",
-                "x" => $j, "y" => $i, "checked" => false, "value" => 0);
+                "rows" => $i, "cols" => $j,"checked"=>false, "value" => 0);
 
         }
     }
@@ -36,10 +36,10 @@ class Mine
     while ($index < $this ->mineNum) {
         $i = rand(0, $this ->tr - 1);
         $j = rand(0, $this ->td - 1);
-        if ($this ->area[$i][$j] == array("type" => "number", "x" => $j, "y" => $i, "checked" => false,
-                "value" => 0)) {
-            $this ->area[$i][$j] = array("type" => "mine", "x" => $j, "y" => $i, "checked" => false,
-            "value" => 9);
+        if ($this ->area[$i][$j] == array("type" => "number",  "rows" => $i, "cols" => $j, 
+        "checked"=>false,  "value" => 0)) {
+            $this ->area[$i][$j] = array("type" => "mine",  "rows" => $i, "cols" => $j, 
+            "checked"=>false, "value" => 9);
             $index++;
         }
     }
@@ -47,8 +47,8 @@ class Mine
     for ($i = 0; $i < $this ->tr; $i++) {
         for ($j = 0; $j < $this ->td; $j++) {
             if ($this ->area[$i][$j] == array("type" => "mine",
-                    "x" => $j, "y" => $i, "checked" => false,
-                    "value" => 9)) {
+            "rows" => $i, "cols" => $j, 
+            "checked"=>false,  "value" => 9)) {
                 continue;
             }
 
@@ -77,36 +77,11 @@ class Mine
     } 
     //    echo ($this->area[1][1]["type"]);
   return $this->area;
-    // $this->area[1][1]["checked"]=false;
+    
     // echo print_r($this->area[1][1]);
 //     $this->MouseClickTd(1,2);
    }
-//    function MouseClickTd($i,$j){
-//     // echo $i." & ".$j."<br>";
-//         $x=$this->area[$i][$j]["y"];
-//         $y=$this->area[$i][$j]["x"];
-        
-//         // echo ($x." ".$y);
-//                     for($k = $x-1; $k<=$x+1;$k++){
-//                         for($m = $y-1; $m<=$y+1;$m++){
-//                             if($k<0 || $k>=$this->td || $m<0 ||
-//                                 $m>=$this->tr|| $this->area[$k][$m]["type"]=="mine"){
-//                                     continue;
-//                                 }
-//                             if($this->area[$k][$m]["value"]==0 &&  $this->area[$k][$m]["checked"]=false){
-//                                 $this->MouseClickTd($k,$m);
-//                             } else {
-//                                 $this->area[$k][$m]["space"]="";
-//                                 $this->area[$k][$m]["checked"]=true;
-//                             }
-                            
-//                     }  
-                    
-//                }                           
-    
-                    
-//             echo("<script>console.log(".json_encode($this->area).");</script>");
-//     }
+
 }
 
 ?>
