@@ -77,6 +77,7 @@ class Play extends Controller
                 // echo 'x = ' . $Rows . ' y = ' . $Cols . '<br>';
                 // print_r(count($around)."<br>");
                 $map = $this->getZero($around, $map);
+               
                 // print_r($around);
                 // print_r($map);
                 // print_r($map[$Rows][$Cols]);
@@ -97,10 +98,11 @@ class Play extends Controller
 
             if ($map[$aroundX][$aroundY]["checked"] == false) {
                 $map[$aroundX][$aroundY]["checked"] = true;
+
                 // echo 'y = ' . $aroundX . ' x = ' . $aroundY . '<br>';
                 // echo 'testMap<br>';
                 $map = $this->testMap($aroundX, $aroundY, $map);
-
+                
                 //     // echo "ok" . "<br>";
                 // print_r($map[$aroundX][$aroundY]);
             } else {
@@ -109,4 +111,5 @@ class Play extends Controller
         }
         return $map;
     }
+  
 }

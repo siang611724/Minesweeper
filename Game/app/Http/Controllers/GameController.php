@@ -92,7 +92,7 @@ class GameController extends Controller
         
         $Mine=new Mine($tr,$td,$mineNum);
                    
-        DB::table('Map')->insertGetId(
+        DB::table('Map')->insert(
             [
                 
                 'MemberID'=>"jack",
