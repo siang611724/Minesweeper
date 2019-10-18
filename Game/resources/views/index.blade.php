@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mineSweeper.css">
+
     
     <title>Welcome</title>
 </head>
@@ -18,7 +21,7 @@
             <button  name="easy" id="easy">初級 </button> 
             <button  name="medium" id="medium">中級</button> 
             <button  name="hard" id="hard">高級</button>   
-            <button  id="restart">重新開始</button> 
+           
                 
         
         </div>
@@ -26,7 +29,7 @@
             剩餘地雷數:<span class="mineNum"></span>
             經過時間:<span class="times" id="times"></span>
         </div>
-        <div class="gameBox">
+        <div class="gameBox" id="top1">
 
         </div>
 
