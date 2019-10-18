@@ -13,9 +13,9 @@ class AddForeignkeyTable extends Migration
      */
     public function up()
     {
-        Schema::table('logs', function (Blueprint $table) {
-            $table->unsignedInteger('user_id')->change();
-        });
+        // Schema::table('logs', function (Blueprint $table) {
+        //     $table->unsignedInteger('user_id')->change();
+        // });
     }
 
     /**

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('coins');
             $table->dateTime('last_login_time');
-            $table->boolean('status');
+            $table->boolean('status')->default('0');
         });
     }
 
