@@ -98,7 +98,13 @@ class GameController extends Controller
     public function map($tr,$td,$mineNum){
         
         $Mine=new Mine($tr,$td,$mineNum);
-                   
+        
+        $money = DB::table('money')->where('MemberID','jack')
+                ->value('money');
+        DB::table('money')->update([
+            'money'=>$money-5
+        ]);
+        
         DB::table('Map')->insert(
             [
                 

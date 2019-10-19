@@ -27,3 +27,25 @@ Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
 Route::resource('user', 'UserController');
 
+<<<<<<< HEAD
+=======
+// Route::get('/login', function () {
+//     return view('admin');
+// });
+
+//  管理員路由
+Route::get('admin/login', 'Admin\LoginController@showLoginForm')
+->name('admin.login');
+
+Route::post('admin/login', 'Admin\LoginController@login');
+
+Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin'], function() {
+	Route::get('logout', 'Admin\LoginController@logout')
+	->name('admin.logout');
+
+	Route::get('/', 'Admin\HomeController@index')->name('admin');
+
+	// other routes for admin ...
+
+});
+>>>>>>> 4f777514a783f8f79638f13b36ae307abaab260d

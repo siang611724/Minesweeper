@@ -54,9 +54,9 @@ trait AuthenticatesUsers
         if ($this->attemptLogin($request)) {
 
             $user = Auth::user();
-            if ($user->name === 'Admin') {
-                return view('admin');
-            };
+            // if ($user->name === 'Admin') {
+            //     return view('admin');
+            // };
 
             // 取得使用者最後登入時間
             $last_login_time = DB::table('users')->where('id', $user->id)->value('last_login_time');
@@ -93,37 +93,37 @@ trait AuthenticatesUsers
             return $this->sendLoginResponse($request);
         }
 
-        $data = $request->all();
-        // dd($data);
-        $rules = [
-            'email' => 'required | between:8, 20 | exists:users,email' ,
-            'password' => 'required | between:8, 20'
-        ];
-        $message = [
-            'required' => '請填寫此欄位',
-            'between' => '密碼必須為8-20位之間',
-            'exists' => '此用戶不存在'
-        ];
-        $validator = Validator::make($data, $rules, $message);
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $userPassword = DB::table('users')->where('email', $email)->value('password');
-        $validator->after(function($validator) use ($userPassword, $password) {
-            if(!\Hash::check($password, $userPassword)) {
-                $validator->errors()->add('password', '密碼錯誤');
-            }
-        });
-        if($validator->fails()) {
-            // dd($validator->errors()->messages());
-            return back()->withErrors($validator);
-        }
+        // $data = $request->all();
+        // // dd($data);
+        // $rules = [
+        //     'email' => 'required | between:8, 20 | exists:users,email' ,
+        //     'password' => 'required | between:8, 20'
+        // ];
+        // $message = [
+        //     'required' => '請填寫此欄位',
+        //     'between' => '密碼必須為8-20位之間',
+        //     'exists' => '此用戶不存在'
+        // ];
+        // $validator = Validator::make($data, $rules, $message);
+        // $email = $request->input('email');
+        // $password = $request->input('password');
+        // $userPassword = DB::table('users')->where('email', $email)->value('password');
+        // $validator->after(function($validator) use ($userPassword, $password) {
+        //     if(!\Hash::check($password, $userPassword)) {
+        //         $validator->errors()->add('password', '密碼錯誤');
+        //     }
+        // });
+        // if($validator->fails()) {
+        //     // dd($validator->errors()->messages());
+        //     return back()->withErrors($validator);
+        // }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
-        // $this->incrementLoginAttempts($request);
+        $this->incrementLoginAttempts($request);
 
-        // return $this->sendFailedLoginResponse($request);
+        return $this->sendFailedLoginResponse($request);
     }
 
     /**
