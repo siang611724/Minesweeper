@@ -76,10 +76,10 @@ return [
             'model' => App\DB\User::class,
         ],
 
-        'managers' => [
-            'driver' => 'eloquent',
-            'model' => App\Manager::class,
-        ]
+        // 'managers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Manager::class,
+        // ]
 
         // 'users' => [
         //     'driver' => 'database',

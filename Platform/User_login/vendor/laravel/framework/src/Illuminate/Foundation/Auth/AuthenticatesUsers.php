@@ -23,7 +23,7 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('home');
+        return view('welcome');
         // return view('auth.login');
     }
 
@@ -54,9 +54,9 @@ trait AuthenticatesUsers
         if ($this->attemptLogin($request)) {
 
             $user = Auth::user();
-            // if ($user->name === 'Admin') {
-            //     return view('admin');
-            // };
+            if ($user->name === 'Admin') {
+                return view('admin');
+            };
 
             // 取得使用者最後登入時間
             $last_login_time = DB::table('users')->where('id', $user->id)->value('last_login_time');

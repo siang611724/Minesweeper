@@ -46,3 +46,13 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin'], function() {
 	// other routes for admin ...
 
 });
+
+Route::get('/game', 'GameController@showGamePage');
+
+Route::get('wang/{tr}/{td}/{mineNum}','GameController@map');
+Route::get('getMap/{MapX}/{MapY}','Play@MouseClickTd');
+Route::resource('/wang','GameController');
+
+Route::get('/1', function (){
+    return view('index');
+});

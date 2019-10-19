@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="content row">
         <div class="information_left d-md-none d-lg-block d-sm-none d-none">
 
@@ -22,10 +22,9 @@
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
+                <button><a href="http://127.0.0.1:8001">開始遊戲</a></button>
+
         </div>
-        <!-- <div class="text_box"> 彈出對話框 -->
-        <!-- <p>彈窗內容</p> -->
-        <!-- </div>  -->
 
         <!-- 加值彈窗 -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -123,9 +122,10 @@
             </div>
         </div>
 
-        <div class="gameArea_right col-lg-8 col-sm-12 col-12">
+        <div class="gameArea_right col-lg-9 col-sm-12 col-12">
             <div class="right_collection">
                 <!-- <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3"> -->
+                <iframe src="http://127.0.0.1:8000/1" id="startGame" width="900" height="620" style="border-radius: 10px;">開始遊戲</!
             </div>
             <div class="">
                 <table class="table">
@@ -183,7 +183,7 @@
         if (patt.test(key)) {
             if (result == true) {
                 form.submit();
-                return true;
+                // return true;
             }
         } else {
             document.getElementById("textbox").innerHTML = "請輸入正確信用卡號碼";

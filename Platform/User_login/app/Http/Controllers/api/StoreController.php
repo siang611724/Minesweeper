@@ -65,8 +65,9 @@ class StoreController extends Controller
                     'balance_coins' => $user->coins + $request->radios
                 ]
             ]);
-            return response()->json(['status' => 0, 'message' => 'Success', 'money' => $request->radios]);
-            // return redirect('/home');
+            // return response()->json(['status' => 0, 'message' => 'Success', 'money' => $request->radios, 
+            //                         'balance' => $user->coins + $request->radios]);
+            return redirect('/home');
         }
     }
 
