@@ -26,3 +26,4 @@ Route::post('/home', 'HomeController@coinPurchase');
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
 Route::resource('user', 'UserController');
+
