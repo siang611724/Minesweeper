@@ -433,6 +433,7 @@ class ComposerStaticInitafca15c006cea294753f95de7c50a1ea
 
     public static $classMap = array (
         'AnnounceSeeder' => __DIR__ . '/../..' . '/database/seeds/AnnounceSeeder.php',
+        'App\\Administrator' => __DIR__ . '/../..' . '/app/Administrator.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\DB\\Announce' => __DIR__ . '/../..' . '/app/DB/Announce.php',
         'App\\DB\\LoginTime' => __DIR__ . '/../..' . '/app/DB/LoginTime.php',
@@ -448,7 +449,10 @@ class ComposerStaticInitafca15c006cea294753f95de7c50a1ea
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\api\\AnnounceController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/AnnounceController.php',
         'App\\Http\\Controllers\\api\\CoinController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/CoinController.php',
+        'App\\Http\\Controllers\\api\\LogController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/LogController.php',
         'App\\Http\\Controllers\\api\\MemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/MemberController.php',
+        'App\\Http\\Controllers\\api\\StatusController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/StatusController.php',
+        'App\\Http\\Controllers\\api\\TransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/TransactionController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
