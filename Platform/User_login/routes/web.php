@@ -32,20 +32,20 @@ Route::resource('user', 'UserController');
 // });
 
 //  管理員路由
-Route::get('admin/login', 'Admin\LoginController@showLoginForm')
-->name('admin.login');
+// Route::get('admin/login', 'Admin\LoginController@showLoginForm')
+// ->name('admin.login');
 
-Route::post('admin/login', 'Admin\LoginController@login');
+// Route::post('admin/login', 'Admin\LoginController@login');
 
-Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin'], function() {
-	Route::get('logout', 'Admin\LoginController@logout')
-	->name('admin.logout');
+// Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin'], function() {
+// 	Route::get('logout', 'Admin\LoginController@logout')
+// 	->name('admin.logout');
 
-	Route::get('/', 'Admin\HomeController@index')->name('admin');
+// 	Route::get('/', 'Admin\HomeController@index')->name('admin');
 
-	// other routes for admin ...
+// 	// other routes for admin ...
 
-});
+// });
 
 Route::get('/game', 'GameController@showGamePage');
 
