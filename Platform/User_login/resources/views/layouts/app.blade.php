@@ -52,10 +52,10 @@
         .content {
             position: absolute;
             background-color: #fff;
-            height: 600px;
-            width: 1000px;
+            height: 660px;
+            width: 1200px;
             left: 50%;
-            margin: 0 0 0 -500px;
+            margin: 0 0 0 -600px;
             border: 1px solid #eee;
             border-radius: 15px;
         }
