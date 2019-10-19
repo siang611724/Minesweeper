@@ -234,6 +234,14 @@ $("#medium").click(function () {
                 drawTable(map);
             }
         })
+        $.ajax({
+            type: 'GET',
+            url: "http://127.0.0.1:8000/api/member",
+            dataType: 'json',
+            success: function (e) {
+                
+            }
+        })
     })
 
 });

@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Mine;
 use App\Map;
 use DB;
 use Illuminate\Http\Request;
-
+use App\User;
 class GameController extends Controller
 {
     /**
@@ -18,10 +18,11 @@ class GameController extends Controller
     public function index()
     {
         //
-        $id = DB::table('Map')->where('MemberID', "1")
+        $user = Auth::user();
+        $Gameid = DB::table('Map')->where('MemberID',$user)
         ->orderBy('GameID','desc')->take(1)->value('GameID');
         
-       DB::table('history')->where('GameID',$id)
+       DB::table('history')->where('GameID',$Gameid)
        ->orderBy('time','desc')->take(1)->update([
         'result'=>'win'
        ]);
@@ -104,11 +105,11 @@ class GameController extends Controller
         // DB::table('money')->update([
         //     'money'=>$money-5
         // ]);
-        
+        $user = Auth::user();
+
         DB::table('Map')->insert(
             [
-                
-                'MemberID'=>"1",
+                'MemberID'=>$user,
                 'Info'=> serialize($Mine->area)
             ]
         );

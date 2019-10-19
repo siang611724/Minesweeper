@@ -1,9 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Map;
-
+use App\User;
 class Play extends Controller
 {
     //
@@ -13,10 +14,11 @@ class Play extends Controller
     {
         // echo '<pre>';
       
-        
-        $map = unserialize(DB::table('Map')->where('MemberID', "1")
+        $user = Auth::user();
+
+        $map = unserialize(DB::table('Map')->where('MemberID', $user)
         ->orderBy('GameID','desc')->take(1)->value('info'));
-        $this->id = DB::table('Map')->where('MemberID', "1")
+        $this->id = DB::table('Map')->where('MemberID', $user)
         ->orderBy('GameID','desc')->take(1)->value('GameID');
         // $this->tempmap = unserialize(DB::table('Map')->where('MemberID', "jack")->max('GameID')->value('info'));
         // foreach ($map as $Data) {
@@ -27,13 +29,13 @@ class Play extends Controller
         // }
 
         $map = $this->testMap($clickRows, $clickCols, $map);
-        DB::table('Map')->where('MemberID', "1")->orderBy('GameID','desc')->take(1)
+        DB::table('Map')->where('MemberID', $user)->orderBy('GameID','desc')->take(1)
             ->update(['Info' => serialize($map)]);
 
         if ($map[$clickRows][$clickCols]["type"] == "mine"){
             DB::table('history')->insert([
                 'GameID'=>$this->id,
-                'MemberID'=>'1',
+                'MemberID'=> $user,
                 'MapX'=>$clickCols,
                 'MapY'=>$clickRows,
                 'result'=>'lose'
@@ -41,7 +43,7 @@ class Play extends Controller
         } else{
             DB::table('history')->insert([
             'GameID'=>$this->id,
-            'MemberID'=>'1',
+            'MemberID'=> $user,
             'MapX'=>$clickCols,
             'MapY'=>$clickRows
         ]);
