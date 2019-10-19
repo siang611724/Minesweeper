@@ -454,13 +454,7 @@ class ComposerStaticInitafca15c006cea294753f95de7c50a1ea
         'App\\Http\\Controllers\\api\\LogController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/LogController.php',
         'App\\Http\\Controllers\\api\\MemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/MemberController.php',
         'App\\Http\\Controllers\\api\\StatusController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/StatusController.php',
-<<<<<<< HEAD
-=======
-        'App\\Http\\Controllers\\api\\StoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/StoreController.php',
->>>>>>> 4f777514a783f8f79638f13b36ae307abaab260d
-        'App\\Http\\Controllers\\api\\TransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/api/TransactionController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
-        'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -480,7 +474,7 @@ class ComposerStaticInitafca15c006cea294753f95de7c50a1ea
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'App\\User' => __DIR__ . '/../..' . '/app/DB/User.php',
+        // 'App\\User' => __DIR__ . '/../..' . '/app/DB/User.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
         'Barryvdh\\Cors\\HandleCors' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandleCors.php',
