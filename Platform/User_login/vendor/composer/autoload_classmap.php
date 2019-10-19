@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AnnounceSeeder' => $baseDir . '/database/seeds/AnnounceSeeder.php',
+    'App\\Administrator' => $baseDir . '/app/Administrator.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\DB\\Announce' => $baseDir . '/app/DB/Announce.php',
     'App\\DB\\LoginTime' => $baseDir . '/app/DB/LoginTime.php',
@@ -26,10 +27,16 @@ return array(
     'App\\Http\\Controllers\\api\\LogController' => $baseDir . '/app/Http/Controllers/api/LogController.php',
 =======
     'App\\Http\\Controllers\\api\\CoinController' => $baseDir . '/app/Http/Controllers/api/CoinController.php',
+<<<<<<< HEAD
+    'App\\Http\\Controllers\\api\\LogController' => $baseDir . '/app/Http/Controllers/api/LogController.php',
+    'App\\Http\\Controllers\\api\\MemberController' => $baseDir . '/app/Http/Controllers/api/MemberController.php',
+    'App\\Http\\Controllers\\api\\StatusController' => $baseDir . '/app/Http/Controllers/api/StatusController.php',
+=======
 >>>>>>> 0d49c9a4a9550e114a39c3426de364a1ba9637f6
     'App\\Http\\Controllers\\api\\MemberController' => $baseDir . '/app/Http/Controllers/api/MemberController.php',
     'App\\Http\\Controllers\\api\\StatusController' => $baseDir . '/app/Http/Controllers/api/StatusController.php',
     'App\\Http\\Controllers\\api\\StoreController' => $baseDir . '/app/Http/Controllers/api/StoreController.php',
+>>>>>>> 4f777514a783f8f79638f13b36ae307abaab260d
     'App\\Http\\Controllers\\api\\TransactionController' => $baseDir . '/app/Http/Controllers/api/TransactionController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
