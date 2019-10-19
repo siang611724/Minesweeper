@@ -27,8 +27,6 @@ Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
 Route::resource('user', 'UserController');
 
-<<<<<<< HEAD
-=======
 // Route::get('/login', function () {
 //     return view('admin');
 // });
@@ -48,4 +46,3 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin'], function() {
 	// other routes for admin ...
 
 });
->>>>>>> 4f777514a783f8f79638f13b36ae307abaab260d
