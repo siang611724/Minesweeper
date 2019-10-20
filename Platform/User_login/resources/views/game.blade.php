@@ -54,7 +54,7 @@
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-            <a href="/2"><button onclick="" style="margin-top: 200px; margin-left: 70px">開始遊戲</button></a>
+            <button onclick="test();" style="margin-top: 200px; margin-left: 70px">開始遊戲</button>
         </div>
 
         <!-- 加值彈窗 -->
@@ -156,28 +156,33 @@
         <div class="gameArea_right col-lg-9 col-sm-12 col-12">
             <div class="right_collection">
                 <!-- <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3"> -->
-                </div> <div class="">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th colspan="2" scope="col">Title</th>
-                                <th scope="col" style="text-align: right"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td colspan="2">Article 1</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td colspan="2">Article 2</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                
+                <div id="mine">
+
+                    <div class="level">
+
+                        <button name="easy" id="easy">初級 </button>
+                        <button name="medium" id="medium">中級</button>
+                        <button name="hard" id="hard">高級</button>
+
+
+                    </div>
+                    <div class="info">
+                        剩餘地雷數:<span class="mineNum"></span>
+                        經過時間:<span class="times" id="times"></span>
+                    </div>
+                    <div class="gameBox">
+
+                    </div>
+
+
+                </div>
+                <button id="myModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
+                    Launch demo modal
+                </button>
+                
+
+                <script src="js/game.js"></script>
             </div>
         </div>
     </div>
@@ -200,22 +205,22 @@
 </div>
 
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
 
-<script>
-    // var alerttest;
-    // $(document).ready(function() {
-    //     alerttest = function (){
-    //         console.log('1');
-    //     };
-
-    // })
-    function test() {
-        alert('1');
-    };
-</script>
-
-
-
-
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 @endsection
