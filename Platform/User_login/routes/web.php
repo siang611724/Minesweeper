@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use DB;
+// use DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +64,4 @@ Route::get('/2', function (){
     $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('trading_date', 'desc')->get();
     return view('game', compact('tradingRecord'));
 });
+Route::get('/newmoney','GameController@newmoney');

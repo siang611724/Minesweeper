@@ -205,22 +205,23 @@
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"data-backdrop="static">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                
 
                             </div>
                             <div class="modal-body">
-                                ...
+                                    <span>復活將扣除5金幣</span>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="continue">復活</button>
+                                <button type="button" class="btn btn-primary" id="gameover">遊戲結束</button>
                             </div>
                         </div>
                     </div>
+                    <script src="js/game.js"></script>
                 </div>
 
 @endsection

@@ -123,4 +123,18 @@ class GameController extends Controller
         return $Mine->area;
         
     }
+    public function newmoney(){
+        $userID = Auth::id();
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        if($money == 0) {
+            echo '請儲值';
+        } else {
+            DB::table('users')->where('id',$userID)
+            ->update([
+                'coins'=>$money-5
+            ]);
+        }
+        return $money;
+    }
 }

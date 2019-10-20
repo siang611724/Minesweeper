@@ -288,3 +288,14 @@ $("#hard").click(function () {
     })
 
 });
+$("#continue").click(function(){
+    // console.log("test");
+    $.ajax({
+        type:'get',
+        url:'/newmoney',
+        success:function(money){
+          
+            console.log(money);
+        }
+    })
+})
