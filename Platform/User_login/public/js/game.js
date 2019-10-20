@@ -153,7 +153,7 @@ function open(newMap, clickedItem) {
     win(clickedItem);
     // console.log(initMap);
 
-    console.log(newMap);
+    // console.log(newMap);
     // console.log(newMap.length);
 
 }
