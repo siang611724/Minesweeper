@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,17 +21,11 @@ Route::get('/', function () {
 // auth指令自動新增以下
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-// Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@coinPurchase');
 
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
 Route::resource('user', 'UserController');
-
-// Route::get('/login', function () {
-//     return view('admin');
-// });
 
 //  管理員路由
 Route::get('admin/login', 'Admin\LoginController@showLoginForm')
@@ -63,4 +57,8 @@ Route::get('/2', function (){
 	$id = Auth::id();
     $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('trading_date', 'desc')->get();
     return view('game', compact('tradingRecord'));
+});
+
+Route::get('/edit', function (){
+    return view('user.edit');
 });

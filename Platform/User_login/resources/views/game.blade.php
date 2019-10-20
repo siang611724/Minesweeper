@@ -43,7 +43,7 @@
             <div style="height: 100px; width:100px; margin: 30px auto 5px">
                 <img src="{{URL::asset('/image/user_icon.jpg')}}" alt="profile Pic" height="100" width="100">
             </div> <!-- 頭像 -->
-            <a class="" href="/user/{{ Auth::id() }}/edit">
+            <a class="" href="/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
@@ -54,7 +54,7 @@
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-            <button onclick="test();" style="margin-top: 200px; margin-left: 70px">開始遊戲</button>
+            <a href="/home"><button style="margin-top: 200px; margin-left: 85px">返回</button></a>
         </div>
 
         <!-- 加值彈窗 -->
@@ -154,9 +154,7 @@
         </div>
 
         <div class="gameArea_right col-lg-9 col-sm-12 col-12">
-            <div class="right_collection">
-                <!-- <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3"> -->
-                
+            <div class="right_collection col-lg-12">
                 <div id="mine">
 
                     <div class="level">
