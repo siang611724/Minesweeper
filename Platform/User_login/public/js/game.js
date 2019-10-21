@@ -6,10 +6,16 @@ var parent = document.querySelector(".gameBox");
 var mineNumLeft = document.querySelector(".mineNum");
 var mineNum = 0;
 var initMap = new Array();
-var leftMine =0;
+var leftMine = 0;
 var isClick = true;
-var t =0;
+var t = 0;
 var timer;
+var updateMoney = document.querySelector(".money");
+var updateTimeWin = document.querySelector(".gametimeWin");
+var updateTimeLose = document.querySelector(".gametimeLose");
+var moneyWin = document.querySelector(".moneyWin");
+var moneyLose = document.querySelector(".moneyLose");
+
 function drawTable(map) {
     parent.oncontextmenu = function () {
         return false;
@@ -29,13 +35,13 @@ function drawTable(map) {
                 mineNum++;
             }
             domTd.onmousedown = function () {
-              
-                if(isClick) {
+
+                if (isClick) {
                     isClick = false;
                     //事件
                     play(event, this);
                     //定时器
-                    setTimeout(function() {
+                    setTimeout(function () {
                         isClick = true;
                     }, 250);//一秒内不能重複
                 }
@@ -51,10 +57,12 @@ function drawTable(map) {
 }
 
 function gameover(tds) {
+    mineNumLeft.innerHTML = --leftMine;
     tds.className = "mine";
     tds.style.backgroundColor = "red";
+    updateTimeLose.innerHTML = t.toFixed(2);
     $("#myModal").click();
-   
+
 }
 
 function win() {
@@ -71,10 +79,25 @@ function win() {
                         type: 'get',
                         url: '/wang',
                         success: function (e) {
-                            console.log(e);
+                            updateMoney.innerHTML = e;
+
                         }
                     })
-                    alert("win");
+                    alert("你贏了")
+                    updateTimeWin.innerHTML = t.toFixed(2);
+                    $("#showHistoryWinClick").click(function(){
+                        $.ajax({
+                            type: 'get',
+                            url: '/getlastmoney',
+                            success: function (e) {
+                                moneyWin.innerHTML = e;
+    
+                            }
+                        })
+                    });
+                    $("#showHistoryWinClick").click();
+                    clearInterval(timer);
+                    t = 0;
                 }
             }
         }
@@ -107,16 +130,16 @@ function play(event, obj) {
             }
         }
         )
-        if(t==0 ){
+        if (t == 0) {
             timer = setInterval(function () {
-               t+=0.2;
-               document.querySelector('.times').innerHTML = Math.floor(t);
-            //    console.log(t);
-           }, 200);
-       }
+                t += 0.2;
+                document.querySelector('.times').innerHTML = Math.floor(t);
+                //    console.log(t);
+            }, 200);
+        }
     }
     if (event.which == 3) {
-        if(obj.className && obj.className != 'flag'){
+        if (obj.className && obj.className != 'flag') {
             return;
         }
         obj.className = obj.className == 'flag' ? '' : 'flag';
@@ -135,22 +158,30 @@ function open(newMap, clickedItem) {
     for (var i = 0; i < tds.length; i++) {
         for (var j = 0; j < tds[0].length; j++) {
             if (k < tds.length * tds[0].length && newMap[++k].checked == true) {
+                if (newMap[k].className != 'flag') {
+                    if (newMap[k].type != 'mine') {
+                        tds[i][j].innerHTML = newMap[k].value;
+                        tds[i][j].className = changeClass[newMap[k].value]
+                        if (newMap[k].value == 0) {
+                            tds[i][j].innerHTML = "";
+                        }
+                    } else if (newMap[k].type == 'mine' && tds[i][j].checked != true) {
+                        tds[i][j].checked = true;
 
-                tds[i][j].innerHTML = newMap[k].value;
-                tds[i][j].className = changeClass[newMap[k].value]
-                if (newMap[k].value == 0) {
-                    tds[i][j].innerHTML = ""
-                }
-                if (tds[i][j].innerHTML == 9) {
+                        gameover(tds[i][j]);
 
-                    gameover(tds[i][j]);
+                    }
+
+
+
                 }
+
             } else {
                 continue;
             }
         }
     }
-    win(clickedItem);
+    win();
     // console.log(initMap);
 
     // console.log(newMap);
@@ -159,7 +190,8 @@ function open(newMap, clickedItem) {
 }
 $("#easy").click(function () {
     clearInterval(timer);
-    t=0;
+    t = 0;
+    document.querySelector('.times').innerHTML = t;
     var table = document.createElement("table");
     for (var i = 0; i < 9; i++) {
         var domTr = document.createElement("tr");
@@ -175,32 +207,48 @@ $("#easy").click(function () {
     var btn = document.createElement("button");
     parent.appendChild(btn);
     btn.innerHTML = "開始";
-    btn.setAttribute("id", "start");
-    $("#start").click(function () {
+    btn.setAttribute("id", "starteasy");
+    $("#starteasy").click(function () {
         var mapData = {
             column: 9,
             row: 9,
             bomb: 10
         };
         $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
             type: 'get',
-            url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
-            success: function (map) {
+            url: '/newmoneyeasy',
+            success: function (money) {
+                if (money <= 0) {
+                    alert("您的剩餘金額為:0");
+                    $("#addMoney").click();
 
-                drawTable(map);
-                // console.log(map);
+                } else {
+                    updateMoney.innerHTML = money;
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'get',
+                        url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
+                        success: function (map) {
+
+                            drawTable(map);
+                            // console.log(map);
+                        }
+                    })
+                }
+
             }
         })
+
     })
 
 });
 
 $("#medium").click(function () {
     clearInterval(timer);
-    t=0;
+    t = 0;
+    document.querySelector('.times').innerHTML = t;
     var table = document.createElement("table");
     for (var i = 0; i < 16; i++) {
         var domTr = document.createElement("tr");
@@ -216,13 +264,38 @@ $("#medium").click(function () {
     var btn = document.createElement("button");
     parent.appendChild(btn);
     btn.innerHTML = "開始";
-    btn.setAttribute("id", "start");
-    $("#start").click(function () {
+    btn.setAttribute("id", "startmed");
+    $("#startmed").click(function () {
         var mapData = {
             column: 16,
             row: 16,
             bomb: 40
         };
+        $.ajax({
+            type: 'get',
+            url: '/newmoneymed',
+            success: function (money) {
+                if (money <= 0) {
+                    alert("您的剩餘金額為:0");
+                    $("#addMoney").click();
+
+                } else {
+                    updateMoney.innerHTML = money;
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'get',
+                        url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
+                        success: function (map) {
+
+                            drawTable(map);
+                            // console.log(map);
+                        }
+                    })
+                }
+            }
+        })
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -234,21 +307,15 @@ $("#medium").click(function () {
                 drawTable(map);
             }
         })
-        $.ajax({
-            type: 'GET',
-            url: "http://127.0.0.1:8000/api/member",
-            dataType: 'json',
-            success: function (e) {
-                
-            }
-        })
+
     })
 
 });
 
 $("#hard").click(function () {
     clearInterval(timer);
-    t=0;
+    t = 0;
+    document.querySelector('.times').innerHTML = t;
     var table = document.createElement("table");
     for (var i = 0; i < 16; i++) {
         var domTr = document.createElement("tr");
@@ -264,14 +331,39 @@ $("#hard").click(function () {
     var btn = document.createElement("button");
     parent.appendChild(btn);
     btn.innerHTML = "開始";
-    btn.setAttribute("id", "start");
-    $("#start").click(function () {
+    btn.setAttribute("id", "starthard");
+    $("#starthard").click(function () {
 
         var mapData = {
             column: 16,
             row: 30,
             bomb: 1
         };
+        $.ajax({
+            type: 'get',
+            url: '/newmoneyhard',
+            success: function (money) {
+                if (money <= 0) {
+                    alert("餘額不足");
+                    $("#addMoney").click();
+
+                } else {
+                    updateMoney.innerHTML = money;
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'get',
+                        url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
+                        success: function (map) {
+
+                            drawTable(map);
+                            // console.log(map);
+                        }
+                    })
+                }
+            }
+        })
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -288,14 +380,37 @@ $("#hard").click(function () {
     })
 
 });
-$("#continue").click(function(){
+$("#continue").click(function () {
     // console.log("test");
     $.ajax({
-        type:'get',
-        url:'/newmoney',
-        success:function(money){
-          
-            console.log(money);
+        type: 'get',
+        url: '/newmoney',
+        success: function (money) {
+            updateMoney.innerHTML = money;
         }
     })
 })
+$("#gameover").click(function () {
+    $.ajax({
+        type: 'get',
+        url: '/getlastmoney',
+        success: function (money) {
+            moneyLose.innerHTML = money;
+        }
+    })
+    $("#showHistoryLoseClick").click();
+})
+
+
+
+
+window.onload = showMoney;
+function showMoney() {
+    $.ajax({
+        type: 'get',
+        url: '/showmoney',
+        success: function (money) {
+            updateMoney.innerHTML = money;
+        }
+    })
+}

@@ -1,19 +1,19 @@
 #mine {
-    margin: 50px auto
+    margin: 50px auto !important;
 }
 
 .level {
-    text-align: center;
-    margin-bottom: 10px;
+    text-align: center!important;
+    margin-bottom: 10px!important;
 }
 
 .info {
-    text-align: center;
-    margin-top: 30px;
+    text-align: center!important;
+    margin-top: 30px!important;
 }
 
 .mineNum{
-    margin-right:150px; 
+    margin-right:150px!important; 
 }
 
 .gameBox table {
@@ -31,9 +31,9 @@
     border: 2px solid;
     border-color: #fff #a1a1a1 #a1a1a1 #fff;
 
-    text-align: center;
-    line-height: 20px;
-    font-weight: bold;
+    text-align: center!important;
+    line-height: 20px!important;
+    font-weight: bold!important;
 }
 
 .gameBox .mine {
@@ -47,72 +47,72 @@
 }
 
 td.zero {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9 !important;
+    background: #d9d9d9!important;
+    border-color: #d9d9d9!important;
 }
 
 td.one {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    color: blue;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9!important;
+    background: #d9d9d9!important;
+    color: blue!important;
+    border-color: #d9d9d9!important;
 
 }
 
 td.two {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    color: green;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9!important;
+    background: #d9d9d9!important;
+    color: green!important;
+    border-color: #d9d9d9!important;
 
 }
 
 td.three {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    color: red;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9!important;
+    background: #d9d9d9!important;
+    color: red!important;
+    border-color: #d9d9d9!important;
 
 }
 
 td.four {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    color: #202183;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9!important;
+    background: #d9d9d9!important;
+    color: #202183!important;
+    border-color: #d9d9d9!important;
 
 }
 
 td.five {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    color: brown;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9!important;
+    background: #d9d9d9!important;
+    color: brown!important;
+    border-color: #d9d9d9!important;
 
 }
 
 td.six {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    color: orange;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9!important;
+    background: #d9d9d9!important;
+    color: orange!important;
+    border-color: #d9d9d9!important;
 
 }
 
 td.seven {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    color: black;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9!important;
+    background: #d9d9d9!important;
+    color: black!important;
+    border-color: #d9d9d9!important;
 
 }
 
 td.eight {
-    background-color: #d9d9d9;
-    background: #d9d9d9;
-    color: purple;
-    border-color: #d9d9d9;
+    background-color: #d9d9d9!important;
+    background: #d9d9d9!important;
+    color: purple!important;
+    border-color: #d9d9d9!important;
 
 }
 

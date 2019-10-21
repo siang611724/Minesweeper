@@ -22,11 +22,18 @@ class GameController extends Controller
         $id = DB::table('Map')->where('MemberID', $userID)
         ->orderBy('GameID','desc')->take(1)->value('GameID');
         
-       DB::table('history')->where('GameID',$Gameid)
-       ->orderBy('time','desc')->take(1)->update([
-        'result'=>'win'
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        $money=$money+50;
+        DB::table('users')->where('id',$userID)
+        ->update(['coins'=>$money]);
+
+       DB::table('history')->insert([
+                'GameID'=>$id,
+                'MemberID'=>$userID,
+                'result'=>'win'
        ]);
-       return 'ok';
+       return $money;
                 
     }
 
@@ -102,14 +109,7 @@ class GameController extends Controller
         $userID = Auth::id();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
-        if($money == 0) {
-            echo '請儲值';
-        } else {
-            DB::table('users')->where('id',$userID)
-            ->update([
-                'coins'=>$money-5
-            ]);
-        }
+       
         
         DB::table('Map')->insert(
             [
@@ -127,14 +127,62 @@ class GameController extends Controller
         $userID = Auth::id();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
-        if($money == 0) {
-            echo '請儲值';
+                $money=$money-5;
+        if($money <= 0) {
+            return $money;
         } else {
             DB::table('users')->where('id',$userID)
             ->update([
-                'coins'=>$money-5
+                'coins'=>$money
             ]);
         }
         return $money;
     }
+    public function newMoneyEasy(){
+        $userID = Auth::id();
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        $money=$money-5;
+        if($money <= 0) {
+            return $money;
+        } else{
+            DB::table('users')->where('id',$userID)
+            ->update(['coins'=>$money]);
+        }
+        return $money;
+    }
+    public function newMoneyMed(){
+        $userID = Auth::id();
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        $money=$money-10;
+        if($money <= 0) {
+            return $money;
+        } else{
+            DB::table('users')->where('id',$userID)
+            ->update(['coins'=>$money]);
+        }
+        return $money;
+    }
+    public function newMoneyHard(){
+        $userID = Auth::id();
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        $money=$money-15;
+        if($money <= 0) {
+            return $money;
+        } else{
+            DB::table('users')->where('id',$userID)
+            ->update(['coins'=>$money]);
+        }
+        return $money;
+    }
+    public function showMoney(){
+        $userID = Auth::id();
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+       
+        return $money;
+    }
+    
 }
