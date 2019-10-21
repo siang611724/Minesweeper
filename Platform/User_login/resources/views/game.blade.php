@@ -185,10 +185,9 @@
 
 
         </div>
-        <button id="myModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
-            Launch demo modal
-        </button>
-
+        <button id="myModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;"></button>
+        <button id="showHistoryLoseClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryLose" style="display: none;"></button>
+        <button id="showHistoryWinClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryWin" style="display: none;"></button>
 
         <script src="js/game.js"></script>
     </div>
@@ -211,7 +210,7 @@
     </div> -->
 </div>
 
-
+{{-- 接關modal --}}
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -221,12 +220,55 @@
                 <span>復活將扣除5金幣</span>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="continue">復活</button>
-                <button type="button" class="btn btn-primary" id="gameover">遊戲結束</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="continue">復活</button>
+                <button type="button" class="btn btn-secondary"  data-dismiss="modal" id="gameover">遊戲結束</button>
             </div>
         </div>
     </div>
     <script src="js/game.js"></script>
 </div>
+{{-- 不接關遊戲結束 --}}
+
+<div class="modal fade" id="showHistoryLose" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                遊玩者:<div style="display:inline;">{{ Auth::user()->name }}</div> <br>
+                遊戲時間:<div style="display:inline;" id="gametime" class="gametimeLose"></div>秒<br>
+                剩餘金幣:<div style="display:inline;" class="moneyLose"style="display:inline;"></div><br>
+                此局勝敗:敗
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()">確認</button>
+                
+            </div>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</div>
+{{-- 遊戲勝利 --}}
+
+<div class="modal fade" id="showHistoryWin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                遊玩者:<div style="display:inline;">{{ Auth::user()->name }}</div> <br>
+                遊戲時間:<div style="display:inline;" id="gametime" class="gametimeWin"></div>秒<br>
+                剩餘金幣:<div style="display:inline;" class="moneyWin"style="display:inline;"></div><br>
+                此局勝敗:勝
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()">確認</button>
+                
+            </div>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</div>
+
 
 @endsection

@@ -64,6 +64,7 @@ Route::get('/newmoneymed','GameController@newMoneyMed');
 Route::get('/newmoneyhard','GameController@newMoneyHard');
 
 Route::get('/showmoney','GameController@showMoney');
+Route::get('/getlastmoney','GameController@showMoney');
 
 
 Route::get('/edit', function (){
