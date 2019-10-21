@@ -153,8 +153,7 @@
             </div>
         </div>
 
-        <div class="gameArea_right col-lg-9 col-sm-12 col-12">
-            <div class="right_collection">
+        
                 <!-- <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3"> -->
                 
                 <div id="mine">
@@ -185,8 +184,7 @@
                 <script src="js/game.js"></script>
             </div>
         </div>
-    </div>
-</div>
+    
 <!-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
