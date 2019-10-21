@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 // use DB;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,17 +22,11 @@ Route::get('/', function () {
 // auth指令自動新增以下
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-// Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@coinPurchase');
 
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
 Route::resource('user', 'UserController');
-
-// Route::get('/login', function () {
-//     return view('admin');
-// });
 
 //  管理員路由
 Route::get('admin/login', 'Admin\LoginController@showLoginForm')
@@ -68,4 +63,11 @@ Route::get('/newmoney','GameController@newmoney');
 Route::get('/newmoneyeasy','GameController@newMoneyEasy');
 Route::get('/newmoneymed','GameController@newMoneyMed');
 Route::get('/newmoneyhard','GameController@newMoneyHard');
+<<<<<<< HEAD
 Route::get('/showmoney','GameController@showMoney');
+=======
+
+Route::get('/edit', function (){
+    return view('user.edit');
+});
+>>>>>>> 1aa85344711447f232bf8e82b85cfe98306c2e1c
