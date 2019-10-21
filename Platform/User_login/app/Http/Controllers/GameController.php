@@ -102,14 +102,7 @@ class GameController extends Controller
         $userID = Auth::id();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
-        if($money == 0) {
-            echo '請儲值';
-        } else {
-            DB::table('users')->where('id',$userID)
-            ->update([
-                'coins'=>$money-5
-            ]);
-        }
+       
         
         DB::table('Map')->insert(
             [

@@ -184,7 +184,7 @@ $("#easy").click(function () {
         };
         $.ajax({
             type:'get',
-            url:'/newmoneyhard',
+            url:'/newmoneyeasy',
             success:function(money){
               
                 console.log(money);
@@ -233,7 +233,7 @@ $("#medium").click(function () {
         };
         $.ajax({
             type:'get',
-            url:'/newmoneyhard',
+            url:'/newmoneymed',
             success:function(money){
               
                 console.log(money);
@@ -283,7 +283,7 @@ $("#hard").click(function () {
         };
         $.ajax({
             type:'get',
-            url:'/newmoney',
+            url:'/newmoneyhard',
             success:function(money){
               
                 console.log(money);
