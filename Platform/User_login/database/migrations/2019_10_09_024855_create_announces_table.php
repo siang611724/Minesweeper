@@ -1,11 +1,7 @@
 <?php
-
-
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 class CreateAnnouncesTable extends Migration
 {
     /**
@@ -22,7 +18,6 @@ class CreateAnnouncesTable extends Migration
             $table->date('releaseDate');
         });
     }
-
     /**
      * Reverse the migrations.
      *

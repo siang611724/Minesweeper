@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 
 Route::get('/announce', 'api\AnnounceController@annList');
 Route::post('/announce', 'api\AnnounceController@newAnn');
@@ -35,4 +35,3 @@ Route::put('/ban/{ban}', 'api\StatusController@Ban');
 Route::get('/logs/{logs}', 'api\LogController@userLoginTime');
 
 Route::put('store/{store}', 'api\StoreController@storeCoin');
-

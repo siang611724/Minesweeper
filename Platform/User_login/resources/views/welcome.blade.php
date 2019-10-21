@@ -96,8 +96,8 @@
     @if (Route::has('login'))
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">
-                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="40">
+            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 1.25rem">
+                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
                     Minesweeper Online</a></b>
             @auth
             @if(Auth::user()->name == 'admin')
@@ -157,7 +157,7 @@
                                 </a>
                                 @endif -->
                             </td>
-                            <td>&emsp;</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -175,6 +175,7 @@
     <div class="container register">
         <div class="row">
             @auth
+<<<<<<< HEAD
             <div class="col-lg-6 col-12">
                     <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
     
@@ -238,6 +239,8 @@
                     </tbody>    
                 </table>
             </div>
+=======
+>>>>>>> a1c38a75c27da888766bdf41f1a948655f1a2a8b
             @else
             <div class="col-lg-6 col-12">
                 <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->

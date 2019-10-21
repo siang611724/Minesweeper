@@ -153,7 +153,7 @@ function open(newMap, clickedItem) {
     win(clickedItem);
     // console.log(initMap);
 
-    console.log(newMap);
+    // console.log(newMap);
     // console.log(newMap.length);
 
 }
@@ -234,6 +234,14 @@ $("#medium").click(function () {
                 drawTable(map);
             }
         })
+        $.ajax({
+            type: 'GET',
+            url: "http://127.0.0.1:8000/api/member",
+            dataType: 'json',
+            success: function (e) {
+                
+            }
+        })
     })
 
 });
@@ -280,3 +288,14 @@ $("#hard").click(function () {
     })
 
 });
+$("#continue").click(function(){
+    // console.log("test");
+    $.ajax({
+        type:'get',
+        url:'/newmoney',
+        success:function(money){
+          
+            console.log(money);
+        }
+    })
+})
