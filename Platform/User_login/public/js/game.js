@@ -363,7 +363,6 @@ $("#continue").click(function(){
         url:'/newmoney',
         success:function(money){
             updateMoney.innerHTML=money;
-            console.log(money);
         }
     })
 })
