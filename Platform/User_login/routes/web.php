@@ -63,7 +63,7 @@ Route::get('/newmoney','GameController@newmoney');
 Route::get('/newmoneyeasy','GameController@newMoneyEasy');
 Route::get('/newmoneymed','GameController@newMoneyMed');
 Route::get('/newmoneyhard','GameController@newMoneyHard');
-<<<<<<< HEAD
+<<<<<< HEAD
 Route::get('/showmoney','GameController@showMoney');
 =======
 
