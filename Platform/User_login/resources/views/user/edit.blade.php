@@ -5,12 +5,12 @@
 <div class="container">
     <div class="content row">
         <div class="information_left d-md-none d-lg-block d-sm-none d-none">
-    
+
             <!-- hidden-xs hidden-sm  -->
             <div style="height: 100px; width:100px; margin: 30px auto 5px">
                 <img src="{{URL::asset('/image/user_icon.jpg')}}" alt="profile Pic" height="100" width="100">
             </div> <!-- 頭像 -->
-            <a class="" href="/user/{{ Auth::id() }}/edit">
+            <a class="" href="/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
@@ -19,9 +19,10 @@
                 <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></p>
             <!-- <img src="../../public/image/plus-circle.svg" alt=""> -->
             <p style="margin: 20px 20px auto">
-                <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
+                <button onclick="tradingList()" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
+            <a href="/2"><button onclick="" style="margin-top: 200px; margin-left: 70px">開始遊戲</button></a>
         </div>
         <!-- <div class="text_box"> 彈出對話框 -->
         <!-- <p>彈窗內容</p> -->
@@ -72,9 +73,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" onclick="checkCreditCard(this.form)" class="btn btn-primary">確認</button>
+                            <button type="button" onclick="storeCoin()" class="btn btn-primary">確認</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-
                         </div>
                     </form>
                 </div>
@@ -102,16 +102,8 @@
                                     <th scope="col">餘額</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($tradingRecord as $tRecord)
-                                <tr>
-                                    <td>{{ $tRecord->user_name }}</td>
-                                    <td>{{ $tRecord->trading_date }}</td>
-                                    <td>{{ $tRecord->trading_type }}</td>
-                                    <td>{{ $tRecord->trading_coins }}</td>
-                                    <td>{{ $tRecord->balance_coins }}</td>
-                                </tr>
-                                @endforeach
+                            <tbody id="tradingList">
+                                <!-- 交易紀錄區 -->
                             </tbody>
                         </table>
                     </div>
@@ -168,26 +160,5 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function checkCreditCard(form) {
-        var key = document.getElementById("textinput").value;
-        var coinValue = document.querySelector("input[name='radios']:checked").value;
-        var result = confirm("確定要儲值 " + coinValue + " 金幣嗎？");
-        var patt = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
-        if (patt.test(key)) {
-            if (result == true) {
-                form.submit();
-                return true;
-            }
-        } else {
-            document.getElementById("textbox").innerHTML = "請輸入正確信用卡號碼";
-            alert("格式錯誤");
-            return false;
-        }
-        // alert(patt.test(key));
-        // alert(key);
-    }
-</script>
 
 @endsection

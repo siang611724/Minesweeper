@@ -43,7 +43,7 @@
             <div style="height: 100px; width:100px; margin: 30px auto 5px">
                 <img src="{{URL::asset('/image/user_icon.jpg')}}" alt="profile Pic" height="100" width="100">
             </div> <!-- 頭像 -->
-            <a class="" href="/user/{{ Auth::id() }}/edit">
+            <a class="" href="/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
@@ -54,11 +54,11 @@
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-            <button onclick="test();" style="margin-top: 200px; margin-left: 70px">開始遊戲</button>
+            <a href="/home"><button style="margin-top: 200px; margin-left: 85px">返回</button></a>
         </div>
 
         <!-- 加值彈窗 -->
-        
+
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -154,38 +154,36 @@
             </div>
         </div>
 
-        
-                <!-- <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3"> -->
-                
-                <div id="mine">
 
-                    <div class="level">
+        <div id="mine">
 
-                        <button name="easy" id="easy">初級 </button>
-                        <button name="medium" id="medium">中級</button>
-                        <button name="hard" id="hard">高級</button>
+            <div class="level">
+
+                <button name="easy" id="easy">初級 </button>
+                <button name="medium" id="medium">中級</button>
+                <button name="hard" id="hard">高級</button>
 
 
-                    </div>
-                    <div class="info">
-                        剩餘地雷數:<span class="mineNum"></span>
-                        經過時間:<span class="times" id="times"></span>
-                    </div>
-                    <div class="gameBox">
-
-                    </div>
-
-
-                </div>
-                <button id="myModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
-                    Launch demo modal
-                </button>
-                
-
-                <script src="js/game.js"></script>
             </div>
+            <div class="info">
+                剩餘地雷數:<span class="mineNum"></span>
+                經過時間:<span class="times" id="times"></span>
+            </div>
+            <div class="gameBox">
+
+            </div>
+
+
         </div>
-    
+        <button id="myModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
+            Launch demo modal
+        </button>
+
+
+        <script src="js/game.js"></script>
+    </div>
+</div>
+
 <!-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -204,21 +202,21 @@
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"data-backdrop="static">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            </div>
-                            <div class="modal-body">
-                                    <span>復活將扣除5金幣</span>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="continue">復活</button>
-                                <button type="button" class="btn btn-primary" id="gameover">遊戲結束</button>
-                            </div>
-                        </div>
-                    </div>
-                    <script src="js/game.js"></script>
-                </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <span>復活將扣除5金幣</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="continue">復活</button>
+                <button type="button" class="btn btn-primary" id="gameover">遊戲結束</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</div>
 
 @endsection
