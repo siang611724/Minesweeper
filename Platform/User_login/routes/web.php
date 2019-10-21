@@ -65,3 +65,6 @@ Route::get('/2', function (){
     return view('game', compact('tradingRecord'));
 });
 Route::get('/newmoney','GameController@newmoney');
+Route::get('/newmoneyeasy','GameController@newMoneyEasy');
+Route::get('/newmoneymed','GameController@newMoneyMed');
+Route::get('/newmoneyhard','GameController@newMoneyHard');

@@ -183,6 +183,14 @@ $("#easy").click(function () {
             bomb: 10
         };
         $.ajax({
+            type:'get',
+            url:'/newmoneyhard',
+            success:function(money){
+              
+                console.log(money);
+            }
+        })
+        $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -224,6 +232,14 @@ $("#medium").click(function () {
             bomb: 40
         };
         $.ajax({
+            type:'get',
+            url:'/newmoneyhard',
+            success:function(money){
+              
+                console.log(money);
+            }
+        })
+        $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -234,14 +250,7 @@ $("#medium").click(function () {
                 drawTable(map);
             }
         })
-        $.ajax({
-            type: 'GET',
-            url: "http://127.0.0.1:8000/api/member",
-            dataType: 'json',
-            success: function (e) {
-                
-            }
-        })
+        
     })
 
 });
@@ -272,6 +281,14 @@ $("#hard").click(function () {
             row: 30,
             bomb: 1
         };
+        $.ajax({
+            type:'get',
+            url:'/newmoney',
+            success:function(money){
+              
+                console.log(money);
+            }
+        })
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
