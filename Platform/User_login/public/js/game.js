@@ -183,13 +183,24 @@ $("#easy").click(function () {
             bomb: 10
         };
         $.ajax({
+            type:'get',
+            url:'/newmoneyeasy',
+            success:function(money){
+             if(money==0){
+                $("#addMoney").click();
+                
+             }
+                console.log(money);
+            }
+        })
+        $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type: 'get',
             url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
             success: function (map) {
-
+              
                 drawTable(map);
                 // console.log(map);
             }
@@ -224,6 +235,16 @@ $("#medium").click(function () {
             bomb: 40
         };
         $.ajax({
+            type:'get',
+            url:'/newmoneymed',
+            success:function(money){
+                if(money==0){
+                    //儲值按鈕
+                }
+                console.log(money);
+            }
+        })
+        $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -234,14 +255,7 @@ $("#medium").click(function () {
                 drawTable(map);
             }
         })
-        $.ajax({
-            type: 'GET',
-            url: "http://127.0.0.1:8000/api/member",
-            dataType: 'json',
-            success: function (e) {
-                
-            }
-        })
+        
     })
 
 });
@@ -272,6 +286,16 @@ $("#hard").click(function () {
             row: 30,
             bomb: 1
         };
+        $.ajax({
+            type:'get',
+            url:'/newmoneyhard',
+            success:function(money){
+              if(money==0){
+                  //儲值按鈕
+              }
+                console.log(money);
+            }
+        })
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -49,7 +49,7 @@
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
             <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p>
             <p style="margin: 20px 20px auto">金幣: {{ Auth::user()->coins }}
-                <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></p>
+                <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter" id="addMoney"></a></p>
             <p style="margin: 20px 20px auto">
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
@@ -58,6 +58,7 @@
         </div>
 
         <!-- 加值彈窗 -->
+        
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -153,8 +154,7 @@
             </div>
         </div>
 
-        <div class="gameArea_right col-lg-9 col-sm-12 col-12">
-            <div class="right_collection">
+        
                 <!-- <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3"> -->
                 
                 <div id="mine">
@@ -185,8 +185,7 @@
                 <script src="js/game.js"></script>
             </div>
         </div>
-    </div>
-</div>
+    
 <!-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -209,8 +208,6 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                
-
                             </div>
                             <div class="modal-body">
                                     <span>復活將扣除5金幣</span>
