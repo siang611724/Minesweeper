@@ -120,12 +120,13 @@ class GameController extends Controller
         $userID = Auth::id();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
+                $money=$money-5;
         if($money <= 0) {
             return $money;
         } else {
             DB::table('users')->where('id',$userID)
             ->update([
-                'coins'=>$money-5
+                'coins'=>$money
             ]);
         }
         return $money;

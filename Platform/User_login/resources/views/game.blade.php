@@ -54,7 +54,7 @@
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-<<<<<<< HEAD
+
                 <a href="/2"> <button onclick="closegame();" style="margin-top: 70px; margin-left: 30px;" class="css_button">開始遊戲</button></a>
                 <a href="/home"> <button onclick="opengame();" style="margin-top: 10px; margin-left: 30px;" class="css_button">回到首頁</button></a>
         </div>
@@ -62,7 +62,7 @@
         <!-- 加值彈窗 -->
         
         <div data-backdrop="static" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-=======
+
             <a href="/home"><button style="margin-top: 200px; margin-left: 85px">返回</button></a>
         </div>
 
