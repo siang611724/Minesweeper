@@ -60,7 +60,7 @@ function gameover(tds) {
 }
 
 function win() {
-
+    
     var totalClicked = 0;
     for (var i = 0; i < tds.length; i++) {
         for (var j = 0; j < tds[0].length; j++) {
@@ -73,10 +73,13 @@ function win() {
                         type: 'get',
                         url: '/wang',
                         success: function (e) {
-                            console.log(e);
+                            updateMoney.innerHTML=e;
                         }
                     })
-                    alert("win");
+                    
+                    
+                    clearInterval(timer);
+                    t=0;
                 }
             }
         }
@@ -160,16 +163,17 @@ function open(newMap, clickedItem) {
             }
         }
     }
-    win(clickedItem);
+    win();
     // console.log(initMap);
 
-    console.log(newMap);
+    // console.log(newMap);
     // console.log(newMap.length);
 
 }
 $("#easy").click(function () {
     clearInterval(timer);
     t=0;
+    document.querySelector('.times').innerHTML=t;
     var table = document.createElement("table");
     for (var i = 0; i < 9; i++) {
         var domTr = document.createElement("tr");
@@ -226,6 +230,7 @@ $("#easy").click(function () {
 $("#medium").click(function () {
     clearInterval(timer);
     t=0;
+    document.querySelector('.times').innerHTML=t;
     var table = document.createElement("table");
     for (var i = 0; i < 16; i++) {
         var domTr = document.createElement("tr");
@@ -292,6 +297,7 @@ $("#medium").click(function () {
 $("#hard").click(function () {
     clearInterval(timer);
     t=0;
+    document.querySelector('.times').innerHTML=t;
     var table = document.createElement("table");
     for (var i = 0; i < 16; i++) {
         var domTr = document.createElement("tr");

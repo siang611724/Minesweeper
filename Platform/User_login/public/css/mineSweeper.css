@@ -5,11 +5,18 @@
 .level {
     text-align: center;
     margin-bottom: 10px;
+ 
+   
 }
 
 .info {
     text-align: center;
     margin-top: 30px;
+    font-size: 20px;
+    font-family: '微軟正黑體';
+    text-decoration: none;
+    font-weight: bold;
+    color: #0037FF;
 }
 
 .mineNum{
@@ -119,7 +126,7 @@ td.eight {
 
 #starteasy {
     width: 72px;
-    position: relative;  top: 20px;
+    position: relative;  left :8%;top: 20px;
     font-family: 'Archivo Black', sans-serif;
     outline: none;
     font-size: 40px;
@@ -198,3 +205,44 @@ td.eight {
     top: 1px;
     position: relative;
     }
+
+    .btn1 {
+        padding: 10px 20px;
+        border: 1px solid #C7C7C7;
+        background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFFFFF));
+        background: -webkit-linear-gradient(top, #FFFFFF, #FFFFFF);
+        background: -moz-linear-gradient(top, #FFFFFF, #FFFFFF);
+        background: -ms-linear-gradient(top, #FFFFFF, #FFFFFF);
+        background: -o-linear-gradient(top, #FFFFFF, #FFFFFF);
+        background-color: #FFFFFF;
+        box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #FFFFFF;
+        -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #FFFFFF;
+        -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #FFFFFF;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        text-shadow: #7AE4FF 1px 1px 0px;
+        color: #0037FF;
+        font-size: 14px;
+        font-family: '微軟正黑體';
+        text-decoration: none;
+        font-weight: bold;
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        -o-transition: 0.2s;
+        cursor: pointer;
+        }
+     .btn1:hover {
+        background: none;
+        background-color: #FFFFFF;
+        box-shadow: 0px 0px 5px 0px #AAAAAA;
+        -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+        -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+        border: 1px solid #ffffff;
+        color: #470000;
+        }
+     .btn1:active {
+        top: 1px;
+        position: relative;
+        }
+    

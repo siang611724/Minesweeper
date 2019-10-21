@@ -169,9 +169,9 @@
 
             <div class="level">
 
-                <button name="easy" id="easy">初級 </button>
-                <button name="medium" id="medium">中級</button>
-                <button name="hard" id="hard">高級</button>
+                <button name="easy" id="easy" class="btn1">初級 </button>
+                <button name="medium" id="medium" class="btn1">中級</button>
+                <button name="hard" id="hard" class="btn1">高級</button>
 
 
             </div>

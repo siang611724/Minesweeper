@@ -22,11 +22,17 @@ class GameController extends Controller
         $id = DB::table('Map')->where('MemberID', $userID)
         ->orderBy('GameID','desc')->take(1)->value('GameID');
         
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        $money=$money+50;
+        DB::table('users')->where('id',$userID)
+        ->update(['coins'=>$money]);
+
        DB::table('history')->where('GameID',$Gameid)
        ->orderBy('time','desc')->take(1)->update([
         'result'=>'win'
        ]);
-       return 'ok';
+       return $money;
                 
     }
 
