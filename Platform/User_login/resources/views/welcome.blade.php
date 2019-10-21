@@ -173,7 +173,7 @@
     @if (Route::has('login'))
     <div class="container register">
         <div class="row">
-            @authㄋ
+            @auth
             @else
             <div class="col-lg-6 col-12">
                 <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->

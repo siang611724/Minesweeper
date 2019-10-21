@@ -53,7 +53,7 @@ class StoreController extends Controller
         $result = DB::table('users')
                     ->where('id', $id)
                     ->update([
-                        'coins' => $user->coins + $request->radios,
+                        'coins' => $user->coins + $request->coins,
                     ]);
         if (!$result) {
             return response()->json(['status' => 1, 'message' => 'Post not found'],404);
@@ -61,13 +61,13 @@ class StoreController extends Controller
             DB::table('transaction_records')->insert([
                 [
                     'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '儲值',
-                    'trading_coins' => $request->radios,
-                    'balance_coins' => $user->coins + $request->radios
+                    'trading_coins' => $request->coins,
+                    'balance_coins' => $user->coins + $request->coins
                 ]
             ]);
-            // return response()->json(['status' => 0, 'message' => 'Success', 'money' => $request->radios, 
-            //                         'balance' => $user->coins + $request->radios]);
-            return redirect('/home');
+            return response()->json(['status' => 0, 'message' => 'Success', 'money' => $request->coins, 
+                                    'balance' => $user->coins + $request->coins]);
+            // return redirect('/home');
         }
     }
 

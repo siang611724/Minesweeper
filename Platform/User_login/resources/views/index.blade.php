@@ -11,7 +11,7 @@
 </head>
 <body >
     <div id="mine">
-
+  
         <div class="level">
         
             <button  name="easy" id="easy">初級 </button> 
@@ -25,7 +25,7 @@
             經過時間:<span class="times" id="times"></span>
         </div>
         <div  class="gameBox">
-
+     
         </div>
 
         
@@ -34,6 +34,7 @@
             Launch demo modal
           </button>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
