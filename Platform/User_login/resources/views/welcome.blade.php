@@ -8,11 +8,11 @@
     <title>MinesweeperOnline</title>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -86,6 +86,7 @@
         nav {
             background-color: #eee;
         }
+        
     </style>
 </head>
 
@@ -94,8 +95,8 @@
     @if (Route::has('login'))
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 2rem">
-                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="40">
+            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 1.25rem">
+                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
                     Minesweeper Online</a></b>
             @auth
             @if(Auth::user()->name == 'admin')
@@ -155,7 +156,7 @@
                                 </a>
                                 @endif -->
                             </td>
-                            <td>&emsp;</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -173,52 +174,6 @@
     <div class="container register">
         <div class="row">
             @auth
-            <div class="col-xl-6 col-12">
-                <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
-
-                <p class="lead">遊戲說明</p>
-                <p></p>
-                <div class="form-group" style="margin-top: 50px; text-align: left;"><label style="text-align: left;">公告欄:</label>
-                    <table class="table table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th colspan="2" scope="col">Title</th>
-                                <th scope="col" style="text-align: right"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td colspan="2">Article 1</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td colspan="2">Article 2</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Article 3</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <!-- <table class="form-control" style="margin-top: 0px; margin-bottom: 0px; height: 123px;">
-                    <tr>
-                        <td>title</td>
-                        <td>text</td>
-                        <td><button>more</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
-                </table> -->
-                </div>
-            </div>
             @else
             <div class="col-lg-6 col-12">
                 <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->
@@ -285,53 +240,83 @@
             <div class="col-lg-6 col-12">
                 <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
-                <p class="lead">遊戲說明</p>
-                <p></p>
-                <div class="form-group" style="margin-top: 50px; text-align: left;"><label style="text-align: left;">最新消息</label>
-                    <table class="table table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th colspan="2" scope="col">Title</th>
-                                <th scope="col" style="text-align: right"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td colspan="2">Article 1</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td colspan="2">Article 2</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Article 3</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <!-- <table class="form-control" style="margin-top: 0px; margin-bottom: 0px; height: 123px;">
-                    <tr>
-                        <td>title</td>
-                        <td>text</td>
-                        <td><button>more</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
-                </table> -->
-                </div>
+                <p class="lead">遊戲介紹</p>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt=""> 
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>踩地雷</h5>
+                                <p>享受它吧</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt="">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>    
             </div>
             @endauth
         </div>
     </div>
+    <div class="container news">
+        <div class="form-group" style="margin-top: 50px; text-align: left;">
+            <label style="text-align: left;">
+                <h1>最新消息</h1>
+            </label>
+            <div class="accordion" id="accordionExample">
+                    <!-- 公告生成區 -->
+            </div>
+            {{-- <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th colspan="2" scope="col">Title</th>
+                        <th scope="col" style="text-align: right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td colspan="2">Article 1</td>
+                        <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td colspan="2">Article 2</td>
+                        <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Article 3</td>
+                        <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                    </tr>
+                </tbody>
+            </table> --}}
+        </div>
+    </div>
     @endif
+
+    <script>
+        
+    </script>
+
 </body>
 
 </html>

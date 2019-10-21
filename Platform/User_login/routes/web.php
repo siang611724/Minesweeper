@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+// use DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +28,40 @@ Route::post('/home', 'HomeController@coinPurchase');
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
 Route::resource('user', 'UserController');
+
+// Route::get('/login', function () {
+//     return view('admin');
+// });
+
+//  管理員路由
+Route::get('admin/login', 'Admin\LoginController@showLoginForm')
+->name('admin.login');
+
+Route::post('admin/login', 'Admin\LoginController@login');
+
+Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin'], function() {
+	Route::get('logout', 'Admin\LoginController@logout')
+	->name('admin.logout');
+
+	Route::get('/', 'Admin\HomeController@index')->name('admin');
+
+	// other routes for admin ...
+
+});
+
+Route::get('/game', 'GameController@showGamePage');
+
+Route::get('wang/{tr}/{td}/{mineNum}','GameController@map');
+Route::get('getMap/{MapX}/{MapY}','Play@MouseClickTd');
+Route::resource('/wang','GameController');
+
+Route::get('/1', function (){
+    return view('index');
+});
+
+Route::get('/2', function (){
+	$id = Auth::id();
+    $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('trading_date', 'desc')->get();
+    return view('game', compact('tradingRecord'));
+});
+Route::get('/newmoney','GameController@newmoney');

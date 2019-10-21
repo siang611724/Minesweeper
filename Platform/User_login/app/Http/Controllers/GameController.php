@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Mine;
 use App\Map;
 use DB;
 use Illuminate\Http\Request;
-
+use App\User;
 class GameController extends Controller
 {
     /**
@@ -18,10 +18,11 @@ class GameController extends Controller
     public function index()
     {
         //
-        $id = DB::table('Map')->where('MemberID', "1")
+        $userID = Auth::id();
+        $id = DB::table('Map')->where('MemberID', $userID)
         ->orderBy('GameID','desc')->take(1)->value('GameID');
         
-       DB::table('history')->where('GameID',$id)
+       DB::table('history')->where('GameID',$Gameid)
        ->orderBy('time','desc')->take(1)->update([
         'result'=>'win'
        ]);
@@ -98,17 +99,22 @@ class GameController extends Controller
     public function map($tr,$td,$mineNum){
         
         $Mine=new Mine($tr,$td,$mineNum);
-        
-        // $money = DB::table('money')->where('MemberID','jack')
-        //         ->value('money');
-        // DB::table('money')->update([
-        //     'money'=>$money-5
-        // ]);
+        $userID = Auth::id();
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        if($money == 0) {
+            echo '請儲值';
+        } else {
+            DB::table('users')->where('id',$userID)
+            ->update([
+                'coins'=>$money-5
+            ]);
+        }
         
         DB::table('Map')->insert(
             [
                 
-                'MemberID'=>"1",
+                'MemberID'=>$userID,
                 'Info'=> serialize($Mine->area)
             ]
         );
@@ -116,5 +122,19 @@ class GameController extends Controller
         
         return $Mine->area;
         
+    }
+    public function newmoney(){
+        $userID = Auth::id();
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        if($money == 0) {
+            echo '請儲值';
+        } else {
+            DB::table('users')->where('id',$userID)
+            ->update([
+                'coins'=>$money-5
+            ]);
+        }
+        return $money;
     }
 }
