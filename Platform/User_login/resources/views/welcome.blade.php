@@ -7,10 +7,9 @@
 
     <title>MinesweeperOnline</title>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Fonts -->
@@ -22,7 +21,7 @@
         body {
             background-color: #fff;
             /* color: #636b6f; */
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito', sans-serif, 微軟正黑體;
             /* font-weight: 200; */
             height: 100vh;
             margin: 0;
@@ -86,7 +85,9 @@
         nav {
             background-color: #eee;
         }
-        
+        h1 {
+            font-weight: 600;
+        }
     </style>
 </head>
 
@@ -174,6 +175,69 @@
     <div class="container register">
         <div class="row">
             @auth
+            <div class="col-lg-6 col-12">
+                    <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
+    
+                <h1>遊戲介紹</h1>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt=""> 
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>踩地雷</h5>
+                                <p>享受它吧</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt="">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>    
+            </div>
+            <div class="col-lg-6 col-12">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th colspan="2" scope="col">Title</th>
+                            <th scope="col" style="text-align: right"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td colspan="2">Article 1</td>
+                            <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td colspan="2">Article 2</td>
+                            <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Article 3</td>
+                            <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
+                        </tr>   
+                    </tbody>    
+                </table>
+            </div>
             @else
             <div class="col-lg-6 col-12">
                 <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->
@@ -240,7 +304,8 @@
             <div class="col-lg-6 col-12">
                 <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
-                <p class="lead">遊戲介紹</p>
+                <h1>遊戲介紹</h1>
+                <hr>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -276,10 +341,8 @@
         </div>
     </div>
     <div class="container news">
-        <div class="form-group" style="margin-top: 50px; text-align: left;">
-            <label style="text-align: left;">
-                <h1>最新消息</h1>
-            </label>
+            <h1>最新消息</h1>
+            <hr>
             <div class="accordion" id="accordionExample">
                     <!-- 公告生成區 -->
             </div>
@@ -314,7 +377,43 @@
     @endif
 
     <script>
-        
+        $(document).ready(function(){
+            $.ajax({
+              type: 'GET',
+              url: "http://127.0.0.1:8000/api/announce",
+              dataType: 'json',
+              success: function (e) {
+                  // console.log(e);
+                  for (j = e.length - 1; j > 0; j--) {
+                      // console.log(e);
+                      $('.accordion').append(
+                          '<div class="card"><div class="card-header" id="heading' +
+                          j +
+                          '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
+                          j +
+                          '" aria-expanded="true" aria-controls="collapse' +
+                          j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
+                          e[j]
+                          .title +
+                          '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
+                          e[j].id +
+                          ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
+                          j +
+                          '" class="collapse" aria-labelledby="heading' +
+                          j +
+                          '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
+                          e[j].id +
+                          '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
+                          e[j].id +
+                          ')">確認</button></div><textarea id="updateContent' + e[j]
+                          .id +
+                          '" placeholder="請輸入公告內容">' +
+                          e[j].content + '</textarea></div></div></div>'
+                      )
+                  }
+              }
+          });
+        })
     </script>
 
 </body>
