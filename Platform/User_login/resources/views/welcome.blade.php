@@ -7,7 +7,7 @@
 
     <title>MinesweeperOnline</title>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
@@ -175,7 +175,6 @@
     <div class="container register">
         <div class="row">
             @auth
-<<<<<<< HEAD
             <div class="col-lg-6 col-12">
                     <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
     
@@ -239,8 +238,6 @@
                     </tbody>    
                 </table>
             </div>
-=======
->>>>>>> a1c38a75c27da888766bdf41f1a948655f1a2a8b
             @else
             <div class="col-lg-6 col-12">
                 <!-- style="display: inline-block; position: relative; width: 500px; left: 50px; height: 600px;" -->
@@ -308,6 +305,7 @@
                 <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
                 <h1>遊戲介紹</h1>
+                <hr>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -343,10 +341,8 @@
         </div>
     </div>
     <div class="container news">
-        <div class="form-group" style="margin-top: 50px; text-align: left;">
-            <label style="text-align: left;">
-                <h1>最新消息</h1>
-            </label>
+            <h1>最新消息</h1>
+            <hr>
             <div class="accordion" id="accordionExample">
                     <!-- 公告生成區 -->
             </div>
@@ -381,7 +377,43 @@
     @endif
 
     <script>
-        
+        $(document).ready(function(){
+            $.ajax({
+              type: 'GET',
+              url: "http://127.0.0.1:8000/api/announce",
+              dataType: 'json',
+              success: function (e) {
+                  // console.log(e);
+                  for (j = e.length - 1; j > 0; j--) {
+                      // console.log(e);
+                      $('.accordion').append(
+                          '<div class="card"><div class="card-header" id="heading' +
+                          j +
+                          '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
+                          j +
+                          '" aria-expanded="true" aria-controls="collapse' +
+                          j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
+                          e[j]
+                          .title +
+                          '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
+                          e[j].id +
+                          ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
+                          j +
+                          '" class="collapse" aria-labelledby="heading' +
+                          j +
+                          '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
+                          e[j].id +
+                          '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
+                          e[j].id +
+                          ')">確認</button></div><textarea id="updateContent' + e[j]
+                          .id +
+                          '" placeholder="請輸入公告內容">' +
+                          e[j].content + '</textarea></div></div></div>'
+                      )
+                  }
+              }
+          });
+        })
     </script>
 
 </body>

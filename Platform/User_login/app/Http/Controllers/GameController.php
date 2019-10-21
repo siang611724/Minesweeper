@@ -125,6 +125,7 @@ class GameController extends Controller
     }
     public function newmoney(){
         $userID = Auth::id();
+        $user = DB::table('users')->where('id',$userID)->first();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
                 $money=$money-5;
@@ -135,24 +136,43 @@ class GameController extends Controller
             ->update([
                 'coins'=>$money
             ]);
+
+            DB::table('transaction_records')->insert([
+                [
+                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '接關',
+                    'trading_coins' => 5,
+                    'balance_coins' => $user->coins - 5,
+                ]
+            ]);
         }
         return $money;
     }
     public function newMoneyEasy(){
         $userID = Auth::id();
+        $user = DB::table('users')->where('id',$userID)->first();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
         $money=$money-5;
+        
         if($money <= 0) {
             return $money;
         } else{
             DB::table('users')->where('id',$userID)
             ->update(['coins'=>$money]);
+
+            DB::table('transaction_records')->insert([
+                [
+                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '遊玩初級難度',
+                    'trading_coins' => 5,
+                    'balance_coins' => $user->coins - 5,
+                ]
+            ]);
         }
         return $money;
     }
     public function newMoneyMed(){
         $userID = Auth::id();
+        $user = DB::table('users')->where('id',$userID)->first();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
         $money=$money-10;
@@ -161,11 +181,20 @@ class GameController extends Controller
         } else{
             DB::table('users')->where('id',$userID)
             ->update(['coins'=>$money]);
+
+            DB::table('transaction_records')->insert([
+                [
+                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '遊玩中級難度',
+                    'trading_coins' => 10,
+                    'balance_coins' => $user->coins - 10,
+                ]
+            ]);
         }
         return $money;
     }
     public function newMoneyHard(){
         $userID = Auth::id();
+        $user = DB::table('users')->where('id',$userID)->first();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
         $money=$money-15;
@@ -174,6 +203,14 @@ class GameController extends Controller
         } else{
             DB::table('users')->where('id',$userID)
             ->update(['coins'=>$money]);
+
+            DB::table('transaction_records')->insert([
+                [
+                    'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '遊玩高級難度',
+                    'trading_coins' => 15,
+                    'balance_coins' => $user->coins - 15,
+                ]
+            ]);
         }
         return $money;
     }

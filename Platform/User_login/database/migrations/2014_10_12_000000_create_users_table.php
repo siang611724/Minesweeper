@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('coins');
-            $table->dateTime('last_login_time');
+            $table->dateTime('last_login_time')->useCurrent = true;
             $table->boolean('status')->default('0')->nullable();
         });
     }
