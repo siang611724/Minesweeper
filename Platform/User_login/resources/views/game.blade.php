@@ -43,22 +43,33 @@
             <div style="height: 100px; width:100px; margin: 30px auto 5px">
                 <img src="{{URL::asset('/image/user_icon.jpg')}}" alt="profile Pic" height="100" width="100">
             </div> <!-- 頭像 -->
-            <a class="" href="/user/{{ Auth::id() }}/edit">
+            <a class="" href="/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
             <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p>
-            <p style="margin: 20px 20px auto">金幣: {{ Auth::user()->coins }}
-                <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></p>
+            <p style="margin: 20px 20px auto;display:inline">金幣:<div class="money"style="display:inline;"></div>
+                <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter" ><button id="addMoney" style="display:none"></button></a></p>
             <p style="margin: 20px 20px auto">
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-            <button onclick="test();" style="margin-top: 200px; margin-left: 70px">開始遊戲</button>
+
+                <a href="/2"> <button onclick="closegame();" style="margin-top: 70px; margin-left: 30px;" class="css_button">開始遊戲</button></a>
+                <a href="/home"> <button onclick="opengame();" style="margin-top: 10px; margin-left: 30px;" class="css_button">回到首頁</button></a>
         </div>
 
         <!-- 加值彈窗 -->
+        
+        <div data-backdrop="static" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+            <a href="/home"><button style="margin-top: 200px; margin-left: 85px">返回</button></a>
+        </div>
+
+        <!-- 加值彈窗 -->
+
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+>>>>>>> 1aa85344711447f232bf8e82b85cfe98306c2e1c
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -153,40 +164,35 @@
             </div>
         </div>
 
-        <div class="gameArea_right col-lg-9 col-sm-12 col-12">
-            <div class="right_collection">
-                <!-- <div style="border: 1px solid; height: 400px; width: 660px; margin: auto; margin-top: 20px" class="mb-3"> -->
-                
-                <div id="mine">
 
-                    <div class="level">
+        <div id="mine">
 
-                        <button name="easy" id="easy">初級 </button>
-                        <button name="medium" id="medium">中級</button>
-                        <button name="hard" id="hard">高級</button>
+            <div class="level">
+
+                <button name="easy" id="easy" class="btn1">初級 </button>
+                <button name="medium" id="medium" class="btn1">中級</button>
+                <button name="hard" id="hard" class="btn1">高級</button>
 
 
-                    </div>
-                    <div class="info">
-                        剩餘地雷數:<span class="mineNum"></span>
-                        經過時間:<span class="times" id="times"></span>
-                    </div>
-                    <div class="gameBox">
-
-                    </div>
-
-
-                </div>
-                <button id="myModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;">
-                    Launch demo modal
-                </button>
-                
-
-                <script src="js/game.js"></script>
             </div>
+            <div class="info">
+                剩餘地雷數:<span class="mineNum"></span>
+                經過時間:<span class="times" id="times"></span>
+            </div>
+            <div class="gameBox">
+
+            </div>
+
+
         </div>
+        <button id="myModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display: none;"></button>
+        <button id="showHistoryLoseClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryLose" style="display: none;"></button>
+        <button id="showHistoryWinClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryWin" style="display: none;"></button>
+
+        <script src="js/game.js"></script>
     </div>
 </div>
+
 <!-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -204,24 +210,65 @@
     </div> -->
 </div>
 
+{{-- 接關modal --}}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <span>復活將扣除5金幣</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="continue">復活</button>
+                <button type="button" class="btn btn-secondary"  data-dismiss="modal" id="gameover">遊戲結束</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</div>
+{{-- 不接關遊戲結束 --}}
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"data-backdrop="static">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                
+<div class="modal fade" id="showHistoryLose" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                遊玩者:<div style="display:inline;">{{ Auth::user()->name }}</div> <br>
+                遊戲時間:<div style="display:inline;" id="gametime" class="gametimeLose"></div>秒<br>
+                剩餘金幣:<div style="display:inline;" class="moneyLose"style="display:inline;"></div><br>
+                此局勝敗:敗
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()">確認</button>
+                
+            </div>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</div>
+{{-- 遊戲勝利 --}}
 
-                            </div>
-                            <div class="modal-body">
-                                    <span>復活將扣除5金幣</span>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="continue">復活</button>
-                                <button type="button" class="btn btn-primary" id="gameover">遊戲結束</button>
-                            </div>
-                        </div>
-                    </div>
-                    <script src="js/game.js"></script>
-                </div>
+<div class="modal fade" id="showHistoryWin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                遊玩者:<div style="display:inline;">{{ Auth::user()->name }}</div> <br>
+                遊戲時間:<div style="display:inline;" id="gametime" class="gametimeWin"></div>秒<br>
+                剩餘金幣:<div style="display:inline;" class="moneyWin"style="display:inline;"></div><br>
+                此局勝敗:勝
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()">確認</button>
+                
+            </div>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</div>
+
 
 @endsection

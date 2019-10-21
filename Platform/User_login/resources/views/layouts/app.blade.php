@@ -16,13 +16,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
-    
+
     <!-- game css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mineSweeper.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    
+
+
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 
     <!-- Fonts -->
@@ -46,7 +46,7 @@
         .information_left {
             /* float: left; */
             box-shadow: 1px 0 0 0 #eee;
-            height: 550px;
+            /* height: 550px; */
             width: 250px;
             margin: 15px;
         }
@@ -108,9 +108,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <b><a class="navbar-brand" style="font-size: 2rem" href="{{ url('/home') }}">
-                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">      
-                {{ 'Minesweeper Online' }}
-                </a></b>
+                        <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
+                        {{ 'Minesweeper Online' }}
+                    </a></b>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -175,6 +175,57 @@
                 </div>
             </div>
         </nav>
+
+        <script>
+            function storeCoin() {
+                var key = document.getElementById("textinput").value;
+                var coinValue = document.querySelector("input[name='radios']:checked").value;
+                var result = confirm("確定要儲值 " + coinValue + " 金幣嗎？");
+                var patt = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+                if (patt.test(key)) {
+                    if (result == true) {
+                        // form.submit();
+                        // return true;
+                        $.ajax({
+                            type: 'PUT',
+                            url: 'http://127.0.0.1:8000/api/store/{{ Auth::id() }}',
+                            dataType: 'json',
+                            data: {
+                                'coins': coinValue
+                            },
+                            success: function() {
+                                alert('加值成功');
+                                location.reload();
+                            }
+                        });
+                    }
+                } else {
+                    document.getElementById("textbox").innerHTML = "請輸入正確信用卡號碼";
+                    alert("格式錯誤");
+                    return false;
+                }
+                // alert(patt.test(key));
+                // alert(key);
+            }
+
+            function tradingList() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1:8000/api/trans/{{ Auth::id() }}',
+                    dataType: 'json',
+                    success: function(result) {
+                        for (i = 0; i < result.length; i++) {
+                            $('#tradingList').append("<tr><td>" +
+                                result[i].user_name + "</td><td>" +
+                                result[i].trading_date + "</td><td>" +
+                                result[i].trading_type + "</td><td>" +
+                                result[i].trading_coins + "</td><td>" +
+                                result[i].balance_coins + "</td></tr>");
+                        }
+                    }
+                })
+            }
+        </script>
 
         <main class="py-4">
             @yield('content')
