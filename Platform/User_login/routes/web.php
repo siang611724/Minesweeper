@@ -63,11 +63,11 @@ Route::get('/newmoney','GameController@newmoney');
 Route::get('/newmoneyeasy','GameController@newMoneyEasy');
 Route::get('/newmoneymed','GameController@newMoneyMed');
 Route::get('/newmoneyhard','GameController@newMoneyHard');
-<<<<<<< HEAD
+
 Route::get('/showmoney','GameController@showMoney');
-=======
+
 
 Route::get('/edit', function (){
     return view('user.edit');
 });
->>>>>>> 1aa85344711447f232bf8e82b85cfe98306c2e1c
+
