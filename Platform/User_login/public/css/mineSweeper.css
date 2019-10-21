@@ -117,7 +117,84 @@ td.eight {
 
 }
 
-#start {
+#starteasy {
     width: 72px;
-    position: relative; left:43%; top: 20px;
+    position: relative;  top: 20px;
+    font-family: 'Archivo Black', sans-serif;
+    outline: none;
+    font-size: 40px;
+    letter-spacing: 13px;
+    width: 25vw;
+    height: 12vh;
+    color: #007CC5;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: gray 0.05em 0.05em 0.05em;
 }
+#startmed {
+    width: 72px;
+    position: relative;left:11% ;  top: 20px;
+    font-family: 'Archivo Black', sans-serif;
+    outline: none;
+    font-size: 40px;
+    letter-spacing: 13px;
+    width: 25vw;
+    height: 12vh;
+    color: #007CC5;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: gray 0.05em 0.05em 0.05em;
+}
+#starthard {
+    width: 72px;
+    position: relative; left:30% ;top: 20px;
+    font-family: 'Archivo Black', sans-serif;
+    outline: none;
+    font-size: 40px;
+    letter-spacing: 13px;
+    width: 25vw;
+    height: 12vh;
+    color: #007CC5;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: gray 0.05em 0.05em 0.05em;
+}
+.css_button {
+    padding: 25px 50px;
+    border: 1px solid #C7C7C7;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFFFFF));
+    background: -webkit-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background: -moz-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background: -ms-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background: -o-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background-color: #FFFFFF;
+    box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 0px #FFFFFF;
+    -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 0px #FFFFFF;
+    -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 0px #FFFFFF;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    text-shadow: #60F7FC 1px 1px 0px;
+    color: #3B45FF;
+    font-size: 19px;
+    font-family: '微軟正黑體';
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    cursor: pointer;
+    }
+ .css_button:hover {
+    background: none;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    border: 1px solid #ffffff;
+    color: #2645E0;
+    }
+ .css_button:active {
+    top: 1px;
+    position: relative;
+    }

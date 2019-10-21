@@ -54,7 +54,8 @@
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-            <a href="/2"><button onclick="" style="margin-top: 200px; margin-left: 70px">開始遊戲</button></a>
+            <a href="/2"> <button onclick="closegame();" style="margin-top: 70px; margin-left: 30px;" class="css_button">開始遊戲</button></a>
+            <a href="/home"> <button onclick="opengame();" style="margin-top: 10px; margin-left: 30px;" class="css_button">回到首頁</button></a>
         </div>
 
         <!-- 加值彈窗 -->

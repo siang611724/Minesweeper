@@ -68,3 +68,4 @@ Route::get('/newmoney','GameController@newmoney');
 Route::get('/newmoneyeasy','GameController@newMoneyEasy');
 Route::get('/newmoneymed','GameController@newMoneyMed');
 Route::get('/newmoneyhard','GameController@newMoneyHard');
+Route::get('/showmoney','GameController@showMoney');

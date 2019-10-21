@@ -120,7 +120,7 @@ class GameController extends Controller
         $userID = Auth::id();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
-        if($money == 0) {
+        if($money <= 0) {
             return $money;
         } else {
             DB::table('users')->where('id',$userID)
@@ -134,13 +134,12 @@ class GameController extends Controller
         $userID = Auth::id();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
-        if($money == 0) {
+        $money=$money-5;
+        if($money <= 0) {
             return $money;
-        } else {
+        } else{
             DB::table('users')->where('id',$userID)
-            ->update([
-                'coins'=>$money-5
-            ]);
+            ->update(['coins'=>$money]);
         }
         return $money;
     }
@@ -148,13 +147,12 @@ class GameController extends Controller
         $userID = Auth::id();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
-        if($money == 0) {
+        $money=$money-10;
+        if($money <= 0) {
             return $money;
-        } else {
+        } else{
             DB::table('users')->where('id',$userID)
-            ->update([
-                'coins'=>$money-10
-            ]);
+            ->update(['coins'=>$money]);
         }
         return $money;
     }
@@ -162,14 +160,20 @@ class GameController extends Controller
         $userID = Auth::id();
         $money = DB::table('users')->where('id',$userID)
                 ->value('coins');
-        if($money == 0) {
+        $money=$money-15;
+        if($money <= 0) {
             return $money;
-        } else {
+        } else{
             DB::table('users')->where('id',$userID)
-            ->update([
-                'coins'=>$money-20
-            ]);
+            ->update(['coins'=>$money]);
         }
+        return $money;
+    }
+    public function showMoney(){
+        $userID = Auth::id();
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+       
         return $money;
     }
 }

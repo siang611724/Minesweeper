@@ -48,18 +48,19 @@
             </a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
             <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p>
-            <p style="margin: 20px 20px auto">金幣: {{ Auth::user()->coins }}
-                <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter" id="addMoney"></a></p>
+            <p style="margin: 20px 20px auto;display:inline">金幣:<div class="money"style="display:inline;"></div>
+                <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter" ><button id="addMoney" style="display:none"></button></a></p>
             <p style="margin: 20px 20px auto">
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-            <button onclick="test();" style="margin-top: 200px; margin-left: 70px">開始遊戲</button>
+                <a href="/2"> <button onclick="closegame();" style="margin-top: 70px; margin-left: 30px;" class="css_button">開始遊戲</button></a>
+                <a href="/home"> <button onclick="opengame();" style="margin-top: 10px; margin-left: 30px;" class="css_button">回到首頁</button></a>
         </div>
 
         <!-- 加值彈窗 -->
         
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div data-backdrop="static" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
