@@ -186,7 +186,10 @@ $("#easy").click(function () {
             type:'get',
             url:'/newmoneyeasy',
             success:function(money){
-              
+             if(money==0){
+                $("#addMoney").click();
+                
+             }
                 console.log(money);
             }
         })
@@ -197,7 +200,7 @@ $("#easy").click(function () {
             type: 'get',
             url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
             success: function (map) {
-
+              
                 drawTable(map);
                 // console.log(map);
             }
@@ -235,7 +238,9 @@ $("#medium").click(function () {
             type:'get',
             url:'/newmoneymed',
             success:function(money){
-              
+                if(money==0){
+                    //儲值按鈕
+                }
                 console.log(money);
             }
         })
@@ -285,7 +290,9 @@ $("#hard").click(function () {
             type:'get',
             url:'/newmoneyhard',
             success:function(money){
-              
+              if(money==0){
+                  //儲值按鈕
+              }
                 console.log(money);
             }
         })
