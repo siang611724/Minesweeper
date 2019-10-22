@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Mine;
@@ -14,7 +13,6 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         //
@@ -27,7 +25,6 @@ class GameController extends Controller
         $money=$money+50;
         DB::table('users')->where('id',$userID)
         ->update(['coins'=>$money]);
-
        DB::table('history')->insert([
                 'GameID'=>$id,
                 'MemberID'=>$userID,
@@ -36,7 +33,6 @@ class GameController extends Controller
        return $money;
                 
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +42,6 @@ class GameController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -58,7 +53,6 @@ class GameController extends Controller
         
      
     }
-
     /**
      * Display the specified resource.
      *
@@ -69,7 +63,6 @@ class GameController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,7 +73,6 @@ class GameController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -92,7 +84,6 @@ class GameController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -136,7 +127,6 @@ class GameController extends Controller
             ->update([
                 'coins'=>$money
             ]);
-
             DB::table('transaction_records')->insert([
                 [
                     'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '接關',
@@ -159,7 +149,6 @@ class GameController extends Controller
         } else{
             DB::table('users')->where('id',$userID)
             ->update(['coins'=>$money]);
-
             DB::table('transaction_records')->insert([
                 [
                     'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '遊玩初級難度',
@@ -181,7 +170,6 @@ class GameController extends Controller
         } else{
             DB::table('users')->where('id',$userID)
             ->update(['coins'=>$money]);
-
             DB::table('transaction_records')->insert([
                 [
                     'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '遊玩中級難度',
@@ -203,7 +191,6 @@ class GameController extends Controller
         } else{
             DB::table('users')->where('id',$userID)
             ->update(['coins'=>$money]);
-
             DB::table('transaction_records')->insert([
                 [
                     'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '遊玩高級難度',

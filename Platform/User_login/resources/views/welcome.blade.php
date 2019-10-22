@@ -27,48 +27,6 @@
             margin: 0;
         }
 
-        /* .full-height {
-            height: 100vh;
-        } */
-
-        /* .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        } */
-
-        /* .position-ref {
-            position: relative;
-        } */
-
-        /* .top-right {
-            position: absolute;
-            right: 10px;
-            top: 5px;
-        } */
-
-        /* .content {
-            text-align: center;
-        } */
-
-        /* .title {
-            font-size: 84px;
-        } */
-
-        /* .links>a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        } */
-        /* 
-        .m-b-md {
-            margin-bottom: 30px;
-        } */
-
         .login {
             padding: 5px;
         }
@@ -90,6 +48,14 @@
         }
         .col-lg-6 {
             padding-bottom: 30px;
+        }
+        .card-header {
+            cursor: pointer;
+            background-color: #fff;
+            margin: 5px;
+        }
+        .annTitle {
+            color: black;
         }
     </style>
 </head>
@@ -190,17 +156,17 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt=""> 
+                        <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt=""> 
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>踩地雷</h5>
                                 <p>享受它吧</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt="">
+                            <img src="{{URL::asset('/image/mineweepr2.jpg')}}" class="d-block w-100" alt="">
                         </div>
                         <div class="carousel-item">
-                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt="">
+                            <img src="{{URL::asset('/image/mineweepr3.jpg')}}" class="d-block w-100" alt="">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -214,7 +180,12 @@
                 </div>    
             </div>
             <div class="col-lg-6 col-12">
-                <table class="table table-sm">
+                <h1>最新消息</h1>
+                <hr>
+                <div class="accordion" id="accordionExample">
+                    <!-- 公告生成區 -->
+                </div>
+                {{-- <table class="table table-sm">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -239,7 +210,7 @@
                             <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
                         </tr>   
                     </tbody>    
-                </table>
+                </table> --}}
             </div>
             @else
             <div class="col-lg-6 col-12">
@@ -317,17 +288,17 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt=""> 
+                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt=""> 
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>踩地雷</h5>
                                 <p>享受它吧</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt="">
+                            <img src="{{URL::asset('/image/mineweepr2.jpg')}}" class="d-block w-100" alt="">
                         </div>
                         <div class="carousel-item">
-                            <img src="http://user-image.logdown.io/user/7/blog/530/post/935/D3UaF7fTqCnLhjF1knmW_winmine.gif" class="d-block w-100" alt="">
+                            <img src="{{URL::asset('/image/mineweepr3.jpg')}}" class="d-block w-100" alt="">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -340,41 +311,15 @@
                     </a>
                 </div>    
             </div>
-            @endauth
-        </div>
-    </div>
-    <div class="container news">
-            <h1>最新消息</h1>
-            <hr>
-            <div class="accordion" id="accordionExample">
-                <!-- 公告生成區 -->
+            <div class="container news">
+                    <h1>最新消息</h1>
+                    <hr>
+                    <div class="accordion" id="accordionExample">
+                        <!-- 公告生成區 -->
+                    </div>
+                </div>
             </div>
-            {{-- <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th colspan="2" scope="col">Title</th>
-                        <th scope="col" style="text-align: right"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td colspan="2">Article 1</td>
-                        <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td colspan="2">Article 2</td>
-                        <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Article 3</td>
-                        <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                    </tr>
-                </tbody>
-            </table> --}}
+            @endauth
         </div>
     </div>
     @endif
@@ -387,15 +332,15 @@
               dataType: 'json',
               success: function (e) {
                 //   console.log(e.length);
-                  for (j = 5; j > 0; j--) {
-                      console.log(e);
+                  for (j = 4; j >= 0; j--) {
+                    //   console.log(e);
                       $('.accordion').append(
                           '<div class="card"><div class="card-header" id="heading' +
                           j +
                           '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                           j +
                           '" aria-expanded="true" aria-controls="collapse' +
-                          j + '"><span class="h5 annTitle">' +e[j].title +
+                          j + '"><span class="h5 annTitle">['+e[j].type+']  '+e[j].title+
                           '</span></button></div><div id="collapse' +
                           j +
                           '" class="collapse" aria-labelledby="heading' +
