@@ -14,7 +14,7 @@ class AnnounceSeeder extends Seeder
     {
         DB::table('announces')->truncate();
         Announce::unguard();
-        factory(Announce::class, 50)->create();
+        factory(Announce::class, 20)->create();
         Announce::reguard();
     }
 }

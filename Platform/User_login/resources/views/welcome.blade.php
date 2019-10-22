@@ -88,6 +88,9 @@
         h1 {
             font-weight: 600;
         }
+        .col-lg-6 {
+            padding-bottom: 30px;
+        }
     </style>
 </head>
 
@@ -344,7 +347,7 @@
             <h1>最新消息</h1>
             <hr>
             <div class="accordion" id="accordionExample">
-                    <!-- 公告生成區 -->
+                <!-- 公告生成區 -->
             </div>
             {{-- <table class="table table-sm">
                 <thead>
@@ -383,32 +386,22 @@
               url: "http://127.0.0.1:8000/api/announce",
               dataType: 'json',
               success: function (e) {
-                  // console.log(e);
-                  for (j = e.length - 1; j > 0; j--) {
-                      // console.log(e);
+                //   console.log(e.length);
+                  for (j = 5; j > 0; j--) {
+                      console.log(e);
                       $('.accordion').append(
                           '<div class="card"><div class="card-header" id="heading' +
                           j +
                           '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                           j +
                           '" aria-expanded="true" aria-controls="collapse' +
-                          j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
-                          e[j]
-                          .title +
-                          '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
-                          e[j].id +
-                          ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
+                          j + '"><span class="h5 annTitle">' +e[j].title +
+                          '</span></button></div><div id="collapse' +
                           j +
                           '" class="collapse" aria-labelledby="heading' +
                           j +
-                          '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
-                          e[j].id +
-                          '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
-                          e[j].id +
-                          ')">確認</button></div><textarea id="updateContent' + e[j]
-                          .id +
-                          '" placeholder="請輸入公告內容">' +
-                          e[j].content + '</textarea></div></div></div>'
+                          '"data-parent="#accordionExample"><div class="card-body">' +
+                          e[j].content + '</div></div></div>'   
                       )
                   }
               }

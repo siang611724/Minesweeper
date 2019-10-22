@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\DB;
 // Route::get('/', 'MembersController@index');
 // Route::resource('Members', 'MembersController');
 Route::get('/', function () {
-    return view('welcome');
+    return view('/admin');
 });
 // auth指令自動新增以下
 Auth::routes();

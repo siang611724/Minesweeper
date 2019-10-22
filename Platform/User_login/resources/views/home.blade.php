@@ -54,6 +54,12 @@
 
 </script>
 
+<style>
+    tr,td {
+        color: black;
+    }
+</style>
+
 <div class="">
     <div class="content row">
 
@@ -179,9 +185,9 @@
                 <table class="table-sm table-striped" style="width: 100%">
                     <thead>
                         <tr>
-                            <th scope="col">使用者</th>
+                            <th scope="col">交易編號</th>
                             <th scope="col">交易日期</th>
-                            <th scope="col">類型</th>
+                            <th scope="col">交易類型</th>
                             <th scope="col">交易金額</th>
                             <th scope="col">餘額</th>
                         </tr>
