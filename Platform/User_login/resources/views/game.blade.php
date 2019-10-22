@@ -271,9 +271,6 @@
     
 </div>
 <script src="js/game.js"></script>
-<<<<<<< HEAD
-=======
 
 @endsection
->>>>>>> project/jimmy
 
