@@ -138,6 +138,7 @@
                             </td>
                             <td>
                                 <button type="submit" class="btn-primary">{{ __('Login') }}</button>
+                                <a href="/adminLogin">管理員登入</a>
                             </td>
                         </tr>
                         <tr>
@@ -156,7 +157,9 @@
                                 </a>
                                 @endif -->
                             </td>
-                            <td></td>
+                            <td style="padding-top: 5px; padding-bottom: 0px;">
+                                
+                            </td>
                         </tr>
                     </tbody>
                 </table>

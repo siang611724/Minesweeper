@@ -36,8 +36,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        // if (Auth::check()) {
-        //     alert("ok");
-        // }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -96,7 +96,7 @@ class LoginController extends Controller
       'password' => 'required | between:8, 20'
     ];
     $message = [
-      'required' => '密碼不能為空',
+      'required' => '請填寫這個欄位',
       'between' => '密碼必須為8-20位之間',
       'exists' => '查無此管理員'
     ];
@@ -109,10 +109,12 @@ class LoginController extends Controller
       }
     });
     if ($validator->fails()) {
+      return response()->json(['message' => 'failed', 'errors' => $validator->errors()->messages()]);
       // dd($validator->errors()->messages());
-      return back()->withErrors($validator);
-    } else {
-      return response()->json(['message' => 'ok']);
+      // return back()->withErrors($validator);
+    } 
+    else {
+      return response()->json(['message' => 'ok', 'data' => $data]);
     }
   }
 }
