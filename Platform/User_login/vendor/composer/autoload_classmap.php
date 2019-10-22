@@ -7,36 +7,30 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AnnounceSeeder' => $baseDir . '/database/seeds/AnnounceSeeder.php',
-    'App\\Administrator' => $baseDir . '/app/Administrator.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\DB\\Announce' => $baseDir . '/app/DB/Announce.php',
     'App\\DB\\LoginTime' => $baseDir . '/app/DB/LoginTime.php',
     'App\\DB\\Member' => $baseDir . '/app/DB/Member.php',
+    'App\\DB\\User' => $baseDir . '/app/DB/User.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\History' => $baseDir . '/app/Http/Controllers/History.php',
+    'App\\Http\\Controllers\\Admin\\LoginController' => $baseDir . '/app/Http/Controllers/admin/LoginController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\GameController' => $baseDir . '/app/Http/Controllers/GameController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\Play' => $baseDir . '/app/Http/Controllers/Play.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\api\\AnnounceController' => $baseDir . '/app/Http/Controllers/api/AnnounceController.php',
-<<<<<<< HEAD
-    'App\\Http\\Controllers\\api\\CoinController' => $baseDir . '/app/Http/Controllers/api/SstoreController.php',
-    'App\\Http\\Controllers\\api\\LogController' => $baseDir . '/app/Http/Controllers/api/LogController.php',
-=======
     'App\\Http\\Controllers\\api\\CoinController' => $baseDir . '/app/Http/Controllers/api/CoinController.php',
-<<<<<<< HEAD
     'App\\Http\\Controllers\\api\\LogController' => $baseDir . '/app/Http/Controllers/api/LogController.php',
-    'App\\Http\\Controllers\\api\\MemberController' => $baseDir . '/app/Http/Controllers/api/MemberController.php',
-    'App\\Http\\Controllers\\api\\StatusController' => $baseDir . '/app/Http/Controllers/api/StatusController.php',
-=======
->>>>>>> 0d49c9a4a9550e114a39c3426de364a1ba9637f6
     'App\\Http\\Controllers\\api\\MemberController' => $baseDir . '/app/Http/Controllers/api/MemberController.php',
     'App\\Http\\Controllers\\api\\StatusController' => $baseDir . '/app/Http/Controllers/api/StatusController.php',
     'App\\Http\\Controllers\\api\\StoreController' => $baseDir . '/app/Http/Controllers/api/StoreController.php',
->>>>>>> 4f777514a783f8f79638f13b36ae307abaab260d
     'App\\Http\\Controllers\\api\\TransactionController' => $baseDir . '/app/Http/Controllers/api/TransactionController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
@@ -53,16 +47,14 @@ return array(
     'App\\Information' => $baseDir . '/app/Information.php',
     'App\\Log' => $baseDir . '/app/Log.php',
     'App\\Manager' => $baseDir . '/app/Manager.php',
+    'App\\Map' => $baseDir . '/app/Http/Controllers/Map.php',
+    'App\\Mine' => $baseDir . '/app/Mine.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
-<<<<<<< HEAD
     'App\\User' => $baseDir . '/app/User.php',
-=======
-    'App\\User' => $baseDir . '/app/DB/User.php',
->>>>>>> 0d49c9a4a9550e114a39c3426de364a1ba9637f6
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
     'Barryvdh\\Cors\\HandleCors' => $vendorDir . '/barryvdh/laravel-cors/src/HandleCors.php',

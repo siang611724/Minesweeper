@@ -69,7 +69,7 @@
             <div style="height: 100px; width:100px; margin: 30px auto 5px">
                 <img src="{{URL::asset('/image/user_icon.jpg')}}" alt="profile Pic" height="100" width="100">
             </div> <!-- 頭像 -->
-            <a class="" href="/edit">
+            <a class="" href="user/{{ Auth::id() }}/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
