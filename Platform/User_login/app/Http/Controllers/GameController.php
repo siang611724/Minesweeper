@@ -25,7 +25,6 @@ class GameController extends Controller
         $money=$money+50;
         DB::table('users')->where('id',$userID)
         ->update(['coins'=>$money]);
-<<<<<<< HEAD
 
     //    DB::table('history')->insert([
     //             'GameID'=>$id,
@@ -35,12 +34,6 @@ class GameController extends Controller
        DB::table('history')->where('GameID',$id)
        ->orderBy('created_at','desc')->take(1)->update([
         'result'=>'win'
-=======
-       DB::table('history')->insert([
-                'GameID'=>$id,
-                'MemberID'=>$userID,
-                'result'=>'win'
->>>>>>> project/siangjyun
        ]);
        return $money;
                 
