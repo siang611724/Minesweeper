@@ -43,7 +43,7 @@ function drawTable(map) {
                     //定时器
                     setTimeout(function () {
                         isClick = true;
-                    }, 250);//一秒内不能重複
+                    }, 250); //一秒内不能重複
                 }
             }
             domTr.appendChild(domTd);
@@ -85,13 +85,13 @@ function win() {
                     })
                     alert("你贏了")
                     updateTimeWin.innerHTML = t.toFixed(2);
-                    $("#showHistoryWinClick").click(function(){
+                    $("#showHistoryWinClick").click(function () {
                         $.ajax({
                             type: 'get',
                             url: '/getlastmoney',
                             success: function (e) {
                                 moneyWin.innerHTML = e;
-    
+
                             }
                         })
                     });
@@ -112,12 +112,15 @@ function play(event, obj) {
 
         };
         $.ajax({
-            async: true,
             type: "get",
             url: "/getMap/" + position.MapRows + "/" + position.MapCols,
             success: function (clickedItem) {
 
                 var newMap = new Array();
+                // var clickCeil = clickedItem[obj.pos[0]][obj.pos[1]];
+                // if (clickCeil.type == 'number' && clickCeil.checked == true) {
+                //     clickNumber(clickedItem, obj);
+                // }
                 $.each(clickedItem, function (index, content) {
                     $.each(content, function (index2, content2) {
                         newMap.push(content2);
@@ -128,8 +131,7 @@ function play(event, obj) {
                 // console.log(obj);
                 open(newMap, clickedItem);
             }
-        }
-        )
+        })
         if (t == 0) {
             timer = setInterval(function () {
                 t += 0.2;
@@ -143,6 +145,7 @@ function play(event, obj) {
             return;
         }
         obj.className = obj.className == 'flag' ? '' : 'flag';
+
         if (obj.className == 'flag') {
             mineNumLeft.innerHTML = --leftMine;
         } else {
@@ -151,6 +154,40 @@ function play(event, obj) {
     }
 
 }
+
+// function clickNumber(clickedItem, obj) {
+//     var x = obj.pos[0];
+//     var y = obj.pos[1];
+//     // console.log(x,y); 
+
+//     var flagNum = 0;
+//     for (var i = x - 1; i <= x + 1; i++) {
+//         for (var j = y - 1; j <= y + 1; j++) {
+//             if (
+//                 i < 0 || j < 0 ||
+//                 i > tds.length - 1 || j > tds[0].length - 1 ||
+//                 (i == x && j == y)
+//             ) {
+//                 continue;
+//             } else {
+//                 if (tds[i][j].className == 'flag') {
+//                     flagNum++;
+
+//                 }
+//                 if (clickedItem[x][y].value == flagNum) {
+//                     if (tds[i][j].className != 'flag') {
+//                         clickedItem[i][j].checked = true;
+//                         // console.log(i,j); 
+//                     }
+
+//                 }
+//             }
+
+//         }
+//     }
+//     console.log(clickedItem);
+
+// }
 
 function open(newMap, clickedItem) {
     var k = -1;
@@ -405,6 +442,7 @@ $("#gameover").click(function () {
 
 
 window.onload = showMoney;
+
 function showMoney() {
     $.ajax({
         type: 'get',

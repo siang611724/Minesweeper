@@ -189,7 +189,7 @@
         <button id="showHistoryLoseClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryLose" style="display: none;"></button>
         <button id="showHistoryWinClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryWin" style="display: none;"></button>
 
-        <script src="js/game.js"></script>
+       
     </div>
 </div>
 
@@ -225,7 +225,7 @@
             </div>
         </div>
     </div>
-    <script src="js/game.js"></script>
+    
 </div>
 {{-- 不接關遊戲結束 --}}
 
@@ -246,7 +246,7 @@
             </div>
         </div>
     </div>
-    <script src="js/game.js"></script>
+    
 </div>
 {{-- 遊戲勝利 --}}
 
@@ -267,8 +267,8 @@
             </div>
         </div>
     </div>
-    <script src="js/game.js"></script>
+    
 </div>
 
-
+<script src="js/game.js"></script>
 @endsection
