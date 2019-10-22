@@ -107,7 +107,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <b><a class="navbar-brand" style="font-size: 2rem" href="{{ url('/home') }}">
+                <b><a class="navbar-brand" style="font-size: 2rem" href="{{ url('/') }}">
                         <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
                         {{ 'Minesweeper Online' }}
                     </a></b>
@@ -177,6 +177,43 @@
         </nav>
 
         <script>
+            $(document).ready(function(){
+                $.ajax({
+                    type: 'GET',
+                    url: "http://127.0.0.1:8000/api/announce",
+                    dataType: 'json',
+                    success: function (e) {
+                        // console.log(e);
+                        for (j = e.length - 1; j > 0; j--) {
+                            // console.log(e);
+                            $('.accordion').append(
+                                '<div class="card"><div class="card-header" id="heading' +
+                                j +
+                                '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
+                                j +
+                                '" aria-expanded="true" aria-controls="collapse' +
+                                j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
+                                e[j]
+                                .title +
+                                '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
+                                e[j].id +
+                                ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
+                                j +
+                                '" class="collapse" aria-labelledby="heading' +
+                                j +
+                                '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
+                                e[j].id +
+                                '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
+                                e[j].id +
+                                ')">確認</button></div><textarea id="updateContent' + e[j]
+                                .id +
+                                '" placeholder="請輸入公告內容">' +
+                                e[j].content + '</textarea></div></div></div>'
+                            )
+                        }
+                    }
+                });
+            })
             function storeCoin() {
                 var key = document.getElementById("textinput").value;
                 var coinValue = document.querySelector("input[name='radios']:checked").value;
@@ -209,6 +246,7 @@
             }
 
             function tradingList() {
+                $('#tradingList').html('');
                 $.ajax({
                     type: 'GET',
                     url: 'http://127.0.0.1:8000/api/trans/{{ Auth::id() }}',
@@ -216,7 +254,7 @@
                     success: function(result) {
                         for (i = 0; i < result.length; i++) {
                             $('#tradingList').append("<tr><td>" +
-                                result[i].user_name + "</td><td>" +
+                                result[i].id + "</td><td>" +
                                 result[i].trading_date + "</td><td>" +
                                 result[i].trading_type + "</td><td>" +
                                 result[i].trading_coins + "</td><td>" +

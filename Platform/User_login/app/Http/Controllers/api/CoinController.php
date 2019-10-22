@@ -56,7 +56,7 @@ class CoinController extends Controller
         $result = DB::table('users')
                     ->where('id',$id)
                     ->update([
-                        'coins' => $request->coins,
+                        'coins' => ($request->coins+$user->coins),
                     ]);
         if (!$result) {
             return response()->json(['status' => 1, 'message' => 'Post not found'],404);
@@ -64,8 +64,8 @@ class CoinController extends Controller
             DB::table('transaction_records')->insert([
                 [
                     'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '官方補償',
-                    'trading_coins' => $request->input('coins') - $user->coins,
-                    'balance_coins' => $user->coins + ($request->input('coins') - $user->coins),
+                    'trading_coins' => $request->coins,
+                    'balance_coins' => $request->coins+$user->coins,
                 ]
             ]);
             return response()->json(['status' => 0, 'message' => 'Success']);
