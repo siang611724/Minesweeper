@@ -177,6 +177,7 @@
             </div>
             <div class="info">
                 剩餘地雷數:<span class="mineNum"></span>
+                耗費金幣:<span id="moneyNum" class="moneyNum"></span>
                 經過時間:<span class="times" id="times"></span>
             </div>
             <div class="gameBox">
@@ -189,7 +190,7 @@
         <button id="showHistoryLoseClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryLose" style="display: none;"></button>
         <button id="showHistoryWinClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryWin" style="display: none;"></button>
 
-        <script src="js/game.js"></script>
+        
     </div>
 </div>
 
@@ -225,7 +226,7 @@
             </div>
         </div>
     </div>
-    <script src="js/game.js"></script>
+    
 </div>
 {{-- 不接關遊戲結束 --}}
 
@@ -246,7 +247,7 @@
             </div>
         </div>
     </div>
-    <script src="js/game.js"></script>
+   
 </div>
 {{-- 遊戲勝利 --}}
 
@@ -267,8 +268,8 @@
             </div>
         </div>
     </div>
-    <script src="js/game.js"></script>
-</div>
 
+</div>
+<script src="js/game.js"></script>
 
 @endsection
