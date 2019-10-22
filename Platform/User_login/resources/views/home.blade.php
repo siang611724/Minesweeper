@@ -58,6 +58,8 @@
     tr,td {
         color: black;
     }
+    .gameArea_right{overflow-y: scroll}
+    /* html{overflow: hidden} */
 </style>
 
 <div class="">
@@ -87,7 +89,10 @@
 
         <div class="gameArea_right col-lg-9 col-sm-12 col-12">
             <div class="right_collection col-lg-12">
-                <div class="">
+                <div class="accordion" id="accordionExample">
+                    <!-- 公告生成區 -->
+                </div>
+                {{-- <div class="">
                     <table class="table">
                         <thead>
                             <tr>
@@ -109,7 +114,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> --}}
 
             </div>
 
