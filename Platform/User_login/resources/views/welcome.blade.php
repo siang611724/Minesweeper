@@ -57,6 +57,8 @@
         .annTitle {
             color: black;
         }
+        
+
     </style>
 </head>
 
@@ -159,17 +161,17 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt=""> 
+                        <img src="{{URL::asset('/image/mineweeper1.png')}}" class="d-block w-100" alt=""> 
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>踩地雷</h5>
                                 <p>享受它吧</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{URL::asset('/image/mineweepr2.jpg')}}" class="d-block w-100" alt="">
+                            <img src="{{URL::asset('/image/mineweeper2.png')}}" class="d-block w-100" alt="">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{URL::asset('/image/mineweepr3.jpg')}}" class="d-block w-100" alt="">
+                            <img src="{{URL::asset('/image/mineweeper3.png')}}" class="d-block w-100" alt="">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -291,17 +293,13 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt=""> 
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>踩地雷</h5>
-                                <p>享受它吧</p>
-                            </div>
+                            <img src="{{URL::asset('/image/mineweeper1.png')}}" class="d-block w-100" alt=""> 
                         </div>
                         <div class="carousel-item">
-                            <img src="{{URL::asset('/image/mineweepr2.jpg')}}" class="d-block w-100" alt="">
+                            <img src="{{URL::asset('/image/mineweeper2.png')}}" class="d-block w-100" alt="">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{URL::asset('/image/mineweepr3.jpg')}}" class="d-block w-100" alt="">
+                            <img src="{{URL::asset('/image/mineweeper3.png')}}" class="d-block w-100" alt="">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

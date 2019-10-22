@@ -107,7 +107,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <b><a class="navbar-brand" style="font-size: 2rem" href="{{ url('/') }}">
+                <b><a class="navbar-brand" style="font-family: Arial; font-size: 1.25rem" href="{{ url('/') }}">
                         <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
                         {{ 'Minesweeper Online' }}
                     </a></b>
