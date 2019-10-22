@@ -22,7 +22,9 @@
 .mineNum{
     margin-right:150px; 
 }
-
+.moneyNum{
+    margin-right: 150px;
+}
 .gameBox table {
     border-spacing: 1px;
     background: #515155;
@@ -126,7 +128,7 @@ td.eight {
 
 #starteasy {
     width: 72px;
-    position: relative;  left :8%;top: 20px;
+    position: relative;  left :25%;top: 20px;
     font-family: 'Archivo Black', sans-serif;
     outline: none;
     font-size: 40px;
@@ -140,7 +142,7 @@ td.eight {
 }
 #startmed {
     width: 72px;
-    position: relative;left:11% ;  top: 20px;
+    position: relative;left:26% ;  top: 20px;
     font-family: 'Archivo Black', sans-serif;
     outline: none;
     font-size: 40px;
@@ -181,7 +183,7 @@ td.eight {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
-    text-shadow: #60F7FC 1px 1px 0px;
+  
     color: #3B45FF;
     font-size: 19px;
     font-family: '微軟正黑體';
@@ -221,7 +223,7 @@ td.eight {
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
         border-radius: 15px;
-        text-shadow: #7AE4FF 1px 1px 0px;
+       
         color: #0037FF;
         font-size: 14px;
         font-family: '微軟正黑體';

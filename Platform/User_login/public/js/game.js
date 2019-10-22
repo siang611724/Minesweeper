@@ -15,6 +15,7 @@ var updateTimeWin = document.querySelector(".gametimeWin");
 var updateTimeLose = document.querySelector(".gametimeLose");
 var moneyWin = document.querySelector(".moneyWin");
 var moneyLose = document.querySelector(".moneyLose");
+var moneyNum = document.querySelector(".moneyNum");
 
 function drawTable(map) {
     parent.oncontextmenu = function () {
@@ -40,7 +41,7 @@ function drawTable(map) {
                     isClick = false;
                     //事件
                     play(event, this);
-                    //定时器
+                    //計時器
                     setTimeout(function () {
                         isClick = true;
                     }, 250);//一秒内不能重複
@@ -149,6 +150,7 @@ function play(event, obj) {
             mineNumLeft.innerHTML = ++leftMine;
         }
     }
+    // console.log(tds);    
 
 }
 
@@ -171,9 +173,6 @@ function open(newMap, clickedItem) {
                         gameover(tds[i][j]);
 
                     }
-
-
-
                 }
 
             } else {
@@ -184,7 +183,6 @@ function open(newMap, clickedItem) {
     win();
     // console.log(initMap);
 
-    // console.log(newMap);
     // console.log(newMap.length);
 
 }
@@ -202,6 +200,7 @@ $("#easy").click(function () {
         table.appendChild(domTr);
     }
     mineNumLeft.innerHTML = 10;
+    moneyNum.innerHTML=5;
     parent.innerHTML = "";
     parent.appendChild(table);
     var btn = document.createElement("button");
@@ -209,6 +208,7 @@ $("#easy").click(function () {
     btn.innerHTML = "開始";
     btn.setAttribute("id", "starteasy");
     $("#starteasy").click(function () {
+       
         var mapData = {
             column: 9,
             row: 9,
@@ -259,6 +259,7 @@ $("#medium").click(function () {
         table.appendChild(domTr);
     }
     mineNumLeft.innerHTML = 40;
+    moneyNum.innerHTML=10;
     parent.innerHTML = "";
     parent.appendChild(table);
     var btn = document.createElement("button");
@@ -266,6 +267,7 @@ $("#medium").click(function () {
     btn.innerHTML = "開始";
     btn.setAttribute("id", "startmed");
     $("#startmed").click(function () {
+      
         var mapData = {
             column: 16,
             row: 16,
@@ -326,6 +328,7 @@ $("#hard").click(function () {
         table.appendChild(domTr);
     }
     mineNumLeft.innerHTML = 99;
+    moneyNum.innerHTML=15;
     parent.innerHTML = "";
     parent.appendChild(table);
     var btn = document.createElement("button");
@@ -333,7 +336,8 @@ $("#hard").click(function () {
     btn.innerHTML = "開始";
     btn.setAttribute("id", "starthard");
     $("#starthard").click(function () {
-
+       
+        
         var mapData = {
             column: 16,
             row: 30,
@@ -382,6 +386,9 @@ $("#hard").click(function () {
 });
 $("#continue").click(function () {
     // console.log("test");
+    var spendMoney=parseInt(document.getElementById("moneyNum").value);
+    spendMoney+=5
+    moneyNum.innerHTML=spendMoney;
     $.ajax({
         type: 'get',
         url: '/newmoney',
@@ -400,9 +407,6 @@ $("#gameover").click(function () {
     })
     $("#showHistoryLoseClick").click();
 })
-
-
-
 
 window.onload = showMoney;
 function showMoney() {
