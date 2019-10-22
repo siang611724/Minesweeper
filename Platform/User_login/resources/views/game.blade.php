@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -69,7 +70,6 @@
         <!-- 加值彈窗 -->
 
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
->>>>>>> 1aa85344711447f232bf8e82b85cfe98306c2e1c
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -190,7 +190,7 @@
         <button id="showHistoryLoseClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryLose" style="display: none;"></button>
         <button id="showHistoryWinClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryWin" style="display: none;"></button>
 
-        
+
     </div>
 </div>
 
@@ -226,7 +226,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 {{-- 不接關遊戲結束 --}}
 
@@ -247,7 +247,7 @@
             </div>
         </div>
     </div>
-   
+
 </div>
 {{-- 遊戲勝利 --}}
 
@@ -268,8 +268,9 @@
             </div>
         </div>
     </div>
-
+    
 </div>
 <script src="js/game.js"></script>
 
 @endsection
+

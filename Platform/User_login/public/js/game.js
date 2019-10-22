@@ -386,8 +386,8 @@ $("#hard").click(function () {
 });
 $("#continue").click(function () {
     // console.log("test");
-    var spendMoney=parseInt(document.getElementById("moneyNum").innerHTML);
-    spendMoney+=5;
+    var spendMoney=parseInt(document.getElementById("moneyNum").value);
+    spendMoney+=5
     moneyNum.innerHTML=spendMoney;
     $.ajax({
         type: 'get',
