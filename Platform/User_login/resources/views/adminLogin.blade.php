@@ -41,6 +41,11 @@
         .form-group {
             padding: 10px;
         }
+        
+        .navbar-brand {
+            font-family: Arial;
+            font-size: 1.25rem;
+        }
     </style>
 
     <title>Minesweeper Online</title>
@@ -49,7 +54,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <b><a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" width="30" height="30" class="d-inline-block align-top">
+                <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" width="30" height="30">
                 Minesweeper Online</a></b>
     </nav>
     <div class="container">
