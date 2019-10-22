@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -47,7 +48,7 @@
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
-            <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p>
+            <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p><p> </p>
             <p style="margin: 20px 20px auto;display:inline">金幣:<div class="money"style="display:inline;"></div>
                 <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter" ><button id="addMoney" style="display:none"></button></a></p>
             <p style="margin: 20px 20px auto">
@@ -69,7 +70,6 @@
         <!-- 加值彈窗 -->
 
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
->>>>>>> 1aa85344711447f232bf8e82b85cfe98306c2e1c
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -177,6 +177,7 @@
             </div>
             <div class="info">
                 剩餘地雷數:<span class="mineNum"></span>
+                耗費金幣:<span id="moneyNum" class="moneyNum"></span>
                 經過時間:<span class="times" id="times"></span>
             </div>
             <div class="gameBox">
@@ -189,7 +190,6 @@
         <button id="showHistoryLoseClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryLose" style="display: none;"></button>
         <button id="showHistoryWinClick" type="button" class="btn btn-primary" data-toggle="modal" data-target="#showHistoryWin" style="display: none;"></button>
 
-       
     </div>
 </div>
 
@@ -225,7 +225,6 @@
             </div>
         </div>
     </div>
-    
 </div>
 {{-- 不接關遊戲結束 --}}
 
@@ -246,7 +245,6 @@
             </div>
         </div>
     </div>
-    
 </div>
 {{-- 遊戲勝利 --}}
 
@@ -269,6 +267,7 @@
     </div>
     
 </div>
+
 
 <script src="js/game.js"></script>
 @endsection

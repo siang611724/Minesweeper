@@ -83,7 +83,6 @@ class Play extends Controller
                 for ($m = $x - 1; $m <= $x + 1; $m++) {
                     for ($k = $y - 1; $k <= $y + 1; $k++) {
                         // echo 'x = ' . $k . ' y = ' . $m . '<br>';
-
                         if ($k < 0 || $k >= count($map) || $m < 0 ||
                             $m >= count($map[0]) || $map[$k][$m]["type"] == "mine"
                             || ($map[$k][$m] == $map[$Rows][$Cols])) {
@@ -91,7 +90,6 @@ class Play extends Controller
                         }
                         // $aroundTemp[$k][$m] = $map[$k][$m];
                         array_push($around, $map[$k][$m]);
-
                     }
 
                 }
@@ -99,7 +97,6 @@ class Play extends Controller
                 // echo 'x = ' . $Rows . ' y = ' . $Cols . '<br>';
                 // print_r(count($around)."<br>");
                 $map = $this->getZero($around, $map);
-               
                 // print_r($around);
                 // print_r($map);
                 // print_r($map[$Rows][$Cols]);
@@ -109,7 +106,6 @@ class Play extends Controller
                 return $map;
             }
         }
-
     }
     public function getZero($space, $map)
     {
