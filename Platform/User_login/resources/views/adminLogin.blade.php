@@ -53,8 +53,8 @@
                 Minesweeper Online</a></b>
     </nav>
     <div class="container">
-        <!-- <form class="form-horizontal" method="POST" action="{{ route('admin.login') }}">
-            @csrf -->
+        <div class="form-horizontal">
+            <!-- @csrf -->
         <!-- <fieldset> -->
         <!-- Form Name -->
         <legend>管理員登入</legend>
@@ -87,7 +87,7 @@
             </div>
         </div>
         <!-- </fieldset> -->
-        <!-- </form> -->
+        </div>
     </div>
 
     <script>
