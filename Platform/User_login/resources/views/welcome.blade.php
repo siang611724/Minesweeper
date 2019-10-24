@@ -57,16 +57,11 @@
             background-color: #fff;
             margin: 5px;
         }
-<<<<<<< HEAD
-
-        .annTitle {
-=======
         .annTitle{
             color: #007aff;
             font-weight: 900;
         }
         .card-body{
->>>>>>> project/siangjyun
             color: black;
             font-weight: 700;
         }
@@ -186,11 +181,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-<<<<<<< HEAD
                         <img src="{{URL::asset('/image/mineweeper1.png')}}" class="d-block w-100" alt=""> 
-=======
-                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt="">
->>>>>>> don
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>踩地雷</h5>
                                 <p>享受它吧</p>
@@ -322,15 +313,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-<<<<<<< HEAD
                             <img src="{{URL::asset('/image/mineweeper1.png')}}" class="d-block w-100" alt=""> 
-=======
-                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt="">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>踩地雷</h5>
-                                <p>享受它吧</p>
-                            </div>
->>>>>>> don
                         </div>
                         <div class="carousel-item">
                             <img src="{{URL::asset('/image/mineweeper2.png')}}" class="d-block w-100" alt="">
@@ -365,32 +348,6 @@
     <script>
         $(document).ready(function() {
             $.ajax({
-<<<<<<< HEAD
-                type: 'GET',
-                url: "http://127.0.0.1:8000/api/announce",
-                dataType: 'json',
-                success: function(e) {
-                    //   console.log(e.length);
-                    for (j = 4; j >= 0; j--) {
-                        //   console.log(e);
-                        $('.accordion').append(
-                            '<div class="card"><div class="card-header" id="heading' +
-                            j +
-                            '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
-                            j +
-                            '" aria-expanded="true" aria-controls="collapse' +
-                            j + '"><span class="h5 annTitle">[' + e[j].type + ']  ' + e[j].title +
-                            '</span></button></div><div id="collapse' +
-                            j +
-                            '" class="collapse" aria-labelledby="heading' +
-                            j +
-                            '"data-parent="#accordionExample"><div class="card-body">' +
-                            e[j].content + '</div></div></div>'
-                        )
-                    }
-                }
-            });
-=======
               type: 'GET',
               url: "http://127.0.0.1:8000/api/announce",
               dataType: 'json',
@@ -415,7 +372,6 @@
                   }
               }
           });
->>>>>>> project/siangjyun
         })
     </script>
 
