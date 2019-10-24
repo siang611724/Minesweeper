@@ -9,9 +9,21 @@
 </script>
 
 <style>
+    html,body {
+        background-color: #f7f7f7;
+        font-family: 微軟正黑體;
+    }
     tr,td {
         color: black;
     }
+    .annTitle {
+        color: #007aff;
+        font-weight: 900;
+    }
+    .card-body{
+        color: black;
+        font-weight: 700;
+        }
     .gameArea_right{overflow-y: scroll}
     /* html{overflow: hidden} */
 </style>

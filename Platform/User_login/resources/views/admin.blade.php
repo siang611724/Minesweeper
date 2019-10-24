@@ -21,8 +21,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
-        html {
+        html,body {
             overflow: hidden;
+            background-color: #f7f7f7;
+            font-family: 微軟正黑體;
         }
 
 
@@ -114,7 +116,6 @@
             border-radius: 3px;
             border: 1px solid lightgrey;
         }
-
     </style>
     <title>Minesweeper Online</title>
 </head>
@@ -441,7 +442,7 @@
               dataType: 'json',
               success: function (e) {
                   // console.log(e);
-                  for (j = e.length - 1; j > 0; j--) {
+                  for (j = e.length - 1; j >= 0; j--) {
                       // console.log(e);
                       $('.accordion').append(
                           '<div class="card"><div class="card-header" id="heading' +
