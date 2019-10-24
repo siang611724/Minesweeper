@@ -67,7 +67,6 @@ class StoreController extends Controller
             ]);
             return response()->json(['status' => 0, 'message' => 'Success', 'money' => $request->coins, 
                                     'balance' => $user->coins + $request->coins]);
-            // return redirect('/home');
         }
     }
 

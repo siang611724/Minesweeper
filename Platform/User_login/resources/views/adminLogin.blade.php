@@ -80,7 +80,6 @@
             <label class="col-md-4 control-label" for="password">Password</label>
             <div class="col-md-10">
                 <input id="password" name="password" type="password" placeholder="請輸入密碼" class="form-control input-md">
-                <!-- <p id="passwordText"></p> -->
                 @if($errors->has('password') && !$errors->has('account'))
                 <span style="color: red; font-size: 14px">{{ $errors->messages()['password'][0] }}</span>
                 @endif

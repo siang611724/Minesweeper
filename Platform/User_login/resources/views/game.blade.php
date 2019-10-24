@@ -4,36 +4,36 @@
 @section('content')
 
 <script type="text/javascript">
-    function checkCreditCard() {
-        var key = document.getElementById("textinput").value;
-        var coinValue = document.querySelector("input[name='radios']:checked").value;
-        var result = confirm("確定要儲值 " + coinValue + " 金幣嗎？");
-        var patt = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
-        if (patt.test(key)) {
-            if (result == true) {
-                // form.submit();
-                // return true;
-                $.ajax({
-                    type: 'PUT',
-                    url: 'http://127.0.0.1:8000/api/store/{{ Auth::id() }}',
-                    dataType: 'json',
-                    data: {
-                        'coins': coinValue
-                    },
-                    success: function() {
-                        alert('加值成功');
-                        location.reload();
-                    }
-                });
-            }
-        } else {
-            document.getElementById("textbox").innerHTML = "請輸入正確信用卡號碼";
-            alert("格式錯誤");
-            return false;
-        }
-        // alert(patt.test(key));
-        // alert(key);
-    }
+    // function checkCreditCard() {
+    //     var key = document.getElementById("textinput").value;
+    //     var coinValue = document.querySelector("input[name='radios']:checked").value;
+    //     var result = confirm("確定要儲值 " + coinValue + " 金幣嗎？");
+    //     var patt = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+    //     if (patt.test(key)) {
+    //         if (result == true) {
+    //             // form.submit();
+    //             // return true;
+    //             $.ajax({
+    //                 type: 'PUT',
+    //                 url: 'http://127.0.0.1:8000/api/store/{{ Auth::id() }}',
+    //                 dataType: 'json',
+    //                 data: {
+    //                     'coins': coinValue
+    //                 },
+    //                 success: function() {
+    //                     alert('加值成功');
+    //                     location.reload();
+    //                 }
+    //             });
+    //         }
+    //     } else {
+    //         document.getElementById("textbox").innerHTML = "請輸入正確信用卡號碼";
+    //         alert("格式錯誤");
+    //         return false;
+    //     }
+    //     // alert(patt.test(key));
+    //     // alert(key);
+    // }
 </script>
 
 <div class="">
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" onclick="checkCreditCard();" class="btn btn-primary">確認</button>
+                        <button type="button" onclick="storeCoin();" class="btn btn-primary">確認</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
 
                     </div>

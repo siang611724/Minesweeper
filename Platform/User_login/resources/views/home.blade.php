@@ -3,54 +3,8 @@
 @section('content')
 
 <script type="text/javascript">
-    // function checkCreditCard() {
-    //     var key = document.getElementById("textinput").value;
-    //     var coinValue = document.querySelector("input[name='radios']:checked").value;
-    //     var result = confirm("確定要儲值 " + coinValue + " 金幣嗎？");
-    //     var patt = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
-    //     if (patt.test(key)) {
-    //         if (result == true) {
-    //             // form.submit();
-    //             // return true;
-    //             $.ajax({
-    //                 type: 'PUT',
-    //                 url: 'http://127.0.0.1:8000/api/store/{{ Auth::id() }}',
-    //                 dataType: 'json',
-    //                 data: {
-    //                     'coins': coinValue
-    //                 },
-    //                 success: function() {
-    //                     alert('加值成功');
-    //                     location.reload();
-    //                 }
-    //             });
-    //         }
-    //     } else {
-    //         document.getElementById("textbox").innerHTML = "請輸入正確信用卡號碼";
-    //         alert("格式錯誤");
-    //         return false;
-    //     }
-    //     // alert(patt.test(key));
-    //     // alert(key);
-    // }
-
-    // function tradingRecord() {
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: 'http://127.0.0.1:8000/api/trans/{{ Auth::id() }}',
-    //         dataType: 'json',
-    //         success: function(result) {
-    //             for(i = 0; i < result.length; i++) {
-    //                 $('#tradingList').append("<tr><td>" 
-    //                     + result[i].user_name + "</td><td>" 
-    //                     + result[i].trading_date + "</td><td>" 
-    //                     + result[i].trading_type + "</td><td>" 
-    //                     + result[i].trading_coins + "</td><td>" 
-    //                     + result[i].balance_coins + "</td></tr>");
-    //             }
-    //         }
-    //     })
-    // }
+    
+    
 
 </script>
 
@@ -71,7 +25,7 @@
             <div style="height: 100px; width:100px; margin: 30px auto 5px">
                 <img src="{{URL::asset('/image/user_icon.jpg')}}" alt="profile Pic" height="100" width="100">
             </div> <!-- 頭像 -->
-            <a class="" href="user/{{ Auth::id() }}/edit">
+            <a class="" href="/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
             <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
@@ -92,7 +46,7 @@
                 <div class="accordion" id="accordionExample">
                     <!-- 公告生成區 -->
                 </div>
-                {{-- <div class="">
+                <!-- <div class="">
                     <table class="table">
                         <thead>
                             <tr>
@@ -114,7 +68,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div> --}}
+                </div> -->
 
             </div>
 
