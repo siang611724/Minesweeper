@@ -19,7 +19,7 @@
     <style>
         html,
         body {
-            background-color: #fff;
+            background-color: #f7f7f7;
             /* color: #636b6f; */
             font-family: 'Nunito', sans-serif, 微軟正黑體;
             /* font-weight: 200; */
@@ -54,8 +54,13 @@
             background-color: #fff;
             margin: 5px;
         }
-        .annTitle {
+        .annTitle{
+            color: #007aff;
+            font-weight: 900;
+        }
+        .card-body{
             color: black;
+            font-weight: 700;
         }
         
 
@@ -153,6 +158,7 @@
                     <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
     
                 <h1>遊戲介紹</h1>
+                <hr>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -332,8 +338,8 @@
               url: "http://127.0.0.1:8000/api/announce",
               dataType: 'json',
               success: function (e) {
-                //   console.log(e.length);
-                  for (j = 4; j >= 0; j--) {
+                  console.log(e.length);
+                  for (j = e.length-1; j >= e.length-5; j--) {
                     //   console.log(e);
                       $('.accordion').append(
                           '<div class="card"><div class="card-header" id="heading' +
@@ -341,7 +347,7 @@
                           '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                           j +
                           '" aria-expanded="true" aria-controls="collapse' +
-                          j + '"><span class="h5 annTitle">['+e[j].type+']  '+e[j].title+
+                          j + '"><span class="h5 annTitle">['+e[j].type+']' +e[j].releaseDate+' '+e[j].title+
                           '</span></button></div><div id="collapse' +
                           j +
                           '" class="collapse" aria-labelledby="heading' +

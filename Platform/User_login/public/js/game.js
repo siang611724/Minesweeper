@@ -387,10 +387,6 @@ $("#hard").click(function () {
 $("#continue").click(function () {
     // console.log("test");
     var spendMoney=parseInt(document.getElementById("moneyNum").innerHTML);
-<<<<<<< HEAD
-=======
-    console.log(spendMoney);
->>>>>>> 012dcf3259364c568be7ed361f338e1ff7c94ad4
     spendMoney+=5
     moneyNum.innerHTML=spendMoney;
     $.ajax({
