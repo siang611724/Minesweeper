@@ -30,7 +30,7 @@ Route::get('/home', function (){
 
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
-Route::resource('user', 'UserController');
+Route::resource('/user', 'UserController');
 
 //  管理員路由
 Route::get('/adminLogin', 'admin\LoginController@showLoginForm')

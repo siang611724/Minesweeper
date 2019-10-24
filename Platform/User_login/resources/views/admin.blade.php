@@ -69,7 +69,6 @@
             display: none;
         }
 
-
         .annTitle {
             text-overflow: ellipsis;
             height: 15px;

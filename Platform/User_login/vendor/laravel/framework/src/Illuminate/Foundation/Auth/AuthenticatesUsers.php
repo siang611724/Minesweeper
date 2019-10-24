@@ -54,9 +54,13 @@ trait AuthenticatesUsers
         if ($this->attemptLogin($request)) {
 
             $user = Auth::user();
-            // if ($user->name === 'Admin') {
-            //     return view('admin');
-            // };
+            if ($user->status == '1') {
+                $this->guard()->logout();
+
+                $request->session()->invalidate();
+
+                return $this->loggedOut($request) ?: redirect('/')->with('alert', '您已被停權，詳情請聯絡客服');
+            };
 
             // 取得使用者最後登入時間
             $last_login_time = DB::table('users')->where('id', $user->id)->value('last_login_time');
@@ -64,7 +68,7 @@ trait AuthenticatesUsers
             $last_login_year = date('Y', strtotime($last_login_time));  // 取得年份
 
             DB::table('logs')->insert([
-                ['user_id' => $user->id, 'user_name' => $user->name ]
+                ['user_id' => $user->id, 'user_name' => $user->name]
             ]);
 
             $id = DB::getPdo()->lastInsertId(); // 取得最近登入（插入）的那筆資料id
@@ -73,13 +77,13 @@ trait AuthenticatesUsers
             $login_daysofyear = date('z', strtotime($login_time));  // 取得一年中第幾天
             $login_year = date('Y', strtotime($login_time));    // 取得年份
             // 判斷是否上次登入時間不是今天(代表當日首次登入)
-            if($login_daysofyear != $last_login_daysofyear || $login_year != $last_login_year) {
+            if ($login_daysofyear != $last_login_daysofyear || $login_year != $last_login_year) {
                 $user->coins = $user->coins + 10;
                 $user->save();
 
                 DB::table('transaction_records')->insert([
                     [
-                        'user_id' => $user->id, 'user_name' =>$user->name, 'trading_type' => '每日登入',
+                        'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '每日登入',
                         'trading_coins' => '10', 'balance_coins' => $user->coins
                     ]
                 ]);
@@ -108,12 +112,12 @@ trait AuthenticatesUsers
         $email = $request->input('email');
         $password = $request->input('password');
         $userPassword = DB::table('users')->where('email', $email)->value('password');
-        $validator->after(function($validator) use ($userPassword, $password) {
-            if(!\Hash::check($password, $userPassword)) {
+        $validator->after(function ($validator) use ($userPassword, $password) {
+            if (!\Hash::check($password, $userPassword)) {
                 $validator->errors()->add('password', '密碼錯誤');
             }
         });
-        if($validator->fails()) {
+        if ($validator->fails()) {
             // dd($validator->errors()->messages());
             return back()->withErrors($validator);
         }

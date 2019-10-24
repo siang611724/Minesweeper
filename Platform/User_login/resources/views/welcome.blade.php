@@ -43,17 +43,21 @@
         nav {
             background-color: #eee;
         }
+
         h1 {
             font-weight: 600;
         }
+
         .col-lg-6 {
             padding-bottom: 30px;
         }
+
         .card-header {
             cursor: pointer;
             background-color: #fff;
             margin: 5px;
         }
+
         .annTitle {
             color: black;
         }
@@ -61,6 +65,16 @@
 </head>
 
 <body>
+
+    <script>
+
+        var bannedMsg = '{{ Session::get('alert') }}';
+        var exist = '{{ Session::has('alert') }}';
+        if(exist) {
+            alert(bannedMsg);
+        }
+
+    </script>
 
     @if (Route::has('login'))
     <nav class="navbar navbar-dark bg-dark">
@@ -75,6 +89,7 @@
             <a href="{{ url('/home') }}">Game</a>
             @endif
             @else
+
             <form method="POST" action="{{ route('login') }}" style="right: 0px; float: right">
                 @csrf
                 <table>
@@ -107,7 +122,7 @@
                                 @enderror -->
                             </td>
                             <td>
-                                <button type="submit" class="btn-primary">{{ __('Login') }}</button>
+                                <button id="loginBtn" type="submit" class="btn-primary">{{ __('Login') }}</button>
                                 <a href="/adminLogin">管理員登入</a>
                             </td>
                         </tr>
@@ -128,7 +143,7 @@
                                 @endif -->
                             </td>
                             <td style="padding-top: 5px; padding-bottom: 0px;">
-                                
+
                             </td>
                         </tr>
                     </tbody>
@@ -148,8 +163,8 @@
         <div class="row">
             @auth
             <div class="col-lg-6 col-12">
-                    <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
-    
+                <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
+
                 <h1>遊戲介紹</h1>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -159,7 +174,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt=""> 
+                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt="">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>踩地雷</h5>
                                 <p>享受它吧</p>
@@ -180,7 +195,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                </div>    
+                </div>
             </div>
             <div class="col-lg-6 col-12">
                 <h1>最新消息</h1>
@@ -291,7 +306,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt=""> 
+                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt="">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>踩地雷</h5>
                                 <p>享受它吧</p>
@@ -312,48 +327,48 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                </div>    
-            </div>
-            <div class="container news">
-                    <h1>最新消息</h1>
-                    <hr>
-                    <div class="accordion" id="accordionExample">
-                        <!-- 公告生成區 -->
-                    </div>
                 </div>
             </div>
-            @endauth
+            <div class="container news">
+                <h1>最新消息</h1>
+                <hr>
+                <div class="accordion" id="accordionExample">
+                    <!-- 公告生成區 -->
+                </div>
+            </div>
         </div>
+        @endauth
+    </div>
     </div>
     @endif
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             $.ajax({
-              type: 'GET',
-              url: "http://127.0.0.1:8000/api/announce",
-              dataType: 'json',
-              success: function (e) {
-                //   console.log(e.length);
-                  for (j = 4; j >= 0; j--) {
-                    //   console.log(e);
-                      $('.accordion').append(
-                          '<div class="card"><div class="card-header" id="heading' +
-                          j +
-                          '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
-                          j +
-                          '" aria-expanded="true" aria-controls="collapse' +
-                          j + '"><span class="h5 annTitle">['+e[j].type+']  '+e[j].title+
-                          '</span></button></div><div id="collapse' +
-                          j +
-                          '" class="collapse" aria-labelledby="heading' +
-                          j +
-                          '"data-parent="#accordionExample"><div class="card-body">' +
-                          e[j].content + '</div></div></div>'   
-                      )
-                  }
-              }
-          });
+                type: 'GET',
+                url: "http://127.0.0.1:8000/api/announce",
+                dataType: 'json',
+                success: function(e) {
+                    //   console.log(e.length);
+                    for (j = 4; j >= 0; j--) {
+                        //   console.log(e);
+                        $('.accordion').append(
+                            '<div class="card"><div class="card-header" id="heading' +
+                            j +
+                            '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
+                            j +
+                            '" aria-expanded="true" aria-controls="collapse' +
+                            j + '"><span class="h5 annTitle">[' + e[j].type + ']  ' + e[j].title +
+                            '</span></button></div><div id="collapse' +
+                            j +
+                            '" class="collapse" aria-labelledby="heading' +
+                            j +
+                            '"data-parent="#accordionExample"><div class="card-body">' +
+                            e[j].content + '</div></div></div>'
+                        )
+                    }
+                }
+            });
         })
     </script>
 

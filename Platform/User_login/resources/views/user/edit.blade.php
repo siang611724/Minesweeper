@@ -22,7 +22,6 @@
                 <button onclick="tradingList()" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-            <a href="/2"><button onclick="" style="margin-top: 200px; margin-left: 70px">開始遊戲</button></a>
         </div>
         <!-- <div class="text_box"> 彈出對話框 -->
         <!-- <p>彈窗內容</p> -->
@@ -38,8 +37,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="{{ route('home') }}">
-                        @csrf
+                    <!-- <form method="POST" action="">
+                        @csrf -->
                         <div class="modal-body" style="margin-left: 20px">
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">卡號:</label>
@@ -76,7 +75,7 @@
                             <button type="button" onclick="storeCoin()" class="btn btn-primary">確認</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
                         </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>
