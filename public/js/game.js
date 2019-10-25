@@ -61,7 +61,7 @@ function gameover(tds) {
     mineNumLeft.innerHTML = --leftMine;
     tds.className = "mine";
     tds.style.backgroundColor = "red";
-    updateTimeLose.innerHTML = t.toFixed(2);
+    updateTimeLose.innerHTML = t.toFixed(0);
     $("#myModal").click();
 
 }
@@ -86,10 +86,11 @@ function win() {
                     })
                     alert("你贏了")
                     updateTimeWin.innerHTML = t.toFixed(2);
+                    t=Math.floor(t)
                     $("#showHistoryWinClick").click(function(){
                         $.ajax({
                             type: 'get',
-                            url: '/getlastmoney',
+                            url: '/getlastmoney/'+t,
                             success: function (e) {
                                 moneyWin.innerHTML = e;
     
@@ -398,9 +399,13 @@ $("#continue").click(function () {
     })
 })
 $("#gameover").click(function () {
+    // t=Math.floor(t)
+    t=t.toFixed(2)
     $.ajax({
         type: 'get',
-        url: '/getlastmoney',
+        url: '/getlastmoney/'+t,
+      
+
         success: function (money) {
             moneyLose.innerHTML = money;
         }

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use DB;
-use App\History;
-use App\Member;
+use App\DB\Record;
+use App\DB\Member;
 
 class CourseController extends Controller
 {
@@ -39,17 +40,9 @@ class CourseController extends Controller
      */
     public function showHistory($id)
     {
-        $history = DB::table('history')->where('GameID',$id)->first();
-        $time1 =  DB::table('history')->where('GameID',$id)->orderBy('created_at','desc')->take(1);
-        dd($time1);
-        $time2 = DB::table('history')->where('GameID',$id)->orderBy('created_at')->take(1);
-        $result = DB::table('history')->where('GameID',$id)->orderBy('result','desc')->take(1);
-
-        return response()->json([
-            'GameID' => $history->GameID,
-            'time' => $time1,
-            'result' => $result,
-        ]);
+        $user = DB::table('users')->where('id',$id)->first();
+        $gameRecord = DB::table('result')->where('MemberID', $user->id)->get();
+        return response()->json($gameRecord);
     }
 
     /**

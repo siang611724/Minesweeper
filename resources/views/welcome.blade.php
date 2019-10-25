@@ -56,6 +56,10 @@
             background-color: #fff;
             margin: 5px;
         }
+        .card {
+            border: solid 2px black;
+            border-radius: 5px;
+        }
         .annTitle{
             color: #007aff;
             font-weight: 900;
@@ -63,6 +67,15 @@
         .card-body{
             color: black;
             font-weight: 700;
+            margin-left: 15px;
+        }
+        .carousel-indicators li {
+            background-color: #0d0d0d;
+        }
+        .carousel-control-next-icon, .carousel-control-prev-icon {
+            background-color: #0d0d0d;
+            width: 50px;
+            height: 50px;
         }
         
 
@@ -84,8 +97,8 @@
     @if (Route::has('login'))
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 1.25rem">
-                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
+            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 1.7rem">
+                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30">
                     Minesweeper Online</a></b>
             @auth
             @if(Auth::user()->name == 'admin')
@@ -170,7 +183,7 @@
             <div class="col-lg-6 col-12">
                 <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
-                <h1>遊戲介紹</h1>
+                <h1>實際遊戲畫面</h1>
                 <hr>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -180,11 +193,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="{{URL::asset('/image/mineweeper1.png')}}" class="d-block w-100" alt=""> 
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>踩地雷</h5>
-                                <p>享受它吧</p>
-                            </div>
+                            <img src="{{URL::asset('/image/mineweeper1.png')}}" class="d-block w-100" alt="">
                         </div>
                         <div class="carousel-item">
                             <img src="{{URL::asset('/image/mineweeper2.png')}}" class="d-block w-100" alt="">
@@ -194,11 +203,11 @@
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon" aria-hidden="false"></span>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon" aria-hidden="false"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
@@ -302,7 +311,7 @@
             <div class="col-lg-6 col-12">
                 <!--  style="display: inline-block; width: 500px; height: 600px; position: absolute; right: 200px;" -->
 
-                <h1>遊戲介紹</h1>
+                <h1>實際遊戲畫面</h1>
                 <hr>
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
