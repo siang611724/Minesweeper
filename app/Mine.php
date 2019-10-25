@@ -28,7 +28,8 @@ class Mine
     for ($i = 0; $i < $this ->tr; $i++) {
         for ($j = 0; $j < $this ->td; $j++) {
             $this ->area[$i][$j] = array("type" => "number",
-                "rows" => $i, "cols" => $j,"checked"=>false, "value" => 0);
+                "rows" => $i, "cols" => $j,"checked"=>false, "value" => 0,
+            "flag"=>false);
 
         }
     }
@@ -37,9 +38,11 @@ class Mine
         $i = rand(0, $this ->tr - 1);
         $j = rand(0, $this ->td - 1);
         if ($this ->area[$i][$j] == array("type" => "number",  "rows" => $i, "cols" => $j, 
-        "checked"=>false,  "value" => 0)) {
+        "checked"=>false,  "value" => 0,
+        "flag"=>false)) {
             $this ->area[$i][$j] = array("type" => "mine",  "rows" => $i, "cols" => $j, 
-            "checked"=>false, "value" => 9);
+            "checked"=>false, "value" => 9,
+            "flag"=>false);
             $index++;
         }
     }
@@ -48,7 +51,8 @@ class Mine
         for ($j = 0; $j < $this ->td; $j++) {
             if ($this ->area[$i][$j] == array("type" => "mine",
             "rows" => $i, "cols" => $j, 
-            "checked"=>false,  "value" => 9)) {
+            "checked"=>false,  "value" => 9,
+            "flag"=>false)) {
                 continue;
             }
 
