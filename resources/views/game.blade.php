@@ -35,6 +35,12 @@
     //     // alert(key);
     // }
 </script>
+<style>
+    * {
+        font-family: 微軟正黑體;
+    }
+</style>
+
 
 <div class="">
     <div class="content row">
@@ -47,11 +53,11 @@
             <a class="" href="/edit">
                 <p style="font-size:13px; padding-left: 88px; color: grey"><i class="fas fa-key"></i>變更密碼</p>
             </a>
-            <p style="margin: 20px 20px auto">暱稱: {{ Auth::user()->name }}</p>
-            <p style="margin: 20px 20px auto">信箱: {{ Auth::user()->email }}</p><p> </p>
-            <p style="margin: 20px 20px auto;display:inline">金幣:<div class="money"style="display:inline;"></div>
+            <p style="margin: 20px 25px">暱稱: {{ Auth::user()->name }}</p>
+            <p style="margin: 20px 25px">信箱: {{ Auth::user()->email }}</p><p> </p>
+            <p style="margin-left: 25px;display:inline">金幣: <div class="money"style="display:inline;"></div>
                 <a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter" ><button id="addMoney" style="display:none"></button></a></p>
-            <p style="margin: 20px 20px auto">
+            <p style="margin: 20px 25px">
                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>

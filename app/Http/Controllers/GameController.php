@@ -213,5 +213,17 @@ class GameController extends Controller
        
         return $money;
     }
-    
+    public function showMoney2($t){
+        $userID = Auth::id();
+        $id = DB::table('Map')->where('MemberID', $userID)
+        ->orderBy('GameID','desc')->take(1)->value('GameID');
+        $money = DB::table('users')->where('id',$userID)
+                ->value('coins');
+        $winlose = DB::table('history')->where('MemberID', $userID)
+                ->orderBy('GameID','desc')->take(1)->value('result');
+        $result =DB::table('result')->insert([
+            'GameID' => $id,'MemberID'=>$userID,'Time'=>$t,'money'=>$money,"result"=>$winlose
+        ]);
+        return $money;
+    }
 }

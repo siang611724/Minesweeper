@@ -53,8 +53,9 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <b><a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" width="30" height="30">
+        <div class="container">
+            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 1.7rem">
+                <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30">
                 Minesweeper Online</a></b>
     </nav>
     <div class="container">
