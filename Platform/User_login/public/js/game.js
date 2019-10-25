@@ -155,7 +155,7 @@ function play(event, obj) {
             type:"get",
             url: "/flag/" + position.MapRows + "/" + position.MapCols,
             success:function (flag){
-                console.log(flag);
+                
               
             }
 
@@ -171,39 +171,7 @@ function play(event, obj) {
 
 }
 
-// function clickNumber(clickedItem, obj) {
-//     var x = obj.pos[0];
-//     var y = obj.pos[1];
-//     // console.log(x,y); 
 
-//     var flagNum = 0;
-//     for (var i = x - 1; i <= x + 1; i++) {
-//         for (var j = y - 1; j <= y + 1; j++) {
-//             if (
-//                 i < 0 || j < 0 ||
-//                 i > tds.length - 1 || j > tds[0].length - 1 ||
-//                 (i == x && j == y)
-//             ) {
-//                 continue;
-//             } else {
-//                 if (tds[i][j].className == 'flag') {
-//                     flagNum++;
-
-//                 }
-//                 if (clickedItem[x][y].value == flagNum) {
-//                     if (tds[i][j].className != 'flag') {
-//                         $(this).trigger("mousedown");
-//                         // console.log(i,j); 
-//                     }
-
-//                 }
-//             }
-
-//         }
-//     }
-//     // console.log(clickedItem);
-
-// }
 
 function open(newMap, clickedItem) {
     var k = -1;
