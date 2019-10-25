@@ -1,10 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use DB;
-use App\Map;
-use App\User;
+use Illuminate\Support\Facades\Auth;
+
 class Play extends Controller
 {
     //
@@ -14,11 +13,11 @@ class Play extends Controller
     {
         // echo '<pre>';
         $userID = Auth::id();
-        
+
         $map = unserialize(DB::table('Map')->where('MemberID', $userID)
-        ->orderBy('GameID','desc')->take(1)->value('info'));
+                ->orderBy('GameID', 'desc')->take(1)->value('info'));
         $this->id = DB::table('Map')->where('MemberID', $userID)
-        ->orderBy('GameID','desc')->take(1)->value('GameID');
+            ->orderBy('GameID', 'desc')->take(1)->value('GameID');
         // $this->tempmap = unserialize(DB::table('Map')->where('MemberID', "jack")->max('GameID')->value('info'));
         // foreach ($map as $Data) {
         //     foreach ($Data as $Temp) {
@@ -28,26 +27,26 @@ class Play extends Controller
         // }
 
         $map = $this->testMap($clickRows, $clickCols, $map);
-        DB::table('Map')->where('MemberID', $userID)->orderBy('GameID','desc')->take(1)
+        DB::table('Map')->where('MemberID', $userID)->orderBy('GameID', 'desc')->take(1)
             ->update(['Info' => serialize($map)]);
 
-        if ($map[$clickRows][$clickCols]["type"] == "mine"){
+        if ($map[$clickRows][$clickCols]["type"] == "mine") {
             DB::table('history')->insert([
-                'GameID'=>$this->id,
-                'MemberID'=>$userID,
-                'MapX'=>$clickCols,
-                'MapY'=>$clickRows,
-                'result'=>'lose'
+                'GameID' => $this->id,
+                'MemberID' => $userID,
+                'MapX' => $clickCols,
+                'MapY' => $clickRows,
+                'result' => 'lose',
             ]);
-        } else{
+        } else {
             DB::table('history')->insert([
-            'GameID'=>$this->id,
-            'MemberID'=>$userID,
-            'MapX'=>$clickCols,
-            'MapY'=>$clickRows
-        ]);
+                'GameID' => $this->id,
+                'MemberID' => $userID,
+                'MapX' => $clickCols,
+                'MapY' => $clickRows,
+            ]);
         }
-        
+
         return $map;
         // foreach ($map as $Data) {
         //     foreach ($Data as $Temp) {
@@ -70,17 +69,17 @@ class Play extends Controller
     {
         $userID = Auth::id();
         $map = unserialize(DB::table('Map')->where('MemberID', $userID)
-        ->orderBy('GameID','desc')->take(1)->value('info'));
-        if($map[$Rows][$Cols]["flag"] == false){
+                ->orderBy('GameID', 'desc')->take(1)->value('info'));
+        if ($map[$Rows][$Cols]["flag"] == false) {
             $map[$Rows][$Cols]["flag"] = true;
-        }else if($map[$Rows][$Cols]["flag"] == true){
-            
+        } else if ($map[$Rows][$Cols]["flag"] == true) {
+
             $map[$Rows][$Cols]["flag"] = false;
-        
+
         }
-        
-        DB::table('Map')->where('MemberID', $userID)->orderBy('GameID','desc')->take(1)
-        ->update(['Info' => serialize($map)]);
+
+        DB::table('Map')->where('MemberID', $userID)->orderBy('GameID', 'desc')->take(1)
+            ->update(['Info' => serialize($map)]);
         return $map;
     }
 
@@ -120,34 +119,53 @@ class Play extends Controller
                 // print_r($map[$Rows][$Cols]);
                 return $map;
             } else {
-                
-                if($map[$Rows][$Cols]["checked"] == true){
-                   $flagNum = 0;
-                    for($i = $x - 1;$i <= $x + 1; $i++){
-                        for($j = $y - 1;$j <= $y + 1; $j++){
+                $flagNum = 0;
+                if ($map[$Rows][$Cols]["checked"] == true) {
+
+                    for ($i = $x - 1; $i <= $x + 1; $i++) {
+                        for ($j = $y - 1; $j <= $y + 1; $j++) {
                             if ($i < 0 || $i >= count($map) || $j < 0 ||
-                            $j >= count($map[0]) || ($map[$i][$j] == $map[$Rows][$Cols])){
+                                $j >= count($map[0]) || ($map[$i][$j] == $map[$Rows][$Cols])) {
                                 continue;
                             }
-                            if($map[$i][$j]['flag'] == true){
-                                $flagNum++;
-                                echo $flagNum;
-                                if($map[$Rows][$Cols]['value'] == $flagNum && 
-                                    $map[$i][$j]['flag']== false){
-    
-                                    $map[$i][$j]['checked'] = true;                                                                                                     
-                                }
+
+                            if ($map[$j][$i]['flag'] == true) {
+                                $flagNum += 1;
+                                // echo $flagNum ."okokokok";
                             }
-                            
+                            // if ($map[$Rows][$Cols]['value'] == $flagNum) {
+
+                            //     if ($map[$j][$i]['flag'] == false) {
+                            //         echo "ff";
+                            //         $map[$j][$i]['checked'] = true;
+
+                            //     }
+
+                            // }
                         }
                     }
+                    if ($map[$Rows][$Cols]['value'] == $flagNum) {
+                        for ($ii = $x - 1; $ii <= $x + 1; $ii++) {
+                            for ($jj = $y - 1; $jj <= $y + 1; $jj++) {
+                                if ($ii < 0 || $ii >= count($map) || $jj < 0 ||
+                                    $jj >= count($map[0]) || ($map[$ii][$jj] == $map[$Rows][$Cols])) {
+                                    continue;
+                                }
+                                if ($map[$jj][$ii]['flag'] == false) {
+                                    $map[$jj][$ii]['checked'] = true;
+                                    // $map = $this->testMap($map[$jj][$ii]['rows'],$map[$jj][$ii]['cols'],$map);
+                                }
+                            }
+                        }
+                    }
+
                     return $map;
-                }else{
+
+                } else {
                     $map[$Rows][$Cols]["checked"] = true;
                     return $map;
                 }
-                
-                
+
             }
         }
     }
@@ -164,7 +182,7 @@ class Play extends Controller
                 // echo 'y = ' . $aroundX . ' x = ' . $aroundY . '<br>';
                 // echo 'testMap<br>';
                 $map = $this->testMap($aroundX, $aroundY, $map);
-                
+
                 //     // echo "ok" . "<br>";
                 // print_r($map[$aroundX][$aroundY]);
             } else {
@@ -173,6 +191,5 @@ class Play extends Controller
         }
         return $map;
     }
-        
-        
+
 }

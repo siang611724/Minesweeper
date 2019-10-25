@@ -146,7 +146,7 @@ function play(event, obj) {
       
     }
     if (event.which == 3) {
-        console.log(obj.pos[0])
+        // console.log(obj.pos[0])
         if (obj.className && obj.className != 'flag') {
             return;
         }
@@ -155,7 +155,7 @@ function play(event, obj) {
             type:"get",
             url: "/flag/" + position.MapRows + "/" + position.MapCols,
             success:function (flag){
-                // console.log(flag);
+                console.log(flag);
               
             }
 
