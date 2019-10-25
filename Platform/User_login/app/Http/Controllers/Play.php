@@ -129,7 +129,7 @@ class Play extends Controller
                             $j >= count($map[0]) || ($map[$i][$j] == $map[$Rows][$Cols])){
                                 continue;
                             }
-                            if($map[$i][$j]['flag'] == true){
+                            if($map[$i][$j]['flag']){
                                 $flagNum++;
                                 // echo $flagNum;
                                 if($map[$Rows][$Cols]['value'] == $flagNum && 
