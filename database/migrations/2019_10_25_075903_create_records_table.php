@@ -13,9 +13,10 @@ class CreateRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('resulr', function (Blueprint $table) {
+        Schema::create('result', function (Blueprint $table) {
             $table->integer('GameID');
-            $table->integer('MemberID');
+            $table->bigInteger('MemberID')->unsigned();
+            $table->foreign('MemberID')->references('id')->on('users');
             $table->string('Time',11);
             $table->integer('money');
             $table->string('result',50);

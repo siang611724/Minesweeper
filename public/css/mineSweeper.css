@@ -4,9 +4,11 @@
 
 .level {
     text-align: center;
-    margin-bottom: 10px;
- 
-   
+    margin-bottom: 10px; 
+}
+
+.btn1 {
+    color: #007CC5;
 }
 
 .info {
@@ -16,7 +18,7 @@
     font-family: 微軟正黑體;
     text-decoration: none;
     font-weight: bold;
-    color: #0037FF;
+    color: #007CC5;
 }
 
 .mineNum{
@@ -129,7 +131,7 @@ td.eight {
 #starteasy {
     width: 72px;
     position: relative;  left :25%;top: 20px;
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Archivo Black', sans-serif,微軟正黑體;
     outline: none;
     font-size: 40px;
     letter-spacing: 13px;
@@ -184,7 +186,7 @@ td.eight {
     -moz-border-radius: 15px;
     border-radius: 15px;
   
-    color: #3B45FF;
+    color: #007CC5;
     font-size: 19px;
     font-family: '微軟正黑體';
     text-decoration: none;
