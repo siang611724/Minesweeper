@@ -106,12 +106,13 @@ function win() {
 }
 
 function play(event, obj) {
-    if (event.which == 1) {
-        var position = {
-            MapRows: obj.pos[0],
-            MapCols: obj.pos[1]
+    var position = {
+        MapRows: obj.pos[0],
+        MapCols: obj.pos[1]
 
-        };
+    };
+    if (event.which == 1) {
+       
         $.ajax({
             type: "get",
             url: "/getMap/" + position.MapRows + "/" + position.MapCols,
@@ -129,7 +130,7 @@ function play(event, obj) {
 
                 });
                 initMap = clickedItem;
-                // console.log(obj);
+                // console.log(clickedItem);s
                 open(newMap, clickedItem);
             }
         })
@@ -142,11 +143,20 @@ function play(event, obj) {
         }
     }
     if (event.which == 3) {
+
         if (obj.className && obj.className != 'flag') {
             return;
         }
         obj.className = obj.className == 'flag' ? '' : 'flag';
+        $.ajax({
+            type:"get",
+            url: "/flag/" + position.MapRows + "/" + position.MapCols,
+            success:function (flag){
+                // console.log(flag);
+              
+            }
 
+        })
         if (obj.className == 'flag') {
             mineNumLeft.innerHTML = --leftMine;
         } else {
@@ -178,7 +188,7 @@ function play(event, obj) {
 //                 }
 //                 if (clickedItem[x][y].value == flagNum) {
 //                     if (tds[i][j].className != 'flag') {
-//                         clickedItem[i][j].checked = true;
+//                         $(this).trigger("mousedown");
 //                         // console.log(i,j); 
 //                     }
 
@@ -187,7 +197,7 @@ function play(event, obj) {
 
 //         }
 //     }
-//     console.log(clickedItem);
+//     // console.log(clickedItem);
 
 // }
 

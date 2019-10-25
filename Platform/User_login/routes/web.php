@@ -47,6 +47,7 @@ Route::resource('user', 'UserController');
 Route::get('/game', 'GameController@showGamePage');
 Route::get('wang/{tr}/{td}/{mineNum}','GameController@map');
 Route::get('getMap/{MapX}/{MapY}','Play@MouseClickTd');
+Route::get('flag/{MapX}/{MapY}','Play@flag');
 Route::resource('/wang','GameController');
 
 Route::get('/1', function (){

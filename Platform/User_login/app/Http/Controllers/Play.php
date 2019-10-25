@@ -66,6 +66,24 @@ class Play extends Controller
 
     }
 
+    public function flag($Rows, $Cols)
+    {
+        $userID = Auth::id();
+        $map = unserialize(DB::table('Map')->where('MemberID', $userID)
+        ->orderBy('GameID','desc')->take(1)->value('info'));
+        if($map[$Rows][$Cols]["flag"] == false){
+            $map[$Rows][$Cols]["flag"] = true;
+        }else if($map[$Rows][$Cols]["flag"] == true){
+            
+            $map[$Rows][$Cols]["flag"] = false;
+        
+        }
+        
+        DB::table('Map')->where('MemberID', $userID)->orderBy('GameID','desc')->take(1)
+        ->update(['Info' => serialize($map)]);
+        return $map;
+    }
+
     public function testMap($Rows, $Cols, $map)
     {
         if ($map[$Rows][$Cols]["type"] == "mine") {
@@ -102,8 +120,34 @@ class Play extends Controller
                 // print_r($map[$Rows][$Cols]);
                 return $map;
             } else {
-                $map[$Rows][$Cols]["checked"] = true;
-                return $map;
+                
+                if($map[$Rows][$Cols]["checked"] == true){
+                   $flagNum = 0;
+                    for($i = $x - 1;$i <= $x + 1; $i++){
+                        for($j = $y - 1;$j <= $y + 1; $j++){
+                            if ($i < 0 || $i >= count($map) || $j < 0 ||
+                            $j >= count($map[0]) || ($map[$i][$j] == $map[$Rows][$Cols])){
+                                continue;
+                            }
+                            if($map[$i][$j]['flag'] == true){
+                                $flagNum++;
+                                // echo $flagNum;
+                                if($map[$Rows][$Cols]['value'] == $flagNum && 
+                                    $map[$i][$j]['flag']== false){
+    
+                                    $map[$i][$j]['checked'] = true;                                                                                                     
+                                }
+                            }
+                            
+                        }
+                    }
+                    return $map;
+                }else{
+                    $map[$Rows][$Cols]["checked"] = true;
+                    return $map;
+                }
+                
+                
             }
         }
     }
