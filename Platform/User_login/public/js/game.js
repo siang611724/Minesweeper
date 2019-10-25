@@ -107,6 +107,9 @@ function win() {
 
 function play(event, obj) {
     if (event.which == 1) {
+        if(obj.className=="flag"){
+            return;
+        }
         var position = {
             MapRows: obj.pos[0],
             MapCols: obj.pos[1]
@@ -140,6 +143,7 @@ function play(event, obj) {
                 //    console.log(t);
             }, 200);
         }
+      
     }
     if (event.which == 3) {
         if (obj.className && obj.className != 'flag') {
@@ -423,7 +427,7 @@ $("#hard").click(function () {
 });
 $("#continue").click(function () {
     // console.log("test");
-    var spendMoney=parseInt(document.getElementById("moneyNum").value);
+    var spendMoney=parseInt(document.getElementById("moneyNum").innerHTML);
     spendMoney+=5
     moneyNum.innerHTML=spendMoney;
     $.ajax({
