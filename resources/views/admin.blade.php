@@ -353,32 +353,6 @@
                   }
               }
           })
-<<<<<<< HEAD
-        //   遊戲歷程
-        //   $.ajax({
-        //       type: 'GET',
-        //       url: "http://127.0.0.1:8000/api/coin/" + j+1,
-        //       dataType: 'json',
-        //       success: function (e) {
-        //           for (i = 0; i < e.length; i++) {
-        //     $('#Info').html("");              
-        //  $('#Order').append(
-        //                   '<tr><th>' +
-        //                   e[i].id +
-        //                   '</th><td>' +
-        //                   e[i].trading_date +
-        //                   '</td><td>' +
-        //                   e[i].trading_type +
-        //                   '</td><td>' +
-        //                   e[i].trading_coins +
-        //                   '</td><td>' +
-        //                   e[i].balance_coins +
-        //                   '</td></tr>')
-
-        //           }
-        //       }
-        //   })
-=======
           // 遊戲歷程
           $.ajax({
               type: 'GET',
@@ -398,7 +372,6 @@
                   }
               }
           })
->>>>>>> project/siangjyun
 
           //    ===============================
           var t = document.getElementById('table');
