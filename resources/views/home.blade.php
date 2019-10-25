@@ -16,6 +16,9 @@
     tr,td {
         color: black;
     }
+    .right_collection {
+        background-color: #fff;
+    }
     .annTitle {
         color: #007aff;
         font-weight: 900;

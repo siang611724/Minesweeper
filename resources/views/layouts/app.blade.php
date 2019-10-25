@@ -37,7 +37,7 @@
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 
     <style>
-        body {
+        body,html {
             background-color: #f9f9f9;
             font-family: 'Nunito', sans-serif;
 
@@ -107,8 +107,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <b><a class="navbar-brand" style="font-family: Arial; font-size: 1.25rem" href="{{ url('/') }}">
-                        <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="30" width="30">
+                <b><a class="navbar-brand" style="font-family: Arial; font-size: 1.7rem" href="{{ url('/') }}">
+                        <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30">
                         {{ 'Minesweeper Online' }}
                     </a></b>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

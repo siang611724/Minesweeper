@@ -38,4 +38,4 @@ Route::put('store/{store}', 'api\StoreController@storeCoin');
 
 Route::post('/adminLogin', 'api\LoginController@checkAccount');
 
-Route::get('/history/{history}', 'api\CourseController@showHistory');
+Route::get('/course/{course}', 'api\CourseController@showHistory');

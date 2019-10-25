@@ -40,8 +40,8 @@ class CourseController extends Controller
      */
     public function showHistory($id)
     {
-        $user = DB::table('users')->where('id',$id)->first();
-        $gameRecord = DB::table('result')->where('MemberID', $user->id)->get();
+        // $user = DB::table('users')->where('id',$id)->first();
+        $gameRecord = DB::table('result')->where('MemberID', $id)->get();
         return response()->json($gameRecord);
     }
 

@@ -356,17 +356,18 @@
           // 遊戲歷程
           $.ajax({
               type: 'GET',
-              url: "http://127.0.0.1:8000/api/history/" + j+1,
+              url: "http://127.0.0.1:8000/api/course/" + j,
               dataType: 'json',
               success: function (e) {
+                  console.log(e)
                   for (i = 0; i < e.length; i++) {
-                      $('#Order').append(
+                      $('#GameInfo').append(
                           '<tr><th>' +
                           e[i].GameID +
                           '</th><td>' +
-                          e[i].Time +
+                          e[i].Time + '秒' +
                           '</td><td>' +
-                          e[i].Result+
+                          e[i].result +
                           '</td></tr>')
 
                   }
