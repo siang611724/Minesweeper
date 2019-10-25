@@ -94,77 +94,76 @@ class Play extends Controller
         $around = array();
 
         if ($map[$Rows][$Cols]["type"] == "number") {
-            if ($map[$Rows][$Cols]["value"] == 0) {
-                $map[$Rows][$Cols]["checked"] = true;
+            if ($map[$Rows][$Cols]["checked"] == false ||
+            ($map[$Rows][$Cols]["value"] == 0 && $map[$Rows][$Cols]["checked"] == true)) {
+                if ($map[$Rows][$Cols]["value"] == 0) {
 
-                for ($m = $x - 1; $m <= $x + 1; $m++) {
-                    for ($k = $y - 1; $k <= $y + 1; $k++) {
-                        // echo 'x = ' . $k . ' y = ' . $m . '<br>';
-                        if ($k < 0 || $k >= count($map) || $m < 0 ||
-                            $m >= count($map[0]) || $map[$k][$m]["type"] == "mine"
-                            || ($map[$k][$m] == $map[$Rows][$Cols])) {
-                            continue;
-                        }
-                        // $aroundTemp[$k][$m] = $map[$k][$m];
-                        array_push($around, $map[$k][$m]);
-                    }
-
-                }
-                // print_r($around);
-                // echo 'x = ' . $Rows . ' y = ' . $Cols . '<br>';
-                // print_r(count($around)."<br>");
-                $map = $this->getZero($around, $map);
-                // print_r($around);
-                // print_r($map);
-                // print_r($map[$Rows][$Cols]);
-                return $map;
-            } else {
-                $flagNum = 0;
-                if ($map[$Rows][$Cols]["checked"] == true) {
-
-                    for ($i = $x - 1; $i <= $x + 1; $i++) {
-                        for ($j = $y - 1; $j <= $y + 1; $j++) {
-                            if ($i < 0 || $i >= count($map) || $j < 0 ||
-                                $j >= count($map[0]) || ($map[$i][$j] == $map[$Rows][$Cols])) {
+                    for ($m = $x - 1; $m <= $x + 1; $m++) {
+                        for ($k = $y - 1; $k <= $y + 1; $k++) {
+                            // echo 'x = ' . $k . ' y = ' . $m . '<br>';
+                            if ($k < 0 || $k >= count($map) || $m < 0 ||
+                                $m >= count($map[0]) || $map[$k][$m]["type"] == "mine"
+                                || ($map[$k][$m] == $map[$Rows][$Cols])) {
                                 continue;
                             }
-
-                            if ($map[$j][$i]['flag'] == true) {
-                                $flagNum += 1;
-                                // echo $flagNum ."okokokok";
-                            }
-                            // if ($map[$Rows][$Cols]['value'] == $flagNum) {
-
-                            //     if ($map[$j][$i]['flag'] == false) {
-                            //         echo "ff";
-                            //         $map[$j][$i]['checked'] = true;
-
-                            //     }
-
-                            // }
+                            // $aroundTemp[$k][$m] = $map[$k][$m];
+                            array_push($around, $map[$k][$m]);
                         }
-                    }
-                    if ($map[$Rows][$Cols]['value'] == $flagNum) {
-                        for ($ii = $x - 1; $ii <= $x + 1; $ii++) {
-                            for ($jj = $y - 1; $jj <= $y + 1; $jj++) {
-                                if ($ii < 0 || $ii >= count($map) || $jj < 0 ||
-                                    $jj >= count($map[0]) || ($map[$ii][$jj] == $map[$Rows][$Cols])) {
-                                    continue;
-                                }
-                                if ($map[$jj][$ii]['flag'] == false) {
-                                    $map[$jj][$ii]['checked'] = true;
-                                    // $map = $this->testMap($map[$jj][$ii]['rows'],$map[$jj][$ii]['cols'],$map);
-                                }
-                            }
-                        }
-                    }
 
+                    }
+                    // print_r($around);
+                    // echo 'x = ' . $Rows . ' y = ' . $Cols . '<br>';
+                    // print_r(count($around)."<br>");
+                    $map = $this->getZero($around, $map);
+                    // print_r($around);
+                    // print_r($map);
+                    // print_r($map[$Rows][$Cols]);
                     return $map;
-
                 } else {
                     $map[$Rows][$Cols]["checked"] = true;
                     return $map;
                 }
+            } else {
+                $flagNum = 0;
+
+                for ($i = $x - 1; $i <= $x + 1; $i++) {
+                    for ($j = $y - 1; $j <= $y + 1; $j++) {
+                        if ($i < 0 || $i >= count($map) || $j < 0 ||
+                            $j >= count($map[0]) || ($map[$i][$j] == $map[$Rows][$Cols])) {
+                            continue;
+                        }
+
+                        if ($map[$j][$i]['flag'] == true) {
+                            $flagNum += 1;
+                            // echo $flagNum ."okokokok";
+                        }
+                        // if ($map[$Rows][$Cols]['value'] == $flagNum) {
+
+                        //     if ($map[$j][$i]['flag'] == false) {
+                        //         echo "ff";
+                        //         $map[$j][$i]['checked'] = true;
+
+                        //     }
+
+                        // }
+                    }
+                }
+                if ($map[$Rows][$Cols]['value'] == $flagNum) {
+                    for ($ii = $x - 1; $ii <= $x + 1; $ii++) {
+                        for ($jj = $y - 1; $jj <= $y + 1; $jj++) {
+                            if ($ii < 0 || $ii >= count($map) || $jj < 0 ||
+                                $jj >= count($map[0]) || ($map[$ii][$jj] == $map[$Rows][$Cols])) {
+                                continue;
+                            }
+                            if ($map[$jj][$ii]['flag'] == false) {
+                                // $map[$jj][$ii]['checked'] = true;
+                               $this->testMap($map[$jj][$ii]['rows'],$map[$jj][$ii]['cols'],$map);
+                            }
+                        }
+                    }
+                }
+
+                return $map;
 
             }
         }
