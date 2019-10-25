@@ -37,3 +37,5 @@ Route::get('/logs/{logs}', 'api\LogController@userLoginTime');
 Route::put('store/{store}', 'api\StoreController@storeCoin');
 
 Route::post('/adminLogin', 'api\LoginController@checkAccount');
+
+Route::get('/course/{course}', 'api\CourseController@showHistory');

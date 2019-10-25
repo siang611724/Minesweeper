@@ -19,7 +19,6 @@
     <style>
         html,
         body {
-            background-color: #f7f7f7;
             /* color: #636b6f; */
             font-family: 'Nunito', sans-serif, 微軟正黑體;
             /* font-weight: 200; */

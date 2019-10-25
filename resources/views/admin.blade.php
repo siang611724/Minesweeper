@@ -23,7 +23,6 @@
     <style>
         html,body {
             overflow: hidden;
-            background-color: #f7f7f7;
             font-family: 微軟正黑體;
         }
 
