@@ -44,7 +44,7 @@ function drawTable(map) {
                     //計時器
                     setTimeout(function () {
                         isClick = true;
-                    }, 250);//一秒内不能重複
+                    }, 250); //一秒内不能重複
                 }
             }
             domTr.appendChild(domTd);
@@ -61,7 +61,7 @@ function gameover(tds) {
     mineNumLeft.innerHTML = --leftMine;
     tds.className = "mine";
     tds.style.backgroundColor = "red";
-    updateTimeLose.innerHTML = t.toFixed(0);
+    updateTimeLose.innerHTML = t.toFixed(2);
     $("#myModal").click();
 
 }
@@ -86,14 +86,13 @@ function win() {
                     })
                     alert("你贏了")
                     updateTimeWin.innerHTML = t.toFixed(2);
-                    t=Math.floor(t)
-                    $("#showHistoryWinClick").click(function(){
+                    $("#showHistoryWinClick").click(function () {
                         $.ajax({
                             type: 'get',
-                            url: '/getlastmoney/'+t,
+                            url: '/getlastmoney',
                             success: function (e) {
                                 moneyWin.innerHTML = e;
-    
+
                             }
                         })
                     });
@@ -107,19 +106,25 @@ function win() {
 }
 
 function play(event, obj) {
-    if (event.which == 1) {
-        var position = {
-            MapRows: obj.pos[0],
-            MapCols: obj.pos[1]
+    var position = {
+        MapRows: obj.pos[0],
+        MapCols: obj.pos[1]
 
-        };
+    };
+    if (event.which == 1) {
+       if(obj.className == 'flag'){
+           return;
+       }
         $.ajax({
-            async: true,
             type: "get",
             url: "/getMap/" + position.MapRows + "/" + position.MapCols,
             success: function (clickedItem) {
 
                 var newMap = new Array();
+                // var clickCeil = clickedItem[obj.pos[0]][obj.pos[1]];
+                // if (clickCeil.type == 'number' && clickCeil.checked == true) {
+                //     clickNumber(clickedItem, obj);
+                // }
                 $.each(clickedItem, function (index, content) {
                     $.each(content, function (index2, content2) {
                         newMap.push(content2);
@@ -127,11 +132,10 @@ function play(event, obj) {
 
                 });
                 initMap = clickedItem;
-                // console.log(obj);
+                
                 open(newMap, clickedItem);
             }
-        }
-        )
+        })
         if (t == 0) {
             timer = setInterval(function () {
                 t += 0.2;
@@ -139,21 +143,35 @@ function play(event, obj) {
                 //    console.log(t);
             }, 200);
         }
+      
     }
     if (event.which == 3) {
+        // console.log(obj.pos[0])
         if (obj.className && obj.className != 'flag') {
             return;
         }
         obj.className = obj.className == 'flag' ? '' : 'flag';
+        $.ajax({
+            type:"get",
+            url: "/flag/" + position.MapRows + "/" + position.MapCols,
+            success:function (flag){
+                
+              
+            }
+
+        })
         if (obj.className == 'flag') {
             mineNumLeft.innerHTML = --leftMine;
         } else {
+            
             mineNumLeft.innerHTML = ++leftMine;
         }
     }
     // console.log(tds);    
 
 }
+
+
 
 function open(newMap, clickedItem) {
     var k = -1;
@@ -399,13 +417,9 @@ $("#continue").click(function () {
     })
 })
 $("#gameover").click(function () {
-    // t=Math.floor(t)
-    t=t.toFixed(2)
     $.ajax({
         type: 'get',
-        url: '/getlastmoney/'+t,
-      
-
+        url: '/getlastmoney',
         success: function (money) {
             moneyLose.innerHTML = money;
         }
@@ -414,6 +428,7 @@ $("#gameover").click(function () {
 })
 
 window.onload = showMoney;
+
 function showMoney() {
     $.ajax({
         type: 'get',
