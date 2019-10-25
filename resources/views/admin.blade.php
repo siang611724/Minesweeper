@@ -286,37 +286,39 @@
     <script>
       // 詳細會員資料
       function ReadMore(j) {
+          console.log(j);
           // 會員資料
           $.ajax({
               type: 'GET',
               url: "http://127.0.0.1:8000/api/member",
               dataType: 'json',
               success: function (e) {
-
+                  let idArray=j-1;
                   $('#Info').html("");
 
                   $('#Info').append('<div class="row"><div class="col-9 h1">' +
-                      e[j].name +
+                      e[idArray].name +
                       '<btn class="btn-link" data-toggle="modal" data-target="#PWchange" onclick="ChangePWFooter(' +
-                      e[j].id + ')"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
-                      e[j].email +
+                      e[idArray].id + ')"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
+                      e[idArray].email +
                       '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>' +
-                      e[j].coins +
+                      e[idArray].coins +
                       '<button type="button" class="btn btn-success float-right" onclick="AddCoinFooter(' +
-                      e[j].id +
+                      e[idArray].id +
                       ')"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
                   )
               }
           })
-          console.log(j)
+        //   console.log(j)
           // 交易紀錄
           $.ajax({
               type: 'GET',
-              url: "http://127.0.0.1:8000/api/trans/" + j+1,
+              url: "http://127.0.0.1:8000/api/trans/" + j,
               dataType: 'json',
               success: function (e) {
                   console.log(e);
                   for (i = 0; i < e.length; i++) {
+                   
                       $('#Order').append(
                           '<tr><th>' +
                           e[i].id +
@@ -333,13 +335,15 @@
                   }
               }
           })
+        //   登入紀錄
           $.ajax({
               type: 'GET',
-              url: "http://127.0.0.1:8000/api/logs/" + j+1,
+              url: "http://127.0.0.1:8000/api/logs/" + j,
               dataType: 'json',
               success: function (e) {
-                  console.log(e);
+                //   console.log(e);
                   for (i = 0; i < e.length; i++) {
+                    
                       $('#Log').append(
                           '<tr><th>' +
                           e[i].id +
@@ -350,14 +354,15 @@
                   }
               }
           })
-          // 遊戲歷程
+        //   遊戲歷程
         //   $.ajax({
         //       type: 'GET',
         //       url: "http://127.0.0.1:8000/api/coin/" + j+1,
         //       dataType: 'json',
         //       success: function (e) {
         //           for (i = 0; i < e.length; i++) {
-        //               $('#Order').append(
+        //     $('#Info').html("");              
+        //  $('#Order').append(
         //                   '<tr><th>' +
         //                   e[i].id +
         //                   '</th><td>' +
@@ -479,7 +484,7 @@
               url: "http://127.0.0.1:8000/api/member",
               dataType: 'json',
               success: function (e) {
-                  //    會員列表生成 按鈕功能尚未完成
+                  //    會員列表生成
                   for (j = 0; j < e.length; j++) {
                       $('#members').append(
                           '<tr><th>' + e[j].id + '</th><td>' + e[j].name +
@@ -487,7 +492,7 @@
                           .id +
                           '" checked  onchange="Status(' + e[j].id +
                           ')" data-toggle="toggle" data-on="Normal" data-off="Ban" data-onstyle="success" data-offstyle="danger"></td><td><button type = "button" class = "btn btn-primary btn-sm" onclick = "ReadMore(' +
-                          j + ')">More</button></td></tr>'
+                            e[j].id + ')">More</button></td></tr>'
                       )
                       var CheckboxId = "#Checkbox" + e[j].id;
                       //抓取停權狀態
