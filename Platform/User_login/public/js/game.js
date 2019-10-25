@@ -132,7 +132,7 @@ function play(event, obj) {
 
                 });
                 initMap = clickedItem;
-                // console.log(obj);
+                
                 open(newMap, clickedItem);
             }
         })
@@ -146,6 +146,7 @@ function play(event, obj) {
       
     }
     if (event.which == 3) {
+        console.log(obj.pos[0])
         if (obj.className && obj.className != 'flag') {
             return;
         }
@@ -154,6 +155,7 @@ function play(event, obj) {
         if (obj.className == 'flag') {
             mineNumLeft.innerHTML = --leftMine;
         } else {
+            
             mineNumLeft.innerHTML = ++leftMine;
         }
     }
