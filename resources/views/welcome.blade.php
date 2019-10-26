@@ -70,11 +70,15 @@
             font-weight: 700;
             margin-left: 15px;
         }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            width: 40px;
+            height: 40px;
+        }
         .news {
             margin-top: 50px;
         }
         .bigPic {
-            padding: 5px;
+            padding: 15px;
             height: 450px;
         }
         #footer {
@@ -83,9 +87,9 @@
             color: white;
             padding: 10px;
         }
-        b {
+        /* b {
             font-size: 1.7rem;
-        }
+        } */
             
     </style>
 </head>
@@ -104,7 +108,7 @@
 
     @if (Route::has('login'))
     <nav class="navbar navbar-dark bg-dark">
-            <b><a id="home" class="navbar-brand" href="{{ url('/') }}" style="font-size: 1.7rem">
+            <b class="first"><a id="home" class="navbar-brand" href="{{ url('/') }}" style="font-size: 1.7rem">
                 <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30" class="d-inline-block align-top">
                 Minesweeper Online
             </a></b>
@@ -332,16 +336,20 @@
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{URL::asset('')}}" class="d-block w-100" alt=""> 
+                                    <img src="{{URL::asset('/image/game01.jpg')}}" class="d-block w-100" alt=""> 
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{URL::asset('')}}" class="d-block w-100" alt="">
+                                    <img src="{{URL::asset('/image/game02.jpg')}}" class="d-block w-100" alt="">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{URL::asset('')}}" class="d-block w-100" alt="">
+                                    <img src="{{URL::asset('/image/game03.jpg')}}" class="d-block w-100" alt="">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{URL::asset('/image/game04.jpg')}}" class="d-block w-100" alt="">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -358,7 +366,7 @@
         {{-- @endauth --}}
         </div>
         <div id="footer">
-            <b><a class="navbar-brand goTop" href="#home" style="font-size: 1.7rem">
+            <b><a class="navbar-brand goTop" href="#home" style="font-size: 1.5rem">
                 <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30" class="d-inline-block align-top">    
             </a>Minesweeper Online</b>
         </div>

@@ -61,9 +61,6 @@
                 <div class="accordion" id="accordionExample">
                     <!-- 公告生成區 -->
                 </div>
-                <ul>
-                    
-                </ul>
             </div>
         </div>
     </div>
