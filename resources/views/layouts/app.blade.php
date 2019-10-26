@@ -183,7 +183,7 @@
                     dataType: 'json',
                     success: function (e) {
                         //   console.log(e.data.length);
-                        for (j = e.data.length-1; j >= 0; j--) {
+                        for (j = e.length-1; j >= 0; j--) {
                             //   console.log(e);
                             $('.accordion').append(
                                 '<div class="card"><div class="card-header" id="heading' +
@@ -191,13 +191,13 @@
                                 '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                                 j +
                                 '" aria-expanded="true" aria-controls="collapse' +
-                                j + '"><span class="h5 annTitle">['+e.data[j].type+'] '+e.data[j].releaseDate+' '+e.data[j].title+
+                                j + '"><span class="h5 annTitle">['+e[j].type+'] '+e[j].releaseDate+' '+e[j].title+
                                 '</span></button></div><div id="collapse' +
                                 j +
                                 '" class="collapse" aria-labelledby="heading' +
                                 j +
                                 '"data-parent="#accordionExample"><div class="card-body">' +
-                                e.data[j].content + '</div></div></div>'   
+                                e[j].content + '</div></div></div>'   
                             )
                         }
                     }
@@ -214,7 +214,7 @@
                         // return true;
                         $.ajax({
                             type: 'PUT',
-                            url: 'http://127.0.0.1:8000/api/store/{{ Auth::id() }}',
+                            url: '/api/store/{{ Auth::id() }}',
                             dataType: 'json',
                             data: {
                                 'coins': coinValue
@@ -238,7 +238,7 @@
                 $('#tradingList').html('');
                 $.ajax({
                     type: 'GET',
-                    url: 'http://127.0.0.1:8000/api/trans/{{ Auth::id() }}',
+                    url: '/api/trans/{{ Auth::id() }}',
                     dataType: 'json',
                     success: function(result) {
                         for (i = 0; i < result.length; i++) {

@@ -72,4 +72,11 @@ Route::get('/edit', function (){
     return view('user.edit');
 });
 
+//  管理員路由
+Route::get('/adminLogin', 'admin\LoginController@showLoginForm')
+->name('admin.login');
+Route::get('/admin', function (){
+    return view('admin');
+});
+
 
