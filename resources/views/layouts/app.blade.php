@@ -39,7 +39,7 @@
     <style>
         body,html {
             background-color: #f9f9f9;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito', sans-serif,微軟正黑體;
 
         }
 
@@ -106,11 +106,10 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <b><a class="navbar-brand" style="font-family: Arial; font-size: 1.7rem" href="{{ url('/') }}">
-                        <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30">
-                        {{ 'Minesweeper Online' }}
-                    </a></b>
+            <b><a class="navbar-brand" style="font-family: Nunito; font-size: 1.7rem" href="{{ url('/') }}">
+                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30" class="d-inline-block align-top">
+                    {{ 'Minesweeper Online' }}
+                </a></b>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -180,11 +179,11 @@
             $(document).ready(function(){
                 $.ajax({
                     type: 'GET',
-                    url: "http://127.0.0.1:8000/api/announce",
+                    url: "/api/announce",
                     dataType: 'json',
                     success: function (e) {
-                        //   console.log(e.length);
-                        for (j = e.length-1; j >= 0; j--) {
+                        //   console.log(e.data.length);
+                        for (j = e.data.length-1; j >= 0; j--) {
                             //   console.log(e);
                             $('.accordion').append(
                                 '<div class="card"><div class="card-header" id="heading' +
@@ -192,13 +191,13 @@
                                 '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                                 j +
                                 '" aria-expanded="true" aria-controls="collapse' +
-                                j + '"><span class="h5 annTitle">['+e[j].type+'] '+e[j].releaseDate+' '+e[j].title+
+                                j + '"><span class="h5 annTitle">['+e.data[j].type+'] '+e.data[j].releaseDate+' '+e.data[j].title+
                                 '</span></button></div><div id="collapse' +
                                 j +
                                 '" class="collapse" aria-labelledby="heading' +
                                 j +
                                 '"data-parent="#accordionExample"><div class="card-body">' +
-                                e[j].content + '</div></div></div>'   
+                                e.data[j].content + '</div></div></div>'   
                             )
                         }
                     }

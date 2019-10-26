@@ -10,7 +10,7 @@
 
 <style>
     html,body {
-        background-color: #f7f7f7;
+        background-color: #fff;
         font-family: 微軟正黑體;
     }
     tr,td {
@@ -61,32 +61,10 @@
                 <div class="accordion" id="accordionExample">
                     <!-- 公告生成區 -->
                 </div>
-                <!-- <div class="">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th colspan="2" scope="col">Title</th>
-                                <th scope="col" style="text-align: right"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td colspan="2">Article 1</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td colspan="2">Article 2</td>
-                                <td style="text-align: right"><button class="btn btn-primary btn-sm">more</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
-
+                <ul>
+                    
+                </ul>
             </div>
-
         </div>
     </div>
 </div>
