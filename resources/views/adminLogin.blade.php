@@ -10,6 +10,7 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
     </script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
@@ -42,10 +43,6 @@
             padding: 10px;
         }
         
-        .navbar-brand {
-            font-family: Arial;
-            font-size: 1.25rem;
-        }
     </style>
 
     <title>Minesweeper Online</title>
@@ -53,9 +50,8 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Arial; font-size: 1.7rem">
-                <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30">
+            <b><a class="navbar-brand" href="{{ url('/') }}" style="font-family: Nunito;font-size: 1.7rem">
+                <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30" class="d-inline-block align-top">
                 Minesweeper Online</a></b>
     </nav>
     <div class="container">

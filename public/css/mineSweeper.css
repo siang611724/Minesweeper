@@ -4,7 +4,8 @@
 
 .level {
     text-align: center;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    font-family: 微軟正黑體;
 }
 
 .btn1 {
@@ -15,7 +16,6 @@
     text-align: center;
     margin-top: 30px;
     font-size: 20px;
-    font-family: 微軟正黑體;
     text-decoration: none;
     font-weight: bold;
     color: #007CC5;
@@ -27,11 +27,13 @@
 .moneyNum{
     margin-right: 150px;
 }
+
 .gameBox table {
     border-spacing: 1px;
     background: #515155;
     margin: 0 auto;
     border-collapse: separate;
+    
     
 }
 
@@ -145,7 +147,7 @@ td.eight {
 #startmed {
     width: 72px;
     position: relative;left:26% ;  top: 20px;
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Archivo Black', sans-serif,微軟正黑體;;
     outline: none;
     font-size: 40px;
     letter-spacing: 13px;
@@ -159,7 +161,7 @@ td.eight {
 #starthard {
     width: 72px;
     position: relative; left:30% ;top: 20px;
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Archivo Black', sans-serif,微軟正黑體;;
     outline: none;
     font-size: 40px;
     letter-spacing: 13px;

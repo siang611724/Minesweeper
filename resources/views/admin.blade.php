@@ -16,6 +16,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
     </script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
         integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -122,8 +123,8 @@
 <body>
     <div>
         <nav class="navbar navbar-dark bg-dark">
-            <b><a class="navbar-brand" href="#">
-                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" width="30" height="30"
+            <b><a class="navbar-brand" href="#" style="font-family: Nunito; font-size:1.7rem;">
+                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" width="30" height="35"
                         class="d-inline-block align-top">
                     Minesweeper Online</a></b>
 
@@ -312,7 +313,7 @@
           // 交易紀錄
           $.ajax({
               type: 'GET',
-              url: "http://127.0.0.1:8000/api/trans/" + j,
+              url: "/api/trans/" + j,
               dataType: 'json',
               success: function (e) {
                   console.log(e);
@@ -337,7 +338,7 @@
         //   登入紀錄
           $.ajax({
               type: 'GET',
-              url: "http://127.0.0.1:8000/api/logs/" + j,
+              url: "/api/logs/" + j,
               dataType: 'json',
               success: function (e) {
                 //   console.log(e);
@@ -356,7 +357,7 @@
           // 遊戲歷程
           $.ajax({
               type: 'GET',
-              url: "http://127.0.0.1:8000/api/course/" + j,
+              url: "/api/course/" + j,
               dataType: 'json',
               success: function (e) {
                   console.log(e)
@@ -402,7 +403,7 @@
           var NewPW = $("#NewPW").val();
           $.ajax({
               type: 'PUT',
-              url: "http://127.0.0.1:8000/api/member/" + id,
+              url: "/api/member/" + id,
               dataType: 'json',
               data: {
                   "password": NewPW,
@@ -420,7 +421,7 @@
           var AddCoin = $("#AddCoin").val();
           $.ajax({
               type: 'PUT',
-              url: "http://127.0.0.1:8000/api/coin/" + id,
+              url: "/api/coin/" + id,
               dataType: 'json',
               data: {
                   "coins": AddCoin,
@@ -438,7 +439,7 @@
           //    公告列表生成
           $.ajax({
               type: 'GET',
-              url: "http://127.0.0.1:8000/api/announce",
+              url: "/api/announce",
               dataType: 'json',
               success: function (e) {
                   // console.log(e);
@@ -476,7 +477,7 @@
           //    會員列表生成
           $.ajax({
               type: 'GET',
-              url: "http://127.0.0.1:8000/api/member",
+              url: "/api/member",
               dataType: 'json',
               success: function (e) {
                   //    會員列表生成
@@ -512,7 +513,7 @@
           // console.log(content);
           $.ajax({
               type: 'PUT',
-              url: "http://127.0.0.1:8000/api/announce/" + i,
+              url: "/api/announce/" + i,
               dataType: 'json',
               data: {
                   "title": title,
@@ -541,7 +542,7 @@
           let content = $("#AddAnnContent").val();
           $.ajax({
               type: 'POST',
-              url: "http://127.0.0.1:8000/api/announce",
+              url: "/api/announce",
               dataType: 'json',
               data: {
                   "title": title,
@@ -562,7 +563,7 @@
 
           $.ajax({
               type: 'DELETE',
-              url: "http://127.0.0.1:8000/api/announce/" + j,
+              url: "/api/announce/" + j,
               dataType: 'json',
               data: {},
               success: function () {
@@ -579,7 +580,7 @@
           if (true) {
               $.ajax({
                   type: 'PUT',
-                  url: "http://127.0.0.1:8000/api/ban/" + i,
+                  url: "/api/ban/" + i,
                   dataType: 'json',
                   data: {
                       status: !$('#Checkbox' + i).prop("checked")

@@ -35,11 +35,7 @@
     //     // alert(key);
     // }
 </script>
-<style>
-    * {
-        font-family: 微軟正黑體;
-    }
-</style>
+
 
 
 <div class="">
