@@ -67,6 +67,9 @@ Route::get('/newmoneyhard','GameController@newMoneyHard');
 Route::get('/showmoney','GameController@showMoney');
 Route::get('/getlastmoney','GameController@showMoney');
 
+Route::get('getResult/{LastTime}','GameController@showMoney2');
+
+
 
 Route::get('/edit', function (){
     return view('user.edit');

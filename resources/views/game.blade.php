@@ -244,7 +244,7 @@
                 此局勝敗:敗
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()">確認</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()" id="getResultLose">確認</button>
                 
             </div>
         </div>
@@ -265,7 +265,7 @@
                 此局勝敗:勝
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()">確認</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()"id="getResultWin">確認</button>
                 
             </div>
         </div>

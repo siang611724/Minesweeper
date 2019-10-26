@@ -438,3 +438,23 @@ function showMoney() {
         }
     })
 }
+$("#getResultLose").click(function(){
+    var LastTime=t.toFixed(2);
+    $.ajax({
+        type: 'get',
+        url: 'getResult/'+LastTime,
+        success: function (money) {
+            moneyLose.innerHTML = money;
+        }
+    })
+})
+$("#getResultWin").click(function(){
+    var LastTime=t.toFixed(2);
+    $.ajax({
+        type: 'get',
+        url: 'getResult/'+LastTime,
+        success: function (money) {
+            moneyLose.innerHTML = money;
+        }
+    })
+})
