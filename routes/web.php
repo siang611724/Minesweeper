@@ -17,30 +17,22 @@ use Illuminate\Support\Facades\DB;
 // Route::get('/', 'MembersController@index');
 // Route::resource('Members', 'MembersController');
 Route::get('/', function () {
-    return view('/welcome');
+    return view('welcome');
 });
 // auth指令自動新增以下
 Auth::routes();
-Route::get('/home', function (){
-	$id = Auth::id();
-    $tradingRecord = DB::table('transaction_records')->where('user_id', $id)->orderBy('trading_date', 'desc')->get();
-    return view('home', compact('tradingRecord'));
-});
-// Route::post('/home', 'HomeController@coinPurchase');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@coinPurchase');
 
 Route::get('/dailyLogin', 'HomeController@dailyLogin')->name('dailyLogin');
 
-Route::resource('/user', 'UserController');
+Route::resource('user', 'UserController');
 
 //  管理員路由
-Route::get('/adminLogin', 'admin\LoginController@showLoginForm')
-->name('admin.login');
+// Route::get('admin/login', 'Admin\LoginController@showLoginForm')
+// ->name('admin.login');
 
-Route::get('/admin', function (){
-    return view('admin');
-});
-
-// Route::post('/adminLogin', 'admin\LoginController@checkAccount');
+// Route::post('admin/login', 'Admin\LoginController@login');
 
 // Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin'], function() {
 // 	Route::get('logout', 'Admin\LoginController@logout')
@@ -55,6 +47,7 @@ Route::get('/admin', function (){
 Route::get('/game', 'GameController@showGamePage');
 Route::get('wang/{tr}/{td}/{mineNum}','GameController@map');
 Route::get('getMap/{MapX}/{MapY}','Play@MouseClickTd');
+Route::get('flag/{MapX}/{MapY}','Play@flag');
 Route::resource('/wang','GameController');
 
 Route::get('/1', function (){
@@ -72,7 +65,7 @@ Route::get('/newmoneymed','GameController@newMoneyMed');
 Route::get('/newmoneyhard','GameController@newMoneyHard');
 
 Route::get('/showmoney','GameController@showMoney');
-Route::get('/getlastmoney/{t}','GameController@showMoney2');
+Route::get('/getlastmoney','GameController@showMoney');
 
 
 Route::get('/edit', function (){
