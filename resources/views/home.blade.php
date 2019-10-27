@@ -3,14 +3,6 @@
 @section('content')
 
 <style>
-<<<<<<< HEAD:Platform/User_login/resources/views/home.blade.php
-    tr,
-    td {
-        color: black;
-    }
-
-    /* .gameArea_right{overflow-y: scroll} */
-=======
     html,body {
         background-color: #fff;
         font-family: 微軟正黑體;
@@ -29,8 +21,7 @@
         color: black;
         font-weight: 700;
         }
-    .gameArea_right{overflow-y: scroll}
->>>>>>> fadcb17af849e080d5be9b50b7069a295d68254c:resources/views/home.blade.php
+    /* .gameArea_right{overflow-y: scroll} */
     /* html{overflow: hidden} */
 </style>
 
