@@ -8,6 +8,8 @@ use App\DB\Member;
 use DB;
 use Hash;
 use App\TransactionRecord;
+use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class MemberController extends Controller
 {
@@ -70,11 +72,20 @@ class MemberController extends Controller
      */
     public function updatePassword(Request $request, $id)
     {   
-        // $user = DB::table('users')->where('id',$id)->first();
-        // dd($user->name);
+        // 驗證格式
+        $validator = Validator::make($request->all(), [
+            'password' => 'alpha_dash'
+        ],
+        [
+            'alpha_dash' => '密碼僅能輸入數字、英文字母'
+        ]);
+        if($validator->fails()){
+            return response()->json(['errorMsg' => 'numberOnly', 'error' => $validator->errors()->all()]);
+        }
+        
         $result = DB::table('users')
                     ->where('id',$id)
-                    ->update([
+                    ->update([  
                         'password' => Hash::make($request->password),
                     ]);
         if (!$result) {
@@ -100,4 +111,5 @@ class MemberController extends Controller
             return response()->json(['message' => 'Wrong ID']);
         }
     }
+
 }

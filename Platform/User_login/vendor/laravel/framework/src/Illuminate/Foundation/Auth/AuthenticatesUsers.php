@@ -54,6 +54,7 @@ trait AuthenticatesUsers
         if ($this->attemptLogin($request)) {
 
             $user = Auth::user();
+            // 停權後自動登出
             if ($user->status == '1') {
                 $this->guard()->logout();
 

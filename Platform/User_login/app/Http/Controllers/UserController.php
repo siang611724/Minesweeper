@@ -102,7 +102,7 @@ class UserController extends Controller
         }
         
         DB::table('users')->where('id', $id)->update(['password' => bcrypt($newPassword)]);
-        return redirect('home');
+        return redirect('/home')->with('alertPW', '密碼修改成功');
     }
 
     /**

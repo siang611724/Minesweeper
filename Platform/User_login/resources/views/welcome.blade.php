@@ -176,11 +176,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-<<<<<<< HEAD
                         <img src="{{URL::asset('/image/mineweeper1.png')}}" class="d-block w-100" alt=""> 
-=======
-                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt="">
->>>>>>> don
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>踩地雷</h5>
                                 <p>享受它吧</p>
@@ -312,15 +308,11 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-<<<<<<< HEAD
                             <img src="{{URL::asset('/image/mineweeper1.png')}}" class="d-block w-100" alt=""> 
-=======
-                            <img src="{{URL::asset('/image/mineweepr.jpg')}}" class="d-block w-100" alt="">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>踩地雷</h5>
                                 <p>享受它吧</p>
                             </div>
->>>>>>> don
                         </div>
                         <div class="carousel-item">
                             <img src="{{URL::asset('/image/mineweeper2.png')}}" class="d-block w-100" alt="">
