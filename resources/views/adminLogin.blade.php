@@ -98,7 +98,7 @@
             // $('#accountText').append("<p>123</p>");
             $.ajax({
                 type: 'POST',
-                url: 'http://127.0.0.1:8000/api/adminLogin',
+                url: '/api/adminLogin',
                 dataType: 'json',
                 data: {
                     'account': accountInput,
