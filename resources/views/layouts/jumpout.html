@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <title>Document</title>
+
+    <style>
+        /* 弹窗 (background) */
+        .modal {
+            display: none;
+            /* 默认隐藏 */
+            position: fixed;
+            /* 固定定位 */
+            z-index: 1;
+            /* 设置在顶层 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* 弹窗内容 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* 关闭按钮 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <a id="myBtn">打开弹窗</a>
+
+    <!-- 弹窗 -->
+    <div id="myModal" class="modal">
+
+        <!-- 弹窗内容 -->
+        <div class="modal-content">
+            <!-- <span class="close">&times;</span>
+            <p>弹窗中的文本...</p> -->
+        </div>
+
+    </div>
+
+    <script>
+
+        // 获取弹窗
+        var modal = document.getElementById('myModal');
+
+        // 打开弹窗的按钮对象
+        var btn = document.getElementById("myBtn");
+
+        // 获取 <span> 元素，用于关闭弹窗
+        var span = document.querySelector('.close');
+
+        // 点击按钮打开弹窗
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // 点击 <span> (x), 关闭弹窗
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // 在用户点击其他地方时，关闭弹窗
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+    </script>
+<div>
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Form Name</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">卡號</label>
+                <div class="col-md-6">
+                    <input id="textinput" name="textinput" type="text" placeholder="請輸入卡號"
+                        class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Multiple Radios (inline) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="radios">儲值金額</label>
+                <div class="col-md-4">
+                    <label class="radio-inline" for="radios-0">
+                        <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                        10
+                    </label>
+                    <label class="radio-inline" for="radios-1">
+                        <input type="radio" name="radios" id="radios-1" value="2">
+                        30
+                    </label>
+                    <label class="radio-inline" for="radios-2">
+                        <input type="radio" name="radios" id="radios-2" value="3">
+                        50
+                    </label>
+                    <label class="radio-inline" for="radios-3">
+                        <input type="radio" name="radios" id="radios-3" value="4">
+                        100
+                    </label>
+                </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                    <button id="button1id" name="button1id" class="btn btn-primary">確認</button>
+                    <button id="button2id" name="button2id" class="btn btn-danger">關閉</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+
+    
+</body>
+
+</html>

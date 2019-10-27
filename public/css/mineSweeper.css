@@ -1,0 +1,260 @@
+#mine {
+    margin: 50px auto
+}
+
+.level {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 微軟正黑體;
+}
+
+.btn1 {
+    color: #007CC5;
+}
+
+.info {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #007CC5;
+}
+
+.mineNum{
+    margin-right:150px; 
+}
+.moneyNum{
+    margin-right: 150px;
+}
+
+.gameBox table {
+    border-spacing: 1px;
+    background: #515155;
+    margin: 0 auto;
+    border-collapse: separate;
+    
+    
+}
+
+.gameBox td {
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    background: #ccc;
+    border: 2px solid;
+    border-color: #fff #a1a1a1 #a1a1a1 #fff;
+
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.gameBox .mine {
+    background: #d9d9d9 url(/image/boom.png) no-repeat center;
+    background-size: cover;
+}
+
+.gameBox .flag {
+    background: #ccc url(/image/flag.png) no-repeat center;
+    background-size: cover;
+}
+
+td.zero {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    border-color: #d9d9d9;
+}
+
+td.one {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    color: blue;
+    border-color: #d9d9d9;
+
+}
+
+td.two {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    color: green;
+    border-color: #d9d9d9;
+
+}
+
+td.three {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    color: red;
+    border-color: #d9d9d9;
+
+}
+
+td.four {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    color: #202183;
+    border-color: #d9d9d9;
+
+}
+
+td.five {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    color: brown;
+    border-color: #d9d9d9;
+
+}
+
+td.six {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    color: orange;
+    border-color: #d9d9d9;
+
+}
+
+td.seven {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    color: black;
+    border-color: #d9d9d9;
+
+}
+
+td.eight {
+    background-color: #d9d9d9;
+    background: #d9d9d9;
+    color: purple;
+    border-color: #d9d9d9;
+
+}
+
+#starteasy {
+    width: 72px;
+    position: relative;  left :25%;top: 20px;
+    font-family: 'Archivo Black', sans-serif,微軟正黑體;
+    outline: none;
+    font-size: 40px;
+    letter-spacing: 13px;
+    width: 25vw;
+    height: 12vh;
+    color: #007CC5;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: gray 0.05em 0.05em 0.05em;
+}
+#startmed {
+    width: 72px;
+    position: relative;left:26% ;  top: 20px;
+    font-family: 'Archivo Black', sans-serif,微軟正黑體;;
+    outline: none;
+    font-size: 40px;
+    letter-spacing: 13px;
+    width: 25vw;
+    height: 12vh;
+    color: #007CC5;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: gray 0.05em 0.05em 0.05em;
+}
+#starthard {
+    width: 72px;
+    position: relative; left:30% ;top: 20px;
+    font-family: 'Archivo Black', sans-serif,微軟正黑體;;
+    outline: none;
+    font-size: 40px;
+    letter-spacing: 13px;
+    width: 25vw;
+    height: 12vh;
+    color: #007CC5;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: gray 0.05em 0.05em 0.05em;
+}
+.css_button {
+    padding: 25px 50px;
+    border: 1px solid #C7C7C7;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFFFFF));
+    background: -webkit-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background: -moz-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background: -ms-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background: -o-linear-gradient(top, #FFFFFF, #FFFFFF);
+    background-color: #FFFFFF;
+    box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 0px #FFFFFF;
+    -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 0px #FFFFFF;
+    -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 0px #FFFFFF;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  
+    color: #007CC5;
+    font-size: 19px;
+    font-family: '微軟正黑體';
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    cursor: pointer;
+    }
+ .css_button:hover {
+    background: none;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    border: 1px solid #ffffff;
+    color: #2645E0;
+    }
+ .css_button:active {
+    top: 1px;
+    position: relative;
+    }
+
+    .btn1 {
+        padding: 10px 20px;
+        border: 1px solid #C7C7C7;
+        background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#FFFFFF));
+        background: -webkit-linear-gradient(top, #FFFFFF, #FFFFFF);
+        background: -moz-linear-gradient(top, #FFFFFF, #FFFFFF);
+        background: -ms-linear-gradient(top, #FFFFFF, #FFFFFF);
+        background: -o-linear-gradient(top, #FFFFFF, #FFFFFF);
+        background-color: #FFFFFF;
+        box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #FFFFFF;
+        -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #FFFFFF;
+        -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #FFFFFF;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+       
+        color: #0037FF;
+        font-size: 14px;
+        font-family: '微軟正黑體';
+        text-decoration: none;
+        font-weight: bold;
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        -o-transition: 0.2s;
+        cursor: pointer;
+        }
+     .btn1:hover {
+        background: none;
+        background-color: #FFFFFF;
+        box-shadow: 0px 0px 5px 0px #AAAAAA;
+        -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+        -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+        border: 1px solid #ffffff;
+        color: #470000;
+        }
+     .btn1:active {
+        top: 1px;
+        position: relative;
+        }
+    /* .modal-body{
+        font-size: 20px;
+        font-family: '微軟正黑體';
+        text-decoration: none;
+        font-weight: bold;
+        color: #0037FF;
+    } */
