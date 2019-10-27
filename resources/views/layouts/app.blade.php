@@ -99,6 +99,13 @@
             width: 50%;
             z-index: 20;
         }
+
+        .card-header {
+            cursor: pointer;
+            background-color: #fff;
+            margin: 5px;
+            border-radius: 10px;
+        }
     </style>
 
 </head>
