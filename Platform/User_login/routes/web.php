@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-// use DB;
 use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------

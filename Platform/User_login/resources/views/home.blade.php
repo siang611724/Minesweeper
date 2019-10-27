@@ -2,19 +2,25 @@
 
 @section('content')
 
-<script type="text/javascript">
-    
-    
-
-</script>
-
 <style>
-    tr,td {
+    tr,
+    td {
         color: black;
     }
-    .gameArea_right{overflow-y: scroll}
+
+    /* .gameArea_right{overflow-y: scroll} */
     /* html{overflow: hidden} */
 </style>
+
+<script>
+
+    var changePWMsg = '{{ Session::get('alertPW') }}';
+    var exist = '{{ Session::has('alertPW') }}';
+    if (exist) {
+        alert(changePWMsg);
+    }
+
+</script>
 
 <div class="">
     <div class="content row">

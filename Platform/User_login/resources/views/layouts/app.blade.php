@@ -204,6 +204,7 @@
                     }
                 });
             })
+            
             function storeCoin() {
                 var key = document.getElementById("textinput").value;
                 var coinValue = document.querySelector("input[name='radios']:checked").value;

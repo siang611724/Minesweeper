@@ -22,10 +22,7 @@
                 <button onclick="tradingList()" type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
                     我的錢包
                 </button></p>
-        </div>
-        <!-- <div class="text_box"> 彈出對話框 -->
-        <!-- <p>彈窗內容</p> -->
-        <!-- </div>  -->
+        </div>  
 
         <!-- 加值彈窗 -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -149,9 +146,8 @@
 
                         <!-- Button (Double) -->
                         <div class="form-group">
-                            <button type="submit" id="button1id" name="button1id" class="btn btn-primary">更新密碼</button>
+                            <button type="submit" onclick="" id="button1id" name="button1id" class="btn btn-primary">更新密碼</button>
                             <input type="button" class="btn btn-default" name="" id="" onclick="javascript:location.href='/home'" value="取消">
-                            <!-- <button onclick="javascript:location.href='/home'" class="btn btn-default">取消</button> -->
                         </div>
                     </fieldset>
                 </form>

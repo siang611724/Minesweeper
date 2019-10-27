@@ -10,16 +10,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="../../public/icon/icon.png">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
         html {
             overflow: hidden;
@@ -114,7 +110,6 @@
             border-radius: 3px;
             border: 1px solid lightgrey;
         }
-
     </style>
     <title>Minesweeper Online</title>
 </head>
@@ -123,13 +118,11 @@
     <div>
         <nav class="navbar navbar-dark bg-dark">
             <b><a class="navbar-brand" href="#">
-                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" width="30" height="30"
-                        class="d-inline-block align-top">
+                    <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" width="30" height="30" class="d-inline-block align-top">
                     Minesweeper Online</a></b>
 
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Administrator
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -152,18 +145,14 @@
             <div class="row leftNav">
                 <div class="col-2 text-center leftSide">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link show active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
-                            role="tab" aria-controls="v-pills-home" aria-selected="false"
-                            onclick="MemberList()">會員資料</a>
-                        <a class="nav-link show" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
-                            role="tab" aria-controls="v-pills-profile" aria-selected="false">發布公告</a>
+                        <a class="nav-link show active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false" onclick="MemberList()">會員資料</a>
+                        <a class="nav-link show" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">發布公告</a>
                     </div>
                 </div>
                 <div class="col-10 rightSide">
                     <div class="tab-content" id="v-pills-tabContent">
                         <!-- 會員資料 -->
-                        <div class="tab-pane fade show active container" id="v-pills-home" role="tabpanel"
-                            aria-labelledby="v-pills-home-tab">
+                        <div class="tab-pane fade show active container" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <div id="table">
                                 <table class="table table-hover">
                                     <thead class="thead-light">
@@ -188,11 +177,9 @@
 
 
                         <!-- 公告 -->
-                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                            aria-labelledby="v-pills-profile-tab">
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <span class="h2">公告列表</span>
-                            <button type="button" class="btn float-right btn-success btn-lg" data-toggle="modal"
-                                data-target="#exampleModal">
+                            <button type="button" class="btn float-right btn-success btn-lg" data-toggle="modal" data-target="#exampleModal">
                                 +
                             </button>
                             <hr>
@@ -212,8 +199,7 @@
 
     <!-- 新增金幣MODAL -->
 
-    <div class="modal fade" id="AddCoinModal" tabindex="-1" role="dialog" aria-labelledby="AddCoinModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="AddCoinModal" tabindex="-1" role="dialog" aria-labelledby="AddCoinModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -223,8 +209,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="AddCoin"
-                        placeholder="請輸入補償金額">
+                    <i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="AddCoin" name="AddCoin" placeholder="請輸入補償金額">
+                    <div class="errorMsgCoin" style="display: none; color: red">
+                        <div></div>
+                    </div>
                 </div>
                 <div class="modal-footer AddCoinFooter">
                     <!-- <button type="button" class="btn btn-primary">Save changes</button>
@@ -235,8 +223,7 @@
         </div>
     </div>
     <!-- 新增公告MODAL -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="AddAnnModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="AddAnnModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -262,8 +249,7 @@
     </div>
     <!-- 修改密碼Modal -->
 
-    <div class="modal fade" id="PWchange" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="PWchange" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header PWchangeHeader">
@@ -274,6 +260,9 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" id="NewPW" placeholder="請輸入新密碼">
+                    <div class="errorMsgPW" style="color:red">
+                        <div></div>
+                    </div>
                 </div>
                 <div class="modal-footer PWFooter">
                 </div>
@@ -283,311 +272,335 @@
 
 
     <script>
-      // 詳細會員資料
-      function ReadMore(j) {
-          // 會員資料
-          $.ajax({
-              type: 'GET',
-              url: "http://127.0.0.1:8000/api/member",
-              dataType: 'json',
-              success: function (e) {
+        // 詳細會員資料
+        function ReadMore(j) {
+            // 會員資料
+            $.ajax({
+                type: 'GET',
+                url: "http://127.0.0.1:8000/api/member",
+                dataType: 'json',
+                success: function(e) {
 
-                  $('#Info').html("");
+                    $('#Info').html("");
 
-                  $('#Info').append('<div class="row"><div class="col-9 h1">' +
-                      e[j].name +
-                      '<btn class="btn-link" data-toggle="modal" data-target="#PWchange" onclick="ChangePWFooter(' +
-                      e[j].id + ')"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
-                      e[j].email +
-                      '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>' +
-                      e[j].coins +
-                      '<button type="button" class="btn btn-success float-right" onclick="AddCoinFooter(' +
-                      e[j].id +
-                      ')"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
-                  )
-              }
-          })
-          console.log(j)
-          // 交易紀錄
-          $.ajax({
-              type: 'GET',
-              url: "http://127.0.0.1:8000/api/trans/" + j+1,
-              dataType: 'json',
-              success: function (e) {
-                  console.log(e);
-                  for (i = 0; i < e.length; i++) {
-                      $('#Order').append(
-                          '<tr><th>' +
-                          e[i].id +
-                          '</th><td>' +
-                          e[i].trading_date +
-                          '</td><td>' +
-                          e[i].trading_type +
-                          '</td><td>' +
-                          e[i].trading_coins +
-                          '</td><td>' +
-                          e[i].balance_coins +
-                          '</td></tr>')
+                    $('#Info').append('<div class="row"><div class="col-9 h1">' +
+                        e[j].name +
+                        '<btn class="btn-link" data-toggle="modal" data-target="#PWchange" onclick="ChangePWFooter(' +
+                        e[j].id + ')"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
+                        e[j].email +
+                        '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>' +
+                        e[j].coins +
+                        '<button type="button" class="btn btn-success float-right" onclick="AddCoinFooter(' +
+                        e[j].id +
+                        ')"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
+                    )
+                }
+            })
+            console.log(j)
+            // 交易紀錄
+            $.ajax({
+                type: 'GET',
+                url: "http://127.0.0.1:8000/api/trans/" + j + 1,
+                dataType: 'json',
+                success: function(e) {
+                    console.log(e);
+                    for (i = 0; i < e.length; i++) {
+                        $('#Order').append(
+                            '<tr><th>' +
+                            e[i].id +
+                            '</th><td>' +
+                            e[i].trading_date +
+                            '</td><td>' +
+                            e[i].trading_type +
+                            '</td><td>' +
+                            e[i].trading_coins +
+                            '</td><td>' +
+                            e[i].balance_coins +
+                            '</td></tr>')
 
-                  }
-              }
-          })
-          $.ajax({
-              type: 'GET',
-              url: "http://127.0.0.1:8000/api/logs/" + j+1,
-              dataType: 'json',
-              success: function (e) {
-                  console.log(e);
-                  for (i = 0; i < e.length; i++) {
-                      $('#Log').append(
-                          '<tr><th>' +
-                          e[i].id +
-                          '</th><td>' +
-                          e[i].login_time +
-                          '</td>' )
+                    }
+                }
+            })
+            $.ajax({
+                type: 'GET',
+                url: "http://127.0.0.1:8000/api/logs/" + j + 1,
+                dataType: 'json',
+                success: function(e) {
+                    console.log(e);
+                    for (i = 0; i < e.length; i++) {
+                        $('#Log').append(
+                            '<tr><th>' +
+                            e[i].id +
+                            '</th><td>' +
+                            e[i].login_time +
+                            '</td>')
 
-                  }
-              }
-          })
-          // 遊戲歷程
-        //   $.ajax({
-        //       type: 'GET',
-        //       url: "http://127.0.0.1:8000/api/coin/" + j+1,
-        //       dataType: 'json',
-        //       success: function (e) {
-        //           for (i = 0; i < e.length; i++) {
-        //               $('#Order').append(
-        //                   '<tr><th>' +
-        //                   e[i].id +
-        //                   '</th><td>' +
-        //                   e[i].trading_date +
-        //                   '</td><td>' +
-        //                   e[i].trading_type +
-        //                   '</td><td>' +
-        //                   e[i].trading_coins +
-        //                   '</td><td>' +
-        //                   e[i].balance_coins +
-        //                   '</td></tr>')
+                    }
+                }
+            })
+            // 遊戲歷程
+            //   $.ajax({
+            //       type: 'GET',
+            //       url: "http://127.0.0.1:8000/api/coin/" + j+1,
+            //       dataType: 'json',
+            //       success: function (e) {
+            //           for (i = 0; i < e.length; i++) {
+            //               $('#Order').append(
+            //                   '<tr><th>' +
+            //                   e[i].id +
+            //                   '</th><td>' +
+            //                   e[i].trading_date +
+            //                   '</td><td>' +
+            //                   e[i].trading_type +
+            //                   '</td><td>' +
+            //                   e[i].trading_coins +
+            //                   '</td><td>' +
+            //                   e[i].balance_coins +
+            //                   '</td></tr>')
 
-        //           }
-        //       }
-        //   })
+            //           }
+            //       }
+            //   })
 
-          //    ===============================
-          var t = document.getElementById('table');
-          t.style.display = 'none';
-          var t1 = document.getElementById('Info');
-          t1.style.display = 'block';
-      }
+            //    ===============================
+            var t = document.getElementById('table');
+            t.style.display = 'none';
+            var t1 = document.getElementById('Info');
+            t1.style.display = 'block';
+        }
 
-      function ChangePWFooter(id) {
-          $('.PWFooter').html('');
-          $('.PWFooter').append(
-              '<button type="button" class="btn btn-danger" Onclick="changePW(' + id +
-              ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
-          )
-      }
+        function ChangePWFooter(id) {
+            $('.PWFooter').html('');
+            $('.PWFooter').append(
+                '<button type="button" class="btn btn-danger" Onclick="changePW(' + id +
+                ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+            )
+        }
 
-      function AddCoinFooter(id) {
-          $('.AddCoinFooter').html('');
-          $('.AddCoinFooter').append(
-              '<button type="button" class="btn btn-success" Onclick="AddCoinOK('+id+')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
-          )
-      }
-
-
-      function changePW(id) {
-          // console.log(j);
-          var NewPW = $("#NewPW").val();
-          $.ajax({
-              type: 'PUT',
-              url: "http://127.0.0.1:8000/api/member/" + id,
-              dataType: 'json',
-              data: {
-                  "password": NewPW,
-
-              },
-              success: function () {
-
-                  alert("已修改成功");
-                  location.reload()
-              }
-          })
-      }
-
-      function AddCoinOK(id) {
-          var AddCoin = $("#AddCoin").val();
-          $.ajax({
-              type: 'PUT',
-              url: "http://127.0.0.1:8000/api/coin/" + id,
-              dataType: 'json',
-              data: {
-                  "coins": AddCoin,
-
-              },
-              success: function () {
-                  alert("已修改成功");
-                  location.reload()
-              }
-          })
-      }
-
-      // ====================功能已完成=========================
-      $(document).ready(function () {
-          //    公告列表生成
-          $.ajax({
-              type: 'GET',
-              url: "http://127.0.0.1:8000/api/announce",
-              dataType: 'json',
-              success: function (e) {
-                  // console.log(e);
-                  for (j = e.length - 1; j > 0; j--) {
-                      // console.log(e);
-                      $('.accordion').append(
-                          '<div class="card"><div class="card-header" id="heading' +
-                          j +
-                          '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
-                          j +
-                          '" aria-expanded="true" aria-controls="collapse' +
-                          j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
-                          e[j]
-                          .title +
-                          '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
-                          e[j].id +
-                          ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
-                          j +
-                          '" class="collapse" aria-labelledby="heading' +
-                          j +
-                          '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
-                          e[j].id +
-                          '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
-                          e[j].id +
-                          ')">確認</button></div><textarea id="updateContent' + e[j]
-                          .id +
-                          '" placeholder="請輸入公告內容">' +
-                          e[j].content + '</textarea></div></div></div>'
-                      )
-                  }
-              }
-          });
+        function AddCoinFooter(id) {
+            $('.AddCoinFooter').html('');
+            $('.AddCoinFooter').append(
+                '<button type="button" class="btn btn-success" Onclick="AddCoinOK(' + id + ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+            )
+        }
 
 
-          //    會員列表生成
-          $.ajax({
-              type: 'GET',
-              url: "http://127.0.0.1:8000/api/member",
-              dataType: 'json',
-              success: function (e) {
-                  //    會員列表生成 按鈕功能尚未完成
-                  for (j = 0; j < e.length; j++) {
-                      $('#members').append(
-                          '<tr><th>' + e[j].id + '</th><td>' + e[j].name +
-                          '</td><td><input type="checkbox" id="Checkbox' + e[j]
-                          .id +
-                          '" checked  onchange="Status(' + e[j].id +
-                          ')" data-toggle="toggle" data-on="Normal" data-off="Ban" data-onstyle="success" data-offstyle="danger"></td><td><button type = "button" class = "btn btn-primary btn-sm" onclick = "ReadMore(' +
-                          j + ')">More</button></td></tr>'
-                      )
-                      var CheckboxId = "#Checkbox" + e[j].id;
-                      //抓取停權狀態
-                      if (e[j].status) {
-                          $(CheckboxId).prop("checked",
-                              false); // $().prop("checked", true)
-                      }
-                  }
-                  // 事後新增CDN
-                  $("head").append(
-                      '<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"><//script>'
-                  )
-              }
-          })
-      })
+        function changePW(id) {
+            // console.log(j);
+            var NewPW = $("#NewPW").val();
+            $.ajax({
+                type: 'PUT',
+                url: "http://127.0.0.1:8000/api/member/" + id,
+                dataType: 'json',
+                data: {
+                    "password": NewPW,
+                },
+                success: function(response) {
+                    if (response.errorMsg == 'numberOnly') {
+                        $('.errorMsgPW').find('div').html('');
+                        $('.errorMsgPW').css('display', 'block');
+                        $('.errorMsgPW').find('div').append("<p>" + response.error + "</p>");
+                        $("#NewPW").val('');
+                    } else {
+                        alert("已修改成功");
+                        location.reload();
+                    }
+                }
+            })
+        }
 
-      // 更新公告
-      function updateOK(i) {
-          let title = $("#updateTitle" + i).val();
-          let content = $("#updateContent" + i).val();
-          // console.log(title);
-          // console.log(content);
-          $.ajax({
-              type: 'PUT',
-              url: "http://127.0.0.1:8000/api/announce/" + i,
-              dataType: 'json',
-              data: {
-                  "title": title,
-                  "content": content,
-              },
-              success: function () {
+        function AddCoinOK(id) {
+            var AddCoin = $("#AddCoin").val();
+            $.ajax({
+                type: 'PUT',
+                url: "http://127.0.0.1:8000/api/coin/" + id,
+                dataType: 'json',
+                data: {
+                    "coins": AddCoin
+                },
+                success: function(response) {
+                    // alert(errors.error);
+                    if (response.errorMsg == 'numberOnly') {
+                        $('.errorMsgCoin').find('div').html('');
+                        $('.errorMsgCoin').css('display', 'block');
+                        $('.errorMsgCoin').find('div').append("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + response.error + "</p>");
+                        $("#AddCoin").val('');
+                    } else if (response.errorMsg == 'moreThan0') {
+                        $('.errorMsgCoin').find('div').html('');
+                        $('.errorMsgCoin').css('display', 'block');
+                        $('.errorMsgCoin').find('div').append("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;金幣不能少於0</p>");
+                        $("#AddCoin").val('');
+                    } else {
+                        alert("已修改成功");
+                        location.reload();
+                    }
+                }
+            })
+        }
 
-                  alert("已發布公告");
-                  location.reload()
-              }
-          })
+        // function printErrorMsg(msg) {
+        //     $('.errorMsg').find('div').html('');
+        //     $('.errorMsg').css('display', 'block');
+        //     $.each(msg, function(key, value) {
+        //         $('.errorMsg').find('div').append("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + value + "</p>");
+        //     });
+        // }
 
-      }
-      // 切換至MEMBER
-      function MemberList() {
-          var t = document.getElementById('table');
-          t.style.display = 'block';
-          var t1 = document.getElementById('Info');
-          t1.style.display = 'none';
-      }
+        // ====================功能已完成=========================
+        $(document).ready(function() {
+            //    公告列表生成
+            $.ajax({
+                type: 'GET',
+                url: "http://127.0.0.1:8000/api/announce",
+                dataType: 'json',
+                success: function(e) {
+                    // console.log(e);
+                    for (j = e.length - 1; j > 0; j--) {
+                        // console.log(e);
+                        $('.accordion').append(
+                            '<div class="card"><div class="card-header" id="heading' +
+                            j +
+                            '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
+                            j +
+                            '" aria-expanded="true" aria-controls="collapse' +
+                            j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
+                            e[j]
+                            .title +
+                            '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
+                            e[j].id +
+                            ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
+                            j +
+                            '" class="collapse" aria-labelledby="heading' +
+                            j +
+                            '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
+                            e[j].id +
+                            '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
+                            e[j].id +
+                            ')">確認</button></div><textarea id="updateContent' + e[j]
+                            .id +
+                            '" placeholder="請輸入公告內容">' +
+                            e[j].content + '</textarea></div></div></div>'
+                        )
+                    }
+                }
+            });
 
-      // 新增公告
 
-      function AddAnnOK() {
-          let title = $("#AddAnnTitle").val();
-          let content = $("#AddAnnContent").val();
-          $.ajax({
-              type: 'POST',
-              url: "http://127.0.0.1:8000/api/announce",
-              dataType: 'json',
-              data: {
-                  "title": title,
-                  "content": content,
-              },
-              success: function (e) {
-                  $("#AddAnnTitle").val("");
-                  $("#AddAnnContent").val("");
-                  alert("已發布公告");
-                  location.reload();
-              }
-          });
+            //    會員列表生成
+            $.ajax({
+                type: 'GET',
+                url: "http://127.0.0.1:8000/api/member",
+                dataType: 'json',
+                success: function(e) {
+                    //    會員列表生成 按鈕功能尚未完成
+                    for (j = 0; j < e.length; j++) {
+                        $('#members').append(
+                            '<tr><th>' + e[j].id + '</th><td>' + e[j].name +
+                            '</td><td><input type="checkbox" id="Checkbox' + e[j]
+                            .id +
+                            '" checked  onchange="Status(' + e[j].id +
+                            ')" data-toggle="toggle" data-on="Normal" data-off="Ban" data-onstyle="success" data-offstyle="danger"></td><td><button type = "button" class = "btn btn-primary btn-sm" onclick = "ReadMore(' +
+                            j + ')">More</button></td></tr>'
+                        )
+                        var CheckboxId = "#Checkbox" + e[j].id;
+                        //抓取停權狀態
+                        if (e[j].status) {
+                            $(CheckboxId).prop("checked",
+                                false); // $().prop("checked", true)
+                        }
+                    }
+                    // 事後新增CDN
+                    $("head").append(
+                        '<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"><//script>'
+                    )
+                }
+            })
+        })
 
-      }
+        // 更新公告
+        function updateOK(i) {
+            let title = $("#updateTitle" + i).val();
+            let content = $("#updateContent" + i).val();
+            // console.log(title);
+            // console.log(content);
+            $.ajax({
+                type: 'PUT',
+                url: "http://127.0.0.1:8000/api/announce/" + i,
+                dataType: 'json',
+                data: {
+                    "title": title,
+                    "content": content,
+                },
+                success: function() {
 
-      // 刪除公告
-      function deleteAnn(j) {
+                    alert("已發布公告");
+                    location.reload()
+                }
+            })
 
-          $.ajax({
-              type: 'DELETE',
-              url: "http://127.0.0.1:8000/api/announce/" + j,
-              dataType: 'json',
-              data: {},
-              success: function () {
-                  // console.log(j);
-                  alert("已刪除公告");
-                  location.reload();
-              }
-          })
-      }
+        }
+        // 切換至MEMBER
+        function MemberList() {
+            var t = document.getElementById('table');
+            t.style.display = 'block';
+            var t1 = document.getElementById('Info');
+            t1.style.display = 'none';
+        }
 
-      function Status(i) {
-          // console.log($("#Checkbox"+i ))
-          // console.log()
-          if (true) {
-              $.ajax({
-                  type: 'PUT',
-                  url: "http://127.0.0.1:8000/api/ban/" + i,
-                  dataType: 'json',
-                  data: {
-                      status: !$('#Checkbox' + i).prop("checked")
-                  }
-              })
-          }
-      }
+        // 新增公告
 
-  </script>
+        function AddAnnOK() {
+            let title = $("#AddAnnTitle").val();
+            let content = $("#AddAnnContent").val();
+            $.ajax({
+                type: 'POST',
+                url: "http://127.0.0.1:8000/api/announce",
+                dataType: 'json',
+                data: {
+                    "title": title,
+                    "content": content,
+                },
+                success: function(e) {
+                    $("#AddAnnTitle").val("");
+                    $("#AddAnnContent").val("");
+                    alert("已發布公告");
+                    location.reload();
+                }
+            });
+
+        }
+
+        // 刪除公告
+        function deleteAnn(j) {
+
+            $.ajax({
+                type: 'DELETE',
+                url: "http://127.0.0.1:8000/api/announce/" + j,
+                dataType: 'json',
+                data: {},
+                success: function() {
+                    // console.log(j);
+                    alert("已刪除公告");
+                    location.reload();
+                }
+            })
+        }
+
+        function Status(i) {
+            // console.log($("#Checkbox"+i ))
+            // console.log()
+            if (true) {
+                $.ajax({
+                    type: 'PUT',
+                    url: "http://127.0.0.1:8000/api/ban/" + i,
+                    dataType: 'json',
+                    data: {
+                        status: !$('#Checkbox' + i).prop("checked")
+                    }
+                })
+            }
+        }
+    </script>
 </body>
 
 </html>
