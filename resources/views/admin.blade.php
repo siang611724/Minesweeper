@@ -547,7 +547,7 @@
                     $("#updateContent"+i).html(e.content);                               
                                 }
                          })
-                    
+                    alert("已修改成功"); 
                 }
             })
 
@@ -581,7 +581,7 @@
                         type:"get",
                         url:"/api/NewAnnounce",
                         success:function(e){
-                            // console.log(e);
+                            console.log(e);
                             // console.log(e[0].id);
                            let listID=e.length-1;
                            let lastID=e.length-2;
