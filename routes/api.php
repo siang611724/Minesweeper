@@ -15,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/announce', 'api\AnnounceController@annList');
+
 Route::get('/NewAnnounce', 'api\AnnounceController@NewList');
+
 Route::post('/announce', 'api\AnnounceController@newAnn');
+
 Route::get('/announce/{announce}', 'api\AnnounceController@designAnn');
 Route::put('/announce/{announce}', 'api\AnnounceController@updateAnn');
 Route::delete('/announce/{announce}', 'api\AnnounceController@delAnn');
