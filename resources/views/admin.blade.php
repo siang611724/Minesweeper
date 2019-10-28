@@ -294,9 +294,9 @@
                         e[idArray].email +
                         '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span id="NewCoin">' +
                         e[idArray].coins +
-                        '<button type="button" class="btn btn-success float-right" onclick="AddCoinFooter(' +
+                        '</span><button type="button" class="btn btn-success float-right" onclick="AddCoinFooter(' +
                         e[idArray].id +
-                        ')"   data-toggle="modal" data-target="#AddCoinModal">+</button></span></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
+                        ')"   data-toggle="modal" data-target="#AddCoinModal">+</button></div></div><div class="nav w-100 nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">登入紀錄</a><a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">交易紀錄</a> <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">遊玩紀錄</a></div><div class="tab-content" id="nav-tabContent"><div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>登入序號</th><th>登入時間</th></tr></thead><tbody id="Log"></tbody></table></div></div><div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div id="table"><table class="table table-hover"><thead class="thead-light"><tr><th>訂單號</th><th>交易時間</th><th>交易類型</th><th>金額異動</th><th>總金額</th></tr></thead><tbody id="Order"></tbody></table></div></div><div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div id="table">    <table class="table table-hover"><thead class="thead-light"><tr><th>遊戲局號</th><th>遊戲時長</th><th>遊戲結果</th></tr></thead><tbody id="GameInfo"></tbody></table></div></div></div></div>'
                     )
                 }
             })
@@ -446,6 +446,7 @@
                 url: "/api/NewCoin/" + AddCoin+"/"+id,
                 success: function (newCoin) {
                   document.getElementById("NewCoin").innerHTML=newCoin;
+
                 // console.log(newCoin);
                    }
              })
@@ -468,7 +469,7 @@
                             '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                             j +
                             '" aria-expanded="true" aria-controls="collapse' +
-                            j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
+                            j + '"><span class="h5 annTitle'+e[j].id+'">#' + e[j].id + ' 　　' +
                             e[j].title +
                             '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
                             e[j].id +
@@ -536,9 +537,17 @@
                     "content": content,
                 },
                 success: function() {
-
-                    alert("已發布公告");
-                    location.reload()
+                    $.ajax({
+                type: 'GET',
+                url: "/api/announce/" +i ,
+                dataType: 'json',
+                success: function(e) {
+                    // console.log(e);
+                    $(".annTitle"+i).html('#'+i+' 　　'+e.title);
+                    $("#updateContent"+i).html(e.content);                               
+                                }
+                         })
+                    
                 }
             })
 
