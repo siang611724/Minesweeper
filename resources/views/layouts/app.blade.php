@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/mineSweeper.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
+    <link rel="icon" href="{{ asset('/icon/icon.svg') }}">
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 
     <!-- Fonts -->
