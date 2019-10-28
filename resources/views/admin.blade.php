@@ -244,7 +244,7 @@
                     <textarea id="AddAnnContent" placeholder="請輸入公告內容"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary AddAnnOK" onclick="AddAnnOK(id)" data-dismiss="modal">發布</button>
+                    <button type="button" class="btn btn-primary AddAnnOK" onclick="AddAnnOK()" data-dismiss="modal">發布</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                 </div>
             </div>
@@ -562,7 +562,7 @@
 
         // 新增公告
 
-        function AddAnnOK(id) {
+        function AddAnnOK() {
             let title = $("#AddAnnTitle").val();
             let content = $("#AddAnnContent").val();
             $.ajax({
@@ -583,9 +583,9 @@
                         success:function(e){
                             // console.log(e);
                             // console.log(e[0].id);
-                           let listID=e.length-1;
-                           let lastID=e.length-2;
-                        $('#Card'+lastID).before(
+                           var listID=e.length-1;
+                           
+                        $('#Card'+listID).before(
                             '<div  class="card" id="Card'+listID+'"><div class="card-header" id="heading' +
                             listID +
                             '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
