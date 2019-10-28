@@ -17,6 +17,7 @@ class GameController extends Controller
     {
         //
         $userID = Auth::id();
+        $user = DB::table('users')->where('id',$userID)->first();
         $id = DB::table('Map')->where('MemberID', $userID)
         ->orderBy('GameID','desc')->take(1)->value('GameID');
         
@@ -35,6 +36,13 @@ class GameController extends Controller
        ->orderBy('created_at','desc')->take(1)->update([
         'result'=>'win'
        ]);
+       DB::table('transaction_records')->insert([
+        [
+            'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '過關獎勵',
+            'trading_coins' => 50,
+            'balance_coins' => $user->coins + 50,
+        ]
+    ]);
        return $money;
                 
     }

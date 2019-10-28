@@ -77,8 +77,11 @@
         .news {
             margin-top: 50px;
         }
+        #show {
+            background-color: #f7f7f7;
+        }
         .bigPic {
-            padding: 15px;
+            padding: 20px;
             height: 450px;
         }
         #footer {
