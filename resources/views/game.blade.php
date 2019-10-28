@@ -64,10 +64,10 @@
 
         <!-- 加值彈窗 -->
         
-        <div data-backdrop="static" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        {{-- <div data-backdrop="static" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
             <a href="/home"><button style="margin-top: 200px; margin-left: 85px">返回</button></a>
-        </div>
+        </div> --}}
 
         <!-- 加值彈窗 -->
 

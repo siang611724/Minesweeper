@@ -106,6 +106,11 @@
             margin: 5px;
             border-radius: 10px;
         }
+        .card-body{
+            color: black;
+            font-weight: 700;
+            margin-left: 15px;
+        }
     </style>
 
 </head>
