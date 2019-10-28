@@ -62,7 +62,7 @@
 
         <div class="gameArea_right col-lg-9 col-sm-12 col-12">
             <div class="right_collection col-lg-12">
-                {{-- <h3 style="font-weight: 800;">公告欄</h3> --}}
+                <h3 style="font-weight: 800;">公告欄</h3>
                 <hr>
                 <div class="accordion" id="accordionExample">
                     <!-- 公告生成區 -->
