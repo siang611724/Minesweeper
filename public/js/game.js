@@ -317,17 +317,7 @@ $("#medium").click(function () {
                 }
             }
         })
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: 'get',
-            url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
-            success: function (map) {
-                // console.log(map);
-                drawTable(map);
-            }
-        })
+       
 
     })
 
@@ -387,19 +377,7 @@ $("#hard").click(function () {
                 }
             }
         })
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: 'get',
-            url: '/wang/' + mapData.column + '/' + mapData.row + '/' + mapData.bomb + '',
-            success: function (map) {
-                // console.log(map);
-                // console.log(map.length);
-                // console.log(map[1].length);
-                drawTable(map);
-            }
-        })
+       
     })
 
 });
@@ -454,7 +432,7 @@ $("#getResultWin").click(function(){
         type: 'get',
         url: 'getResult/'+LastTime,
         success: function (money) {
-            moneyLose.innerHTML = money;
+            moneyWin.innerHTML = money;
         }
     })
 })
