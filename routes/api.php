@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/announce', 'api\AnnounceController@annList');
+Route::get('/NewAnnounce', 'api\AnnounceController@NewList');
 Route::post('/announce', 'api\AnnounceController@newAnn');
 Route::get('/announce/{announce}', 'api\AnnounceController@designAnn');
 Route::put('/announce/{announce}', 'api\AnnounceController@updateAnn');
@@ -27,6 +28,7 @@ Route::put('/member/{member}', 'api\MemberController@updatePassword');
 Route::delete('/member/{member}', 'api\MemberController@delUser');
 
 Route::put('/coin/{coin}', 'api\CoinController@updateCoin');
+Route::get('/NewCoin/{AddCoin}/{id}', 'api\CoinController@NewCoin');
 
 Route::get('/trans/{trans}', 'api\TransactionController@userTransList');
 

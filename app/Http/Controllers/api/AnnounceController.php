@@ -84,9 +84,13 @@ class AnnounceController extends Controller
         $ann = Announce::find($id);
         if ($ann != null){
             $ann->delete();
-            return response()->json(null,204);
+            return $ann;
         }else {
             return response()->json(['message' => 'Wrong ID']);
         }
+    }
+    public function NewList(){
+        $ann = Announce::all();
+        return response()->json($ann);
     }
 }

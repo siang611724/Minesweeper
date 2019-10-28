@@ -9,6 +9,7 @@ use App\DB\Member;
 use DB;
 use Validator;
 
+
 class CoinController extends Controller
 {
     /**
@@ -98,5 +99,12 @@ class CoinController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function NewCoin($Coin,$id){
+        
+        $money = DB::table('users')->where('id',$id)
+                ->value('coins');
+        $result=$money+$Coin;
+        return $money;
     }
 }

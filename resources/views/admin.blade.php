@@ -244,7 +244,7 @@
                     <textarea id="AddAnnContent" placeholder="請輸入公告內容"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary AddAnnOK" onclick="AddAnnOK()">發布</button>
+                    <button type="button" class="btn btn-primary AddAnnOK" onclick="AddAnnOK(id)" data-dismiss="modal">發布</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                 </div>
             </div>
@@ -292,7 +292,7 @@
                         '<btn class="btn-link" data-toggle="modal" data-target="#PWchange" onclick="ChangePWFooter(' +
                         e[idArray].id + ')"><span class="h6">[密碼修改]</span></btn><p class="h5">' +
                         e[idArray].email +
-                        '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>' +
+                        '</p></div><div class="col-3 h4 m-auto"><i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span id="NewCoin">' +
                         e[idArray].coins +
                         '<button type="button" class="btn btn-success float-right" onclick="AddCoinFooter(' +
                         e[idArray].id +
@@ -384,7 +384,7 @@
         function AddCoinFooter(id) {
             $('.AddCoinFooter').html('');
             $('.AddCoinFooter').append(
-                '<button type="button" class="btn btn-success" Onclick="AddCoinOK(' + id + ')">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
+                '<button type="button" class="btn btn-success" Onclick="AddCoinOK(' + id + ')" id ="updateCoin" data-dismiss="modal">確認</button><button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>'
             )
         }
 
@@ -415,6 +415,7 @@
 
         function AddCoinOK(id) {
             var AddCoin = $("#AddCoin").val();
+           
             $.ajax({
                 type: 'PUT',
                 url: "/api/coin/" + id,
@@ -436,10 +437,18 @@
                         $("#AddCoin").val('');
                     } else {
                         alert("已修改成功");
-                        location.reload();
+                     
                     }
                 }
             })
+            $.ajax({
+                type: 'get',
+                url: "/api/NewCoin/" + AddCoin+"/"+id,
+                success: function (newCoin) {
+                  document.getElementById("NewCoin").innerHTML=newCoin;
+                // console.log(newCoin);
+                   }
+             })
         }
 
         // ====================功能已完成=========================
@@ -454,14 +463,13 @@
                     for (j = e.length - 1; j >= 0; j--) {
                         // console.log(e);
                         $('.accordion').append(
-                            '<div class="card"><div class="card-header" id="heading' +
+                            '<div class="card" id="Card'+e[j].id+'"><div class="card-header" id="heading' +
                             j +
                             '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                             j +
                             '" aria-expanded="true" aria-controls="collapse' +
                             j + '"><span class="h5 annTitle">#' + e[j].id + ' 　　' +
-                            e[j]
-                            .title +
+                            e[j].title +
                             '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
                             e[j].id +
                             ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
@@ -545,7 +553,7 @@
 
         // 新增公告
 
-        function AddAnnOK() {
+        function AddAnnOK(id) {
             let title = $("#AddAnnTitle").val();
             let content = $("#AddAnnContent").val();
             $.ajax({
@@ -556,11 +564,45 @@
                     "title": title,
                     "content": content,
                 },
-                success: function(e) {
+                success: function() {
                     $("#AddAnnTitle").val("");
                     $("#AddAnnContent").val("");
-                    alert("已發布公告");
-                    location.reload();
+                  
+                    $.ajax({
+                        type:"get",
+                        url:"/api/NewAnnounce",
+                        success:function(e){
+                            // console.log(e);
+                            // console.log(e[0].id);
+                           let listID=e.length-1;
+                           let lastID=e.length-2;
+                        $('#Card'+lastID).before(
+                            '<div  class="card" id="Card'+listID+'"><div class="card-header" id="heading' +
+                            listID +
+                            '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
+                            listID +
+                            '" aria-expanded="true" aria-controls="collapse' +
+                            listID + '"><span class="h5 annTitle">#' + e[listID].id + ' 　　' +
+                            e[listID]
+                            .title +
+                            '</span>[修改]</button><button class="btn btn-sm btn-danger float-right" onclick="deleteAnn(' +
+                            e[listID].id +
+                            ')"><i class="fas fa-trash-alt"></i></button></div><div id="collapse' +
+                            listID +
+                            '" class="collapse" aria-labelledby="heading' +
+                            listID +
+                            '"data-parent="#accordionExample"><div class="card-body"><div class="form-group"><input type="text" id="updateTitle' +
+                            e[listID].id +
+                            '" placeholder="請輸入新公告標題" id="updateTitle"><button type="button" class="btn btn-success float-right mr-3" onclick="updateOK(' +
+                            e[listID].id +
+                            ')">確認</button></div><textarea id="updateContent' + e[listID]
+                            .id +
+                            '" placeholder="請輸入公告內容">' +
+                            e[listID].content + '</textarea></div></div></div>'
+                        )
+                    
+                        }
+                    })
                 }
             });
 
@@ -574,10 +616,10 @@
                 url: "/api/announce/" + j,
                 dataType: 'json',
                 data: {},
-                success: function() {
-                    // console.log(j);
-                    alert("已刪除公告");
-                    location.reload();
+                success: function(e) {
+                console.log(j);
+                  alert("已刪除");
+                  $("#Card"+j).hide();
                 }
             })
         }
@@ -596,6 +638,12 @@
                 })
             }
         }
+      
+
+        $("#updateCoin").click(function(){
+            var AddCoin = $("#AddCoin").val();
+    
+        })
     </script>
 </body>
 
