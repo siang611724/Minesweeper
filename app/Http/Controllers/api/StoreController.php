@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 use DB;
 
 class StoreController extends Controller
@@ -49,6 +50,23 @@ class StoreController extends Controller
      */
     public function storeCoin (Request $request, $id)
     {
+        $data = $request->all();
+        $rules = [
+            'cardNum' => 'required | regex:/^\d{4}-\d{4}-\d{4}-\d{4}$/',
+            'CVV' => 'required | regex:/^\d{3}$/',
+            'cardMonth' => 'in:01,02,03,04,05,06,07,08,09,10,11,12',
+            'cardYear' => 'in:2019,2020,2021,2022,2023'
+        ];
+        $message = [
+            'required' => '欄位不能為空',
+            'regex' => '信用卡號或安全碼輸入錯誤',
+            'in' => '請填寫信用卡到期日'
+        ];
+        $validator = Validator::make($data, $rules, $message);
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()->all()]);
+        }
+
         $user = DB::table('users')->where('id', $id)->first();
         $result = DB::table('users')
                     ->where('id', $id)
@@ -66,7 +84,8 @@ class StoreController extends Controller
                 ]
             ]);
             return response()->json(['status' => 0, 'message' => 'Success', 'money' => $request->coins, 
-                                    'balance' => $user->coins + $request->coins]);
+                                    'balance' => $user->coins + $request->coins,
+                                    'result' => $request->all()]);
         }
     }
 

@@ -80,14 +80,6 @@ class LoginController extends Controller
     return redirect('/welcome');
   }
 
-  public function test(Request $request)
-  {
-    return response()->json([
-      'account' => $request->account, 'password' => $request->password
-    ]);
-    // return redirect('admin');
-  }
-
   public function checkAccount(Request $request)
   {
     $data = $request->all();

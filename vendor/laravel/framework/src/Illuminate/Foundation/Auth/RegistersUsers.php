@@ -5,6 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 trait RegistersUsers
 {
@@ -59,6 +60,25 @@ trait RegistersUsers
      */
     protected function registered(Request $request, $user)
     {
-        //
+        date_default_timezone_set('Asia/Taipei');
+        $datetime = date('Y-m-d H:i:s');
+
+        $user->coins = $user->coins + 10;
+        $user->save();
+
+        DB::table('users')->where('id', $user->id)->update([
+            'last_login_time' => $datetime
+        ]);
+
+        DB::table('logs')->insert(['user_id' => $user->id, 'user_name' => $user->name]);
+
+        DB::table('transaction_records')->insert([
+            [
+                'user_id' => $user->id, 'user_name' => $user->name, 'trading_type' => '每日登入',
+                'trading_coins' => '10', 'balance_coins' => $user->coins
+            ]
+        ]);
+
+        return redirect('/dailyLogin');
     }
 }
