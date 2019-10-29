@@ -37,9 +37,10 @@
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 
     <style>
-        body,html {
+        body,
+        html {
             background-color: #f9f9f9;
-            font-family: 'Nunito', sans-serif,微軟正黑體;
+            font-family: 'Nunito', sans-serif, 微軟正黑體;
 
         }
 
@@ -117,155 +118,169 @@
                     <img src="{{URL::asset('/image/icon.svg')}}" alt="profile Pic" height="35" width="30" class="d-inline-block align-top">
                     {{ 'Minesweeper Online' }}
                 </a></b>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav mr-auto">
 
-                    </ul>
+                </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <table class="d-xl-none d-lg-none">
-                            <td style="margin-right: 20px" class="d-xl-none d-lg-none">
-                                <tr>
-                                    <td style="color: white;">信箱: {{ Auth::user()->email }} </td>
-                                </tr>
-                                <tr>
-                                    <td style="color: white;">金幣: {{ Auth::user()->coins }}<a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
-                                            我的錢包
-                                        </button>
-                                    </td>
-                                </tr>
-                            </td>
-                        </table>
-                        <!-- Authentication Links -->
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <table class="d-xl-none d-lg-none">
+                        <td style="margin-right: 20px" class="d-xl-none d-lg-none">
+                            <tr>
+                                <td style="color: white;">信箱: {{ Auth::user()->email }} </td>
+                            </tr>
+                            <tr>
+                                <td style="color: white;">金幣: {{ Auth::user()->coins }}<a href="#exampleModalCenter" class="fas fa-plus-circle" style="color: rgb(0, 157, 230)" data-toggle="modal" data-target="#exampleModalCenter"></a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModalScrollable">
+                                        我的錢包
+                                    </button>
+                                </td>
+                            </tr>
+                        </td>
+                    </table>
+                    <!-- Authentication Links -->
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
 
+                        </a>
+
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
 
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
-                </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
+                </ul>
             </div>
-        </nav>
+    </div>
+    </nav>
 
-        <script>
-            
-            $(document).ready(function(){
-                $.ajax({
-                    type: 'GET',
-                    url: "/api/announce",
-                    dataType: 'json',
-                    success: function (e) {
-                        //   console.log(e.data.length);
-                        for (j = e.length-1; j >= 0; j--) {
-                            //   console.log(e);
-                            $('.accordion').append(
-                                '<div class="card"><div class="card-header" id="heading' +
-                                j +
-                                '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
-                                j +
-                                '" aria-expanded="true" aria-controls="collapse' +
-                                j + '"><span class="h5 annTitle">['+e[j].type+'] '+e[j].releaseDate+' '+e[j].title+
-                                '</span></button></div><div id="collapse' +
-                                j +
-                                '" class="collapse" aria-labelledby="heading' +
-                                j +
-                                '"data-parent="#accordionExample"><div class="card-body">' +
-                                e[j].content + '</div></div></div>'   
-                            )
-                        }
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: 'GET',
+                url: "/api/announce",
+                dataType: 'json',
+                success: function(e) {
+                    //   console.log(e.data.length);
+                    for (j = e.length - 1; j >= 0; j--) {
+                        //   console.log(e);
+                        $('.accordion').append(
+                            '<div class="card"><div class="card-header" id="heading' +
+                            j +
+                            '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
+                            j +
+                            '" aria-expanded="true" aria-controls="collapse' +
+                            j + '"><span class="h5 annTitle">[' + e[j].type + '] ' + e[j].releaseDate + ' ' + e[j].title +
+                            '</span></button></div><div id="collapse' +
+                            j +
+                            '" class="collapse" aria-labelledby="heading' +
+                            j +
+                            '"data-parent="#accordionExample"><div class="card-body">' +
+                            e[j].content + '</div></div></div>'
+                        )
                     }
-                });
-            })
-            
-            function storeCoin() {
-                var key = document.getElementById("textinput").value;
-                var coinValue = document.querySelector("input[name='radios']:checked").value;
-                var result = confirm("確定要儲值 " + coinValue + " 金幣嗎？");
-                var patt = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
-                if (patt.test(key)) {
-                    if (result == true) {
-                        // form.submit();
-                        // return true;
-                        $.ajax({
-                            type: 'PUT',
-                            url: '/api/store/{{ Auth::id() }}',
-                            dataType: 'json',
-                            data: {
-                                'coins': coinValue
-                            },
-                            success: function() {
+                }
+            });
+        })
+
+        function storeCoin() {
+            var cardNumKey = document.getElementById("cardNumInput").value;
+            var cardNumPatt = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+            var CVVKey = document.getElementById('CVVInput').value;
+            var CVVPatt = /^\d{3}$/;
+            var coinValue = document.querySelector("input[name='radios']:checked").value;
+            var month = $('#cardMonth').val();
+            var year = $('#cardYear').val();
+            var result = confirm("確定要儲值 " + coinValue + " 金幣嗎？");
+            if (cardNumPatt.test(cardNumKey) && CVVPatt.test(CVVKey) && !($('#cardMonth').val() == '') && !($('#cardYear').val() == '')) {
+                if (result == true) {
+                    $.ajax({
+                        type: 'PUT',
+                        url: '/api/store/{{ Auth::id() }}',
+                        dataType: 'json',
+                        data: {
+                            'coins': coinValue,
+                            'cardNum': cardNumKey,
+                            'CVV': CVVKey,
+                            'cardMonth': month,
+                            'cardYear': year
+                        },
+                        success: function(result) {
+                            if (result.error) {
+                                document.getElementById('errorText').innerHTML = result.error[0];
+                            } else {
                                 alert('加值成功');
                                 location.reload();
                             }
-                        });
-                    }
-                } else {
-                    document.getElementById("textbox").innerHTML = "請輸入正確信用卡號碼";
-                    alert("格式錯誤");
-                    return false;
-                }
-                // alert(patt.test(key));
-                // alert(key);
-            }
-
-            function tradingList() {
-                $('#tradingList').html('');
-                $.ajax({
-                    type: 'GET',
-                    url: '/api/trans/{{ Auth::id() }}',
-                    dataType: 'json',
-                    success: function(result) {
-                        for (i = 0; i < result.length; i++) {
-                            $('#tradingList').append("<tr><td>" +
-                                result[i].id + "</td><td>" +
-                                result[i].trading_date + "</td><td>" +
-                                result[i].trading_type + "</td><td>" +
-                                result[i].trading_coins + "</td><td>" +
-                                result[i].balance_coins + "</td></tr>");
                         }
-                    }
-                })
+                    });
+                }
+            } else if (!cardNumPatt.test(cardNumKey)) {
+                document.getElementById("errorText").innerHTML = "請輸入正確信用卡號碼";
+                return false;
+            } else if (!CVVPatt.test(CVVKey)) {
+                document.getElementById("errorText").innerHTML = "請輸入正確安全碼";
+                return false;
+            } else if ($('#cardMonth').val() == '' || $('#cardYear').val() == '') {
+                document.getElementById("errorText").innerHTML = "請填寫信用卡到期日";
+                return false;
             }
-        </script>
+            // alert(patt.test(key));
+            // alert(key);
+        }
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        function tradingList() {
+            $('#tradingList').html('');
+            $.ajax({
+                type: 'GET',
+                url: '/api/trans/{{ Auth::id() }}',
+                dataType: 'json',
+                success: function(result) {
+                    for (i = 0; i < result.length; i++) {
+                        $('#tradingList').append("<tr><td>" +
+                            result[i].id + "</td><td>" +
+                            result[i].trading_date + "</td><td>" +
+                            result[i].trading_type + "</td><td>" +
+                            result[i].trading_coins + "</td><td>" +
+                            result[i].balance_coins + "</td></tr>");
+                    }
+                }
+            })
+        }
+    </script>
+
+    <main class="py-4">
+        @yield('content')
+    </main>
     </div>
 </body>
 

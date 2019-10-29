@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Validator as IlluminateValidator;
+// use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -48,10 +50,36 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // $rules = [
+        //     'name_reg' => 'required',
+        //     'email_reg' => 'required | email | unique:users,email',
+        //     'password_red' => 'required | between:8, 20 | confirmed',
+        // ];
+
+        // $message = [
+        //     'required' => '請填寫此欄位',
+        //     'email' => '請符合email格式',
+        //     'unique' => '此信箱已被使用過',
+        //     'between' => '密碼必須為8-20位之間',
+        //     'confirmed' => '密碼與確認新密碼不匹配'
+        // ];
+
+        // $validator = Validator::make($data, $rules, $message);
+
+        // $validator = Validator::make($data, [
+        //     'name_reg' => ['required'],
+        //     'email_reg' => ['required', 'email', 'unique:users,email'],
+        //     'password_reg' => ['required', 'between:8, 20', 'confirmed'],
+        // ]);
+
+        // if($validator->fails()) {
+        //     return back()->withErrors($validator);
+        // };
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name_reg' => ['required'],
+            'email_reg' => ['required', 'email', 'unique:users,email'],
+            'password_reg' => ['required', 'between:8, 20', 'confirmed'],
         ]);
     }
 
@@ -64,9 +92,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $data['name_reg'],
+            'email' => $data['email_reg'],
+            'password' => Hash::make($data['password_reg']),
         ]);
     }
 }

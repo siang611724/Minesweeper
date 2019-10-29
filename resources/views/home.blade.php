@@ -3,36 +3,46 @@
 @section('content')
 
 <style>
-    html,body {
+    html,
+    body {
         background-color: #fff;
         font-family: 微軟正黑體;
     }
-    tr,td {
+
+    tr,
+    td {
         color: black;
+        margin-bottom: 10px;
     }
+
+    th {
+        width: 100px;
+    }
+
     .right_collection {
         background-color: #fff;
     }
+
     .annTitle {
         color: #007aff;
         font-weight: 900;
     }
-    .card-body{
+
+    .card-body {
         color: black;
         font-weight: 700;
-        }
+    }
+
     /* .gameArea_right{overflow-y: scroll} */
     /* html{overflow: hidden} */
 </style>
 
 <script>
-
     var changePWMsg = '{{ Session::get('alertPW') }}';
     var exist = '{{ Session::has('alertPW') }}';
     if (exist) {
         alert(changePWMsg);
     }
-
 </script>
 
 <div class="">
@@ -83,17 +93,59 @@
             <!-- <form method="POST" action="api/store/{{ Auth::id() }}">
                         @csrf
                         @method('PUT') -->
-            <div class="modal-body" style="margin-left: 20px">
-                <div class="form-group">
+            <div class="modal-body" style="">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><label class="control-label" for="cardNumInput">卡號*</label></th>
+                            <td><input id="cardNumInput" name="cardNumInput" type="text" placeholder="請輸入卡號" class="form-control" style="width: 300px"></td>
+                        </tr>
+                        <tr>
+                            <th><label class="control-label" for="dateInput">有效日期*</label></th>
+                            <td><select name="cardMonth" id="cardMonth">
+                                    <option value="">月</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                /
+                                <select name="cardYear" id="cardYear">
+                                    <option value="">年</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label class="control-label" for="CVVInput">CVV*</label></th>
+                            <td><input id="CVVInput" name="CVVInput" type="text" placeholder="安全碼" class="form-control" style="width: 80px"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                    <b><span style="color: red; background-color: pink" id="errorText" name="errorText" class="help-block"></span></b>
+                <br>
+                <!-- <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">卡號:</label>
                     <div class="col-md-6">
                         <input id="textinput" name="textinput" type="text" placeholder="請輸入卡號" class="form-control input-md" style="width: 400px">
                         <b><span id="textbox" style="color: red" class="help-block">格式:xxxx-xxxx-xxxx-xxxx</span></b>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Multiple Radios (inline) -->
-                <div class="form-group" style="margin-left: 10px">
+                <div class="form-group" style="">
                     <label class="control-label" for="radios">請選擇儲值金額:</label>
                     <div class="">
                         <label class="radio-inline" for="radios-0">
@@ -156,21 +208,6 @@
         </div>
     </div>
 </div>
-<!-- <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>
 
 @endsection

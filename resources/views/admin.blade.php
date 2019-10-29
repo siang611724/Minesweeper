@@ -62,8 +62,6 @@
             color: white;
         }
 
-
-
         #Info {
             display: none;
         }
@@ -263,7 +261,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" id="NewPW" placeholder="請輸入新密碼">
-                    <div class="errorMsgPW" style="color:red">
+                    <div class="errorMsgPW" style="display: none; color:red">
                         <div></div>
                     </div>
                 </div>
