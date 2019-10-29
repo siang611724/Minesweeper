@@ -386,7 +386,7 @@
                 url: "/api/announce",
                 dataType: 'json',
                 success: function(e) {
-                    console.log(e.length);
+                    // console.log(e.length);
                     for (j = e.length - 1; j >= e.length - 5; j--) {
                         //   console.log(e);
                         $('.accordion').append(
@@ -395,7 +395,7 @@
                             '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                             j +
                             '" aria-expanded="true" aria-controls="collapse' +
-                            j + '"><span class="h5 annTitle">[' + e[j].type + ']' + e[j].releaseDate + ' ' + e[j].title +
+                            j + '"><span class="h5 annTitle">[' + e[j].title + ']' + e[j].releaseDate + ' ' + e[j].content +
                             '</span></button></div><div id="collapse' +
                             j +
                             '" class="collapse" aria-labelledby="heading' +

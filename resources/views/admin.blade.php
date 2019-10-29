@@ -579,12 +579,19 @@
                         type:"get",
                         url:"/api/NewAnnounce",
                         success:function(e){
-                            console.log(e);
+                           
                             // console.log(e[0].id);
                            var listID=e.length-1;
                            var lastID=e.length-1;
-                           var listID2=listID+1;
-                        $('#Card'+listID).before(
+                            var listID2=e[e.length-1].id;
+                            var listID3=e[e.length-2].id
+                           console.log(e);
+                            
+                            console.log(listID);
+                            console.log(lastID);
+                            console.log(listID2);
+                            
+                        $('#Card'+listID3).before(
                             '<div  class="card" id="Card'+listID2+'"><div class="card-header" id="heading' +
                             listID +
                             '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +

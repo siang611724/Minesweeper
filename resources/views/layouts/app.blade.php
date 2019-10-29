@@ -204,7 +204,7 @@
                             '"><button class="btn text-left btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse' +
                             j +
                             '" aria-expanded="true" aria-controls="collapse' +
-                            j + '"><span class="h5 annTitle">[' + e[j].type + '] ' + e[j].releaseDate + ' ' + e[j].title +
+                            j + '"><span class="h5 annTitle">[' + "公告" + '] ' + e[j].releaseDate + ' ' + e[j].title +
                             '</span></button></div><div id="collapse' +
                             j +
                             '" class="collapse" aria-labelledby="heading' +
